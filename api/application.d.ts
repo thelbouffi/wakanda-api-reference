@@ -9,6 +9,7 @@
 /// <reference path="./socketsync.d.ts" />
 /// <reference path="./filesystemsync.d.ts" />
 /// <reference path="./folder.d.ts" />
+/// <reference path="./file.d.ts" />
 /// <reference path="./connectionsession.d.ts" />
 /// <reference path="./jobmanager.d.ts" />
 /// <reference path="./progressindicator.d.ts" />

@@ -68,11 +68,11 @@ declare module Wakanda {
 		/**
 		*executes the callbackFn function once for each file present at the first level of the Folder object
 		*/
-		forEachFile(callbackFn: Function, thisArg?: Object) : void;
+		forEachFile(callbackFn: (file: File)=>void, thisArg?: Object) : void;
 		/**
 		*executes the callbackFn function once for each subfolder present at the first level of the Folder object
 		*/
-		forEachFolder(callbackFn: Function, thisArg?: Object) : void;
+		forEachFolder(callbackFn: (folder: Folder)=>void, thisArg?: Object) : void;
 		/**
 		*returns the size of the free space (expressed in bytes) available on the volume where the File or Folder object is stored
 		*/
