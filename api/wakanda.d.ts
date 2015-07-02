@@ -1,6 +1,6 @@
 ///<reference path="./application.d.ts" />
 
-declare var application:Wakanda.Application;
-declare var httpServer:Wakanda.HttpServer;
-declare var directory:Wakanda.Directory;
-declare var ds:Wakanda.Datastore;
+declare var application:Application;
+declare var httpServer:HttpServer;
+declare var directory:Directory;
+declare var ds:Datastore;

@@ -1,7 +1,5 @@
 ///<reference path="./group.d.ts" />
 
-declare module Wakanda {
-	
 	interface ConnectionSession {
 		/**
 		*Expiration date
@@ -56,5 +54,3 @@ declare module Wakanda {
 		*/
 		unPromote(token: Number) : void;
 	}
-	
-}

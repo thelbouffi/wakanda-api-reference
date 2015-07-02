@@ -1,7 +1,6 @@
 ///<reference path="./dataclassenumerator.d.ts" />
 
-declare module Wakanda {
-	
+
 	interface Datastore {
 	
 		/**
@@ -57,5 +56,3 @@ declare module Wakanda {
 		*/
 		setCacheSize(newSize: Number) : void;
 	}
-	
-}

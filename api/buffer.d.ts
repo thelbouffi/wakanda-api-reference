@@ -1,5 +1,4 @@
-declare module Wakanda {
-	
+
 	interface Buffer {
 		/**
 		*Number of bytes of the buffer
@@ -174,4 +173,3 @@ declare module Wakanda {
 		*/
 		writeUInt8(value: Number, offset: Number, noAssert?: Boolean) : void;
 	}
-}

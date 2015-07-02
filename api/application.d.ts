@@ -18,8 +18,6 @@
 /// <reference path="./module.d.ts" />
 /// <reference path="./entrysync.d.ts" />
 
-declare module Wakanda {
-	
 	interface Application {
 	
 		/**
@@ -463,5 +461,3 @@ declare module Wakanda {
 		*/
 		XmlToJSON(xmlText: String, jsonFormat?: String, rootElement?: String) : String;
 	}
-
-}

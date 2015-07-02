@@ -1,5 +1,4 @@
-declare module Wakanda {
-		
+	
 	interface HttpServer {
 		/**
 		*Cache properties of the HTTP server
@@ -72,5 +71,3 @@ declare module Wakanda {
 		*/
 		getCertificatePath() : String;
 	}
-	
-}

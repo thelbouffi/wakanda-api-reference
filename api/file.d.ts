@@ -1,9 +1,7 @@
 ///<reference path="./filesystemsync.d.ts" />
 ///<reference path="./folder.d.ts" />
 ///<reference path="./buffer.d.ts" />
-
-declare module Wakanda {
-		
+	
 	interface File {
 		/**
 		*Creation date for the file
@@ -24,11 +22,11 @@ declare module Wakanda {
 		/**
 		*Last modification date for the file
 		*/
-		lastModifiedDate: Date;
+		//lastModifiedDate: Date;
 		/**
 		*Name of the file with the extension and without the path
 		*/
-		name: String;
+		//name: String;
 		/**
 		*Name of the file without the extension
 		*/
@@ -48,11 +46,11 @@ declare module Wakanda {
 		/**
 		*Size of the file in bytes
 		*/
-		size: Number;
+		size: number;
 		/**
 		*Media type of the Blob expressed as MIME or "" if unknown
 		*/
-		type: String;
+		type: string;
 		/**
 		*True if the file is visible. Otherwise, it returns false.
 		*/
@@ -158,5 +156,3 @@ declare module Wakanda {
 		*/
 		valid() : Boolean;
 	}
-	
-}

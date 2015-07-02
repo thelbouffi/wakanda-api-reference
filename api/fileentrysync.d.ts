@@ -1,8 +1,7 @@
 ///<reference path="./filesystemsync.d.ts" />
 ///<reference path="./filewritersync.d.ts" />
 
-declare module Wakanda {
-		
+	
 	interface FileEntrySync {
 		/**
 		*File system of the entry
@@ -57,5 +56,3 @@ declare module Wakanda {
 		*/
 		toURL() : String;
 	}
-	
-}

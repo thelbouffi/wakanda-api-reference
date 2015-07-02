@@ -1,5 +1,4 @@
-declare module Wakanda {
-		
+	
 	interface Directory {
 		/**
 		*Internal directory datastore
@@ -71,4 +70,3 @@ declare module Wakanda {
 		user(name: String) : User;
 	}
 	
-}

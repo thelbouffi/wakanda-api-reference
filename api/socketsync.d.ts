@@ -1,6 +1,4 @@
-declare module Wakanda {
-	
-	interface SocketSync {
+interface SocketSync {
 		/**
 		*returns an object containing two attributes, address and port, representing the address where the client SocketSync is connected
 		*/
@@ -38,5 +36,3 @@ declare module Wakanda {
 		*/
 		write(data: Buffer, encoding: String) : Boolean;
 	}
-	
-}

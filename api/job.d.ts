@@ -1,5 +1,4 @@
-declare module Wakanda {
-	
+
 	interface Job {
 		/**
 		*Unique ID of the job on the server
@@ -14,5 +13,3 @@ declare module Wakanda {
 		*/
 		terminate(messageInfo: String) : void;
 	}
-	
-}

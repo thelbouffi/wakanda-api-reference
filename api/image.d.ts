@@ -1,5 +1,4 @@
-declare module Wakanda {
-	
+
 	interface Image {
 		/**
 		*Height of the image
@@ -46,5 +45,3 @@ declare module Wakanda {
 		*/
 		thumbnail(width: Number, height: Number, mode?: Number) : Image;
 	}
-
-}

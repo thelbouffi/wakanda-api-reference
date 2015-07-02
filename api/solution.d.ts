@@ -1,5 +1,4 @@
-declare module Wakanda {
-	
+
 	interface Solution {
 		/**
 		*Name of the solution
@@ -42,5 +41,3 @@ declare module Wakanda {
 		*/
 		quitServer() : void;
 	}
-	
-}

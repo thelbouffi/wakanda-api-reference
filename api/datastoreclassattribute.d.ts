@@ -1,7 +1,6 @@
 ///<reference path="./datastoreclass.d.ts" />
 
-declare module Wakanda {
-		
+	
 	interface DatastoreClassAttribute {
 	/**
 		*Default format for the attribute
@@ -69,4 +68,3 @@ declare module Wakanda {
 		type: String;
 	}
 	
-}

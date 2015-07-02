@@ -1,4 +1,3 @@
-declare module Wakanda {
 		
 	interface Socket {
 		/**
@@ -78,5 +77,3 @@ declare module Wakanda {
 		*/
 		write(data: String, encoding?: String) : Boolean;
 	}
-	
-}

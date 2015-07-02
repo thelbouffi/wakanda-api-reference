@@ -1,5 +1,4 @@
-declare module Wakanda {
-	
+
 	interface TextStream {
 		/**
 		*closes the file referenced in the TextStream object
@@ -46,5 +45,3 @@ declare module Wakanda {
 		*/
 		write(text: String) : void;
 	}
-	
-}

@@ -1,7 +1,6 @@
 ///<reference path="./user.d.ts" />
 
-declare module Wakanda {
-		
+	
 	interface Group {
 		/**
 		*Full name of the group
@@ -88,5 +87,3 @@ declare module Wakanda {
 		*/
 		setAlias(alias: String) : void;
 	}
-	
-}

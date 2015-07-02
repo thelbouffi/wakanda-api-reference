@@ -1,7 +1,5 @@
 ///<reference path="./buffer.d.ts" />
 
-declare module Wakanda {
-	
 	interface BinaryStream {
 		/**
 		*Constructor method: creates a new BinaryStream object
@@ -112,5 +110,3 @@ declare module Wakanda {
 		*/
 		setPos(offset: Number) : void;
 	}
-	
-}

@@ -1,5 +1,4 @@
-declare module Wakanda {
-	
+
 	interface ProgressIndicator {
 		/**
 		*stops the current session of the ProgressIndicator object
@@ -34,5 +33,3 @@ declare module Wakanda {
 		*/
 		subSession(numElements: Number, sessionName: String, stoppable?: String) : void;
 	}
-	
-}

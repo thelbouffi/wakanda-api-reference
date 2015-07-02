@@ -1,7 +1,5 @@
 ///<reference path="./job.d.ts" />
 
-declare module Wakanda {
-	
 	interface JobManager {
 		/**
 		*returns a new job object or the job object corresponding to the jobID string parameter
@@ -12,5 +10,3 @@ declare module Wakanda {
 		*/
 		getJobs() : Array<Job>;
 	}
-	
-}

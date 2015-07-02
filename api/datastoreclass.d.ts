@@ -1,7 +1,6 @@
 ///<reference path="./datastoreclassattribute.d.ts" />
 
-declare module Wakanda {
-	
+
 	interface DatastoreClass {
 		/**
 		*Methods of the Datastore class applied to Collection objects
@@ -61,4 +60,3 @@ declare module Wakanda {
 		setRestrictingQuery(queryStatement: String) : void;
 	}
 	
-}

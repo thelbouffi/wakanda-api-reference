@@ -1,7 +1,5 @@
 ///<reference path="./group.d.ts" />
 
-declare module Wakanda {
-	
 	interface User {
 		/**
 		*Full name of the user
@@ -60,5 +58,3 @@ declare module Wakanda {
 		*/
 		setPassword(password: String) : void;
 	}
-	
-}

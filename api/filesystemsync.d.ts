@@ -1,7 +1,6 @@
 ///<reference path="./directoryentrysync.d.ts" />
 
-declare module Wakanda {
-	
+
 	interface FileSystemSync {
 		/**
 		*Name of the file system
@@ -12,5 +11,3 @@ declare module Wakanda {
 		*/
 		root: DirectoryEntrySync;
 	}
-	
-}

@@ -4,8 +4,6 @@
 ///<reference path="./folder.d.ts" />
 ///<reference path="./directoryreadersync.d.ts" />
 
-declare module Wakanda {
-	
 	interface DirectoryEntrySync {
 		/**
 		*File system of the entry
@@ -73,4 +71,3 @@ declare module Wakanda {
 		toURL() : String;
 	}
 	
-}

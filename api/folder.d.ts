@@ -1,5 +1,4 @@
-declare module Wakanda {
-	
+
 	interface Folder {
 		/**
 		*Creation date for the folder
@@ -122,5 +121,3 @@ declare module Wakanda {
 		*/
 		valid() : Boolean;
 	}
-	
-}
