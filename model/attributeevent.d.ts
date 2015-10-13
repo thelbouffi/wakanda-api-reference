@@ -1,14 +1,14 @@
-interface AttributeEvent {
-	clientRefresh(event:AttributeEventObject):any;
-	init(event:AttributeEventObject):any;
-	load(event:AttributeEventObject):any;
-	remove(event:AttributeEventObject):any;
-	save(event:AttributeEventObject):any;
-	set(event:AttributeEventObject):any;
-	validate(event:AttributeEventObject):any;
-	validateremove(event:AttributeEventObject):any;
+interface ModelAttributeEvent {
+	clientRefresh(event:ModelAttributeEventObject):any;
+	init(event:ModelAttributeEventObject):any;
+	load(event:ModelAttributeEventObject):any;
+	remove(event:ModelAttributeEventObject):any;
+	save(event:ModelAttributeEventObject):any;
+	set(event:ModelAttributeEventObject):any;
+	validate(event:ModelAttributeEventObject):any;
+	validateremove(event:ModelAttributeEventObject):any;
 }
 
-interface AttributeEventObject {
+interface ModelAttributeEventObject {
 	
 }

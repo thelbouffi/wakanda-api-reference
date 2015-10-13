@@ -1,3 +1,2 @@
-///<reference path="./api/wakanda.ts" />
-
+///<reference path="./api/application.d.ts" />
 

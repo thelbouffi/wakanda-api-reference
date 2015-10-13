@@ -1,6 +1,6 @@
 ///<reference path="./attribute.d.ts" />
 
-interface DatastoreClass {
+interface ModelDataClass {
 	/**
 	*Methods of the Datastore class applied to Collection objects
 	*/
@@ -24,11 +24,11 @@ interface DatastoreClass {
 	/**
 	*adds a new attribute to the datastore class
 	*/
-	addAttribute(name: String, kind: String, type: String, indexOrPath?: String, options?: Object) : DatastoreClassAttribute;
+	addAttribute(name: String, kind: String, type: String, indexOrPath?: String, options?: Object) : ModelDataClassAttribute;
 	/**
 	*adds a new attribute to the datastore class
 	*/
-	addAttribute(name: String, kind: any, type: String, indexOrPath?: String, options?: Object) : DatastoreClassAttribute;
+	addAttribute(name: String, kind: any, type: String, indexOrPath?: String, options?: Object) : ModelDataClassAttribute;
 	/**
 	*associate an event listener function with the datastore class
 	*/
@@ -60,5 +60,5 @@ interface DatastoreClass {
 }
 
 declare var DataClass : {
-	new ( collectionName?:String, scope?:String, extendedClass?:String, properties?:Object) : DatastoreClass;
+	new ( collectionName?:String, scope?:String, extendedClass?:String, properties?:Object) : ModelDataClass;
 }

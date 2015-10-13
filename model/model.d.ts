@@ -6,7 +6,7 @@ interface Model {
 	/**
 	*adds a new datastore class to the current procedural model
 	*/
-	addClass(className: String, collectionName: String, scope: String, extendedClass: String, properties?: Object) : DataClass;
+	addClass(className: String, collectionName: String, scope: String, extendedClass: String, properties?: Object) : ModelDataClass;
 	/**
 	*allows you to reference and use a remote catalog in your current Wakanda model reference
 	*/

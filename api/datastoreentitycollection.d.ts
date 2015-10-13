@@ -1,20 +1,38 @@
-/// <reference path="./folder.d.ts" />
-/// <reference path="./datastoreentitycollection.d.ts" />
 /// <reference path="./datastoreentity.d.ts" />
 
-interface DatastoreClass {
-/**
-	*Collection of available attributes
-	*/
-	attributes: AttributeEnumerator;
+interface EntityCollection {
 	/**
-	*Number of entities in the datastore class
+	*Number of entities in the entity collection
 	*/
 	length: Number;
 	/**
-	*returns an object of type EntityCollection containing all the entities in the datastore class to which it was applied
+	*Description of the query as it was actually performed
 	*/
-	all() : EntityCollection;
+	queryPath: String;
+	/**
+	*Description of the query just before it is executed
+	*/
+	queryPlan: String;
+	/**
+	*adds the entity or entity collection passed in the toAdd parameter to the entity collection
+	*/
+	add(toAdd: EntityCollection, atTheEnd?: String) : void;
+	/**
+	*adds the entity or entity collection passed in the toAdd parameter to the entity collection
+	*/
+	add(toAdd: EntityCollection, atTheEnd?: Boolean) : void;
+	/**
+	*adds the entity or entity collection passed in the toAdd parameter to the entity collection
+	*/
+	add(toAdd: Entity, atTheEnd?: String) : void;
+	/**
+	*adds the entity or entity collection passed in the toAdd parameter to the entity collection
+	*/
+	add(toAdd: Entity, atTheEnd?: Boolean) : void;
+	/**
+	*compares the entity collection to which it is applied and the collection2 and returns a new entity collection that contains only the entities that are referenced in both collections
+	*/
+	and(collection2: EntityCollection) : EntityCollection;
 	/**
 	*returns the arithmetic average of all the non-null values of attribute for the datastore class or entity collection
 	*/
@@ -80,25 +98,13 @@ interface DatastoreClass {
 	*/
 	count(attribute: String, distinct?: String) : Number;
 	/**
-	*creates a new blank object of type Entity based on the datastore class to which it is applied
+	*creates an array and returns in it all the distinct values stored in attribute for the entity collection or datastore class
 	*/
-	createEntity() : Entity;
-	/**
-	*creates a new blank object of type EntityCollection attached to the datastore class to which it is applied
-	*/
-	createEntityCollection(keepSorted?: String) : EntityCollection;
-	/**
-	*creates a new blank object of type EntityCollection attached to the datastore class to which it is applied
-	*/
-	createEntityCollection(keepSorted?: Boolean) : EntityCollection;
+	distinctValues(attribute: DatastoreClassAttribute): any[];
 	/**
 	*creates an array and returns in it all the distinct values stored in attribute for the entity collection or datastore class
 	*/
-	distinctValues(attribute: DatastoreClassAttribute) : any[];
-	/**
-	*creates an array and returns in it all the distinct values stored in attribute for the entity collection or datastore class
-	*/
-	distinctValues(attribute: String) : any[];
+	distinctValues(attribute: String): any[];
 	/**
 	*exports all the entities stored in the object for which it is called in JSON format
 	*/
@@ -120,25 +126,9 @@ interface DatastoreClass {
 	*/
 	forEach(callbackFn: Function) : void;
 	/**
-	*generates entities in the datastore class where it is applied and returns the resulting entity collection
+	*returns the datastore class (object of the DatastoreClass type) of the entity collection
 	*/
-	fromArray(arrayValues: any[]) : EntityCollection;
-	/**
-	*returns the percentage of logical fragmentation for the entities of the datastore class
-	*/
-	getFragmentation() : Number;
-	/**
-	*returns the name of the datastore class to which it is applied in a string
-	*/
-	getName() : String;
-	/**
-	*returns the current scope property value of the datastore class
-	*/
-	getScope() : String;
-	/**
-	*imports all the entities stored in JSON format from the file(s) located in the importFolder folder
-	*/
-	importFromJSON(importFolder: Folder) : void;
+	getDataClass() : DatastoreClass;
 	/**
 	*returns the maximum value among all the values of attribute in the entity collection or datastore class
 	*/
@@ -156,6 +146,14 @@ interface DatastoreClass {
 	*/
 	min(attribute: String) : Number;
 	/**
+	*excludes from the entity collection to which it is applied the entities that are in the collection2 and returns the resulting entity collection
+	*/
+	minus(collection2: EntityCollection) : EntityCollection;
+	/**
+	*creates a new entity collection that contains all the entities from the entity collection to which it is applied and all the entities from the collection2 entity collection
+	*/
+	or(collection2: EntityCollection) : EntityCollection;
+	/**
 	*sorts the entities in the entity collection or datastore class and returns a new sorted entity collection
 	*/
 	orderBy(attributeList: String, sortOrder?: String) : EntityCollection;
@@ -171,10 +169,6 @@ interface DatastoreClass {
 	*permanently removes entities from the datastore
 	*/
 	remove() : void;
-	/**
-	*(re)sets the start value for the autosequence number of the datastore class
-	*/
-	setAutoSequenceNumber(counter: Number) : void;
 	/**
 	*returns the sum (i.e., total of all the values) of attribute for the datastore class or entity collection
 	*/
@@ -194,29 +188,25 @@ interface DatastoreClass {
 	/**
 	*creates and returns a JavaScript array where each element is an object containing a set of properties and values corresponding to the attribute names and values for a datastore class or an entity collection
 	*/
-	toArray(attributeList: String, sortList: String, key: String, skip: Number, top?: Number) : any[];
+	toArray(attributeList: String, sortList: String, key: String, skip: Number, top?: Number): any[];
 	/**
 	*creates and returns a JavaScript array where each element is an object containing a set of properties and values corresponding to the attribute names and values for a datastore class or an entity collection
 	*/
-	toArray(attributeList: String, sortList: String, key: Boolean, skip: Number, top?: Number) : any[];
+	toArray(attributeList: String, sortList: String, key: Boolean, skip: Number, top?: Number): any[];
 	/**
 	*creates and returns a JavaScript array where each element is an object containing a set of properties and values corresponding to the attribute names and values for a datastore class or an entity collection
 	*/
-	toArray(attributeList: DatastoreClassAttribute, sortList: String, key: String, skip: Number, top?: Number) : any[];
+	toArray(attributeList: DatastoreClassAttribute, sortList: String, key: String, skip: Number, top?: Number): any[];
 	/**
 	*creates and returns a JavaScript array where each element is an object containing a set of properties and values corresponding to the attribute names and values for a datastore class or an entity collection
 	*/
-	toArray(attributeList: DatastoreClassAttribute, sortList: String, key: Boolean, skip: Number, top?: Number) : any[];
+	toArray(attributeList: DatastoreClassAttribute, sortList: String, key: Boolean, skip: Number, top?: Number): any[];
 	/**
-	*returns the name of the datastore class as a string
+	*returns a string representation of the entity or entity collection
 	*/
 	toString() : String;
 }
 
-interface AttributeEnumerator{
+interface DatastoreClassAttribute extends String {
 	
-}
-
-interface AttributeEnumerator {
-    [attributeName: string]: DatastoreClassAttribute;
 }
