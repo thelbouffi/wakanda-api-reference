@@ -1,10 +1,19 @@
-#Important
+# Wakanda Server Side API Reference
 
-This is a work in progress, and the focus is the Server Side API.
+## Global Scope
 
-#Quick Links
+The server's global scope is accessible through the `application` object. This means that all properties and methods of the `application` object are directly accessible from the global scope.
 
-- Global Context
-- DataStore
-- Directory
-- WebSocket
+In practice, this means the following code snippets are equivalent :
+
+```javascript
+var uuid = generateUUID();
+```
+
+And
+
+```javascript
+var uuid = application.generateUUID();
+```
+
+The `application` object implements the [`Application`][Application] interface.

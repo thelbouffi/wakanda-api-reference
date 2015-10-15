@@ -84,6 +84,17 @@ interface Application {
 	*Wildcard character to use in queries (*)
 	*/
 	wildchar: String;
+	BinaryStream:BinaryStream;
+    Blob:Blob;
+	Buffer:Buffer;
+	File:File;
+	FileSystemSync:FileSystemSync;
+	Folder:Folder;
+	SharedWorker:SharedWorker;
+	SystemWorker:SystemWorker;
+	TextStream:TextStream;
+	Worker:Worker;
+	XMLHttpRequest:XMLHttpRequest;
 	/**
 	*installs a request handler function on the server
 	*/
@@ -136,18 +147,6 @@ interface Application {
 	*stops all pending wait( ) loops in the thread from which it is called
 	*/
 	exitWait() : void;
-	/**
-	*requests a FileSystemSync object referencing a sandboxed folder or file where application data can be stored
-	*/
-	FileSystemSync(type: Number, size?: Number) : FileSystemSync;
-	/**
-	*requests a FileSystemSync object referencing a sandboxed folder or file where application data can be stored
-	*/
-	FileSystemSync(type: String, size?: Number) : FileSystemSync;
-	/**
-	*creates a new object of type Folder
-	*/
-	Folder(path: String) : Folder;
 	/**
 	*launches the garbage collector on all sleeping contexts
 	*/
@@ -380,10 +379,6 @@ interface Application {
 	*allows a thread to handle events and to continue to exist after the complete code executes
 	*/
 	wait(timeout?: Number) : Boolean;
-	/**
-	*constructor of the class objects of the XMLHttpRequest type
-	*/
-	XMLHttpRequest(proxy?: Object) : XMLHttpRequest;
 	/**
 	*returns an XML string converted into a JSON string
 	*/

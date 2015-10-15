@@ -82,23 +82,14 @@ var wait = application.wait;
 /*
  * Constructors
  */
-var BinaryStream:BinaryStream;
-var Blob:Blob;
-var Buffer:Buffer;
-var File:File;
-var FileSystemSync:FileSystemSync;
-var Folder:Folder;
-var SharedWorker:SharedWorker;
-var SystemWorker:SystemWorker;
-var TextStream:TextStream;
-var Worker:Worker;
-var XMLHttpRequest:XMLHttpRequest;
-
-application.BinaryStream = BinaryStream;
-application.Blob = Blob;
-application.Buffer = Buffer;
-application.File = File;
-application.FileSystemSync = FileSystemSync;
-application.Folder = Folder;
-application.SharedWorker = SharedWorker;
-application.TextStream = TextStream;
+var BinaryStream = application.BinaryStream;
+var Blob = application.Blob;
+var Buffer = application.Buffer;
+var File = application.File;
+var FileSystemSync = application.FileSystemSync;
+var Folder = application.Folder;
+var SharedWorker = application.SharedWorker;
+var SystemWorker = application.SystemWorker;
+var TextStream = application.TextStream;
+var Worker = application.Worker;
+var XMLHttpRequest = application.XMLHttpRequest;
