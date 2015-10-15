@@ -17,6 +17,10 @@
 /// <reference path="./textstream.d.ts" />
 /// <reference path="./module.d.ts" />
 /// <reference path="./entrysync.d.ts" />
+/// <reference path="./sharedworker.d.ts" />
+/// <reference path="./systemworker.d.ts" />
+/// <reference path="./worker.d.ts" />
+/// <reference path="./xmlhttprequest.d.ts" />
 
 interface Application {
 	
@@ -93,38 +97,6 @@ interface Application {
 	*/
 	backupDataStore(model: File, data: File, settings: Object, options?: Object) : File;
 	/**
-	*Constructor method: creates a new BinaryStream object
-	*/
-	BinaryStream(binary: String, readMode?: String, timeOut?: Number) : BinaryStream;
-	/**
-	*Constructor method: creates a new BinaryStream object
-	*/
-	BinaryStream(binary: File, readMode?: String, timeOut?: Number) : BinaryStream;
-	/**
-	*Constructor method: creates a new BinaryStream object
-	*/
-	BinaryStream(binary: SocketSync, readMode?: String, timeOut?: Number) : BinaryStream;
-	/**
-	*Constructor method: creates a new BinaryStream object
-	*/
-	BinaryStream(binary: Socket, readMode?: String, timeOut?: Number) : BinaryStream;
-	/**
-	*constructor of the class objects of type Blob
-	*/
-	Blob(size: Number, filler?: Number, mimeType?: String) : void;
-	/**
-	*constructor of the class objects of the Buffer type
-	*/
-	Buffer(definition: Number, encoding?: String) : void;
-	/**
-	*constructor of the class objects of the Buffer type
-	*/
-	Buffer(definition: Array<any>, encoding?: String) : void;
-	/**
-	*constructor of the class objects of the Buffer type
-	*/
-	Buffer(definition: String, encoding?: String) : void;
-	/**
 	*cancels the timerID scheduler previously set by the setInterval( ) method
 	*/
 	clearInterval(timerID: Number) : void;
@@ -164,18 +136,6 @@ interface Application {
 	*stops all pending wait( ) loops in the thread from which it is called
 	*/
 	exitWait() : void;
-	/**
-	*constructor of the File type objects
-	*/
-	File(absolutePath: String) : File;
-	/**
-	*constructor of the File type objects
-	*/
-	File(path: Folder, fileName: String) : File;
-	/**
-	*constructor of the File type objects
-	*/
-	File(path: FileSystemSync, fileName: String) : File;
 	/**
 	*requests a FileSystemSync object referencing a sandboxed folder or file where application data can be stored
 	*/
@@ -413,34 +373,6 @@ interface Application {
 	*/
 	setTimeout(handler: Function, timeout: Number, ...args: any[]) : Number;
 	/**
-	*constructor of the SharedWorker type class objects
-	*/
-	SharedWorker(scriptPath: String, workerName?: String) : void;
-	/**
-	*constructor of the SystemWorker type class objects
-	*/
-	SystemWorker(commandLine: String, executionPath?: String) : void;
-	/**
-	*constructor of the SystemWorker type class objects
-	*/
-	SystemWorker(commandLine: String, executionPath?: Folder) : void;
-	/**
-	*constructor of the SystemWorker type class objects
-	*/
-	SystemWorker(commandLine: String, options?: Object) : void;
-	/**
-	*constructor of the SystemWorker type class objects
-	*/
-	SystemWorker(commandLine: String[], options?: Object) : void;
-	/**
-	*creates a new TextStream object
-	*/
-	TextStream(file: String, readMode: String, charset?: Number) : TextStream;
-	/**
-	*creates a new TextStream object
-	*/
-	TextStream(file: File, readMode: String, charset?: Number) : TextStream;
-	/**
 	*verifies the internal structure of the objects contained in the datastore designated by model and data.
 	*/
 	verifyDataStore(model: File, data: File, options: Object) : void;
@@ -449,13 +381,9 @@ interface Application {
 	*/
 	wait(timeout?: Number) : Boolean;
 	/**
-	*constructor of the class objects of the dedicated Worker type
-	*/
-	Worker(scriptPath: String) : void;
-	/**
 	*constructor of the class objects of the XMLHttpRequest type
 	*/
-	XMLHttpRequest(proxy?: Object) : void;
+	XMLHttpRequest(proxy?: Object) : XMLHttpRequest;
 	/**
 	*returns an XML string converted into a JSON string
 	*/

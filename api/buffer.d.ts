@@ -1,6 +1,10 @@
 
 	interface Buffer {
 		/**
+		*constructor of the class objects of the Buffer type
+		*/
+		new(definition: Number, encoding?: String) : Buffer;
+		/**
 		*Number of bytes of the buffer
 		*/
 		length: Number;

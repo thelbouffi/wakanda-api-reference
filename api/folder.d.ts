@@ -1,6 +1,10 @@
 
 	interface Folder {
 		/**
+		*creates a new object of type Folder
+		*/
+		new(path: String) : Folder;
+		/**
 		*Creation date for the folder
 		*/
 		creationDate: Date;
@@ -59,11 +63,7 @@
 		/**
 		*creates the folder referenced in the Folder object on disk
 		*/
-		create() : Boolean;
-		/**
-		*creates a new object of type Folder
-		*/
-		Folder(path: String) : Folder;
+		create() : Boolean;		
 		/**
 		*executes the callbackFn function once for each file present at the first level of the Folder object
 		*/

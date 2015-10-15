@@ -92,7 +92,13 @@ for(var i = 0 ; i < elements.length ; ++i){
 					api.kind = "property";
 					tmp = tmp.split("-");
 					api.name = tmp[0].trim();
-					api.type = tmp[1].trim();
+					try{
+						api.type = tmp[1].trim();
+					}catch(e){
+						//known issue, example : http://doc.wakanda.org/home2.en.html#/XMLHttpRequest/XMLHttpRequest-Instances.201-867301.en.html
+						api.type = "???";
+					}
+					
 				}				
 				step++;
 				break;

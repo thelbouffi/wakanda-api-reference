@@ -4,6 +4,18 @@
 	
 	interface File {
 		/**
+		*constructor of the File type objects
+		*/
+		new(absolutePath: String) : File;
+		/**
+		*constructor of the File type objects
+		*/
+		new(path: Folder, fileName: String) : File;
+		/**
+		*constructor of the File type objects
+		*/
+		new(path: FileSystemSync, fileName: String) : File;
+		/**
 		*Creation date for the file
 		*/
 		creationDate: Date;
@@ -75,18 +87,6 @@
 		*stores the file referenced in the File on disk
 		*/
 		create() : Boolean;
-		/**
-		*constructor of the File type objects
-		*/
-		File(absolutePath: String) : File;
-		/**
-		*constructor of the File type objects
-		*/
-		File(path: Folder, fileName: String) : File;
-		/**
-		*constructor of the File type objects
-		*/
-		File(path: FileSystemSync, fileName: String) : File;
 		/**
 		*returns the size of the free space (expressed in bytes) available on the volume where the File or Folder object is stored
 		*/

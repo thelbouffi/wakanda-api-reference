@@ -4,19 +4,19 @@
 		/**
 		*Constructor method: creates a new BinaryStream object
 		*/
-		BinaryStream(binary: String, readMode?: String, timeOut?: Number) : BinaryStream;
+		new(binary: String, readMode?: String, timeOut?: Number) : BinaryStream;
 		/**
 		*Constructor method: creates a new BinaryStream object
 		*/
-		BinaryStream(binary: File, readMode?: String, timeOut?: Number) : BinaryStream;
+		new(binary: File, readMode?: String, timeOut?: Number) : BinaryStream;
 		/**
 		*Constructor method: creates a new BinaryStream object
 		*/
-		BinaryStream(binary: SocketSync, readMode?: String, timeOut?: Number) : BinaryStream;
+		new(binary: SocketSync, readMode?: String, timeOut?: Number) : BinaryStream;
 		/**
 		*Constructor method: creates a new BinaryStream object
 		*/
-		BinaryStream(binary: Socket, readMode?: String, timeOut?: Number) : BinaryStream;
+		new(binary: Socket, readMode?: String, timeOut?: Number) : BinaryStream;
 		/**
 		*indicates that the next reading of structured values in the BinaryStream object requires a byte swap
 		*/

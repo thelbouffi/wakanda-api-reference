@@ -1,4 +1,8 @@
 
+
+/*
+ * Properties
+ */
 var application:Application;
 var administrator = application.administrator;
 var console = application.console;
@@ -14,20 +18,12 @@ var settings = application.settings;
 var solution = application.solution;
 var storage = application.storage;
 var wildchar = application.wildchar;
-var BinaryStream = application.BinaryStream;
-var Blob = application.Blob;
-var Buffer = application.Buffer;
-var File = application.File;
-var FileSystemSync = application.FileSystemSync;
-var Folder = application.Folder;
+/*
+ * Methods
+ */
 var JSONToXml = application.JSONToXml;
 var Mutex = application.Mutex;
 var ProgressIndicator = application.ProgressIndicator;
-var SharedWorker = application.SharedWorker;
-var SystemWorker = application.SystemWorker;
-var TextStream = application.TextStream;
-var Worker = application.Worker;
-var XMLHttpRequest = application.XMLHttpRequest;
 var XmlToJSON = application.XmlToJSON;
 var addHttpRequestHandler = application.addHttpRequestHandler;
 var addRemoteStore = application.addRemoteStore;
@@ -82,6 +78,33 @@ var setInterval = application.setInterval;
 var setTimeout = application.setTimeout;
 var verifyDataStore = application.verifyDataStore;
 var wait = application.wait;
+
+/*
+ * Constructors
+ */
+var BinaryStream:BinaryStream;
+var Blob:Blob;
+var Buffer:Buffer;
+var File:File;
+var FileSystemSync:FileSystemSync;
+var Folder:Folder;
+var SharedWorker:SharedWorker;
+var SystemWorker:SystemWorker;
+var TextStream:TextStream;
+var Worker:Worker;
+var XMLHttpRequest:XMLHttpRequest;
+
+application.BinaryStream = BinaryStream;
+application.Blob = Blob;
+application.Buffer = Buffer;
+application.File = File;
+application.FileSystemSync = FileSystemSync;
+application.Folder = Folder;
+application.SharedWorker = SharedWorker;
+application.TextStream = TextStream;
+
+
+
 
 
 
@@ -177,38 +200,6 @@ interface Application {
 	*/
 	backupDataStore(model: File, data: File, settings: Object, options?: Object) : File;
 	/**
-	*Constructor method: creates a new BinaryStream object
-	*/
-	BinaryStream(binary: String, readMode?: String, timeOut?: Number) : BinaryStream;
-	/**
-	*Constructor method: creates a new BinaryStream object
-	*/
-	BinaryStream(binary: File, readMode?: String, timeOut?: Number) : BinaryStream;
-	/**
-	*Constructor method: creates a new BinaryStream object
-	*/
-	BinaryStream(binary: SocketSync, readMode?: String, timeOut?: Number) : BinaryStream;
-	/**
-	*Constructor method: creates a new BinaryStream object
-	*/
-	BinaryStream(binary: Socket, readMode?: String, timeOut?: Number) : BinaryStream;
-	/**
-	*constructor of the class objects of type Blob
-	*/
-	Blob(size: Number, filler?: Number, mimeType?: String) : void;
-	/**
-	*constructor of the class objects of the Buffer type
-	*/
-	Buffer(definition: Number, encoding?: String) : void;
-	/**
-	*constructor of the class objects of the Buffer type
-	*/
-	Buffer(definition: Array<any>, encoding?: String) : void;
-	/**
-	*constructor of the class objects of the Buffer type
-	*/
-	Buffer(definition: String, encoding?: String) : void;
-	/**
 	*cancels the timerID scheduler previously set by the setInterval( ) method
 	*/
 	clearInterval(timerID: Number) : void;
@@ -248,18 +239,6 @@ interface Application {
 	*stops all pending wait( ) loops in the thread from which it is called
 	*/
 	exitWait() : void;
-	/**
-	*constructor of the File type objects
-	*/
-	File(absolutePath: String) : File;
-	/**
-	*constructor of the File type objects
-	*/
-	File(path: Folder, fileName: String) : File;
-	/**
-	*constructor of the File type objects
-	*/
-	File(path: FileSystemSync, fileName: String) : File;
 	/**
 	*requests a FileSystemSync object referencing a sandboxed folder or file where application data can be stored
 	*/
@@ -497,34 +476,6 @@ interface Application {
 	*/
 	setTimeout(handler: Function, timeout: Number, ...args: any[]) : Number;
 	/**
-	*constructor of the SharedWorker type class objects
-	*/
-	SharedWorker(scriptPath: String, workerName?: String) : void;
-	/**
-	*constructor of the SystemWorker type class objects
-	*/
-	SystemWorker(commandLine: String, executionPath?: String) : void;
-	/**
-	*constructor of the SystemWorker type class objects
-	*/
-	SystemWorker(commandLine: String, executionPath?: Folder) : void;
-	/**
-	*constructor of the SystemWorker type class objects
-	*/
-	SystemWorker(commandLine: String, options?: Object) : void;
-	/**
-	*constructor of the SystemWorker type class objects
-	*/
-	SystemWorker(commandLine: String[], options?: Object) : void;
-	/**
-	*creates a new TextStream object
-	*/
-	TextStream(file: String, readMode: String, charset?: Number) : TextStream;
-	/**
-	*creates a new TextStream object
-	*/
-	TextStream(file: File, readMode: String, charset?: Number) : TextStream;
-	/**
 	*verifies the internal structure of the objects contained in the datastore designated by model and data.
 	*/
 	verifyDataStore(model: File, data: File, options: Object) : void;
@@ -533,13 +484,9 @@ interface Application {
 	*/
 	wait(timeout?: Number) : Boolean;
 	/**
-	*constructor of the class objects of the dedicated Worker type
-	*/
-	Worker(scriptPath: String) : void;
-	/**
 	*constructor of the class objects of the XMLHttpRequest type
 	*/
-	XMLHttpRequest(proxy?: Object) : void;
+	XMLHttpRequest(proxy?: Object) : XMLHttpRequest;
 	/**
 	*returns an XML string converted into a JSON string
 	*/
@@ -550,19 +497,19 @@ interface Application {
 		/**
 		*Constructor method: creates a new BinaryStream object
 		*/
-		BinaryStream(binary: String, readMode?: String, timeOut?: Number) : BinaryStream;
+		new(binary: String, readMode?: String, timeOut?: Number) : BinaryStream;
 		/**
 		*Constructor method: creates a new BinaryStream object
 		*/
-		BinaryStream(binary: File, readMode?: String, timeOut?: Number) : BinaryStream;
+		new(binary: File, readMode?: String, timeOut?: Number) : BinaryStream;
 		/**
 		*Constructor method: creates a new BinaryStream object
 		*/
-		BinaryStream(binary: SocketSync, readMode?: String, timeOut?: Number) : BinaryStream;
+		new(binary: SocketSync, readMode?: String, timeOut?: Number) : BinaryStream;
 		/**
 		*Constructor method: creates a new BinaryStream object
 		*/
-		BinaryStream(binary: Socket, readMode?: String, timeOut?: Number) : BinaryStream;
+		new(binary: Socket, readMode?: String, timeOut?: Number) : BinaryStream;
 		/**
 		*indicates that the next reading of structured values in the BinaryStream object requires a byte swap
 		*/
@@ -656,7 +603,55 @@ interface Application {
 		*/
 		setPos(offset: Number) : void;
 	}
+
+interface Blob{
+	/**
+	*constructor of the class objects of type Blob
+	*/
+	new(size: Number, filler?: Number, mimeType?: String) : Blob;
+	/**
+	*Size of the Blob in bytes
+	*/
+	size: Number;
+	/**
+	*Media type of the Blob expressed as MIME or "" if unknown
+	*/
+	type: String;
+	/**
+	*copies the Blob referenced in the BLOB object (the source object) into the specified destination file
+	*/
+	copyTo(destination: File, overwrite?: Boolean) : void;
+	/**
+	*copies the Blob referenced in the BLOB object (the source object) into the specified destination file
+	*/
+	copyTo(destination: File, overwrite?: String) : void;
+	/**
+	*copies the Blob referenced in the BLOB object (the source object) into the specified destination file
+	*/
+	copyTo(destination: String, overwrite?: Boolean) : void;
+	/**
+	*copies the Blob referenced in the BLOB object (the source object) into the specified destination file
+	*/
+	copyTo(destination: String, overwrite?: String) : void;
+	/**
+	*creates a new Blob object by referencing the contents of the bytes of the Blob to which it is applied, from start to end
+	*/
+	slice(start: Number, end: Number, mimeType?: String) : Blob;
+	/**
+	*returns a Buffer object containing a copy of the Blob bytes
+	*/
+	toBuffer() : Buffer;
+	/**
+	*get a string representation of the Blob contents
+	*/
+	toString(stringFormat?: String) : String;
+}
+
 	interface Buffer {
+		/**
+		*constructor of the class objects of the Buffer type
+		*/
+		new(definition: Number, encoding?: String) : Buffer;
 		/**
 		*Number of bytes of the buffer
 		*/
@@ -1628,6 +1623,18 @@ interface DatastoreClassAttribute extends String {
 	
 	interface File {
 		/**
+		*constructor of the File type objects
+		*/
+		new(absolutePath: String) : File;
+		/**
+		*constructor of the File type objects
+		*/
+		new(path: Folder, fileName: String) : File;
+		/**
+		*constructor of the File type objects
+		*/
+		new(path: FileSystemSync, fileName: String) : File;
+		/**
 		*Creation date for the file
 		*/
 		creationDate: Date;
@@ -1699,18 +1706,6 @@ interface DatastoreClassAttribute extends String {
 		*stores the file referenced in the File on disk
 		*/
 		create() : Boolean;
-		/**
-		*constructor of the File type objects
-		*/
-		File(absolutePath: String) : File;
-		/**
-		*constructor of the File type objects
-		*/
-		File(path: Folder, fileName: String) : File;
-		/**
-		*constructor of the File type objects
-		*/
-		File(path: FileSystemSync, fileName: String) : File;
 		/**
 		*returns the size of the free space (expressed in bytes) available on the volume where the File or Folder object is stored
 		*/
@@ -1854,6 +1849,10 @@ interface DatastoreClassAttribute extends String {
 	}
 	interface Folder {
 		/**
+		*creates a new object of type Folder
+		*/
+		new(path: String) : Folder;
+		/**
 		*Creation date for the folder
 		*/
 		creationDate: Date;
@@ -1912,11 +1911,7 @@ interface DatastoreClassAttribute extends String {
 		/**
 		*creates the folder referenced in the Folder object on disk
 		*/
-		create() : Boolean;
-		/**
-		*creates a new object of type Folder
-		*/
-		Folder(path: String) : Folder;
+		create() : Boolean;		
 		/**
 		*executes the callbackFn function once for each file present at the first level of the Folder object
 		*/
@@ -1925,6 +1920,124 @@ interface DatastoreClassAttribute extends String {
 		*executes the callbackFn function once for each subfolder present at the first level of the Folder object
 		*/
 		forEachFolder(callbackFn: (folder: Folder)=>void, thisArg?: Object) : void;
+		/**
+		*returns the size of the free space (expressed in bytes) available on the volume where the File or Folder object is stored
+		*/
+		getFreeSpace(quotas?: Boolean) : Number;
+		/**
+		*returns the size of the free space (expressed in bytes) available on the volume where the File or Folder object is stored
+		*/
+		getFreeSpace(quotas?: String) : Number;
+		/**
+		*returns the absolute URL of the File or Folder object
+		*/
+		getURL(encoding?: Boolean) : String;
+		/**
+		*returns the absolute URL of the File or Folder object
+		*/
+		getURL(encoding?: String) : String;
+		/**
+		*returns the total size (expressed in bytes) of the volume where the File or Folder object is stored
+		*/
+		getVolumeSize() : Number;
+		/**
+		*class method can be used with the Folder( ) constructor to know if path corresponds to a folder on disk
+		*/
+		isFolder(path: String) : Boolean;
+		/**
+		*puts the folder pointer on the next subfolder in an iteration of subfolders
+		*/
+		next() : Boolean;
+		/**
+		*executes the callbackFn function once for each file or subfolder present in the Folder object
+		*/
+		parse(callbackFn: Function, thisArg?: Object) : void;
+		/**
+		*removes the file or folder referenced in the File or Folder object from the storage volume
+		*/
+		remove() : Boolean;
+		/**
+		*removes the contents of the folder referenced in the Folder object from the storage volume
+		*/
+		removeContent() : Boolean;
+		/**
+		*allows you to rename the folder referenced in the Folder object on disk
+		*/
+		setName(newName: String) : void;
+		/**
+		*checks the validity of the pointer to the current folder within an iteration of folders
+		*/
+		valid() : Boolean;
+	}
+	interface FolderInstance {
+		/**
+		*Creation date for the folder
+		*/
+		creationDate: Date;
+		/**
+		*True if the folder exists at the defined path. Otherwise, it returns false.
+		*/
+		exists: Boolean;
+		/**
+		*Folder extension
+		*/
+		extension: String;
+		/**
+		*Array of File objects
+		*/
+		files: Array<File>;
+		/**
+		*FileSystem of the object
+		*/
+		filesystem: FileSystemSync;
+		/**
+		*First file found in the folder
+		*/
+		firstFile: File;
+		/**
+		*First folder (i.e., subfolder) in the folder
+		*/
+		firstFolder: FolderInstance;
+		/**
+		*Array of Folder objects
+		*/
+		folders: Array<FolderInstance>;
+		/**
+		*Last modification date for the folder
+		*/
+		modificationDate: Date;
+		/**
+		*Name of the folder without the path
+		*/
+		name: String;
+		/**
+		*Name of the folder without the extension
+		*/
+		nameNoExt: String;
+		/**
+		*Parent folder of the folder
+		*/
+		parent: FolderInstance;
+		/**
+		*Full path of the folder
+		*/
+		path: String;
+		/**
+		*True if the folder is visible. Otherwise, it returns false.
+		*/
+		visible: Boolean;
+		/**
+		*creates the folder referenced in the Folder object on disk
+		*/
+		create() : Boolean;
+		/**
+		*executes the callbackFn function once for each file present at the first level of the Folder object
+		*/
+		forEachFile(callbackFn: (file: File)=>void, thisArg?: Object) : void;
+		/**
+		*executes the callbackFn function once for each subfolder present at the first level of the Folder object
+		*/
+		forEachFolder(callbackFn: (folder: FolderInstance)=>void, thisArg?: Object) : void;
 		/**
 		*returns the size of the free space (expressed in bytes) available on the volume where the File or Folder object is stored
 		*/
@@ -2247,7 +2360,28 @@ interface DatastoreClassAttribute extends String {
 		*creates and manages the display of a second ProgressIndicator object in the main ProgressIndicator session being executed
 		*/
 		subSession(numElements: Number, sessionName: String, stoppable?: String) : void;
-	}		
+	}interface SharedWorker {
+	/**
+	*constructor of the SharedWorker type class objects
+	*/
+	new(scriptPath: String, workerName?: String) : SharedWorker;
+	/**
+	*Callback to trigger when a new caller creates a SharedWorker proxy object
+	*/
+	onconnect: Function;
+	/**
+	*Array whose element 0 is an object containing the communication tools, including onmessage, postMessage, onerror
+	*/
+	ports: Array<any>;
+	/**
+	*ends the thread from which it is called
+	*/
+	close() : void;
+	/**
+	*allows a thread to handle events and to continue to exist after the complete code executes
+	*/
+	wait(timeout?: Number) : Boolean;
+}		
 	interface Socket {
 		/**
 		*Number of buffered characters to be written
@@ -2404,53 +2538,98 @@ interface DatastoreClassAttribute extends String {
 		*quits Wakanda Server
 		*/
 		quitServer() : void;
-	}
-	interface TextStream {
-		/**
-		*closes the file referenced in the TextStream object
-		*/
-		close() : void;
-		/**
-		*returns true if the cursor position is after the last character of the file referenced in the TextStream object
-		*/
-		end() : Boolean;
-		/**
-		*saves the contents of the buffer to the disk file referenced in the TextStream object
-		*/
-		flush() : void;
-		/**
-		*returns the current position of the cursor in the TextStream object
-		*/
-		getPos() : Number;
-		/**
-		*returns the current size of the stream
-		*/
-		getSize() : Number;
-		/**
-		*reads characters from the file referenced in the TextStream object
-		*/
-		read(numBytesOrDelimiter?: Number) : String;
-		/**
-		*reads characters from the file referenced in the TextStream object
-		*/
-		read(numBytesOrDelimiter?: String) : String;
-		/**
-		*moves the stream cursor to the beginning of the TextStream object
-		*/
-		rewind() : void;
-		/**
-		*creates a new TextStream object
-		*/
-		TextStream(file: String, readMode: String, charset?: Number) : TextStream;
-		/**
-		*creates a new TextStream object
-		*/
-		TextStream(file: File, readMode: String, charset?: Number) : TextStream;
-		/**
-		*writes the data you passed in the text parameter in the TextStream object
-		*/
-		write(text: String) : void;
-	}
+	}interface SystemWorker {
+	/**
+	*Callback to trigger when an error is received
+	*/
+	onerror: Function;
+	/**
+	*Callback to trigger when a message is received
+	*/
+	onmessage: Function;
+	/**
+	*Callback to trigger when the external process is terminating
+	*/
+	onterminated: Function;
+	/**
+	*closes the input stream (stdin) of the external process
+	*/
+	endOfInput() : void;
+	/**
+	*returns an object containing information about the SystemWorker
+	*/
+	getInfos() : Object;
+	/**
+	*returns the number of SystemWorker objects currently running on the server
+	*/
+	getNumberRunning() : Number;
+	/**
+	*write on the input stream (stdin) of the external process
+	*/
+	postMessage(stdin: String) : void;
+	/**
+	*write on the input stream (stdin) of the external process
+	*/
+	postMessage(stdin: Buffer) : void;
+	/**
+	*set the type of data exchanged in the SystemWorker through the onmessage and onerror properties
+	*/
+	setBinary(binary: Boolean) : void;
+	/**
+	*forces the external process to terminate its execution
+	*/
+	terminate(waitForTermination: Boolean, killProcessTree?: Boolean) : void;
+	/**
+	*allows you to set a waiting time for the SystemWorker to execute
+	*/
+	wait(timeout?: Number) : Boolean;
+}
+interface TextStream {
+	/**
+	*creates a new TextStream object
+	*/
+	new(file: String, readMode: String, charset?: Number) : TextStream;
+	/**
+	*creates a new TextStream object
+	*/
+	new(file: File, readMode: String, charset?: Number) : TextStream;
+	/**
+	*closes the file referenced in the TextStream object
+	*/
+	close() : void;
+	/**
+	*returns true if the cursor position is after the last character of the file referenced in the TextStream object
+	*/
+	end() : Boolean;
+	/**
+	*saves the contents of the buffer to the disk file referenced in the TextStream object
+	*/
+	flush() : void;
+	/**
+	*returns the current position of the cursor in the TextStream object
+	*/
+	getPos() : Number;
+	/**
+	*returns the current size of the stream
+	*/
+	getSize() : Number;
+	/**
+	*reads characters from the file referenced in the TextStream object
+	*/
+	read(numBytesOrDelimiter?: Number) : String;
+	/**
+	*reads characters from the file referenced in the TextStream object
+	*/
+	read(numBytesOrDelimiter?: String) : String;
+	/**
+	*moves the stream cursor to the beginning of the TextStream object
+	*/
+	rewind() : void;
+	/**
+	*writes the data you passed in the text parameter in the TextStream object
+	*/
+	write(text: String) : void;
+}
 
 	interface User {
 		/**
@@ -2509,4 +2688,103 @@ interface DatastoreClassAttribute extends String {
 		*allows you to change the password for the User
 		*/
 		setPassword(password: String) : void;
-	}
+	}interface Worker {
+	/**
+	*constructor of the class objects of the dedicated Worker type
+	*/
+	new(scriptPath: String) : Worker;
+	/**
+	*(WebSockets only) Data type of the client message
+	*/
+	binaryType: String;
+	/**
+	*(WebSockets only) Callback to trigger when the client socket is closed
+	*/
+	onclose: Function;
+	/**
+	*Callback to trigger when an error is reported
+	*/
+	onerror: Function;
+	/**
+	*Callback to trigger when a message is received
+	*/
+	onmessage(): void;
+	/**
+	*ends the thread from which it is called
+	*/
+	close() : void;
+	/**
+	*exchange data between a parent Worker proxy and a dedicated Web worker
+	*/
+	postMessage(messageData: any) : void;
+	/**
+	*terminate the dedicated worker execution
+	*/
+	terminate() : void;
+	/**
+	*allows a thread to handle events and to continue to exist after the complete code executes
+	*/
+	wait(timeout?: Number) : Boolean;
+}
+interface XMLHttpRequest {
+	/**
+	*constructor of the class objects of the XMLHttpRequest type
+	*/
+	new(proxy?: Object) : XMLHttpRequest;
+	/**
+	*Current state of the request
+	*/
+	readyState: Number;
+	/**
+	*Response body part (other than text)
+	*/
+	response: String;
+	/**
+	*Text response entity body
+	*/
+	responseText: String;
+	/**
+	*Data type of the response ("text" or "blob")
+	*/
+	responseType: String;
+	/**
+	*HTTP status code of the response
+	*/
+	status: Number;
+	/**
+	*HTTP status text of the response
+	*/
+	statusText: String;
+	/**
+	*defines the event listener function that will handle the various states of the XMLHttpRequest
+	*/
+	onreadystatechange: Function;
+	/**
+	*returns all HTTP headers from the response of the XMLHttprequest
+	*/
+	getAllResponseHeaders() : String;
+	/**
+	*returns the value of a specific header field in the response of the XMLHttpRequest
+	*/
+	getResponseHeader(header: String) : String;
+	/**
+	*declares the HTTP method and the URL of the XMLHttpRequest
+	*/
+	open(method: String, url: String, async?: Boolean) : void;
+	/**
+	*sends the request defined in the XMLHttpRequest
+	*/
+	send(data?: String) : void;
+	/**
+	*sends the request defined in the XMLHttpRequest
+	*/
+	send(data?: File) : void;
+	/**
+	*allows the request to be authenticated on the remote server with a client certificate, when necessary
+	*/
+	setClientCertificate(keyPath: String, certificatePath: String) : void;
+	/**
+	*set the value of a specific header field of the XMLHttpRequest
+	*/
+	setRequestHeader(header: String, value: String) : void;
+}
