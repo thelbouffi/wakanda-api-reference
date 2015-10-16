@@ -2,9 +2,10 @@
 
 ## Global Scope
 
-The server's global scope is accessible through the `application` object. This means that all properties and methods of the `application` object are directly accessible from the global scope.
+The `application` object available on the global scope represents both the currently running application and the JavaScript context global scope. 
+This means that all properties and methods of the `application` object are directly accessible from the global scope and vice versa.
 
-In practice, this means the following code snippets are equivalent :
+In practice, this implies that the following code snippets are equivalent :
 
 ```javascript
 var uuid = generateUUID();
@@ -21,4 +22,4 @@ The `application` object implements the [`Application`][Application] interface.
 
 
 
-[Application]: ./interfaces/appplication.html
+[Application]: ./interfaces/application.html
