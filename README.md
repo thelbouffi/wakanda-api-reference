@@ -17,3 +17,8 @@ var uuid = application.generateUUID();
 ```
 
 The `application` object implements the [`Application`][Application] interface.
+
+
+
+
+[Application]: ./interfaces/appplication.html
