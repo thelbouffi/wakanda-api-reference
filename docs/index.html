@@ -67,14 +67,15 @@
 			<div class="tsd-panel tsd-typography">
 				<h1 id="wakanda-server-side-api-reference">Wakanda Server Side API Reference</h1>
 				<h2 id="global-scope">Global Scope</h2>
-				<p>The server&#39;s global scope is accessible through the <code>application</code> object. This means that all properties and methods of the <code>application</code> object are directly accessible from the global scope.</p>
-				<p>In practice, this means the following code snippets are equivalent :</p>
+				<p>The <code>application</code> object available on the global scope represents both the currently running application and the JavaScript context global scope.
+				This means that all properties and methods of the <code>application</code> object are directly accessible from the global scope and vice versa.</p>
+				<p>In practice, this implies that the following code snippets are equivalent :</p>
 				<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> uuid = generateUUID();
 </code></pre>
 				<p>And</p>
 				<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> uuid = application.generateUUID();
 </code></pre>
-				<p>The <code>application</code> object implements the [<code>Application</code>][Application] interface.</p>
+				<p>The <code>application</code> object implements the <a href="./interfaces/application.html"><code>Application</code></a> interface.</p>
 			</div>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
