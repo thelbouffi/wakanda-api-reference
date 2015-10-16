@@ -108,7 +108,7 @@
 		*/
 		getVolumeSize() : Number;
 		/**
-		*class methodcan be used with the File( ) constructor to know if path corresponds to a file on disk
+		*class method can be used with the File( ) constructor to know if path corresponds to a file on disk
 		*/
 		isFile(path: String) : Boolean;
 		/**
