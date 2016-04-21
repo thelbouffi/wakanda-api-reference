@@ -116,6 +116,10 @@ var XMLHttpRequest = application.XMLHttpRequest;
 
 
 
+
+
+
+
 interface Application {
 	
 	/**
@@ -149,7 +153,7 @@ interface Application {
 	/**
 	*Operating System object
 	*/
-	os: Object;
+	os: OS;
 	/**
 	*Defined permissions for the project
 	*/
@@ -157,15 +161,15 @@ interface Application {
 	/**
 	*Wakanda information
 	*/
-	process: Object;
+	process: Process;
 	/**
 	*HTTP session storage for the application
 	*/
-	sessionStorage: Storage;
+	sessionStorage: KeyValueStorage;
 	/**
 	*Current project settings
 	*/
-	settings: Storage;
+	settings: Object;
 	/**
 	*Solution running on the server
 	*/
@@ -173,7 +177,7 @@ interface Application {
 	/**
 	*Project storage for the application
 	*/
-	storage: Storage;
+	storage: KeyValueStorage;
 	/**
 	*Wildcard character to use in queries (*)
 	*/
@@ -218,11 +222,11 @@ interface Application {
 	*/
 	compactDataStore(model: File, data: File, options?: Object, compactedData?: File) : void;
 	/**
-	*opens a new user ConnectionSession on the server with the properties you passed in sessionObj and sets it as the current session
+	*opens a new user session on the server with the properties you passed in sessionObj and sets it as the current session
 	*/
-	createUserSession(sessionObj: Object, keepPreviousSession?: Boolean) : void;
+	createUserSession(sessionObj: ConnectionSessionInfo, keepPreviousSession?: Boolean) : void;
 	/**
-	*returns an object of the ConnectionSession type identifying the current session under which the current user is actually running on the server
+	*returns an object identifying the current session under which the current user is actually running on the server
 	*/
 	currentSession() : ConnectionSession;
 	/**
@@ -865,7 +869,28 @@ interface Blob{
 		*stops the temporary promotion set for the current session using the promoteWith( ) method
 		*/
 		unPromote(token: Number) : void;
-	}
+	}interface ConnectionSessionInfo{
+    /**
+     *UUID string referencing the user. It can be any ID but must not be an existing user ID
+     */
+    ID : string;
+    /**
+     *Username of the User
+     */
+    name : string;
+    /**
+     *Full Name of the User
+     */
+    fullName : string;
+    /**
+     *Array of UUID strings or array of group names referencing the groups the user must belong to
+     */
+    belongsTo : string[];
+    /**
+     *sessionStorage property of the user session (optional)
+     */
+    storage : Object;
+}
 
 interface Datastore {
 
@@ -1412,6 +1437,14 @@ interface DatastoreClassAttribute extends String {
 		*Internal directory datastore
 		*/
 		internalStore: Datastore;
+		/**
+		 *The user who opened the current user session on the server 
+		 */
+		currentUser : User;
+		/**
+		 * object identifying the current session under which the current user is actually running on the server
+		 */
+		currentSession : ConnectionSession;
 		/**
 		*creates a new group in the solution's Directory and returns it as a Group object
 		*/
@@ -2191,9 +2224,17 @@ interface DatastoreClassAttribute extends String {
 		*/
 		started: Boolean;
 		/**
+		*installs a request handler function on the server
+		*/
+		addRequestHandler(pattern: String, filePath: String, functionName: String) : void;
+		/**
 		*installs a WebSocket handler script on the server
 		*/
 		addWebSocketHandler(pattern: String, filePath: String, socketID: String, shared: Boolean) : void;
+		/**
+		*uninstalls an existing HTTP request handler function running on the server
+		*/
+		removeRequestHandler(pattern: String, filePath: String, functionName: String) : void;
 		/**
 		*removes the WebSocket handler socketID from the server
 		*/
@@ -2303,16 +2344,87 @@ interface DatastoreClassAttribute extends String {
 		*returns an array containing all the jobs currently running on the Wakanda Server
 		*/
 		getJobs() : Array<Job>;
-	}
+	}interface KeyValueStorage {
+    /**
+	*Number of key/value pairs currently present in the object
+	*/
+	length: Number;
+	/**
+	*removes all key/value pairs from the Storage object
+	*/
+	clear() : void;
+	/**
+	*returns a copy of the value stored with the given key in the Storage object
+	*/
+	getItem(key: String) : any;
+	/**
+	*returns the name of the key stored at the keyIndex position in the Storage object
+	*/
+	key(keyIndex: Number) : String;
+	/**
+	*locks the Storage object to which it is applied, so that only the thread that placed it can read or modify it
+	*/
+	lock() : void;
+	/**
+	*allows you to remove an item from the Storage object
+	*/
+	removeItem(key: String) : void;
+	/**
+	*allows you to create or update an item in the Storage object
+	*/
+	setItem(key: String, value: any) : void;
+	/**
+	*tries to lock the Storage object to which it is applied; it returns true in case of success and false otherwise
+	*/
+	tryLock() : Boolean;
+	/**
+	*removes a lock that was previously put on the Storage object
+	*/
+	unlock() : void;
+}
 	interface Module {
 		//TODO
-	}
+	}interface OS {
+    /**
+	*True if the server is running under a Unix OS, false otherwise
+	*/
+	isLinux: Boolean;
+	/**
+	*True if the server is running under an OSX (Mac) OS, false otherwise
+	*/
+	isMac: Boolean;
+	/**
+	*True if the server is running under a Windows OS, false otherwise
+	*/
+	isWindows: Boolean;
+	/**
+	*returns a list of available network interfaces on the server
+	*/
+	networkInterfaces() : Object;
+}
 	interface Permissions {
 		/**
 		*returns a JSON object describing the permission defined for the specified type, resource and action
 		*/
 		findResourcePermission(type: String, resource: String, action: String) : Object;
-	}
+	}interface Process {
+    /**
+	*Wakanda internal build version, for example "2.108407"
+	*/
+	buildNumber: String;
+	/**
+	*User environment variables
+	*/
+	env: Object;
+	/**
+	*Unique identifier for the process
+	*/
+	pid: Number;
+	/**
+	*Wakanda version full string, for example "2.0 build 2.108407"
+	*/
+	version: String;
+}
 	interface ProgressIndicator {
 		/**
 		*stops the current session of the ProgressIndicator object

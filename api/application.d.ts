@@ -21,6 +21,10 @@
 /// <reference path="./systemworker.d.ts" />
 /// <reference path="./worker.d.ts" />
 /// <reference path="./xmlhttprequest.d.ts" />
+/// <reference path="./keyvaluestorage.d.ts" />
+/// <reference path="./process.d.ts" />
+/// <reference path="./os.d.ts" />
+/// <reference path="./connectionsessioninfo.d.ts" />
 
 interface Application {
 	
@@ -55,7 +59,7 @@ interface Application {
 	/**
 	*Operating System object
 	*/
-	os: Object;
+	os: OS;
 	/**
 	*Defined permissions for the project
 	*/
@@ -63,15 +67,15 @@ interface Application {
 	/**
 	*Wakanda information
 	*/
-	process: Object;
+	process: Process;
 	/**
 	*HTTP session storage for the application
 	*/
-	sessionStorage: Storage;
+	sessionStorage: KeyValueStorage;
 	/**
 	*Current project settings
 	*/
-	settings: Storage;
+	settings: Object;
 	/**
 	*Solution running on the server
 	*/
@@ -79,7 +83,7 @@ interface Application {
 	/**
 	*Project storage for the application
 	*/
-	storage: Storage;
+	storage: KeyValueStorage;
 	/**
 	*Wildcard character to use in queries (*)
 	*/
@@ -124,11 +128,11 @@ interface Application {
 	*/
 	compactDataStore(model: File, data: File, options?: Object, compactedData?: File) : void;
 	/**
-	*opens a new user ConnectionSession on the server with the properties you passed in sessionObj and sets it as the current session
+	*opens a new user session on the server with the properties you passed in sessionObj and sets it as the current session
 	*/
-	createUserSession(sessionObj: Object, keepPreviousSession?: Boolean) : void;
+	createUserSession(sessionObj: ConnectionSessionInfo, keepPreviousSession?: Boolean) : void;
 	/**
-	*returns an object of the ConnectionSession type identifying the current session under which the current user is actually running on the server
+	*returns an object identifying the current session under which the current user is actually running on the server
 	*/
 	currentSession() : ConnectionSession;
 	/**
