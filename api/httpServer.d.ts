@@ -29,9 +29,17 @@
 		*/
 		started: Boolean;
 		/**
+		*installs a request handler function on the server
+		*/
+		addRequestHandler(pattern: String, filePath: String, functionName: String) : void;
+		/**
 		*installs a WebSocket handler script on the server
 		*/
 		addWebSocketHandler(pattern: String, filePath: String, socketID: String, shared: Boolean) : void;
+		/**
+		*uninstalls an existing HTTP request handler function running on the server
+		*/
+		removeRequestHandler(pattern: String, filePath: String, functionName: String) : void;
 		/**
 		*removes the WebSocket handler socketID from the server
 		*/

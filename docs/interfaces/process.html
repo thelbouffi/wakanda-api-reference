@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>DirectoryReaderSync | </title>
+	<title>Process | </title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -57,10 +57,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="directoryreadersync.html">DirectoryReaderSync</a>
+					<a href="process.html">Process</a>
 				</li>
 			</ul>
-			<h1>Interface DirectoryReaderSync</h1>
+			<h1>Interface Process</h1>
 		</div>
 	</div>
 </header>
@@ -71,7 +71,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">DirectoryReaderSync</span>
+						<span class="target">Process</span>
 					</li>
 				</ul>
 			</section>
@@ -80,37 +80,78 @@
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section tsd-is-external tsd-is-not-exported">
-							<h3>Methods</h3>
+							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="directoryreadersync.html#readentries" class="tsd-kind-icon">read<wbr>Entries</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="process.html#buildnumber" class="tsd-kind-icon">build<wbr>Number</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="process.html#env" class="tsd-kind-icon">env</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="process.html#pid" class="tsd-kind-icon">pid</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="process.html#version" class="tsd-kind-icon">version</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group tsd-is-external tsd-is-not-exported">
-				<h2>Methods</h2>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-					<a name="readentries" class="tsd-anchor"></a>
-					<h3>read<wbr>Entries</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-						<li class="tsd-signature tsd-kind-icon">read<wbr>Entries<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Array</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/Wakanda/wakanda-api-reference/blob/master/api/directoryreadersync.d.ts#L6">directoryreadersync.d.ts:6</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>method returns the next block of entries in the directory</p>
-								</div>
-							</div>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Array</span></h4>
-						</li>
-					</ul>
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
+					<a name="buildnumber" class="tsd-anchor"></a>
+					<h3>build<wbr>Number</h3>
+					<div class="tsd-signature tsd-kind-icon">build<wbr>Number<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">String</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in process.d.ts:5</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Wakanda internal build version, for example &quot;2.108407&quot;</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
+					<a name="env" class="tsd-anchor"></a>
+					<h3>env</h3>
+					<div class="tsd-signature tsd-kind-icon">env<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Object</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in process.d.ts:9</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>User environment variables</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
+					<a name="pid" class="tsd-anchor"></a>
+					<h3>pid</h3>
+					<div class="tsd-signature tsd-kind-icon">pid<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Number</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in process.d.ts:13</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Unique identifier for the process</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
+					<a name="version" class="tsd-anchor"></a>
+					<h3>version</h3>
+					<div class="tsd-signature tsd-kind-icon">version<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">String</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in process.d.ts:17</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Wakanda version full string, for example &quot;2.0 build 2.108407&quot;</p>
+						</div>
+					</div>
 				</section>
 			</section>
 		</div>
@@ -127,10 +168,19 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface tsd-is-external tsd-is-not-exported">
-						<a href="directoryreadersync.html" class="tsd-kind-icon">Directory<wbr>Reader<wbr>Sync</a>
+						<a href="process.html" class="tsd-kind-icon">Process</a>
 						<ul>
-							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="directoryreadersync.html#readentries" class="tsd-kind-icon">read<wbr>Entries</a>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
+								<a href="process.html#buildnumber" class="tsd-kind-icon">build<wbr>Number</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
+								<a href="process.html#env" class="tsd-kind-icon">env</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
+								<a href="process.html#pid" class="tsd-kind-icon">pid</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
+								<a href="process.html#version" class="tsd-kind-icon">version</a>
 							</li>
 						</ul>
 					</li>

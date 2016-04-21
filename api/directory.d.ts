@@ -5,6 +5,14 @@
 		*/
 		internalStore: Datastore;
 		/**
+		 *The user who opened the current user session on the server 
+		 */
+		currentUser : User;
+		/**
+		 * object identifying the current session under which the current user is actually running on the server
+		 */
+		currentSession : ConnectionSession;
+		/**
 		*creates a new group in the solution's Directory and returns it as a Group object
 		*/
 		addGroup(name: String, fullName?: String) : Group;

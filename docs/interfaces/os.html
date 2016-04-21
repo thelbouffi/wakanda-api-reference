@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>DirectoryReaderSync | </title>
+	<title>OS | </title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -57,10 +57,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="directoryreadersync.html">DirectoryReaderSync</a>
+					<a href="os.html">OS</a>
 				</li>
 			</ul>
-			<h1>Interface DirectoryReaderSync</h1>
+			<h1>Interface OS</h1>
 		</div>
 	</div>
 </header>
@@ -71,7 +71,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">DirectoryReaderSync</span>
+						<span class="target">OS</span>
 					</li>
 				</ul>
 			</section>
@@ -80,35 +80,91 @@
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section tsd-is-external tsd-is-not-exported">
+							<h3>Properties</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="os.html#islinux" class="tsd-kind-icon">is<wbr>Linux</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="os.html#ismac" class="tsd-kind-icon">is<wbr>Mac</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="os.html#iswindows" class="tsd-kind-icon">is<wbr>Windows</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section tsd-is-external tsd-is-not-exported">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="directoryreadersync.html#readentries" class="tsd-kind-icon">read<wbr>Entries</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="os.html#networkinterfaces" class="tsd-kind-icon">network<wbr>Interfaces</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group tsd-is-external tsd-is-not-exported">
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
+					<a name="islinux" class="tsd-anchor"></a>
+					<h3>is<wbr>Linux</h3>
+					<div class="tsd-signature tsd-kind-icon">is<wbr>Linux<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in os.d.ts:5</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>True if the server is running under a Unix OS, false otherwise</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
+					<a name="ismac" class="tsd-anchor"></a>
+					<h3>is<wbr>Mac</h3>
+					<div class="tsd-signature tsd-kind-icon">is<wbr>Mac<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in os.d.ts:9</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>True if the server is running under an OSX (Mac) OS, false otherwise</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
+					<a name="iswindows" class="tsd-anchor"></a>
+					<h3>is<wbr>Windows</h3>
+					<div class="tsd-signature tsd-kind-icon">is<wbr>Windows<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in os.d.ts:13</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>True if the server is running under a Windows OS, false otherwise</p>
+						</div>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group tsd-is-external tsd-is-not-exported">
 				<h2>Methods</h2>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-					<a name="readentries" class="tsd-anchor"></a>
-					<h3>read<wbr>Entries</h3>
+					<a name="networkinterfaces" class="tsd-anchor"></a>
+					<h3>network<wbr>Interfaces</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-						<li class="tsd-signature tsd-kind-icon">read<wbr>Entries<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Array</span></li>
+						<li class="tsd-signature tsd-kind-icon">network<wbr>Interfaces<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Object</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Wakanda/wakanda-api-reference/blob/master/api/directoryreadersync.d.ts#L6">directoryreadersync.d.ts:6</a></li>
+									<li>Defined in os.d.ts:17</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>method returns the next block of entries in the directory</p>
+									<p>returns a list of available network interfaces on the server</p>
 								</div>
 							</div>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Array</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Object</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -127,10 +183,19 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface tsd-is-external tsd-is-not-exported">
-						<a href="directoryreadersync.html" class="tsd-kind-icon">Directory<wbr>Reader<wbr>Sync</a>
+						<a href="os.html" class="tsd-kind-icon">OS</a>
 						<ul>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
+								<a href="os.html#islinux" class="tsd-kind-icon">is<wbr>Linux</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
+								<a href="os.html#ismac" class="tsd-kind-icon">is<wbr>Mac</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
+								<a href="os.html#iswindows" class="tsd-kind-icon">is<wbr>Windows</a>
+							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="directoryreadersync.html#readentries" class="tsd-kind-icon">read<wbr>Entries</a>
+								<a href="os.html#networkinterfaces" class="tsd-kind-icon">network<wbr>Interfaces</a>
 							</li>
 						</ul>
 					</li>
