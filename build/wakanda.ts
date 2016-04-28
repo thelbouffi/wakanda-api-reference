@@ -1432,6 +1432,10 @@ interface EntityCollection {
 interface DatastoreClassAttribute extends String {
 	
 }	
+	
+	
+	
+	
 	interface Directory {
 		/**
 		*Internal directory datastore
@@ -1493,6 +1497,10 @@ interface DatastoreClassAttribute extends String {
 		*saves all changes made to the open solution directory
 		*/
 		save(backup?: File) : Boolean;
+		/**
+		 *set a Wakanda SSJS module as session manager, to handle all session operations : readSession, writeSession and deleteSession
+		 */
+		setSessionManager(modulePath: String);
 		/**
 		*set a loginListener function to handle login requests for your Wakanda solution
 		*/
