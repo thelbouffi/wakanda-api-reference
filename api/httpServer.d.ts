@@ -1,3 +1,5 @@
+	/// <reference path="./httprequest.d.ts" />
+	/// <reference path="./httpresponse.d.ts" />
 	
 	interface HttpServer {
 		/**
@@ -20,6 +22,14 @@
 		*Port listened to by the server
 		*/
 		port: Number;
+		/**
+		 *The current HTTP Request Object
+		 */
+		request: HTTPRequest;
+		/**
+		 *The current HTTP Response Object
+		 */
+		response: HTTPResponse;
 		/**
 		*SSL properties of the server
 		*/
