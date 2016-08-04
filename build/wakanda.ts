@@ -2201,7 +2201,129 @@ interface DatastoreClassAttribute extends String {
 		*sets a local name (alias) to the Group object corresponding to a remote group from a LDAP directory
 		*/
 		setAlias(alias: String) : void;
-	}	
+	}
+
+
+interface HTTPRequest {
+    /**
+	*Body of the received message
+	*/
+	body: String|Image|Blob;
+	/**
+	*Content-type of the request as defined in the header
+	*/
+	contentType: String;
+	/**
+	*Header of the HTTPRequest
+	*/
+	headers: String[];
+	/**
+	*Host header of the request
+	*/
+	host: String;
+	/**
+	*True if the connection uses SSL, false otherwise
+	*/
+	isSSL: Boolean;
+	/**
+	*Local server IP address (IPv4 or IPv6)
+	*/
+	localAddress: String;
+	/**
+	*Local server port number
+	*/
+	localPort: Number;
+	/**
+	*HTTP method name
+	*/
+	method: String;
+	/**
+	*Parts of a HTTP body (for multipart forms)
+	*/
+	parts: MIMEMessage;
+	/**
+	*User password for authentified requests (BASIC mode only)
+	*/
+	password: String;
+	/**
+	*Raw URL of the request
+	*/
+	rawURL: String;
+	/**
+	*Remote client IP address (IPv4 or IPv6)
+	*/
+	remoteAddress: String;
+	/**
+	*Remote client port number
+	*/
+	remotePort: Number;
+	/**
+	*Request-line received by the server
+	*/
+	requestLine: String;
+	/**
+	*Decoded URL of the request
+	*/
+	url: String;
+	/**
+	*Path part of the request
+	*/
+	urlPath: String;
+	/**
+	*Query part of the request
+	*/
+	urlQuery: String;
+	/**
+	*User name for authentified request
+	*/
+	user: String;
+	/**
+	*Version of the HTTP protocol
+	*/
+	version: String;
+}
+
+
+interface HTTPResponse {
+	/**
+	*Body of the returned message to set
+	*/
+	body: Blob|Image|String;
+	/**
+	*Content-type of the response to set
+	*/
+	contentType: String;
+	/**
+	*Header of the HTTPResponse
+	*/
+	headers: String[];
+	/**
+	*Return status code to set
+	*/
+	statusCode: Number;
+	/**
+	*indicates if the contents of the HTTPResponse should be cached on the server
+	*/
+	allowCache(useCache: Boolean) : void;
+	/**
+	*sets custom compression thresholds for the HTTPResponse
+	*/
+	allowCompression(minThreshold: Number, maxThreshold: Number) : void;
+	/**
+	*sends an HTTPResponse in chunks without knowing in advance the size of the data
+	*/
+	sendChunkedData(data: String) : void;
+	/**
+	*sends an HTTPResponse in chunks without knowing in advance the size of the data
+	*/
+	sendChunkedData(data: Image) : void;
+	/**
+	*sends an HTTPResponse in chunks without knowing in advance the size of the data
+	*/
+	sendChunkedData(data: Blob) : void;
+}	
+	
+	
 	interface HttpServer {
 		/**
 		*Cache properties of the HTTP server
@@ -2223,6 +2345,14 @@ interface DatastoreClassAttribute extends String {
 		*Port listened to by the server
 		*/
 		port: Number;
+		/**
+		 *The current HTTP Request Object
+		 */
+		request: HTTPRequest;
+		/**
+		 *The current HTTP Response Object
+		 */
+		response: HTTPResponse;
 		/**
 		*SSL properties of the server
 		*/
@@ -2389,6 +2519,72 @@ interface DatastoreClassAttribute extends String {
 	*removes a lock that was previously put on the Storage object
 	*/
 	unlock() : void;
+}
+
+interface MIMEMessage {
+    /**
+	*nth part of the multipart MIME message
+	*/
+    [n: number]: MIMEMessagePart;
+	/**
+	*Boundary tag used to delimit the parts
+	*/
+	boundary: String;
+	/**
+	*Number of parts
+	*/
+	count: Number;
+	/**
+	*Encoding type: 'multipart/form-data' or 'application/x-www-form-urlencoded'
+	*/
+	encoding: String;
+	/**
+	*Number of parts
+	*/
+	length: Number;
+	/**
+	*returns the MIME message as a Blob object
+	*/
+	toBlob(mimeType?: String) : Blob;
+	/**
+	*returns the MIME message as a Buffer object
+	*/
+	toBuffer() : void;
+}
+
+interface MIMEMessagePart {
+    /**
+	*Body as a BLOB
+	*/
+	asBlob: Blob;
+	/**
+	*Body as an image
+	*/
+	asPicture: Image;
+	/**
+	*Body as a Text string
+	*/
+	asText: String;
+	/**
+	*Name of the uploaded file
+	*/
+	fileName: String;
+	/**
+	*Content-type of the part
+	*/
+	mediaType: String;
+	/**
+	*Input field name
+	*/
+	name: String;
+	/**
+	*Size of the body (in bytes)
+	*/
+	size: Number;
+	/**
+	*saves the body of the part in the file whose path is passed in filePath
+	*/
+	save(filePath: String, overWrite?: Boolean) : void;
 }
 	interface Module {
 		//TODO
