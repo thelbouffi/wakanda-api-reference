@@ -19,4 +19,8 @@ interface ConnectionSessionInfo{
      *sessionStorage property of the user session (optional)
      */
     storage : Object;
+    /**
+     *Define the session time to live for the user session (optional)
+     */
+    lifeTime : Number;
 }
