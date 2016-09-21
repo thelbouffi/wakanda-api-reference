@@ -195,6 +195,7 @@ interface Application {
 	XMLHttpRequest:XMLHttpRequest;
 	/**
 	*installs a request handler function on the server
+	* @deprecated use httpServer.addRequestHandler()
 	*/
 	addHttpRequestHandler(pattern: String, filePath: String, functionName: String) : void;
 	/**
@@ -227,10 +228,12 @@ interface Application {
 	createUserSession(sessionObj: ConnectionSessionInfo, keepPreviousSession?: Boolean) : void;
 	/**
 	*returns an object identifying the current session under which the current user is actually running on the server
+	* @deprecated use directory.currentSession
 	*/
 	currentSession() : ConnectionSession;
 	/**
 	*returns the user who opened the current user session on the server
+	* @deprecated use directory.currentUser
 	*/
 	currentUser() : User;
 	/**
@@ -411,6 +414,7 @@ interface Application {
 	ProgressIndicator(numElements: Number, sessionName?: String, stoppable?: String, unused?: String, name?: String) : ProgressIndicator;
 	/**
 	*uninstalls an existing HTTP request handler function running on the server
+	* @deprecated use httpServer.removeRequestHandler()
 	*/
 	removeHttpRequestHandler(pattern: String, filePath: String, functionName: String) : void;
 	/**
@@ -890,6 +894,10 @@ interface Blob{
      *sessionStorage property of the user session (optional)
      */
     storage : Object;
+    /**
+     *Define the session time to live for the user session (optional)
+     */
+    lifeTime : Number;
 }
 
 interface Datastore {
@@ -2201,6 +2209,96 @@ interface DatastoreClassAttribute extends String {
 		*sets a local name (alias) to the Group object corresponding to a remote group from a LDAP directory
 		*/
 		setAlias(alias: String) : void;
+	}	
+	
+	
+	interface HttpServer {
+		/**
+		*Cache properties of the HTTP server
+		*/
+		cache: HttpServerCache;
+		/**
+		*Default charset value
+		*/
+		defaultCharSet: String;
+		/**
+		*Host name of the server
+		*/
+		hostName: String;
+		/**
+		*IP address of the server
+		*/
+		ipAddress: String;
+		/**
+		*Port listened to by the server
+		*/
+		port: Number;
+		/**
+		 *The current HTTP Request Object
+		 */
+		request: HTTPRequest;
+		/**
+		 *The current HTTP Response Object
+		 */
+		response: HTTPResponse;
+		/**
+		*SSL properties of the server
+		*/
+		ssl: HttpServerSSL;
+		/**
+		*Current status of the HTTP server
+		*/
+		started: Boolean;
+		/**
+		*installs a request handler function on the server
+		*/
+		addRequestHandler(pattern: String, filePath: String, functionName: String) : void;
+		/**
+		*installs a WebSocket handler script on the server
+		*/
+		addWebSocketHandler(pattern: String, filePath: String, socketID: String, shared: Boolean) : void;
+		/**
+		*uninstalls an existing HTTP request handler function running on the server
+		*/
+		removeRequestHandler(pattern: String, filePath: String, functionName: String) : void;
+		/**
+		*removes the WebSocket handler socketID from the server
+		*/
+		removeWebSocketHandler(socketID: String) : void;
+		/**
+		*starts the Wakanda HTTP server
+		*/
+		start() : void;
+		/**
+		*stops the Wakanda HTTP server
+		*/
+		stop() : void;
+	}
+	
+	interface HttpServerCache {
+		/**
+		*Status of the HTTP server cache
+		*/
+		enabled: Boolean;
+		/**
+		*Size of the HTTP server cache in memory
+		*/
+		memorySize: Number;
+	}
+	
+	interface HttpServerSSL {
+		/**
+		*Status of the SSL protocol on the server
+		*/
+		enabled: Boolean;
+		/**
+		*Port number for SSL connections
+		*/
+		port: Number;
+		/**
+		*returns the full path to the SSL certificates folder used by the server (if any)
+		*/
+		getCertificatePath() : String;
 	}
 
 
@@ -2321,97 +2419,7 @@ interface HTTPResponse {
 	*sends an HTTPResponse in chunks without knowing in advance the size of the data
 	*/
 	sendChunkedData(data: Blob) : void;
-}	
-	
-	
-	interface HttpServer {
-		/**
-		*Cache properties of the HTTP server
-		*/
-		cache: HttpServerCache;
-		/**
-		*Default charset value
-		*/
-		defaultCharSet: String;
-		/**
-		*Host name of the server
-		*/
-		hostName: String;
-		/**
-		*IP address of the server
-		*/
-		ipAddress: String;
-		/**
-		*Port listened to by the server
-		*/
-		port: Number;
-		/**
-		 *The current HTTP Request Object
-		 */
-		request: HTTPRequest;
-		/**
-		 *The current HTTP Response Object
-		 */
-		response: HTTPResponse;
-		/**
-		*SSL properties of the server
-		*/
-		ssl: HttpServerSSL;
-		/**
-		*Current status of the HTTP server
-		*/
-		started: Boolean;
-		/**
-		*installs a request handler function on the server
-		*/
-		addRequestHandler(pattern: String, filePath: String, functionName: String) : void;
-		/**
-		*installs a WebSocket handler script on the server
-		*/
-		addWebSocketHandler(pattern: String, filePath: String, socketID: String, shared: Boolean) : void;
-		/**
-		*uninstalls an existing HTTP request handler function running on the server
-		*/
-		removeRequestHandler(pattern: String, filePath: String, functionName: String) : void;
-		/**
-		*removes the WebSocket handler socketID from the server
-		*/
-		removeWebSocketHandler(socketID: String) : void;
-		/**
-		*starts the Wakanda HTTP server
-		*/
-		start() : void;
-		/**
-		*stops the Wakanda HTTP server
-		*/
-		stop() : void;
-	}
-	
-	interface HttpServerCache {
-		/**
-		*Status of the HTTP server cache
-		*/
-		enabled: Boolean;
-		/**
-		*Size of the HTTP server cache in memory
-		*/
-		memorySize: Number;
-	}
-	
-	interface HttpServerSSL {
-		/**
-		*Status of the SSL protocol on the server
-		*/
-		enabled: Boolean;
-		/**
-		*Port number for SSL connections
-		*/
-		port: Number;
-		/**
-		*returns the full path to the SSL certificates folder used by the server (if any)
-		*/
-		getCertificatePath() : String;
-	}
+}
 	interface Image {
 		/**
 		*Height of the image
