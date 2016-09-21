@@ -23,3 +23,14 @@ The `application` object implements the [`Application`][Application] interface.
 
 
 [Application]: ./interfaces/application.html
+
+
+# Want to improve Wakanda API Reference ?
+
+Wakanda API Reference generates its web site through TypeDoc.
+
+- Install typeDdoc: http://typedoc.org/guides/installation/
+- Fork the repository
+- Update the documentation in `/api/` directory
+- Build the static web site: `$ node build.js`
+- Submit a pull request
