@@ -101,6 +101,7 @@ interface Application {
 	XMLHttpRequest:XMLHttpRequest;
 	/**
 	*installs a request handler function on the server
+	* @deprecated use httpServer.addRequestHandler()
 	*/
 	addHttpRequestHandler(pattern: String, filePath: String, functionName: String) : void;
 	/**
@@ -317,6 +318,7 @@ interface Application {
 	ProgressIndicator(numElements: Number, sessionName?: String, stoppable?: String, unused?: String, name?: String) : ProgressIndicator;
 	/**
 	*uninstalls an existing HTTP request handler function running on the server
+	* @deprecated use httpServer.removeRequestHandler()
 	*/
 	removeHttpRequestHandler(pattern: String, filePath: String, functionName: String) : void;
 	/**
