@@ -1,36 +1,13 @@
-# Wakanda Server Side API Reference
-
-## Global Scope
-
-The `application` object available on the global scope represents both the currently running application and the JavaScript context global scope. 
-This means that all properties and methods of the `application` object are directly accessible from the global scope and vice versa.
-
-In practice, this implies that the following code snippets are equivalent :
-
-```javascript
-var uuid = generateUUID();
-```
-
-And
-
-```javascript
-var uuid = application.generateUUID();
-```
-
-The `application` object implements the [`Application`][Application] interface.
-
-
-
-
-[Application]: ./interfaces/application.html
-
-
 # Want to improve Wakanda API Reference ?
 
 Wakanda API Reference generates its web site through TypeDoc.
 
-- Install typeDdoc: http://typedoc.org/guides/installation/
+- Install [`TypeDoc`][TypeDoc]: `$ npm install --global typedoc`
 - Fork the repository
 - Update the documentation in `/api/` directory
 - Build the static web site: `$ node build.js`
 - Submit a pull request
+
+
+[TypeDoc]: http://typedoc.org/guides/installation/
+ 
