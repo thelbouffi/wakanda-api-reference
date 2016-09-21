@@ -134,10 +134,12 @@ interface Application {
 	createUserSession(sessionObj: ConnectionSessionInfo, keepPreviousSession?: Boolean) : void;
 	/**
 	*returns an object identifying the current session under which the current user is actually running on the server
+	* @deprecated use directory.currentSession
 	*/
 	currentSession() : ConnectionSession;
 	/**
 	*returns the user who opened the current user session on the server
+	* @deprecated use directory.currentUser
 	*/
 	currentUser() : User;
 	/**
