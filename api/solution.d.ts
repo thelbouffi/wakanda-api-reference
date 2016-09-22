@@ -38,6 +38,7 @@
 		getWalibFolder(kind: String, format?: String) : Folder;
 		/**
 		*quits Wakanda Server
+		* @deprecated use kill command instead
 		*/
 		quitServer() : void;
 	}
