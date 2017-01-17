@@ -10,8 +10,7 @@ interface Console {
 	 * Writes message to the log file and the debugger's console with a visual "ERROR" label.
 	 * @see console.log() for more details
 	 */
-	error(message: String, ...subst: String[]) : void;
-	error(message: String, ...subst: Number[]) : void;
+	error(message: String, ...subst: Any[]) : void;
 	error(message: Object) : void;
 	/**
 	 * Writes message to the log file and the debugger's console.
@@ -28,14 +27,12 @@ interface Console {
 	 * // { str: 'Some text', id: 5 }
 	 * ```
 	 */
-	log(message: String, ...subst: String[]) : void;
-	log(message: String, ...subst: Number[]) : void;
+	log(message: String, ...subst: Any[]) : void;
 	log(message: Object) : void;
 	/**
 	 * Writes message to the log file and the debugger's console with a visual "WARNING" label.
 	 * @see console.log() for more details
 	 */
-	warn(message: String, ...subst: String[]) : void;
-	warn(message: String, ...subst: Number[]) : void;
+	warn(message: String, ...subst: Any[]) : void;
 	warn(message: Object) : void;
 }

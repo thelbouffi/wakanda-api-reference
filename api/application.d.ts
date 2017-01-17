@@ -98,9 +98,12 @@ interface Core {
 	 * References the console of the application
 	 */
 	console: Console;
-	Buffer:Buffer;
 	/**
-	 * Create a valid UUID string.
+	 * References the buffer constructor
+	 */
+	Buffer: Buffer;
+	/**
+	 * Create a valid UUID string
 	 * @returns Returns a string with the generated UUID
 	 * 
 	 * ```
@@ -110,18 +113,18 @@ interface Core {
 	 */
 	generateUUID() : String;
 	/**
-	*returns the ProgressIndicator type Object whose name you passed in the name parameter
-	*/
+	 * Gets the named progress indicator object
+	 */
 	getProgressIndicator(name: String) : ProgressIndicator;
 	/**
-	*creates a new Object of type ProgressIndicator on the server and specifies its properties
-	*/
+	 * Creates a progress indicator
+	 * @param numElements Number of elements to count
+	 * @param sessionName Name of execution session for progress indicator
+	 * @param stoppable `true`if the progress indicator can be stopped, `false` otherwise
+	 * @param unused Not used, always pass an empty string ("")	
+	 * @param name Unique name of object on the server
+	 */
 	ProgressIndicator(numElements: Number, sessionName?: String, stoppable?: Boolean, unused?: String, name?: String) : ProgressIndicator;
-	/**
-	*creates a new Object of type ProgressIndicator on the server and specifies its properties
-	*/
-	ProgressIndicator(numElements: Number, sessionName?: String, stoppable?: String, unused?: String, name?: String) : ProgressIndicator;
-
 }
 
 interface Threads {
