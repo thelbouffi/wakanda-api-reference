@@ -1,7 +1,16 @@
 
+	/**
+	 * The folder API gives you the possibility to manipulate filesystem folders
+	 */
 	interface Folder {
 		/**
-		*creates a new object of type Folder
+		* creates a new Object of type Folder
+		* ```javascript
+		*   var myFile = new File("/tmp/file.txt");
+		*   if (myFile.exists){
+		*      myFile.rename("abc.txt");
+		*   }
+		* ```
 		*/
 		new(path: String) : Folder;
 		/**

@@ -1,38 +1,37 @@
-interface KeyValueStorage {
-    /**
-	*Number of key/value pairs currently present in the object
-	*/
-	length: Number;
+interface LockableKeyValueStorage extends KeyValueStorage{
 	/**
-	*removes all key/value pairs from the Storage object
-	*/
-	clear() : void;
-	/**
-	*returns a copy of the value stored with the given key in the Storage object
-	*/
-	getItem(key: String) : any;
-	/**
-	*returns the name of the key stored at the keyIndex position in the Storage object
-	*/
-	key(keyIndex: Number) : String;
-	/**
-	*locks the Storage object to which it is applied, so that only the thread that placed it can read or modify it
-	*/
+	 * Locks the storage object. Only the current thread can read or modify the storage object.
+	 */
 	lock() : void;
 	/**
-	*allows you to remove an item from the Storage object
-	*/
-	removeItem(key: String) : void;
-	/**
-	*allows you to create or update an item in the Storage object
-	*/
-	setItem(key: String, value: any) : void;
-	/**
-	*tries to lock the Storage object to which it is applied; it returns true in case of success and false otherwise
-	*/
+	 * Tries to lock the storage object. Returns `true` in case of success and false otherwise
+	 */
 	tryLock() : Boolean;
 	/**
-	*removes a lock that was previously put on the Storage object
-	*/
+	 * Removes a lock that was previously put on the storage object
+	 */
 	unlock() : void;
+}
+
+interface KeyValueStorage {
+    /**
+	 * Gets the number of key/value pairs currently present in the storage object
+	 */
+	length: Number;
+	/**
+	 * Removes all key/value pairs from the storage object
+	 */
+	clear() : void;
+	/**
+	 * Gets a copy of the value from the storage object
+	 */
+	getItem(key: String) : any;
+	/**
+	 * Removes an item from the storage object
+	 */
+	removeItem(key: String) : void;
+	/**
+	 * Create or update an item in the storage object
+	 */
+	setItem(key: String, value: any) : void;
 }

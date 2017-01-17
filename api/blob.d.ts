@@ -8,11 +8,11 @@ interface Blob{
 	/**
 	*Size of the Blob in bytes
 	*/
-	size: Number;
+	readonly size: number;
 	/**
 	*Media type of the Blob expressed as MIME or "" if unknown
 	*/
-	type: String;
+	readonly type: string;
 	/**
 	*copies the Blob referenced in the BLOB object (the source object) into the specified destination file
 	*/

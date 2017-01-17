@@ -1,89 +1,102 @@
 ///<reference path="./user.d.ts" />
 
-	
-	interface Group {
-		/**
-		*Full name of the group
-		*/
-		fullName: String;
-		/**
-		*Internal ID of the group
-		*/
-		ID: String;
-		/**
-		*Name of the group
-		*/
-		name: String;
-		/**
-		*returns an array of the subgroups belonging to the Group, filtered using the filterString parameter
-		*/
-		filterChildren(filtrerString: String, level?: Boolean) : Array<Group>;
-		/**
-		*returns an array of the subgroups belonging to the Group, filtered using the filterString parameter
-		*/
-		filterChildren(filtrerString: String, level?: String) : Array<Group>;
-		/**
-		*returns an array of the groups to which the Group belongs, filtered using the filterString parameter
-		*/
-		filterParents(filterString: String, level?: Boolean) : Array<Group>;
-		/**
-		*returns an array of the groups to which the Group belongs, filtered using the filterString parameter
-		*/
-		filterParents(filterString: String, level?: String) : Array<Group>;
-		/**
-		*returns an array of the users that belong directly or indirectly to the Group, filtered using the filterString parameter
-		*/
-		filterUsers(filterString: String, level?: Boolean) : Array<User>;
-		/**
-		*returns an array of the users that belong directly or indirectly to the Group, filtered using the filterString parameter
-		*/
-		filterUsers(filterString: String, level?: String) : Array<User>;
-		/**
-		*returns an array of the subgroups belonging to the Group
-		*/
-		getChildren(level?: Boolean) : Array<Group>;
-		/**
-		*returns an array of the subgroups belonging to the Group
-		*/
-		getChildren(level?: String) : Array<Group>;
-		/**
-		*returns an array of the groups to which the Group belongs
-		*/
-		getParents(level?: Boolean) : Array<Group>;
-		/**
-		*returns an array of the groups to which the Group belongs
-		*/
-		getParents(level?: String) : Array<Group>;
-		/**
-		*returns an array of users belonging to the Group
-		*/
-		getUsers(level?: Boolean) : Array<User>;
-		/**
-		*returns an array of users belonging to the Group
-		*/
-		getUsers(level?: String) : Array<User>;
-		/**
-		*adds Group to the group(s) you passed in the groupList parameter
-		*/
-		putInto(...groupList: String[]) : void;
-		/**
-		*adds Group to the group(s) you passed in the groupList parameter
-		*/
-		putInto(...groupList: Group[]) : void;
-		/**
-		*removes the User or Group from the solution's Directory
-		*/
-		remove() : void;
-		/**
-		*removes the Group from the group(s) you passed in the groupList parameter
-		*/
-		removeFrom(...groupList: String[]) : void;
-		/**
-		*removes the Group from the group(s) you passed in the groupList parameter
-		*/
-		removeFrom(...groupList: Group[]) : void;
-		/**
-		*sets a local name (alias) to the Group object corresponding to a remote group from a LDAP directory
-		*/
-		setAlias(alias: String) : void;
-	}
+interface Group {
+	/**
+	 * Describes the internal group ID
+	 */
+	ID: String;
+	/**
+	 * Describes the group name
+	 */
+	name: String;
+	/**
+	 * Returns all children directory groups starting with `filterString`
+	 * @param filterString Describe the filtering string
+	 * @param level (default: `false`) Set to `true` if you want first level results. Set to `false` otherwise.
+	 * @returns Returns an array of group
+	 * 
+	 * ```
+	 * var myGroups = directory.filterChildren("*cien");
+	 * ```
+	 */
+	filterChildren(filterString: String, level?: Boolean) : Array<Group>;
+	/**
+	 * Returns all children directory groups starting with `filterString`
+	 * @param filterString Describe the filtering string
+	 * @param level (default: `false`) Set to `true` if you want first level results. Set to `false` otherwise.
+	 * @returns Returns an array of group
+	 * 
+	 * ```
+	 * var myGroups = directory.filterParents("*cien");
+	 * ```
+	 */
+	filterParents(filterString: String, level?: Boolean) : Array<Group>;
+	/**
+	 * Get children groups belonging to the current group
+	 * @param level (default: `false`) Set to `true` if you want first level results. Set to `false` otherwise.
+	 */
+	getChildren(level?: Boolean) : Array<Group>;
+	/**
+	 * Get parent groups to which the current group belongs
+	 * @param level (default: `false`) Set to `true` if you want first level results. Set to `false` otherwise.
+	 */
+	getParents(level?: Boolean) : Array<Group>;
+	/**
+	 * Get users belonging to the current group
+	 * @param level (default: `false`) Set to `true` if you want first level results. Set to `false` otherwise.
+	 */
+	getUsers(level?: Boolean) : Array<User>;
+	/**
+	 * Assignes a group to one or more groups
+	 * @param groupList Describes an array of group name
+	 * @warning All updates done to the `directory` are temporary. Use `directory.save()` in order to survive a reboot. 
+	 * 
+	 * ```
+	 * myGroup.putInto( 'sales' );
+	 * ```
+	 */
+	putInto(...groupList: String[]) : void;
+	/**
+	 * Assignes a group to one or more groups
+	 * @param groupList Describes an array of group object
+	 * @warning All updates done to the `directory` are temporary. Use `directory.save()` in order to survive a reboot. 
+	 * 
+	 * ```
+	 * var SalesGroup = directory.group( 'sales' ); 
+	 * myGroup.putInto( SalesGroup );
+	 * ```
+	 */
+	putInto(...groupList: Group[]) : void;
+	/**
+	 * Removes the group from the directory
+	 * @warning All updates done to the `directory` are temporary. Use `directory.save()` in order to survive a reboot. 
+	 */
+	remove() : void;
+	/**
+	 * Removes the group from group list
+	 * @param groupList Describes an array of group name
+	 * @warning All updates done to the `directory` are temporary. Use `directory.save()` in order to survive a reboot. 
+	 * 
+	 * ```
+	 * myGroup.removeFrom( 'sales', 'finance' );
+	 * ```
+	 */
+	removeFrom(...groupList: String[]) : void;
+	/**
+	 * Removes the group from group list
+	 * @param groupList Describes an array of group object
+	 * @warning All updates done to the `directory` are temporary. Use `directory.save()` in order to survive a reboot. 
+	 * 
+	 * ```
+	 * var group1 = directory.group( 'finance' ); 
+	 * var group2 = directory.addGroup( 'account' );
+ 	 * myGroup.removeFrom( group1 , group2 )
+	 * ```
+	 */
+	removeFrom(...groupList: Group[]) : void;
+	/**
+	 * Sets a local name (alias) to the group object corresponding to a remote group from a LDAP directory
+	 * @warning Requires LDAP component
+	 */
+	setAlias(alias: String) : void;
+}
