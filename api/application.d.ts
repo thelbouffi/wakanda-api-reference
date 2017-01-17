@@ -17,6 +17,7 @@
 /// <reference path="./progressindicator.d.ts" />
 /// <reference path="./image.d.ts" />
 /// <reference path="./textstream.d.ts" />
+/// <reference path="./mutex.d.ts" />
 /// <reference path="./module.d.ts" />
 /// <reference path="./entrysync.d.ts" />
 /// <reference path="./sharedworker.d.ts" />
@@ -144,13 +145,22 @@ interface Threads {
 	 * ```
 	 */
 	exitWait() : void;
+	/**
+	 * References the share worker constructor
+	 */
 	SharedWorker:SharedWorker;
+	/**
+	 * References the system worker constructor
+	 */
 	SystemWorker:SystemWorker;
+	/**
+	 * References the worker constructor
+	 */
 	Worker:Worker;
 	/**
-	*creates a new mutex Object that will allow you to control multithreaded concurrent accesses to JavaScript code
-	*/
-	Mutex(key: String) : Storage;
+	 * References the mutex constructor
+	 */
+	Mutex(key: String) : Mutex;
 	/**
 	 * Require a SSJS module (CommonJS compliant).
 	 * This module must be defined in `PROJECT/backend/modules/`.
