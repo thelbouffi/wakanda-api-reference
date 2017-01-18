@@ -14,6 +14,7 @@
 /// <reference path="./file.d.ts" />
 /// <reference path="./connectionsession.d.ts" />
 /// <reference path="./jobmanager.d.ts" />
+/// <reference path="./port.d.ts" />
 /// <reference path="./progressindicator.d.ts" />
 /// <reference path="./image.d.ts" />
 /// <reference path="./textstream.d.ts" />
@@ -150,13 +151,13 @@ interface Threads {
 	 */
 	SharedWorker:SharedWorker;
 	/**
+	 * References the share worker constructor
+	 */
+	NodeWorker:NodeWorker;
+	/**
 	 * References the system worker constructor
 	 */
 	SystemWorker:SystemWorker;
-	/**
-	 * References the worker constructor
-	 */
-	Worker:Worker;
 	/**
 	 * References the mutex constructor
 	 */
@@ -176,8 +177,8 @@ interface Threads {
 	require(moduleId: String) : Module;
 	/**
 	 * Require a NodeJS module.
-	 * This API is only available inside a Node worker (See ShareWorker for more details)
 	 * This module must be defined in `PROJECT/backend/node_modules`.
+	 * @warning This API is only available inside a Node worker (See ShareWorker for more details)
 	 * @param moduleId Describes the module id and path
 	 * @returns Returns the exported API of the given module
 	 * ```
