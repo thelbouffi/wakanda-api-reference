@@ -33,7 +33,7 @@
  * Worker example
  * 
  * ```
- * // Describes the worker.js file
+ * // Describes the content of the worker.js file
  * // Called when a new worker is created
  * onconnect = function( msg )
  * {
@@ -85,7 +85,10 @@ interface SharedWorker {
      * var myWorkerProxy = new SharedWorker("backend/worker.js", "my-worker-name");
      * ```
      */
-    new(scriptPath: String, workerName?: String) : SharedWorker;
+    new(scriptPath: String, workerName?: String) : SharedWorkerProxy ;
+}
+
+interface SharedWorkerProxy {
     /**
      * Use the proxy port to communicate with the share worker thread.
      * 

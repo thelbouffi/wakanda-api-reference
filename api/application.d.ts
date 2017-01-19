@@ -3,6 +3,7 @@
 /// <reference path="./datastore.d.ts" />
 /// <reference path="./httpServer.d.ts" />
 /// <reference path="./blob.d.ts" />
+/// <reference path="./buffer.d.ts" />
 /// <reference path="./permissions.d.ts" />
 /// <reference path="./solution.d.ts" />
 /// <reference path="./user.d.ts" />
@@ -22,6 +23,7 @@
 /// <reference path="./module.d.ts" />
 /// <reference path="./entrysync.d.ts" />
 /// <reference path="./sharedworker.d.ts" />
+/// <reference path="./nodeworker.d.ts" />
 /// <reference path="./systemworker.d.ts" />
 /// <reference path="./worker.d.ts" />
 /// <reference path="./xmlhttprequest.d.ts" />
@@ -147,17 +149,17 @@ interface Threads {
 	 */
 	exitWait() : void;
 	/**
-	 * References the share worker constructor
+	 * References the node worker constructor
 	 */
-	SharedWorker:SharedWorker;
+	NodeWorker: NodeWorker;
 	/**
-	 * References the share worker constructor
+	 * References the shared worker constructor
 	 */
-	NodeWorker:NodeWorker;
+	SharedWorker: SharedWorker;
 	/**
 	 * References the system worker constructor
 	 */
-	SystemWorker:SystemWorker;
+	SystemWorker: SystemWorker;
 	/**
 	 * References the mutex constructor
 	 */
