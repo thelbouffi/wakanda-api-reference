@@ -3,11 +3,10 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>SharedWorker | </title>
+	<title>SharedWorker | wakanda-api-reference</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
-	<script src="../assets/js/modernizr.js"></script>
 </head>
 <body>
 <header>
@@ -23,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title"></a>
+					<a href="../index.html" class="title">wakanda-api-reference</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -67,6 +66,63 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>Here is an example of a worker file</p>
+					</div>
+					<p>Callback to trigger when a new caller creates a SharedWorker proxy object</p>
+					<pre><code>onconnect: <span class="hljs-function"><span class="hljs-keyword">Function</span>;</span>
+</code></pre><p>Get port to communicate with the worker proxy.
+					Always use <code>ports[0]</code>.</p>
+					<pre><code><span class="hljs-symbol">ports:</span> Array<span class="hljs-params">&lt;Port&gt;</span>;
+</code></pre><p>Close the worker.</p>
+					<pre><code><span class="hljs-built_in">close</span>() : <span class="hljs-keyword">void</span>;
+</code></pre><p>Allows a thread to handle events and to continue to exist after the complete code executes.</p>
+					<dl class="tsd-comment-tags">
+						<dt>warning</dt>
+						<dd><p>There is an implicit <code>wait()</code> in worker. No need to add another.</p>
+							<pre><code><span class="hljs-keyword">wait</span>(timeout?: <span class="hljs-keyword">Number</span>) : Boolean;
+</code></pre><p>Worker example</p>
+							<pre><code><span class="hljs-comment">// Describes the content of the worker.js file</span>
+<span class="hljs-comment">// Called when a new worker is created</span>
+onconnect = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"> msg </span>)
+</span>{
+   <span class="hljs-comment">// Get the worker port for communication with the worker proxy</span>
+   <span class="hljs-keyword">var</span> workerPort = msg.ports[<span class="hljs-number">0</span>];
+
+   <span class="hljs-comment">// Send a message to the worker proxy. The worker is up and running.</span>
+   workerPort.postMessage({<span class="hljs-keyword">type</span>: <span class="hljs-string">'connected'</span>, says: <span class="hljs-string">"I'm alive!"</span>});
+
+   <span class="hljs-comment">// Listen for worker proxy messages</span>
+   workerPort.onmessage = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"> event </span>)
+   </span>{
+      <span class="hljs-comment">// We've got a message !</span>
+      <span class="hljs-comment">// The `event.data` is what the worker proxy sends using `postMessage()`. Could be a String, Number or an Object type.</span>
+      <span class="hljs-comment">// Here, `event.data` contains an object: `{type: String, says: String}`</span>
+      <span class="hljs-keyword">var</span> message = event.data;
+      <span class="hljs-keyword">switch</span>( message.type )
+      {
+        <span class="hljs-comment">// It's a hello world message</span>
+        <span class="hljs-keyword">case</span> <span class="hljs-string">'hello'</span>:
+          <span class="hljs-comment">// Reply to the worker proxy</span>
+          workerPort.postMessage( {<span class="hljs-keyword">type</span>: <span class="hljs-string">'hello'</span>, says: <span class="hljs-string">'Hello to you too!'</span>} );
+          <span class="hljs-keyword">break</span>;
+
+        <span class="hljs-comment">// It's a terminate message</span>
+        <span class="hljs-keyword">case</span> <span class="hljs-string">'close'</span>:
+          <span class="hljs-comment">// Reply to the worker proxy</span>
+          workerPort.postMessage( {<span class="hljs-keyword">type</span>: <span class="hljs-string">'close'</span>, says: <span class="hljs-string">'I will be back!'</span>} );
+          <span class="hljs-comment">// Close the worker</span>
+          close();
+          <span class="hljs-keyword">break</span>;
+      }
+   }
+}
+</code></pre></dd>
+					</dl>
+				</div>
+			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
@@ -85,20 +141,6 @@
 								<li class="tsd-kind-constructor tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="sharedworker.html#constructor" class="tsd-kind-icon">constructor</a></li>
 							</ul>
 						</section>
-						<section class="tsd-index-section tsd-is-external tsd-is-not-exported">
-							<h3>Properties</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="sharedworker.html#onconnect" class="tsd-kind-icon">onconnect</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="sharedworker.html#ports" class="tsd-kind-icon">ports</a></li>
-							</ul>
-						</section>
-						<section class="tsd-index-section tsd-is-external tsd-is-not-exported">
-							<h3>Methods</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="sharedworker.html#close" class="tsd-kind-icon">close</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="sharedworker.html#wait" class="tsd-kind-icon">wait</a></li>
-							</ul>
-						</section>
 					</div>
 				</section>
 			</section>
@@ -108,116 +150,46 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Shared<wbr>Worker<span class="tsd-signature-symbol">(</span>scriptPath<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">String</span>, workerName<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">String</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="sharedworker.html" class="tsd-signature-type">SharedWorker</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Shared<wbr>Worker<span class="tsd-signature-symbol">(</span>scriptPath<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">String</span>, workerName<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">String</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="sharedworkerproxy.html" class="tsd-signature-type">SharedWorkerProxy</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/74e9258/api/sharedworker.d.ts#L1">sharedworker.d.ts:1</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/3b02270/api/sharedworker.d.ts#L74">sharedworker.d.ts:74</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>constructor of the SharedWorker type class objects</p>
+									<p>Shared worker constructor.
+										Creates a new shared worker in its own thread if it does not exist yet. Then it returns a proxy object to communicate with the shared worker thread.
+									Shared workers can be addressed from any thread, they are uniquely identified by their path and name.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>scriptPath: <span class="tsd-signature-type">String</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>Describes the path to worker javaScript file</p>
+										</div>
+									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> workerName: <span class="tsd-signature-type">String</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>Describes the worker name</p>
+										</div>
+									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="sharedworker.html" class="tsd-signature-type">SharedWorker</a></h4>
-						</li>
-					</ul>
-				</section>
-			</section>
-			<section class="tsd-panel-group tsd-member-group tsd-is-external tsd-is-not-exported">
-				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-					<a name="onconnect" class="tsd-anchor"></a>
-					<h3>onconnect</h3>
-					<div class="tsd-signature tsd-kind-icon">onconnect<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Function</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/74e9258/api/sharedworker.d.ts#L9">sharedworker.d.ts:9</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Callback to trigger when a new caller creates a SharedWorker proxy object</p>
-						</div>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-					<a name="ports" class="tsd-anchor"></a>
-					<h3>ports</h3>
-					<div class="tsd-signature tsd-kind-icon">ports<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Array</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/74e9258/api/sharedworker.d.ts#L13">sharedworker.d.ts:13</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Array whose element 0 is an object containing the communication tools, including onmessage, postMessage, onerror</p>
-						</div>
-					</div>
-				</section>
-			</section>
-			<section class="tsd-panel-group tsd-member-group tsd-is-external tsd-is-not-exported">
-				<h2>Methods</h2>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-					<a name="close" class="tsd-anchor"></a>
-					<h3>close</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-						<li class="tsd-signature tsd-kind-icon">close<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/74e9258/api/sharedworker.d.ts#L17">sharedworker.d.ts:17</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>ends the thread from which it is called</p>
-								</div>
-							</div>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-					<a name="wait" class="tsd-anchor"></a>
-					<h3>wait</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-						<li class="tsd-signature tsd-kind-icon">wait<span class="tsd-signature-symbol">(</span>timeout<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Boolean</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/74e9258/api/sharedworker.d.ts#L21">sharedworker.d.ts:21</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>allows a thread to handle events and to continue to exist after the complete code executes</p>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> timeout: <span class="tsd-signature-type">Number</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Boolean</span></h4>
+							<h4 class="tsd-returns-title">Returns <a href="sharedworkerproxy.html" class="tsd-signature-type">SharedWorkerProxy</a></h4>
+							<p>Returns a shared worker proxy</p>
+							<pre><code>// <span class="hljs-string">"worker.js"</span> <span class="hljs-built_in">is</span> defined <span class="hljs-keyword">in</span> &lt;PROJECT&gt;/backend/worker.js
+<span class="hljs-built_in">var</span> myWorkerProxy = <span class="hljs-built_in">new</span> SharedWorker(<span class="hljs-string">"backend/worker.js"</span>, <span class="hljs-string">"my-worker-name"</span>);
+</code></pre>
 						</li>
 					</ul>
 				</section>
@@ -241,18 +213,6 @@
 							<li class=" tsd-kind-constructor tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
 								<a href="sharedworker.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="sharedworker.html#onconnect" class="tsd-kind-icon">onconnect</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="sharedworker.html#ports" class="tsd-kind-icon">ports</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="sharedworker.html#close" class="tsd-kind-icon">close</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="sharedworker.html#wait" class="tsd-kind-icon">wait</a>
-							</li>
 						</ul>
 					</li>
 				</ul>
@@ -262,7 +222,7 @@
 		</div>
 	</div>
 </div>
-<footer class="with-border-bottom">
+<footer>
 	<div class="container">
 		<h2>Legend</h2>
 		<div class="tsd-legend-group">
@@ -321,9 +281,6 @@
 		</div>
 	</div>
 </footer>
-<div class="container tsd-generator">
-	<p>Generated using <a href="http://typedoc.io" target="_blank">TypeDoc</a></p>
-</div>
 <div class="overlay"></div>
 <script src="../assets/js/main.js"></script>
 <script>if (location.protocol == 'file:') document.write('<script src="../assets/js/search.js"><' + '/script>');</script>

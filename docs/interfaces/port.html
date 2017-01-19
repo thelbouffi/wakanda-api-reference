@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>MIMEMessage | wakanda-api-reference</title>
+	<title>Port | wakanda-api-reference</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,10 +56,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="mimemessage.html">MIMEMessage</a>
+					<a href="port.html">Port</a>
 				</li>
 			</ul>
-			<h1>Interface MIMEMessage</h1>
+			<h1>Interface Port</h1>
 		</div>
 	</div>
 </header>
@@ -70,153 +70,165 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">MIMEMessage</span>
+						<span class="target">Port</span>
 					</li>
 				</ul>
-			</section>
-			<section class="tsd-panel tsd-kind-interface tsd-is-external tsd-is-not-exported">
-				<h3 class="tsd-before-signature">Indexable</h3>
-				<div class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">[</span>n: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">]: </span><a href="mimemessagepart.html" class="tsd-signature-type">MIMEMessagePart</a></div>
-				<div class="tsd-comment tsd-typography">
-					<div class="lead">
-						<p>nth part of the multipart MIME message</p>
-					</div>
-				</div>
 			</section>
 			<section class="tsd-panel-group tsd-index-group">
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section tsd-is-external tsd-is-not-exported">
-							<h3>Properties</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="mimemessage.html#boundary" class="tsd-kind-icon">boundary</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="mimemessage.html#count" class="tsd-kind-icon">count</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="mimemessage.html#encoding" class="tsd-kind-icon">encoding</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="mimemessage.html#length" class="tsd-kind-icon">length</a></li>
-							</ul>
-						</section>
-						<section class="tsd-index-section tsd-is-external tsd-is-not-exported">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="mimemessage.html#toblob" class="tsd-kind-icon">to<wbr>Blob</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="mimemessage.html#tobuffer" class="tsd-kind-icon">to<wbr>Buffer</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="port.html#onerror" class="tsd-kind-icon">onerror</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="port.html#onmessage" class="tsd-kind-icon">onmessage</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="port.html#postmessage" class="tsd-kind-icon">post<wbr>Message</a></li>
 							</ul>
 						</section>
-					</div>
-				</section>
-			</section>
-			<section class="tsd-panel-group tsd-member-group tsd-is-external tsd-is-not-exported">
-				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-					<a name="boundary" class="tsd-anchor"></a>
-					<h3>boundary</h3>
-					<div class="tsd-signature tsd-kind-icon">boundary<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">String</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/3b02270/api/mime.d.ts#L11">mime.d.ts:11</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Boundary tag used to delimit the parts</p>
-						</div>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-					<a name="count" class="tsd-anchor"></a>
-					<h3>count</h3>
-					<div class="tsd-signature tsd-kind-icon">count<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Number</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/3b02270/api/mime.d.ts#L15">mime.d.ts:15</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Number of parts</p>
-						</div>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-					<a name="encoding" class="tsd-anchor"></a>
-					<h3>encoding</h3>
-					<div class="tsd-signature tsd-kind-icon">encoding<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">String</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/3b02270/api/mime.d.ts#L19">mime.d.ts:19</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Encoding type: &#39;multipart/form-data&#39; or &#39;application/x-www-form-urlencoded&#39;</p>
-						</div>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-					<a name="length" class="tsd-anchor"></a>
-					<h3>length</h3>
-					<div class="tsd-signature tsd-kind-icon">length<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Number</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/3b02270/api/mime.d.ts#L23">mime.d.ts:23</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Number of parts</p>
-						</div>
 					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group tsd-is-external tsd-is-not-exported">
 				<h2>Methods</h2>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-					<a name="toblob" class="tsd-anchor"></a>
-					<h3>to<wbr>Blob</h3>
+					<a name="onerror" class="tsd-anchor"></a>
+					<h3>onerror</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-						<li class="tsd-signature tsd-kind-icon">to<wbr>Blob<span class="tsd-signature-symbol">(</span>mimeType<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">String</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="blob.html" class="tsd-signature-type">Blob</a></li>
+						<li class="tsd-signature tsd-kind-icon">onerror<span class="tsd-signature-symbol">(</span>error<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Object</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/3b02270/api/mime.d.ts#L27">mime.d.ts:27</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/3b02270/api/port.d.ts#L17">port.d.ts:17</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>returns the MIME message as a Blob object</p>
+									<p>Listen for worker or proxy worker errors.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> mimeType: <span class="tsd-signature-type">String</span></h5>
+									<h5>error: <span class="tsd-signature-type">Object</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Error received on the port</p>
+										<pre><code>workerPort.onerror = function( <span class="hljs-keyword">error</span> )
+{
+   <span class="hljs-comment">// We've got an error !</span>
+   console.<span class="hljs-keyword">log</span>(<span class="hljs-string">'Error message: '</span>+ <span class="hljs-keyword">error</span>.message);
+   console.<span class="hljs-keyword">log</span>(<span class="hljs-string">'From file: '</span>+ <span class="hljs-keyword">error</span>.filename);
+   console.<span class="hljs-keyword">log</span>(<span class="hljs-string">'Line: '</span>+ <span class="hljs-keyword">error</span>.lineno);
+}
+</code></pre>
+									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="blob.html" class="tsd-signature-type">Blob</a></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-					<a name="tobuffer" class="tsd-anchor"></a>
-					<h3>to<wbr>Buffer</h3>
+					<a name="onmessage" class="tsd-anchor"></a>
+					<h3>onmessage</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-						<li class="tsd-signature tsd-kind-icon">to<wbr>Buffer<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">onmessage<span class="tsd-signature-symbol">(</span>message<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/3b02270/api/mime.d.ts#L31">mime.d.ts:31</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/3b02270/api/port.d.ts#L49">port.d.ts:49</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>returns the MIME message as a Buffer object</p>
+									<p>Listen for worker or proxy worker messages.</p>
 								</div>
 							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>message: <span class="tsd-signature-type">any</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Message received on the port</p>
+										<pre><code>workerPort.onmessage = function( message )
+{
+   <span class="hljs-comment">// We've got a message !</span>
+   <span class="hljs-comment">// The `message.data` is what the worker proxy sends using `postMessage()`. Could be a String, Number or an Object type.</span>
+   <span class="hljs-comment">// Here, `message.data` contains an object: `{type: String, says: String}`</span>
+   <span class="hljs-keyword">var</span> action = message.data;
+   <span class="hljs-keyword">switch</span>( action.<span class="hljs-keyword">type</span> )
+   {
+     <span class="hljs-comment">// It's a hello world message</span>
+     <span class="hljs-keyword">case</span> <span class="hljs-string">'hello'</span>:
+       <span class="hljs-comment">// Reply to the worker proxy</span>
+       workerPort.postMessage( {<span class="hljs-keyword">type</span>: <span class="hljs-string">'hello'</span>, says: <span class="hljs-string">'Hello to you too!'</span>} );
+       <span class="hljs-keyword">break</span>;
+
+     <span class="hljs-comment">// It's a terminate message</span>
+     <span class="hljs-keyword">case</span> <span class="hljs-string">'close'</span>:
+       <span class="hljs-comment">// Reply to the worker proxy</span>
+       workerPort.postMessage( {<span class="hljs-keyword">type</span>: <span class="hljs-string">'close'</span>, says: <span class="hljs-string">'I will be back!'</span>} );
+       <span class="hljs-comment">// Close the worker</span>
+       <span class="hljs-built_in">close</span>();
+       <span class="hljs-keyword">break</span>;
+   }
+}
+</code></pre>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
+					<a name="postmessage" class="tsd-anchor"></a>
+					<h3>post<wbr>Message</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
+						<li class="tsd-signature tsd-kind-icon">post<wbr>Message<span class="tsd-signature-symbol">(</span>messageData<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/3b02270/api/port.d.ts#L77">port.d.ts:77</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Send a message to the worker or proxy worker.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>messageData: <span class="tsd-signature-type">any</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Message to send to the worker</p>
+										<p>Use case 1: From a worker proxy</p>
+										<pre><code><span class="hljs-comment">// Create a new SharedWorker and get the proxy worker</span>
+<span class="hljs-keyword">var</span> myProxyWorker = <span class="hljs-keyword">new</span> <span class="hljs-type">SharedWorker</span>(<span class="hljs-string">"backend/worker.js"</span>, <span class="hljs-string">"my-worker-name"</span>);
+<span class="hljs-comment">// Get the proxy worker port for communication</span>
+<span class="hljs-keyword">var</span> proxyWorkerPort = myProxyWorker.port;
+<span class="hljs-comment">// Send a "wake up" message to the worker</span>
+proxyWorkerPort.postMessage(<span class="hljs-string">'wake-up'</span>);
+</code></pre><p>Use case 2: From a worker</p>
+										<pre><code><span class="hljs-comment">// worker.js</span>
+onconnect = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">( msg )</span>
+</span>{
+   <span class="hljs-comment">// Get the worker port for communication with the worker proxy</span>
+   <span class="hljs-keyword">var</span> workerPort = msg.ports[<span class="hljs-number">0</span>];
+
+   <span class="hljs-comment">// Send a message to the worker proxy. The worker is up and running.</span>
+   workerPort.postMessage({type: <span class="hljs-string">'connected'</span>, says: <span class="hljs-string">'Hello world!'</span>});
+</code></pre>
+									</div>
+								</li>
+							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
@@ -236,25 +248,16 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface tsd-is-external tsd-is-not-exported">
-						<a href="mimemessage.html" class="tsd-kind-icon">MIMEMessage</a>
+						<a href="port.html" class="tsd-kind-icon">Port</a>
 						<ul>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="mimemessage.html#boundary" class="tsd-kind-icon">boundary</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="mimemessage.html#count" class="tsd-kind-icon">count</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="mimemessage.html#encoding" class="tsd-kind-icon">encoding</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="mimemessage.html#length" class="tsd-kind-icon">length</a>
+							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
+								<a href="port.html#onerror" class="tsd-kind-icon">onerror</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="mimemessage.html#toblob" class="tsd-kind-icon">to<wbr>Blob</a>
+								<a href="port.html#onmessage" class="tsd-kind-icon">onmessage</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="mimemessage.html#tobuffer" class="tsd-kind-icon">to<wbr>Buffer</a>
+								<a href="port.html#postmessage" class="tsd-kind-icon">post<wbr>Message</a>
 							</li>
 						</ul>
 					</li>

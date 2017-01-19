@@ -120,166 +120,35 @@ var XMLHttpRequest = application.XMLHttpRequest;
 
 
 
-interface Application {
-	
+
+
+
+
+
+
+interface Application extends Directory, Data, Core, Threads, FileSystem, HTTP, Storage {}
+
+interface Data {
 	/**
-	*True if the current application is defined as the solution's administration application
-	*/
-	administrator: Boolean;
-	/**
-	*Global application object
-	*/
-	application: Application;
-	/**
-	*Console of the application
-	*/
-	console: Console;
-	/**
-	*Reference to the solution's directory
-	*/
-	directory: Directory;
-	/**
-	*Reference to the application's default datastore
-	*/
+	 * Reference the datastore of the application
+	 */
 	ds: Datastore;
-	/**
-	*HTTP server for the current application
-	*/
-	httpServer: HttpServer;
-	/**
-	*Name of the current application
-	*/
-	name: String;
-	/**
-	*Operating System object
-	*/
-	os: OS;
-	/**
-	*Defined permissions for the project
-	*/
-	permissions: Permissions;
-	/**
-	*Wakanda information
-	*/
-	process: Process;
-	/**
-	*HTTP session storage for the application
-	*/
-	sessionStorage: KeyValueStorage;
-	/**
-	*Current project settings
-	*/
-	settings: Object;
-	/**
-	*Solution running on the server
-	*/
-	solution: Solution;
-	/**
-	*Project storage for the application
-	*/
-	storage: KeyValueStorage;
-	/**
-	*Wildcard character to use in queries (*)
-	*/
-	wildchar: String;
-	BinaryStream:BinaryStream;
-    Blob:Blob;
-	Buffer:Buffer;
-	File:File;
-	FileSystemSync:FileSystemSync;
-	Folder:Folder;
-	SharedWorker:SharedWorker;
-	SystemWorker:SystemWorker;
-	TextStream:TextStream;
-	Worker:Worker;
-	XMLHttpRequest:XMLHttpRequest;
-	/**
-	*installs a request handler function on the server
-	* @deprecated use httpServer.addRequestHandler()
-	*/
-	addHttpRequestHandler(pattern: String, filePath: String, functionName: String) : void;
-	/**
-	*adds the remote datastore defined by params to the current project and maintains a global reference to it
-	*/
-	addRemoteStore(storeName: String, params: Object) : Datastore;
 	/**
 	*starts the backup of the closed datastore defined by model and data
 	*/
 	backupDataStore(model: File, data: File, settings: Object, options?: Object) : File;
 	/**
-	*cancels the timerID scheduler previously set by the setInterval( ) method
-	*/
-	clearInterval(timerID: Number) : void;
-	/**
-	*cancels the timerID timeout previously set by the setTimeout( ) method
-	*/
-	clearTimeout(timerID: Number) : void;
-	/**
-	*ends the thread from which it is called
-	*/
-	close() : void;
-	/**
 	*compacts the datastore's data file designated by model and data, and generates the compactedData data file.
 	*/
 	compactDataStore(model: File, data: File, options?: Object, compactedData?: File) : void;
 	/**
-	*opens a new user session on the server with the properties you passed in sessionObj and sets it as the current session
-	*/
-	createUserSession(sessionObj: ConnectionSessionInfo, keepPreviousSession?: Boolean) : void;
-	/**
-	*returns an object identifying the current session under which the current user is actually running on the server
-	* @deprecated use directory.currentSession
-	*/
-	currentSession() : ConnectionSession;
-	/**
-	*returns the user who opened the current user session on the server
-	* @deprecated use directory.currentUser
-	*/
-	currentUser() : User;
-	/**
-	*converts the JavaScript date object you passed in the dateObject parameter into an ISO format string
-	*/
-	dateToIso(dateObject: Date) : String;
-	/**
-	*allows you to display a system notification window on the server machine
-	*/
-	displayNotification(message: String, title?: String, critical?: Boolean) : void;
-	/**
-	*stops all pending wait( ) loops in the thread from which it is called
-	*/
-	exitWait() : void;
-	/**
-	*launches the garbage collector on all sleeping contexts
-	*/
-	garbageCollect() : void;
-	/**
-	*returns a valid UUID string (32 chars) that you can use for your application needs
-	*/
-	generateUUID() : String;
-	/**
-	*returns an array that lists the 20 most recent backup manifests recorded in the specified backup registry
+	*returns an Array that lists the 20 most recent backup manifests recorded in the specified backup registry
 	*/
 	getBackupRegistry(registryFolder: Folder) : Array<Object>;
 	/**
 	*returns an Object containing the default backup settings for the solution
 	*/
 	getBackupSettings() : Object;
-	/**
-	*returns the folder containing the application file (i.e., the project file with the .waProject extension)
-	*/
-	getFolder(kind: String, format?: Boolean) : Folder;
-	/**
-	*returns the folder containing the application file (i.e., the project file with the .waProject extension)
-	*/
-	getFolder(kind: String, format?: String) : Folder;
-	/**
-	*returns the item associated with the role you passed as a parameter
-	*/
-	getItemsWithRole(role: String) : File;
-	/**
-	*returns the Job Manager interface available for the application
-	*/
-	getJobManager() : JobManager;
 	/**
 	*returns information about the journal of the datastore whose data file you passed in dataFile
 	*/
@@ -289,150 +158,17 @@ interface Application {
 	*/
 	getJournalInfo(dataFile: String, options?: Object) : Object;
 	/**
-	*returns an array that lists the 20 most recent backup manifests recorded in the backup registry default folder of the application
+	*returns an Array that lists the 20 most recent backup manifests recorded in the backup registry default folder of the application
 	*/
 	getLastBackups() : Array<Object>;
-	/**
-	*returns the ProgressIndicator type object whose name you passed in the name parameter
-	*/
-	getProgressIndicator(name: String) : ProgressIndicator;
-	/**
-	*returns the active ConnectionSession object whose ID property matches the sessionID passed in parameter
-	*/
-	getSession(sessionID: String) : ConnectionSession;
-	/**
-	*returns a reference or the path to the file containing the application setting whose ID you passed in settingID
-	*/
-	getSettingFile(settingID: String, kind: String, format?: Boolean) : File;
-	/**
-	*returns a reference or the path to the file containing the application setting whose ID you passed in settingID
-	*/
-	getSettingFile(settingID: String, kind: String, format?: String) : File;
-	/**
-	*returns the current application URL for a given protocol
-	*/
-	getURL(protocol: String, secured?: Boolean) : String;
-	/**
-	*returns the url passed in the parameter as an array of strings
-	*/
-	getURLPath(url: String) : Array<String>;
-	/**
-	*returns in an object the contents of the url's "query string", which was passed as a parameter
-	*/
-	getURLQuery(url: String) : Object;
-	/**
-	*returns an array of user sessions running on the server for the current application
-	*/
-	getUserSessions(user?: User) : Array<ConnectionSession>;
-	/**
-	*returns an array of user sessions running on the server for the current application
-	*/
-	getUserSessions(user?: String) : Array<ConnectionSession>;
-	/**
-	*returns Wakanda Server's "walib" folder, containing the libraries and services available client-side
-	*/
-	getWalibFolder(kind: String, format?: Boolean) : Folder;
-	/**
-	*returns Wakanda Server's "walib" folder, containing the libraries and services available client-side
-	*/
-	getWalibFolder(kind: String, format?: String) : Folder;
-	/**
-	*import and execute any JavaScript file(s) in the current JavaScript context
-	*/
-	importScripts(scriptPath: String) : void;
-	/**
-	*references a JavaScript file from a parent JavaScript file
-	*/
-	include(file: File, relativePath?: String, refresh?: String) : void;
-	/**
-	*references a JavaScript file from a parent JavaScript file
-	*/
-	include(file: File, relativePath?: String, refresh?: Boolean) : void;
-	/**
-	*references a JavaScript file from a parent JavaScript file
-	*/
-	include(file: String, relativePath?: String, refresh?: String) : void;
-	/**
-	*references a JavaScript file from a parent JavaScript file
-	*/
-	include(file: String, relativePath?: String, refresh?: Boolean) : void;
 	/**
 	*allows you to partially or fully integrate a journal file into a datastore
 	*/
 	integrateDataStoreJournal(model: File, data: File, journal: File, options?: Object) : Object;
 	/**
-	*converts the ISO date string passed in the isoDate parameter into a standard JavaScript format
-	*/
-	isoToDate(isoDate: String) : Date;
-	/**
-	*returns a JSON string converted into an XML string
-	*/
-	JSONToXml(jsonText: String, jsonFormat: String, rootElement: String) : String;
-	/**
-	*loads the image stored in a file referenced by the file parameter and returns an image object
-	*/
-	loadImage(file: File) : Image;
-	/**
-	*loads the image stored in a file referenced by the file parameter and returns an image object
-	*/
-	loadImage(file: String) : Image;
-	/**
-	*loads the text stored in a file referenced by the file parameter and returns a string containing this text
-	*/
-	loadText(file: File, charset?: Number) : String;
-	/**
-	*loads the text stored in a file referenced by the file parameter and returns a string containing this text
-	*/
-	loadText(file: String, charset?: Number) : String;
-	/**
-	*authenticates a user by their name and key and, in case of success, opens a new user Session on the server
-	*/
-	loginByKey(name: String, key: String, timeOut?: Number) : Boolean;
-	/**
-	*authenticates a user by their name and password and, in case of success, opens a new user session on the server
-	*/
-	loginByPassword(name: String, password: String, timeOut?: Number) : Boolean;
-	/**
-	*logs out the user running the current session on the Wakanda server
-	*/
-	logout() : Boolean;
-	/**
-	*creates a new mutex object that will allow you to control multithreaded concurrent accesses to JavaScript code
-	*/
-	Mutex(key: String) : Storage;
-	/**
-	*opens the remote datastore defined by params in the current solution and returns a reference to it
-	*/
-	openRemoteStore(params: Object) : Datastore;
-	/**
-	*creates a new object of type ProgressIndicator on the server and specifies its properties
-	*/
-	ProgressIndicator(numElements: Number, sessionName?: String, stoppable?: Boolean, unused?: String, name?: String) : ProgressIndicator;
-	/**
-	*creates a new object of type ProgressIndicator on the server and specifies its properties
-	*/
-	ProgressIndicator(numElements: Number, sessionName?: String, stoppable?: String, unused?: String, name?: String) : ProgressIndicator;
-	/**
-	*uninstalls an existing HTTP request handler function running on the server
-	* @deprecated use httpServer.removeRequestHandler()
-	*/
-	removeHttpRequestHandler(pattern: String, filePath: String, functionName: String) : void;
-	/**
 	*repairs the datastore's data file defined by model and data, and generates the repairedData data file.
 	*/
 	repairDataStore(model: File, data: File, options?: Object, repairedData?: File) : void;
-	/**
-	*requests a FileSystemSync object referencing a sandboxed folder or file where application data can be stored
-	*/
-	requestFileSystemSync(type: Number, size?: Number) : FileSystemSync;
-	/**
-	*requests a FileSystemSync object referencing a sandboxed folder or file where application data can be stored
-	*/
-	requestFileSystemSync(type: String, size?: Number) : FileSystemSync;
-	/**
-	*returns the exported API of a CommonJS compliant Module whose identifier you pass in id
-	*/
-	require(id: String) : Module;
 	/**
 	*resets the current journal of the datastore whose data file you passed in dataFile
 	*/
@@ -442,10 +178,6 @@ interface Application {
 	*/
 	resetDataStoreJournal(dataFile: String) : Object;
 	/**
-	*allows the user to look up the filesystem for a file or directory referred to by a local url
-	*/
-	resolveLocalFileSystemSyncURL(url: String) : EntrySync;
-	/**
 	*allows you to restore a data folder previously archived
 	*/
 	restoreDataStore(manifest: File, restoreFolder: Folder, options?: Object) : Object;
@@ -454,38 +186,228 @@ interface Application {
 	*/
 	restoreDataStore(config: Object, options?: Object) : Object;
 	/**
-	*saves the text you passed to the textToSave parameter in the file parameter
-	*/
-	saveText(textToSave: String, file: File, charset?: Number) : void;
-	/**
-	*saves the text you passed to the textToSave parameter in the file parameter
-	*/
-	saveText(textToSave: String, file: String, charset?: Number) : void;
-	/**
-	*sets the session whose UUID is passed in sessionID as the new current session of the running thread
-	*/
-	setCurrentSession(sessionID: String, forceExpire?: Boolean) : void;
-	/**
-	*schedules JavaScript code to be run every timeout milliseconds
-	*/
-	setInterval(handler: Function, timeout: Number, ...args: any[]) : Number;
-	/**
-	*to schedule JavaScript code to be executed after a given delay
-	*/
-	setTimeout(handler: Function, timeout: Number, ...args: any[]) : Number;
-	/**
 	*verifies the internal structure of the objects contained in the datastore designated by model and data.
 	*/
 	verifyDataStore(model: File, data: File, options: Object) : void;
-	/**
-	*allows a thread to handle events and to continue to exist after the complete code executes
-	*/
-	wait(timeout?: Number) : Boolean;
-	/**
-	*returns an XML string converted into a JSON string
-	*/
-	XmlToJSON(xmlText: String, jsonFormat?: String, rootElement?: String) : String;
 }
+
+interface Core {
+	/**
+	 * References the console of the application
+	 */
+	console: Console;
+	/**
+	 * References the buffer constructor
+	 */
+	Buffer: Buffer;
+	/**
+	 * Create a valid UUID string
+	 * @returns Returns a string with the generated UUID
+	 * 
+	 * ```
+	 * generateUUID();
+     * // 9AE457F4B557BD7895AD4712345ABCDE
+	 * ```
+	 */
+	generateUUID() : String;
+	/**
+	 * Gets the named progress indicator object
+	 */
+	getProgressIndicator(name: String) : ProgressIndicator;
+	/**
+	 * Creates a progress indicator
+	 * @param numElements Number of elements to count
+	 * @param sessionName Name of execution session for progress indicator
+	 * @param stoppable `true`if the progress indicator can be stopped, `false` otherwise
+	 * @param unused Not used, always pass an empty string ("")	
+	 * @param name Unique name of object on the server
+	 */
+	ProgressIndicator(numElements: Number, sessionName?: String, stoppable?: Boolean, unused?: String, name?: String) : ProgressIndicator;
+}
+
+interface Threads {
+	/**
+	 * Ends the current thread.
+	 * 
+	 * ```
+	 * close();
+	 * ```
+	 */
+	close() : void;
+	/**
+	 * Exit pending `wait()` in the current thread. Does not impact pending `wait()` in other threads.
+	 * 
+	 * ```
+	 * exitWait();
+	 * ```
+	 */
+	exitWait() : void;
+	/**
+	 * References the node worker constructor
+	 */
+	NodeWorker: NodeWorker;
+	/**
+	 * References the shared worker constructor
+	 */
+	SharedWorker: SharedWorker;
+	/**
+	 * References the system worker constructor
+	 */
+	SystemWorker: SystemWorker;
+	/**
+	 * References the mutex constructor
+	 */
+	Mutex(key: String) : Mutex;
+	/**
+	 * Require a SSJS module (CommonJS compliant).
+	 * This module must be defined in `PROJECT/backend/modules/`.
+	 * @param moduleId Describes the module id and path
+	 * @returns Returns the exported API of the given module
+	 * ```
+	 * // Get the module defined in PROJECT/backend/modules/mail
+	 * var mail = require('mail');
+	 * // Get the module defined in PROJECT/backend/modules/customers/platinium
+	 * var platiniumCustomers = require('/customers/platinium'); 
+	 * ```
+	 */
+	require(moduleId: String) : Module;
+	/**
+	 * Require a NodeJS module.
+	 * This module must be defined in `PROJECT/backend/node_modules`.
+	 * @warning This API is only available inside a Node worker (See ShareWorker for more details)
+	 * @param moduleId Describes the module id and path
+	 * @returns Returns the exported API of the given module
+	 * ```
+	 * // Get the Node module defined in PROJECT/backend/node_modules/http
+	 * var http = requireNode('http'); 
+	 * ```
+	 */
+	requireNode(moduleId: String) : Module;
+	/**
+	 * Allows a thread to handle events and to continue to exist after the complete code executes
+	 * @param timeout Milliseconds to wait for. If none, it's an infinite wait. Can be squeeze with an `exitWait()`.
+	 * 
+	 * ```
+	 * // Wait for 100ms
+	 * wait(100);
+	 * // Wait for the end of time
+	 * wait();
+	 * ```
+	 */
+	wait(timeout?: Number) : void;
+}
+
+interface FileSystem {
+	BinaryStream:BinaryStream;
+    Blob:Blob;
+	File:File;
+	Folder:Folder;
+	TextStream:TextStream;
+	/**
+	 * Loads an image from its path.
+	 * @param file Image path to load (POSIX path). Supports PNG and JPG files.
+	 * @returns Returns the image through Image object.
+	 * 
+	 * ```
+	 * var myPict = loadImage( 'C:/images/tulips.jpg' );
+	 * var newPict = new ds.Pict();
+ 	 * newPict.name = 'Flower';
+	 * newPict.photo = myPict;
+	 * newPict.save();
+	 * ```
+	 */
+	loadImage(file: String) : Image;
+	/**
+	 * Loads an image from a File object.
+	 * @param file File object that reference an image. Supports PNG and JPG files.
+	 * @returns Returns the image through Image object.
+	 * 
+	 * ```
+	 * var myFile = File( 'C:/images/tulips.jpg' );
+	 * var myPict = loadImage(myFile);
+	 * var newPict = new ds.Pict();
+ 	 * newPict.name = 'Flower';
+	 * newPict.photo = myPict;
+	 * newPict.save();
+	 * ```
+	 */
+	loadImage(file: File) : Image;
+	/**
+	 * Loads the content of a text file from its path.
+	 * @param file File path to load (POSIX path).
+	 * @param charset Defines the charset to use to read the file (Default: 7 = UTF-8). See [charset values](http://doc.wakanda.org/home2.en.html#/Wakanda/0.Beta/TextStream.301-684310.en.html) for more details.
+	 * @returns Returns a string with the full text file content.
+	 * 
+	 * ```
+	 * var myQuote = loadText( 'C:/texts/under-the-red-sky.jpg' );
+	 * var newSong = new ds.Quotes();
+ 	 * newSong.author = 'Bob Dylan';
+	 * newSong.quote = myQuote;
+	 * newSong.save();
+	 * ```
+	 */
+	loadText(file: String, charset?: Number) : String;
+	/**
+	 * Loads the content of a text file from a File object.
+	 * @param file File object that reference a text file.
+	 * @param charset Defines the charset to use to read the file (Default: 7 = UTF-8). See [charset values](http://doc.wakanda.org/home2.en.html#/Wakanda/0.Beta/TextStream.301-684310.en.html) for more details.
+	 * @returns Returns a string with the full text file content.
+	 * 
+	 * ```
+	 * var myFile = File( 'C:/texts/under-the-red-sky.jpg' );
+	 * var myQuote = loadText( myFile );
+	 * var newSong = new ds.Quotes();
+ 	 * newSong.author = 'Bob Dylan';
+	 * newSong.quote = myQuote;
+	 * newSong.save();
+	 * ```
+	 */
+	loadText(file: File, charset?: Number) : String;
+	/**
+	 * Saves the text into a file.
+	 * @param textToSave Text string to save.
+	 * @param file File path where to update (POSIX path).
+	 * @param charset Defines the charset of the text string (Default: 7 = UTF-8). See [charset values](http://doc.wakanda.org/home2.en.html#/Wakanda/0.Beta/TextStream.301-684310.en.html) for more details.
+	 * 
+	 * ```
+	 * saveText( 'Hello World ! Here is my text saved.', 'C:/texts/chapter-1.txt' );
+	 * ```
+	 */
+	saveText(textToSave: String, file: String, charset?: Number) : void;
+	/**
+	 * Saves the text into a file.
+	 * @param textToSave Text string to save.
+	 * @param file File path where to update (POSIX path).
+	 * @param charset Defines the charset of the text string (Default: 7 = UTF-8). See [charset values](http://doc.wakanda.org/home2.en.html#/Wakanda/0.Beta/TextStream.301-684310.en.html) for more details.
+	 * 
+	 * ```
+	 * var myFile = File( 'C:/texts/chapter-1.txt' );
+	 * saveText( 'Hello World ! Here is my text saved.', myFile );
+	 * ```
+	 */
+	saveText(textToSave: String, file: File, charset?: Number) : void;
+}
+
+interface HTTP {
+	/**
+	 * Reference the HTTP server of the application
+	 */
+	httpServer: HttpServer;
+	XMLHttpRequest:XMLHttpRequest;
+}
+
+interface Storage {
+	/**
+	 * Reference the HTTP session storage of the application
+	 */
+	sessionStorage: LockableKeyValueStorage;
+	/**
+	 * Reference the application storage
+	 */
+	storage: LockableKeyValueStorage;
+
+}
+
 
 	interface BinaryStream {
 		/**
@@ -606,11 +528,11 @@ interface Blob{
 	/**
 	*Size of the Blob in bytes
 	*/
-	size: Number;
+	readonly size: number;
 	/**
 	*Media type of the Blob expressed as MIME or "" if unknown
 	*/
-	type: String;
+	readonly type: string;
 	/**
 	*copies the Blob referenced in the BLOB object (the source object) into the specified destination file
 	*/
@@ -641,264 +563,331 @@ interface Blob{
 	toString(stringFormat?: String) : String;
 }
 
-	interface Buffer {
-		/**
-		*constructor of the class objects of the Buffer type
-		*/
-		new(definition: Number, encoding?: String) : Buffer;
-		/**
-		*Number of bytes of the buffer
-		*/
-		length: Number;
-		/**
-		*copies into targetBuffer the Buffer to which it is applied
-		*/
-		copy(targetBuffer: Buffer, targetOffset: Number, sourceOffset: Number, sourceEnd?: Number) : void;
-		/**
-		*fills the Buffer to which it is applied with the character you passed in value
-		*/
-		fill(value: String, offset: Number, length?: Number) : void;
-		/**
-		*returns a 64 bit double value read from the Buffer with the Big Endian format
-		*/
-		readDoubleBE(offset: Number, noAssert?: Boolean) : Number;
-		/**
-		*returns a 64 bit double value read from the Buffer with the Little Endian format
-		*/
-		readDoubleLE(offset: Number, noAssert?: Boolean) : Number;
-		/**
-		*returns a 32-bit float value read from the Buffer with the Big Endian format
-		*/
-		readFloatBE(offset: Number, noAssert?: Boolean) : Number;
-		/**
-		*returns a 32-bit float value read from the Buffer with the Little Endian format
-		*/
-		readFloatLE(offset: Number, noAssert: Boolean) : Number;
-		/**
-		*returns an unsigned 16-bit integer value read from the Buffer with the Big Endian format
-		*/
-		readInt16BE(offset: Number, noAssert?: Boolean) : Number;
-		/**
-		*returns a signed 16-bit integer value read from the Buffer with the Little Endian format
-		*/
-		readInt16LE(offset: Number, noAssert?: Boolean) : Number;
-		/**
-		*returns a signed 24-bit integer value read from the Buffer with the Big Endian format
-		*/
-		readInt24BE(offset: Number, noAssert?: Boolean) : Number;
-		/**
-		*returns a signed 24-bit integer value read from the Buffer with the Little Endian format
-		*/
-		readInt24LE(offset: Number, noAssert?: Boolean) : Number;
-		/**
-		*returns a signed 32-bit integer value read from the Buffer with the Big Endian format
-		*/
-		readInt32BE(offset: Number, noAssert?: Boolean) : Number;
-		/**
-		*returns a signed 32-bit integer value read from the Buffer with the Little Endian format
-		*/
-		readInt32LE(offset: Number, noAssert?: Boolean) : Number;
-		/**
-		*returns a signed 8-bit integer value read from the Buffer to which it is applied
-		*/
-		readInt8(offset: Number, noAssert?: Boolean) : Number;
-		/**
-		*returns an unsigned 16-bit integer value read from the Buffer with the Big Endian format
-		*/
-		readUInt16BE(offset: Number, noAssert?: Boolean) : Number;
-		/**
-		*returns an unsigned 16-bit integer value read from the Buffer with the Little Endian format
-		*/
-		readUInt16LE(offset: Number, noAssert?: Boolean) : Number;
-		/**
-		*returns an unsigned 24-bit integer value read from the Buffer with the Big Endian format
-		*/
-		readUInt24BE(offset: Number, noAssert?: Boolean) : Number;
-		/**
-		*returns an unsigned 24-bit integer value read from the Buffer with the Little Endian format
-		*/
-		readUInt24LE(offset: Number, noAssert?: Boolean) : Number;
-		/**
-		*returns an unsigned 32-bit integer value read from the Buffer with the Big Endian format
-		*/
-		readUInt32BE(offset: Number, noAssert?: Boolean) : Number;
-		/**
-		*returns an unsigned 32-bit integer value read from the Buffer with the Little Endian format
-		*/
-		readUInt32LE(offset: Number, noAssert?: Boolean) : Number;
-		/**
-		*returns an unsigned 8-bit integer value read from the Buffer to which it is applied
-		*/
-		readUInt8(offset: Number, noAssert?: Boolean) : Number;
-		/**
-		*creates a new Buffer object by referencing the contents of the bytes array of the Buffer to which it is applied, from start to end
-		*/
-		slice(start: Number, end?: Number) : Buffer;
-		/**
-		*returns a Blob object containing a copy of the Buffer bytes
-		*/
-		toBlob(mimeType?: String) : Blob;
-		/**
-		*converts the buffer contents into a string
-		*/
-		toString(encoding: String, start: Number, end?: Number) : String;
-		/**
-		*writes the string parameter to the Buffer at the offset position and returns the number of bytes written
-		*/
-		write(string: String, offset?: Number, encoding?: String) : Number;
-		/**
-		*writes the 64-bit double value to the Buffer with the Big Endian format
-		*/
-		writeDoubleBE(value: Number, offset: Number, noAssert?: Boolean) : void;
-		/**
-		*writes the 64-bit double value to the Buffer with the Little Endian format
-		*/
-		writeDoubleLE(value: Number, offset: Number, noAssert?: Boolean) : void;
-		/**
-		*writes the 32-bit float value to the Buffer with the Big Endian format
-		*/
-		writeFloatBE(value: Number, offset: Number, noAssert?: Boolean) : void;
-		/**
-		*writes the 32-bit float value to the Buffer with the Little Endian format
-		*/
-		writeFloatLE(value: Number, offset: Number, noAssert?: Boolean) : void;
-		/**
-		*writes the 16-bit signed integer value to the Buffer with the Big Endian format
-		*/
-		writeInt16BE(value: Number, offset: Number, noAssert?: Boolean) : void;
-		/**
-		*writes the 16-bit signed integer value to the Buffer with the Little Endian format
-		*/
-		writeInt16LE(value: Number, offset: Number, noAssert?: Boolean) : void;
-		/**
-		*writes the 24-bit signed integer value to the Buffer with the Big Endian format
-		*/
-		writeInt24BE(value: Number, offset: Number, noAssert?: Boolean) : void;
-		/**
-		*writes the 24-bit signed integer value to the Buffer with the Little Endian format
-		*/
-		writeInt24LE(value: Number, offset: Number, noAssert?: Boolean) : void;
-		/**
-		*writes the 32-bit signed integer value to the Buffer with the Big Endian format
-		*/
-		writeInt32BE(value: Number, offset: Number, noAssert?: Boolean) : void;
-		/**
-		*writes the 32-bit signed integer value to the Buffer with the Little Endian format
-		*/
-		writeInt32LE(value: Number, offset: Number, noAssert?: Boolean) : void;
-		/**
-		*writes the 8-bit signed integer value to the Buffer to which it is applied
-		*/
-		writeInt8(value: Number, offset: Number, noAssert?: Boolean) : void;
-		/**
-		*writes the 16-bit unsigned integer value to the Buffer with the Big Endian format
-		*/
-		writeUInt16BE(value: Number, offset: Number, noAssert?: Boolean) : void;
-		/**
-		*writes the 16-bit unsigned integer value to the Buffer with the Little Endian format
-		*/
-		writeUInt16LE(value: Number, offset: Number, noAssert?: Boolean) : void;
-		/**
-		*writes the 24-bit unsigned integer value to the Buffer with the Big Endian format
-		*/
-		writeUInt24BE(value: Number, offset: Number, noAssert?: Boolean) : void;
-		/**
-		*writes the 24-bit unsigned integer value to the Buffer with the Little Endian format
-		*/
-		writeUInt24LE(value: Number, offset: Number, noAssert?: Boolean) : void;
-		/**
-		*writes the 32-bit unsigned integer value to the Buffer with the Big Endian format
-		*/
-		writeUInt32BE(value: Number, offset: Number, noAssert?: Boolean) : void;
-		/**
-		*writes the 32-bit unsigned integer value to the Buffer with the Little Endian format
-		*/
-		writeUInt32LE(value: Number, offset: Number, noAssert?: Boolean) : void;
-		/**
-		*writes the 8-bit unsigned integer value to the Buffer to which it is applied
-		*/
-		writeUInt8(value: Number, offset: Number, noAssert?: Boolean) : void;
-	}
-
-	interface ConnectionSession {
-		/**
-		*Expiration date
-		*/
-		expiration: Date;
-		/**
-		*Internal ID of the session
-		*/
-		ID: String;
-		/**
-		*Lifetime of the session in seconds (default is 3600)
-		*/
-		lifeTime: Number;
-		/**
-		*sessionStorage object of the user session
-		*/
-		storage: Storage;
-		/**
-		*User who runs the connection session
-		*/
-		user: User;
-		/**
-		*returns true if the current session belongs to the group
-		*/
-		belongsTo(group: String) : Boolean;
-		/**
-		*returns true if the current session belongs to the group
-		*/
-		belongsTo(group: Group) : Boolean;
-		/**
-		*returns true if the current session belongs to the group and throws an error if false
-		*/
-		checkPermission(group: String) : Boolean;
-		/**
-		*returns true if the current session belongs to the group and throws an error if false
-		*/
-		checkPermission(group: Group) : Boolean;
-		/**
-		*makes the user session expire
-		*/
-		forceExpire() : void;
-		/**
-		*temporarily promotes the current session into the group
-		*/
-		promoteWith(group: Group) : Number;
-		/**
-		*temporarily promotes the current session into the group
-		*/
-		promoteWith(group: String) : Number;
-		/**
-		*stops the temporary promotion set for the current session using the promoteWith( ) method
-		*/
-		unPromote(token: Number) : void;
-	}interface ConnectionSessionInfo{
-    /**
-     *UUID string referencing the user. It can be any ID but must not be an existing user ID
-     */
-    ID : string;
-    /**
-     *Username of the User
-     */
-    name : string;
-    /**
-     *Full Name of the User
-     */
-    fullName : string;
-    /**
-     *Array of UUID strings or array of group names referencing the groups the user must belong to
-     */
-    belongsTo : string[];
-    /**
-     *sessionStorage property of the user session (optional)
-     */
-    storage : Object;
-    /**
-     *Define the session time to live for the user session (optional)
-     */
-    lifeTime : Number;
+interface Buffer {
+	/**
+	 * Buffer constructor
+	 * @param size The number of bytes to allocate for the buffer
+	 * @param encoding Encoding available: `ascii`, `utf8`, `ucs2`, `hex`, `base64`
+	 * 
+	 * ```
+	 * var myBuffer = new Buffer( 16*1024 );
+	 * var myBuffer = new Buffer( 16*1024, 'utf8' );
+	 * ```
+	 */
+	new(size: Number, encoding?: String) : Buffer;
+	/**
+	 * Number of bytes of the buffer
+	 */
+	length: Number;
+	/**
+	 * Copies the current buffer into the target buffer
+	 * @param targetBuffer Defines the buffer where to copy the data
+	 * @param targetOffset (default: 0) Byte offset where to start writing the data
+	 * @param sourceOffset (default: 0) Byte offset where to start reading the data
+	 * @param sourceEnd (default: buffer.length) Byte offset where to end reading the data
+	 * 
+	 * ```
+	 * b1 = new Buffer(26);
+	 * b2 = new Buffer(26);
+	 * for (var i = 0 ; i < 26 ; i++) {
+  	 *   b1[i] = i + 65; // 65 is "A" character in UTF8
+     *   b2[i] = 42; // 42 is "*"
+     * }
+	 * b1.copy(b2, 6, 8, 22);
+     * b2.toString('utf8', 0, 26);
+	 * ```
+	 */
+	copy(targetBuffer: Buffer, targetOffset?: Number, sourceOffset?: Number, sourceEnd?: Number) : void;
+	/**
+	*fills the Buffer to which it is applied with the character you passed in value
+	*/
+	fill(value: String, offset?: Number, length?: Number) : void;
+	/**
+	*creates a new Buffer object by referencing the contents of the bytes array of the Buffer to which it is applied, from start to end
+	*/
+	slice(start: Number, end?: Number) : Buffer;
+	/**
+	*returns a Blob object containing a copy of the Buffer bytes
+	*/
+	toBlob(mimeType?: String) : Blob;
+	/**
+	*converts the buffer contents into a string
+	*/
+	toString(encoding: String, start: Number, end?: Number) : String;
+	/**
+	*writes the string parameter to the Buffer at the offset position and returns the number of bytes written
+	*/
+	write(string: String, offset?: Number, encoding?: String) : Number;
+	/**
+	*returns a 64 bit double value read from the Buffer with the Big Endian format
+	*/
+	readDoubleBE(offset: Number, noAssert?: Boolean) : Number;
+	/**
+	*returns a 64 bit double value read from the Buffer with the Little Endian format
+	*/
+	readDoubleLE(offset: Number, noAssert?: Boolean) : Number;
+	/**
+	*returns a 32-bit float value read from the Buffer with the Big Endian format
+	*/
+	readFloatBE(offset: Number, noAssert?: Boolean) : Number;
+	/**
+	*returns a 32-bit float value read from the Buffer with the Little Endian format
+	*/
+	readFloatLE(offset: Number, noAssert: Boolean) : Number;
+	/**
+	*returns an unsigned 16-bit integer value read from the Buffer with the Big Endian format
+	*/
+	readInt16BE(offset: Number, noAssert?: Boolean) : Number;
+	/**
+	*returns a signed 16-bit integer value read from the Buffer with the Little Endian format
+	*/
+	readInt16LE(offset: Number, noAssert?: Boolean) : Number;
+	/**
+	*returns a signed 24-bit integer value read from the Buffer with the Big Endian format
+	*/
+	readInt24BE(offset: Number, noAssert?: Boolean) : Number;
+	/**
+	*returns a signed 24-bit integer value read from the Buffer with the Little Endian format
+	*/
+	readInt24LE(offset: Number, noAssert?: Boolean) : Number;
+	/**
+	*returns a signed 32-bit integer value read from the Buffer with the Big Endian format
+	*/
+	readInt32BE(offset: Number, noAssert?: Boolean) : Number;
+	/**
+	*returns a signed 32-bit integer value read from the Buffer with the Little Endian format
+	*/
+	readInt32LE(offset: Number, noAssert?: Boolean) : Number;
+	/**
+	*returns a signed 8-bit integer value read from the Buffer to which it is applied
+	*/
+	readInt8(offset: Number, noAssert?: Boolean) : Number;
+	/**
+	*returns an unsigned 16-bit integer value read from the Buffer with the Big Endian format
+	*/
+	readUInt16BE(offset: Number, noAssert?: Boolean) : Number;
+	/**
+	*returns an unsigned 16-bit integer value read from the Buffer with the Little Endian format
+	*/
+	readUInt16LE(offset: Number, noAssert?: Boolean) : Number;
+	/**
+	*returns an unsigned 24-bit integer value read from the Buffer with the Big Endian format
+	*/
+	readUInt24BE(offset: Number, noAssert?: Boolean) : Number;
+	/**
+	*returns an unsigned 24-bit integer value read from the Buffer with the Little Endian format
+	*/
+	readUInt24LE(offset: Number, noAssert?: Boolean) : Number;
+	/**
+	*returns an unsigned 32-bit integer value read from the Buffer with the Big Endian format
+	*/
+	readUInt32BE(offset: Number, noAssert?: Boolean) : Number;
+	/**
+	*returns an unsigned 32-bit integer value read from the Buffer with the Little Endian format
+	*/
+	readUInt32LE(offset: Number, noAssert?: Boolean) : Number;
+	/**
+	*returns an unsigned 8-bit integer value read from the Buffer to which it is applied
+	*/
+	readUInt8(offset: Number, noAssert?: Boolean) : Number;
+	/**
+	*writes the 64-bit double value to the Buffer with the Big Endian format
+	*/
+	writeDoubleBE(value: Number, offset: Number, noAssert?: Boolean) : void;
+	/**
+	*writes the 64-bit double value to the Buffer with the Little Endian format
+	*/
+	writeDoubleLE(value: Number, offset: Number, noAssert?: Boolean) : void;
+	/**
+	*writes the 32-bit float value to the Buffer with the Big Endian format
+	*/
+	writeFloatBE(value: Number, offset: Number, noAssert?: Boolean) : void;
+	/**
+	*writes the 32-bit float value to the Buffer with the Little Endian format
+	*/
+	writeFloatLE(value: Number, offset: Number, noAssert?: Boolean) : void;
+	/**
+	*writes the 16-bit signed integer value to the Buffer with the Big Endian format
+	*/
+	writeInt16BE(value: Number, offset: Number, noAssert?: Boolean) : void;
+	/**
+	*writes the 16-bit signed integer value to the Buffer with the Little Endian format
+	*/
+	writeInt16LE(value: Number, offset: Number, noAssert?: Boolean) : void;
+	/**
+	*writes the 24-bit signed integer value to the Buffer with the Big Endian format
+	*/
+	writeInt24BE(value: Number, offset: Number, noAssert?: Boolean) : void;
+	/**
+	*writes the 24-bit signed integer value to the Buffer with the Little Endian format
+	*/
+	writeInt24LE(value: Number, offset: Number, noAssert?: Boolean) : void;
+	/**
+	*writes the 32-bit signed integer value to the Buffer with the Big Endian format
+	*/
+	writeInt32BE(value: Number, offset: Number, noAssert?: Boolean) : void;
+	/**
+	*writes the 32-bit signed integer value to the Buffer with the Little Endian format
+	*/
+	writeInt32LE(value: Number, offset: Number, noAssert?: Boolean) : void;
+	/**
+	*writes the 8-bit signed integer value to the Buffer to which it is applied
+	*/
+	writeInt8(value: Number, offset: Number, noAssert?: Boolean) : void;
+	/**
+	*writes the 16-bit unsigned integer value to the Buffer with the Big Endian format
+	*/
+	writeUInt16BE(value: Number, offset: Number, noAssert?: Boolean) : void;
+	/**
+	*writes the 16-bit unsigned integer value to the Buffer with the Little Endian format
+	*/
+	writeUInt16LE(value: Number, offset: Number, noAssert?: Boolean) : void;
+	/**
+	*writes the 24-bit unsigned integer value to the Buffer with the Big Endian format
+	*/
+	writeUInt24BE(value: Number, offset: Number, noAssert?: Boolean) : void;
+	/**
+	*writes the 24-bit unsigned integer value to the Buffer with the Little Endian format
+	*/
+	writeUInt24LE(value: Number, offset: Number, noAssert?: Boolean) : void;
+	/**
+	*writes the 32-bit unsigned integer value to the Buffer with the Big Endian format
+	*/
+	writeUInt32BE(value: Number, offset: Number, noAssert?: Boolean) : void;
+	/**
+	*writes the 32-bit unsigned integer value to the Buffer with the Little Endian format
+	*/
+	writeUInt32LE(value: Number, offset: Number, noAssert?: Boolean) : void;
+	/**
+	*writes the 8-bit unsigned integer value to the Buffer to which it is applied
+	*/
+	writeUInt8(value: Number, offset: Number, noAssert?: Boolean) : void;
 }
+
+
+interface ConnectionSession {
+	/**
+	 * Describes the session expiration date
+	 */
+	expiration: Date;
+	/**
+	 * Describes the session internal ID
+	 */
+	ID: String;
+	/**
+	 * Describes the session lifetime (default: 3600 seconds)
+	 */
+	lifeTime: Number;
+	/**
+	 * Describes the user session storage
+	 */
+	storage: KeyValueStorage;
+	/**
+	 * Describes the session user
+	 */
+	user: User;
+	/**
+	 * Check if the session belongs to the group
+	 * @param Describes a group name
+	 * @returns Returns `true` if the user belongs to the group, `false` otherwise.
+	 */
+	belongsTo(group: String) : Boolean;
+	/**
+	 * Check if the session belongs to the group
+	 * @param Describes a group object
+	 * @returns Returns `true` if the user belongs to the group, `false` otherwise.
+	 */
+	belongsTo(group: Group) : Boolean;
+	/**
+	 * returns true if the current session belongs to the group and throws an error if false
+	 */
+	checkPermission(group: String) : Boolean;
+	/**
+	 * returns true if the current session belongs to the group and throws an error if false
+	 */
+	checkPermission(group: Group) : Boolean;
+	/**
+	 * makes the user session expire
+	 */
+	forceExpire() : void;
+	/**
+	 * temporarily promotes the current session into the group
+	 */
+	promoteWith(group: Group) : Number;
+	/**
+	 * temporarily promotes the current session into the group
+	 */
+	promoteWith(group: String) : Number;
+	/**
+	 * stops the temporary promotion set for the current session using the promoteWith( ) method
+	 */
+	unPromote(token: Number) : void;
+}
+
+interface ConnectionSessionInfo{
+    /**
+     * UUID String referencing the user. It can be any ID but must not be an existing user ID
+     */
+    ID : String;
+    /**
+     * Username of the User
+     */
+    name : String;
+    /**
+     * Full Name of the User
+     */
+    fullName? : String;
+    /**
+     * Array of UUID strings or Array of group names referencing the groups the user must belong to
+     */
+    belongsTo? : String[];
+    /**
+     * Defines the session storage property of the user session
+     */
+    storage? : KeyValueStorage;
+    /**
+     * Defines the session time to live for the user session
+     */
+    lifeTime? : Number;
+}interface Console {
+	/**
+	 * Get logged messages
+	 * ```
+	 * var lastLogs = console.content.join('\n');
+     * ```
+	 */
+	content: Array<String>;
+	/**
+	 * Writes message to the log file and the debugger's console with a visual "ERROR" label.
+	 * @see console.log() for more details
+	 */
+	error(message: String, ...subst: Any[]) : void;
+	error(message: Object) : void;
+	/**
+	 * Writes message to the log file and the debugger's console.
+	 * @param message Message to log. Can use the following substitution strings: %o, %s, %d, %i, %f.
+	 * @param subst Substitution value
+	 * ```
+	 * console.log('Hello World!');
+	 * // Hello World!
+	 * console.log("I'm %d years old.", userAge);
+	 * // I'm 20 years old.
+	 * console.log('My first car was a', car, '. The object is: ', someObject);
+	 * // My first car was a Toyota. The object is: { name: 'Toyota' }
+	 * console.log({ str: 'Some text', id: 5 });
+	 * // { str: 'Some text', id: 5 }
+	 * ```
+	 */
+	log(message: String, ...subst: Any[]) : void;
+	log(message: Object) : void;
+	/**
+	 * Writes message to the log file and the debugger's console with a visual "WARNING" label.
+	 * @see console.log() for more details
+	 */
+	warn(message: String, ...subst: Any[]) : void;
+	warn(message: Object) : void;
+}
+
 
 interface Datastore {
 
@@ -1439,94 +1428,327 @@ interface EntityCollection {
 
 interface DatastoreClassAttribute extends String {
 	
-}	
-	
-	
-	
-	
-	interface Directory {
-		/**
-		*Internal directory datastore
-		*/
-		internalStore: Datastore;
-		/**
-		 *The user who opened the current user session on the server 
-		 */
-		currentUser : User;
-		/**
-		 * object identifying the current session under which the current user is actually running on the server
-		 */
-		currentSession : ConnectionSession;
-		/**
-		*creates a new group in the solution's Directory and returns it as a Group object
-		*/
-		addGroup(name: String, fullName?: String) : Group;
-		/**
-		*creates a new user in the solution's Directory and returns it as a User object
-		*/
-		addUser(name: String, password: String, fullName?: String) : User;
-		/**
-		*returns the HA1 key resulting from the combination of userName, password and (optionally) realm parameters using a hash function
-		*/
-		computeHA1(userName: String, password: String, realm?: String) : String;
-		/**
-		*returns all groups whose name starts with filterString in the Directory
-		*/
-		filterGroups(filterString: String) : Array<Group>;
-		/**
-		*returns all users whose names starts with filterString in the Directory
-		*/
-		filterUsers(filterString: String) : Array<User>;
-		/**
-		*returns the name of the loginListener function set by setLoginListener( ) for the solution, if any
-		*/
-		getLoginListener() : String;
-		/**
-		*returns the local Group object referencing the remote group with the alias (i.e. the local name) you passed in the alias parameter
-		*/
-		getRemoteGroupByAlias(alias: String) : Group;
-		/**
-		*returns a local Group object referencing the remote group that corresponds to the unique Distinguished Name (DN) you passed in the dn parameter
-		*/
-		getRemoteGroupByDN(dn: String) : Group;
-		/**
-		*returns a Group object containing the group corresponding to the name (or ID) you passed in the name parameter
-		*/
-		group(name: String) : Group;
-		/**
-		*returns true if the solution is currently running under the controlled admin access mode, and false if it is under the free access mode
-		*/
-		hasAdministrator() : Boolean;
-		/**
-		*saves all changes made to the open solution directory
-		*/
-		save(backup?: String) : Boolean;
-		/**
-		*saves all changes made to the open solution directory
-		*/
-		save(backup?: File) : Boolean;
-		/**
-		 *set a Wakanda SSJS module as session manager, to handle all session operations : readSession, writeSession and deleteSession
-		 */
-		setSessionManager(modulePath: String);
-		/**
-		*set a loginListener function to handle login requests for your Wakanda solution
-		*/
-		setLoginListener(loginListener: String, group?: Group) : void;
-		/**
-		*set a loginListener function to handle login requests for your Wakanda solution
-		*/
-		setLoginListener(loginListener: String, group?: String) : void;
-		/**
-		*synchronizes the local Wakanda directory (.waDirectory file) with a remote LDAP directory
-		*/
-		sync(remoteLDAP?: Object) : void;
-		/**
-		*returns an User object containing the user corresponding to the name (or ID) you passed in the name parameter
-		*/
-		user(name: String) : User;
-	}
-	
+}
+
+
+
+
+/**
+ * References the directory of the application
+ * 
+ * ```
+ * // directory is available from the global object
+ * console.log(directory);
+ * ```
+ */
+
+interface Directory {
+	/**
+	 * Create a new user session and sets it as the current session
+	 * @param sessionObj Describes the session to create
+	 * @param keepPreviousSession (default `false`) Set to `true` if you want to keep the previous user session, `false` if you want to expire the previous user session.
+	 * 
+	 * ```
+	 * var cur = currentSession();
+	 * console.log(cur.ID);
+	 * // BF44D6E51B8FAKE485D8966ED3EDF6DD
+	 * 
+	 * // Create a new session and keep previous session
+	 * directory.createUserSession(
+	 *   {
+	 *     ID: '0001000100010001000100010001000100010001',
+	 *     name: 'jsmith',
+	 *     fullName: 'Jennifer Smith',
+	 *     belongsTo: [ 'Manager' ]
+	 *   },
+	 *   true
+	 * );
+	 * 
+	 * console.log(directory.currentSession.ID);
+	 * // 1E121BA4AE82446B9FDB430F0A9055C6
+	 * // The new session is now the current session
+	 * 
+	 * var previousSession = getSession('BF44D6E51B8FAKE485D8966ED3EDF6DD');
+	 * console.log(previousSession.ID);
+	 * // BF44D6E51B8FAKE485D8966ED3EDF6DD
+	 * // The previous session is still valid
+	 * ```
+	 */
+	createUserSession(sessionObj: ConnectionSessionInfo, keepPreviousSession?: Boolean) : void;
+	/**
+	 * The current user who opened the user session
+	 */
+	currentUser : User;
+	/**
+	 * The current user session
+	 */
+	currentSession : ConnectionSession;
+	/**
+	 * Add a new group to the directory and returns it
+	 * @param name Describes the group name
+	 * @returns Returns the new group
+	 * @warning All updates done to the `directory` are temporary. Use `directory.save()` in order to survive a reboot.
+	 * 
+	 * ```
+	 * var myNewGroup = directory.addGroup('astronauts');
+	 * ```
+	 */
+	addGroup(name: String) : Group;
+	/**
+	 * Add a new user to the directory and returns it
+	 * @param name Describes the user name
+	 * @param password Describes the user password
+	 * @param fullName Describes the user fullname
+	 * @returns Returns the new user
+	 * @warning All updates done to the `directory` are temporary. Use `directory.save()` in order to survive a reboot.
+	 * 
+	 * ```
+	 * var myNewUser = directory.addUser('Thomas Pesquet');
+	 * ```
+	 */
+	addUser(name: String, password: String, fullName?: String) : User;
+	/**
+	* Gets the HA1 key resulting from the combination of userName, password and (optionally) realm parameters using a hash Function
+	*/
+	computeHA1(userName: String, password: String, realm?: String) : String;
+	/**
+	 * Returns all directory groups starting with `filterString`
+	 * @param filterString Describe the filtering string
+	 * @returns Returns an array of group
+	 * 
+	 * ```
+	 * var myGroups = directory.filterGroups("*pers");
+	 * ```
+	 */
+	filterGroups(filterString: String) : Array<Group>;
+	/**
+	 * Returns all directory users starting with `filterString`
+	 * @param filterString Describe the filtering string
+	 * @returns Returns an array of user
+	 * 
+	 * ```
+	 * var myUsers = directory.filterUsers("Jo*");
+	 * ```
+	 */
+	filterUsers(filterString: String) : Array<User>;
+	/**
+	*returns the local Group Object referencing the remote group with the alias (i.e. the local name) you passed in the alias parameter
+    * @warning Requires LDAP component.
+	*/
+	/**
+	 * Get an active session object from a session id
+	 * @param sessionID Describes the string session id
+	 * @returns Returns the session object if any
+	 * 
+	 * ```
+	 * var previousSession = getSession('BF44D6E51B8FAKE485D8966ED3EDF6DD');
+	 * ```
+	 */
+	getSession(sessionID: String) : ConnectionSession;
+	/**
+	 * Get all active user sessions
+	 * @returns Returns an array of session object if any
+	 * 
+	 * ```
+	 * // Get all active user session
+	 * var sessionArray = getUserSessions();
+	 * ```
+	 */
+	getUserSessions() : Array<ConnectionSession>;
+	/**
+	 * Get all active user sessions for a user ID
+	 * @param userId Describes a user ID.
+	 * @returns Returns an array of session object if any.
+	 * 
+	 * ```
+	 * // Get all active user session for the current user
+	 * var sessionArray = getUserSessions(currentSession().user.ID);
+	 * ```
+	 */
+	getUserSessions(userId: String) : Array<ConnectionSession>;
+	/**
+	 * Get all active user sessions for a user
+	 * @param user Describes a user object.
+	 * @returns Returns an array of session object if any.
+	 * 
+	 * ```
+	 * // Get all active user session for the current user
+	 * var sessionArray = getUserSessions(currentSession().user);
+	 * ```
+	 */
+	getUserSessions(user: User) : Array<ConnectionSession>;
+	getRemoteGroupByAlias(alias: String) : Group;
+	/**
+	*returns a local Group Object referencing the remote group that corresponds to the unique Distinguished Name (DN) you passed in the dn parameter
+	* @warning Requires LDAP component.
+	*/
+	getRemoteGroupByDN(dn: String) : Group;
+	/**
+	 * Gets a group from its name or ID
+	 * @param name Describes the group name or ID
+	 * @returns Returns the group
+	 * 
+	 * ```
+	 * var myGroup = directory.group( "Spies" );
+	 * ```
+	 */
+	group(name: String) : Group;
+	/**
+	 * Authenticates a user by their name and key and, in case of success, opens a new user Session on the server
+	 * @param name Describes the user name
+	 * @param key Describes a computed key associated to the user
+	 * @param timeOut Defines the user session timeout (in seconds)
+	 * @returns Returns `true` if authentication succeed and `false` if an error occured
+	 * 
+	 * ```
+	 * loginByKey('john', '6153A6FA0E4880D9B8D0BE4720F78E895265D0A9');
+	 * loginByKey('john', '6153A6FA0E4880D9B8D0BE4720F78E895265D0A9', 60*60);
+	 * ```
+	 */
+	loginByKey(name: String, key: String, timeOut?: Number) : Boolean;
+	/**
+	 * Authenticates a user by their name and password and, in case of success, opens a new user Session on the server
+	 * @param name Describes the user name
+	 * @param password Describes the user password
+	 * @param timeOut Defines the user session timeout (in seconds)
+	 * @returns Returns `true` if authentication succeed and `false` if an error occured
+	 * 
+	 * ```
+	 * loginByPassword('john', 'my-password');
+	 * loginByPassword('john', 'my-password', 60*60);
+	 * ```
+	 */
+	loginByPassword(name: String, password: String, timeOut?: Number) : Boolean;
+	/**
+	 * Logs out the user from its current session on the Wakanda server
+	 * @returns Returns `true` if the user has been successfully logged out and `false` if an error occured
+	 * 
+	 * ```
+	 * logout();
+	 * ```
+	 */
+	logout() : Boolean;
+	/**
+	 * Saves all changes made in the directory
+	 * @param backup Describes a file path for the directory backup.
+	 * @returns Returns `true` if successfully saved, `false` otherwise.
+	 * 
+	 * ```
+	 * directory.save();
+	 * directory.save( 'c:/wakanda/backups/date.waDirectory' );
+	 * ```
+	 */
+	save(backup?: String) : Boolean;
+	/**
+	 * Saves all changes made in the directory
+	 * @param backup Describes a file for the directory backup.
+	 * @returns Returns `true` if successfully saved, `false` otherwise.
+	 * 
+	 * ```
+	 * var myFile = File( 'c:/wakanda/backups/date.waDirectory' );
+	 * directory.save( myFile );
+	 * ```
+     */
+	save(backup?: File) : Boolean;
+	/**
+	 * sets the session whose UUID is passed in sessionID as the new current session of the running thread
+	 * @param sessionId Describes the active user session to set as current user session
+	 * @param forceExpire (default: `false`) Set to `true` if the previous user session must expire, `false` otherwise. 
+	 * 
+	 * ```
+	 * console.log(directory.currentSession.ID);
+	 * // 2EA82764A075497181278B2F05DA2EDA
+	 * setCurrentSession('E8CBA745124D4BE4BF7D5A224183EC8E', true);
+	 * console.log(directory.currentSession.ID);
+	 * // E8CBA745124D4BE4BF7D5A224183EC8E
+	 * getSession('2EA82764A075497181278B2F05DA2EDA');
+	 * // null
+	 * // Previous session has expire
+	 * ```
+	 */
+	setCurrentSession(sessionId: String, forceExpire?: Boolean) : void;
+	/**
+	 * Set a SSJS module as session manager
+	 * @param modulePath Describes the module path
+	 * 
+	 * ```
+	 * directory.setSessionManager('session'); // Refers to <project>/backend/modules/session module
+	 * ```
+	 * 
+	 * The module must export the following methods to handle all session operations:
+	 * 
+	 * ```
+	 * exports.readSession = function(session){
+	 *   // Handle your read action here
+	 *   return true; // Return true if success, false otherwise
+	 * }
+	 * exports.writeSession = function(session){
+	 *   // Handle your write action here
+	 *   return true; // Return true if success, false otherwise
+	 * }
+	 * exports.deleteSession =function(session){
+	 *   // Handle your delete action here
+	 *   return true; // Return true if success, false otherwise
+	 * }
+	 * ```
+	 */
+	setSessionManager(modulePath: String);
+	/**
+	 * Defines a module to manage all login requests to Wakanda Server.
+	 * 
+	 * ```
+	 * directory.setLoginManager('my-login-module');
+	 * directory.setLoginManager('my-login-module', 'myDirectoryGroup');
+	 * ```
+	 * 
+	 * This module is defined inside `<PROJECT>/backend/modules/my-login-module` or `<SOLUTION>/modules/my-login-module`.
+	 * If the module is not found in the project, it is then check inside the solution.
+	 * It must export a `login()` method and return the `user` object.
+	 * 
+	 * ```
+	 * exports.login = function(username, password){
+	 *   // Verify the username/password through Directory or any other User DB
+	 *   if (user) // If user is authenticated then return the user object
+	 *     return {
+	 *       ID: 545642165412, // Unique user ID. It must not collide with an existing Wakanda User ID from the Directory.
+	 *       name: user.name,
+	 *       fullName: user.fullname,
+	 *       belongsTo: 'free-customer', // References the Directory group where the user belongs
+	 *       storage: {} // Defines the sessionStorage property of the user session
+	 *     };
+	 *   }
+	 *   else if (!user) // If user not authenticated then return an error
+	 *   {
+	 *     return {
+	 *       error: 548, // Error code returned
+	 *       errorMessage: 'Authentication failed. Login or Password maybe wrong.' // Error text returned
+	 *     };
+	 *   }
+	 *   else // or continue using the standard process (with the internal directory)
+	 *   {
+	 *     return false;
+	 *   }
+	 * }
+	 * ```
+	 */
+	setLoginManager(moduleName: String, group?: String) : void;
+	/**
+	 * Synchronizes the local Wakanda directory with a remote LDAP directory
+	 * @warning Requires LDAP component.
+	 */
+	sync(remoteLDAP?: Object) : void;
+	/**
+	 * Gets a user from its name or ID
+	 * @param name Describes the user name or ID
+	 * @returns Returns the user
+	 * 
+	 * ```
+	 * var myUser = directory.user( "Thomas Pesquet" );
+	 * ```
+	 */
+	user(name: String) : User;
+}
+
 
 
 
@@ -1882,9 +2104,18 @@ interface DatastoreClassAttribute extends String {
 	interface FileWriterSync{
 		//TODO
 	}
+	/**
+	 * The folder API gives you the possibility to manipulate filesystem folders
+	 */
 	interface Folder {
 		/**
-		*creates a new object of type Folder
+		* creates a new Object of type Folder
+		* ```javascript
+		*   var myFile = new File("/tmp/file.txt");
+		*   if (myFile.exists){
+		*      myFile.rename("abc.txt");
+		*   }
+		* ```
 		*/
 		new(path: String) : Folder;
 		/**
@@ -2123,93 +2354,106 @@ interface DatastoreClassAttribute extends String {
 		valid() : Boolean;
 	}
 
-	
-	interface Group {
-		/**
-		*Full name of the group
-		*/
-		fullName: String;
-		/**
-		*Internal ID of the group
-		*/
-		ID: String;
-		/**
-		*Name of the group
-		*/
-		name: String;
-		/**
-		*returns an array of the subgroups belonging to the Group, filtered using the filterString parameter
-		*/
-		filterChildren(filtrerString: String, level?: Boolean) : Array<Group>;
-		/**
-		*returns an array of the subgroups belonging to the Group, filtered using the filterString parameter
-		*/
-		filterChildren(filtrerString: String, level?: String) : Array<Group>;
-		/**
-		*returns an array of the groups to which the Group belongs, filtered using the filterString parameter
-		*/
-		filterParents(filterString: String, level?: Boolean) : Array<Group>;
-		/**
-		*returns an array of the groups to which the Group belongs, filtered using the filterString parameter
-		*/
-		filterParents(filterString: String, level?: String) : Array<Group>;
-		/**
-		*returns an array of the users that belong directly or indirectly to the Group, filtered using the filterString parameter
-		*/
-		filterUsers(filterString: String, level?: Boolean) : Array<User>;
-		/**
-		*returns an array of the users that belong directly or indirectly to the Group, filtered using the filterString parameter
-		*/
-		filterUsers(filterString: String, level?: String) : Array<User>;
-		/**
-		*returns an array of the subgroups belonging to the Group
-		*/
-		getChildren(level?: Boolean) : Array<Group>;
-		/**
-		*returns an array of the subgroups belonging to the Group
-		*/
-		getChildren(level?: String) : Array<Group>;
-		/**
-		*returns an array of the groups to which the Group belongs
-		*/
-		getParents(level?: Boolean) : Array<Group>;
-		/**
-		*returns an array of the groups to which the Group belongs
-		*/
-		getParents(level?: String) : Array<Group>;
-		/**
-		*returns an array of users belonging to the Group
-		*/
-		getUsers(level?: Boolean) : Array<User>;
-		/**
-		*returns an array of users belonging to the Group
-		*/
-		getUsers(level?: String) : Array<User>;
-		/**
-		*adds Group to the group(s) you passed in the groupList parameter
-		*/
-		putInto(...groupList: String[]) : void;
-		/**
-		*adds Group to the group(s) you passed in the groupList parameter
-		*/
-		putInto(...groupList: Group[]) : void;
-		/**
-		*removes the User or Group from the solution's Directory
-		*/
-		remove() : void;
-		/**
-		*removes the Group from the group(s) you passed in the groupList parameter
-		*/
-		removeFrom(...groupList: String[]) : void;
-		/**
-		*removes the Group from the group(s) you passed in the groupList parameter
-		*/
-		removeFrom(...groupList: Group[]) : void;
-		/**
-		*sets a local name (alias) to the Group object corresponding to a remote group from a LDAP directory
-		*/
-		setAlias(alias: String) : void;
-	}	
+interface Group {
+	/**
+	 * Describes the internal group ID
+	 */
+	ID: String;
+	/**
+	 * Describes the group name
+	 */
+	name: String;
+	/**
+	 * Returns all children directory groups starting with `filterString`
+	 * @param filterString Describe the filtering string
+	 * @param level (default: `false`) Set to `true` if you want first level results. Set to `false` otherwise.
+	 * @returns Returns an array of group
+	 * 
+	 * ```
+	 * var myGroups = directory.filterChildren("*cien");
+	 * ```
+	 */
+	filterChildren(filterString: String, level?: Boolean) : Array<Group>;
+	/**
+	 * Returns all children directory groups starting with `filterString`
+	 * @param filterString Describe the filtering string
+	 * @param level (default: `false`) Set to `true` if you want first level results. Set to `false` otherwise.
+	 * @returns Returns an array of group
+	 * 
+	 * ```
+	 * var myGroups = directory.filterParents("*cien");
+	 * ```
+	 */
+	filterParents(filterString: String, level?: Boolean) : Array<Group>;
+	/**
+	 * Get children groups belonging to the current group
+	 * @param level (default: `false`) Set to `true` if you want first level results. Set to `false` otherwise.
+	 */
+	getChildren(level?: Boolean) : Array<Group>;
+	/**
+	 * Get parent groups to which the current group belongs
+	 * @param level (default: `false`) Set to `true` if you want first level results. Set to `false` otherwise.
+	 */
+	getParents(level?: Boolean) : Array<Group>;
+	/**
+	 * Get users belonging to the current group
+	 * @param level (default: `false`) Set to `true` if you want first level results. Set to `false` otherwise.
+	 */
+	getUsers(level?: Boolean) : Array<User>;
+	/**
+	 * Assignes a group to one or more groups
+	 * @param groupList Describes an array of group name
+	 * @warning All updates done to the `directory` are temporary. Use `directory.save()` in order to survive a reboot. 
+	 * 
+	 * ```
+	 * myGroup.putInto( 'sales' );
+	 * ```
+	 */
+	putInto(...groupList: String[]) : void;
+	/**
+	 * Assignes a group to one or more groups
+	 * @param groupList Describes an array of group object
+	 * @warning All updates done to the `directory` are temporary. Use `directory.save()` in order to survive a reboot. 
+	 * 
+	 * ```
+	 * var SalesGroup = directory.group( 'sales' ); 
+	 * myGroup.putInto( SalesGroup );
+	 * ```
+	 */
+	putInto(...groupList: Group[]) : void;
+	/**
+	 * Removes the group from the directory
+	 * @warning All updates done to the `directory` are temporary. Use `directory.save()` in order to survive a reboot. 
+	 */
+	remove() : void;
+	/**
+	 * Removes the group from group list
+	 * @param groupList Describes an array of group name
+	 * @warning All updates done to the `directory` are temporary. Use `directory.save()` in order to survive a reboot. 
+	 * 
+	 * ```
+	 * myGroup.removeFrom( 'sales', 'finance' );
+	 * ```
+	 */
+	removeFrom(...groupList: String[]) : void;
+	/**
+	 * Removes the group from group list
+	 * @param groupList Describes an array of group object
+	 * @warning All updates done to the `directory` are temporary. Use `directory.save()` in order to survive a reboot. 
+	 * 
+	 * ```
+	 * var group1 = directory.group( 'finance' ); 
+	 * var group2 = directory.addGroup( 'account' );
+ 	 * myGroup.removeFrom( group1 , group2 )
+	 * ```
+	 */
+	removeFrom(...groupList: Group[]) : void;
+	/**
+	 * Sets a local name (alias) to the group object corresponding to a remote group from a LDAP directory
+	 * @warning Requires LDAP component
+	 */
+	setAlias(alias: String) : void;
+}	
 	
 	
 	interface HttpServer {
@@ -2490,43 +2734,42 @@ interface HTTPResponse {
 		*returns an array containing all the jobs currently running on the Wakanda Server
 		*/
 		getJobs() : Array<Job>;
-	}interface KeyValueStorage {
-    /**
-	*Number of key/value pairs currently present in the object
-	*/
-	length: Number;
+	}interface LockableKeyValueStorage extends KeyValueStorage{
 	/**
-	*removes all key/value pairs from the Storage object
-	*/
-	clear() : void;
-	/**
-	*returns a copy of the value stored with the given key in the Storage object
-	*/
-	getItem(key: String) : any;
-	/**
-	*returns the name of the key stored at the keyIndex position in the Storage object
-	*/
-	key(keyIndex: Number) : String;
-	/**
-	*locks the Storage object to which it is applied, so that only the thread that placed it can read or modify it
-	*/
+	 * Locks the storage object. Only the current thread can read or modify the storage object.
+	 */
 	lock() : void;
 	/**
-	*allows you to remove an item from the Storage object
-	*/
-	removeItem(key: String) : void;
-	/**
-	*allows you to create or update an item in the Storage object
-	*/
-	setItem(key: String, value: any) : void;
-	/**
-	*tries to lock the Storage object to which it is applied; it returns true in case of success and false otherwise
-	*/
+	 * Tries to lock the storage object. Returns `true` in case of success and false otherwise
+	 */
 	tryLock() : Boolean;
 	/**
-	*removes a lock that was previously put on the Storage object
-	*/
+	 * Removes a lock that was previously put on the storage object
+	 */
 	unlock() : void;
+}
+
+interface KeyValueStorage {
+    /**
+	 * Gets the number of key/value pairs currently present in the storage object
+	 */
+	length: Number;
+	/**
+	 * Removes all key/value pairs from the storage object
+	 */
+	clear() : void;
+	/**
+	 * Gets a copy of the value from the storage object
+	 */
+	getItem(key: String) : any;
+	/**
+	 * Removes an item from the storage object
+	 */
+	removeItem(key: String) : void;
+	/**
+	 * Create or update an item in the storage object
+	 */
+	setItem(key: String, value: any) : void;
 }
 
 interface MIMEMessage {
@@ -2596,7 +2839,153 @@ interface MIMEMessagePart {
 }
 	interface Module {
 		//TODO
-	}interface OS {
+	}interface Mutex {
+
+	/**
+	 * Mutex constructor.
+	 * Mutex allows to control code execution order and to prevent conflicts in a multi-thread application.
+	 * It provides a way to pause execution in one thread until a condition is met in another.
+	 * @param key Describes the global mutex key
+	 * 
+	 * ```
+	 * // Creates/gets the "writeMutex" mutex available in all threads
+	 * var writeMutex = Mutex('writeMutex');
+	 * ```
+	 */
+	new(key: String) : Mutex;
+	/**
+	 * Locks the mutex or wait until it has been released to lock it; the thread execution is paused until then.
+	 * @returns Returns `true` if the mutex is locked
+	 * 
+	 * ```
+	 * var writeMutex = Mutex('writeMutex');
+	 * writeMutex.lock();
+	 * ```
+	 */
+	lock() : Boolean;
+	/**
+	 * Tries to lock the mutex or returns false if it is already locked. The thread execution is not paused.
+	 * @returns Returns `true` if the mutex is locked, `false` otherwise
+	 * 
+	 * ```
+	 * var writeMutex = Mutex('writeMutex');
+	 * writeMutex.tryLock();
+	 * ```
+	 */
+	tryLock() : Boolean;
+	/**
+	 * Unlock the mutex. The mutex must be lock in the same thread to be unlock.
+	 * @returns Returns `true` if the mutex is unlocked, `false` otherwise
+	 * 
+	 * ```
+	 * var writeMutex = Mutex('writeMutex');
+	 * writeMutex.lock();
+	 * writeMutex.unlock();
+	 * ```
+	 */
+	unlock() : Boolean;
+}
+
+/**
+ * Here is an example of a worker file
+ * 
+ * Callback to trigger when a new caller creates a SharedWorker proxy object
+ * 
+ * ```
+ * onconnect: Function;
+ * ```
+ * 
+ * Get port to communicate with the worker proxy.
+ * Always use `ports[0]`.
+ * 
+ * ```
+ * ports: Array<Port>;
+ * ```
+ * 
+ * Close the worker.
+ * 
+ * ```
+ * close() : void;
+ * ```
+ * 
+ * Allows a thread to handle events and to continue to exist after the complete code executes.
+ * @warning There is an implicit `wait()` in worker. No need to add another.
+ * 
+ * ```
+ * wait(timeout?: Number) : Boolean;
+ * ```
+ * 
+ * 
+ * Worker example
+ * 
+ * ```
+ * // Describes the worker.js file
+ * // Called when a new worker is created
+ * onconnect = function( msg )
+ * {
+ *    // Get the worker port for communication with the worker proxy
+ *    var workerPort = msg.ports[0];
+ * 
+ *    // Send a message to the worker proxy. The worker is up and running.
+ *    workerPort.postMessage({type: 'connected', says: "I'm alive!"});
+ * 
+ *    // Listen for worker proxy messages
+ *    workerPort.onmessage = function( event )
+ *    {
+ *       // We've got a message !
+ *       // The `event.data` is what the worker proxy sends using `postMessage()`. Could be a String, Number or an Object type.
+ *       // Here, `event.data` contains an object: `{type: String, says: String}`
+ *       var message = event.data;
+ *       switch( message.type )
+ *       {
+ *         // It's a hello world message
+ *         case 'hello':
+ *           // Reply to the worker proxy
+ *           workerPort.postMessage( {type: 'hello', says: 'Hello to you too!'} );
+ *           break;
+ * 
+ *         // It's a terminate message
+ *         case 'close':
+ *           // Reply to the worker proxy
+ *           workerPort.postMessage( {type: 'close', says: 'I will be back!'} );
+ *           // Close the worker
+ *           close();
+ *           break;
+ *       }
+ *    }
+ * }
+ * ```
+ */
+
+interface NodeWorker {
+    /**
+     * Shared worker constructor.
+     * Creates a new shared worker in its own thread if it does not exist yet. Then it returns a proxy object to communicate with the shared worker thread.
+     * Shared workers can be addressed from any thread, they are uniquely identified by their path and name.
+     * @param scriptPath Describes the path to worker javaScript file
+     * @param workerName Describes the worker name
+     * @returns Returns a shared worker proxy
+     * 
+     * ```
+     * // "worker.js" is defined in <PROJECT>/backend/worker.js
+     * var myWorkerProxy = new SharedWorker("backend/worker.js", "my-worker-name");
+     * ```
+     */
+    new(scriptPath: String, workerName?: String) : SharedWorker;
+    /**
+     * Use the proxy port to communicate with the share worker thread.
+     * 
+     * ```
+     * // Create a new SharedWorker and get the proxy worker
+     * var myWorkerProxy = new SharedWorker("backend/worker.js", "my-worker-name");
+     * // Get the proxy worker port for communication
+     * var workerProxyPort = myWorkerProxy.port;
+     * // Send a "wake up" message to the worker
+     * workerProxyPort.postMessage('wake-up');
+     * ```
+     */
+    port: Port;
+}interface OS {
     /**
 	*True if the server is running under a Unix OS, false otherwise
 	*/
@@ -2619,7 +3008,84 @@ interface MIMEMessagePart {
 		*returns a JSON object describing the permission defined for the specified type, resource and action
 		*/
 		findResourcePermission(type: String, resource: String, action: String) : Object;
-	}interface Process {
+	}interface Port {
+
+    /**
+     * Listen for worker or proxy worker errors.
+     * @param error Error received on the port
+     * 
+     * ```
+     * workerPort.onerror = function( error )
+     * {
+     *    // We've got an error !
+     *    console.log('Error message: '+ error.message);
+     *    console.log('From file: '+ error.filename);
+     *    console.log('Line: '+ error.lineno);
+     * }
+     * ```
+     */
+    onerror( error : Object ) : void;
+
+    /**
+     * Listen for worker or proxy worker messages.
+     * @param message Message received on the port
+     * 
+     * ```
+     * workerPort.onmessage = function( message )
+     * {
+     *    // We've got a message !
+     *    // The `message.data` is what the worker proxy sends using `postMessage()`. Could be a String, Number or an Object type.
+     *    // Here, `message.data` contains an object: `{type: String, says: String}`
+     *    var action = message.data;
+     *    switch( action.type )
+     *    {
+     *      // It's a hello world message
+     *      case 'hello':
+     *        // Reply to the worker proxy
+     *        workerPort.postMessage( {type: 'hello', says: 'Hello to you too!'} );
+     *        break;
+     * 
+     *      // It's a terminate message
+     *      case 'close':
+     *        // Reply to the worker proxy
+     *        workerPort.postMessage( {type: 'close', says: 'I will be back!'} );
+     *        // Close the worker
+     *        close();
+     *        break;
+     *    }
+     * }
+     * ```
+     */
+    onmessage( message : any ) : void;
+
+    /**
+     * Send a message to the worker or proxy worker.
+     * @param messageData Message to send to the worker
+     * 
+     * Use case 1: From a worker proxy
+     * ```
+     * // Create a new SharedWorker and get the proxy worker
+     * var myProxyWorker = new SharedWorker("backend/worker.js", "my-worker-name");
+     * // Get the proxy worker port for communication
+     * var proxyWorkerPort = myProxyWorker.port;
+     * // Send a "wake up" message to the worker
+     * proxyWorkerPort.postMessage('wake-up');
+     * ```
+     * 
+     * Use case 2: From a worker
+     * ```
+     * // worker.js
+     * onconnect = function( msg )
+     * {
+     *    // Get the worker port for communication with the worker proxy
+     *    var workerPort = msg.ports[0];
+     * 
+     *    // Send a message to the worker proxy. The worker is up and running.
+     *    workerPort.postMessage({type: 'connected', says: 'Hello world!'});
+     * ```
+     */
+    postMessage(messageData: any) : void;
+}interface Process {
     /**
 	*Wakanda internal build version, for example "2.108407"
 	*/
@@ -2670,27 +3136,110 @@ interface MIMEMessagePart {
 		*creates and manages the display of a second ProgressIndicator object in the main ProgressIndicator session being executed
 		*/
 		subSession(numElements: Number, sessionName: String, stoppable?: String) : void;
-	}interface SharedWorker {
-	/**
-	*constructor of the SharedWorker type class objects
-	*/
-	new(scriptPath: String, workerName?: String) : SharedWorker;
-	/**
-	*Callback to trigger when a new caller creates a SharedWorker proxy object
-	*/
-	onconnect: Function;
-	/**
-	*Array whose element 0 is an object containing the communication tools, including onmessage, postMessage, onerror
-	*/
-	ports: Array<any>;
-	/**
-	*ends the thread from which it is called
-	*/
-	close() : void;
-	/**
-	*allows a thread to handle events and to continue to exist after the complete code executes
-	*/
-	wait(timeout?: Number) : Boolean;
+	}
+
+/**
+ * Here is an example of a worker file
+ * 
+ * Callback to trigger when a new caller creates a SharedWorker proxy object
+ * 
+ * ```
+ * onconnect: Function;
+ * ```
+ * 
+ * Get port to communicate with the worker proxy.
+ * Always use `ports[0]`.
+ * 
+ * ```
+ * ports: Array<Port>;
+ * ```
+ * 
+ * Close the worker.
+ * 
+ * ```
+ * close() : void;
+ * ```
+ * 
+ * Allows a thread to handle events and to continue to exist after the complete code executes.
+ * @warning There is an implicit `wait()` in worker. No need to add another.
+ * 
+ * ```
+ * wait(timeout?: Number) : Boolean;
+ * ```
+ * 
+ * 
+ * Worker example
+ * 
+ * ```
+ * // Describes the content of the worker.js file
+ * // Called when a new worker is created
+ * onconnect = function( msg )
+ * {
+ *    // Get the worker port for communication with the worker proxy
+ *    var workerPort = msg.ports[0];
+ * 
+ *    // Send a message to the worker proxy. The worker is up and running.
+ *    workerPort.postMessage({type: 'connected', says: "I'm alive!"});
+ * 
+ *    // Listen for worker proxy messages
+ *    workerPort.onmessage = function( event )
+ *    {
+ *       // We've got a message !
+ *       // The `event.data` is what the worker proxy sends using `postMessage()`. Could be a String, Number or an Object type.
+ *       // Here, `event.data` contains an object: `{type: String, says: String}`
+ *       var message = event.data;
+ *       switch( message.type )
+ *       {
+ *         // It's a hello world message
+ *         case 'hello':
+ *           // Reply to the worker proxy
+ *           workerPort.postMessage( {type: 'hello', says: 'Hello to you too!'} );
+ *           break;
+ * 
+ *         // It's a terminate message
+ *         case 'close':
+ *           // Reply to the worker proxy
+ *           workerPort.postMessage( {type: 'close', says: 'I will be back!'} );
+ *           // Close the worker
+ *           close();
+ *           break;
+ *       }
+ *    }
+ * }
+ * ```
+ */
+
+interface SharedWorker {
+    /**
+     * Shared worker constructor.
+     * Creates a new shared worker in its own thread if it does not exist yet. Then it returns a proxy object to communicate with the shared worker thread.
+     * Shared workers can be addressed from any thread, they are uniquely identified by their path and name.
+     * @param scriptPath Describes the path to worker javaScript file
+     * @param workerName Describes the worker name
+     * @returns Returns a shared worker proxy
+     * 
+     * ```
+     * // "worker.js" is defined in <PROJECT>/backend/worker.js
+     * var myWorkerProxy = new SharedWorker("backend/worker.js", "my-worker-name");
+     * ```
+     */
+    new(scriptPath: String, workerName?: String) : SharedWorkerProxy ;
+}
+
+interface SharedWorkerProxy {
+    /**
+     * Use the proxy port to communicate with the share worker thread.
+     * 
+     * ```
+     * // Create a new SharedWorker and get the proxy worker
+     * var myWorkerProxy = new SharedWorker("backend/worker.js", "my-worker-name");
+     * // Get the proxy worker port for communication
+     * var workerProxyPort = myWorkerProxy.port;
+     * // Send a "wake up" message to the worker
+     * workerProxyPort.postMessage('wake-up');
+     * ```
+     */
+    port: Port;
 }		
 	interface Socket {
 		/**
@@ -2844,12 +3393,190 @@ interface MIMEMessagePart {
 		*returns Wakanda Server's "walib" folder, containing the libraries and services available client-side
 		*/
 		getWalibFolder(kind: String, format?: String) : Folder;
-		/**
-		*quits Wakanda Server
-		* @deprecated use kill command instead
-		*/
-		quitServer() : void;
-	}interface SystemWorker {
+	}
+
+
+interface SystemWorker {
+	/**
+	 * Calls a system worker (asynchronous mode).
+	 * Use the system worker proxy to get the result.
+	 * @warning The system worker can only launch executable applications. All shell instructions must be preceded by a command line interpreter like `bash`, `sh` or `cmd` depending of the OS.
+	 * @param cli Command line to execute
+	 * @param options Describes command line options
+	 * @returns Returns a system worker proxy
+	 * 
+	 * ```
+	 * // Example 1: Do a simple CLI command
+	 * // Launch "sh" executable with "-c" parameter and "ls -la /Volumes/MyDisk/MyFolder/MySubFolder/" as the action to do
+	 * var myProxy = new SystemWorker( 'sh -c ls -la /Volumes/MyDisk/MyFolder/MySubFolder/' );
+	 * 
+	 * // Example 2: Get the result and display the ouput
+	 * // Launch "git" executable with "--version" parameter
+	 * // Store the result (Buffer) in a variable
+	 * var myProxy = new SystemWorker.exec( 'git --version' );
+	 * 
+	 * // Example 3: Pass root folder options to the system worker
+	 * var options = { folder: '/Users/yann/Desktop' };
+	 * var myProxy = new SystemWorker.exec( 'sh -c ls -la', options);
+	 * 
+	 * // Example 4: Pass parameters, quotes and env variables options to the system worker
+	 * var myFolder = new Folder( 'PROJECT/backend' );
+	 * var options = {
+	 *   parameters : { folder_ref : myFolder },
+	 *   quote : '"',
+	 *   variables : { ENV_VAR_1 : 'value1' }
+	 * };
+     * var myProxy = new SystemWorker.exec( ['ls -la {file_ref}'], options);
+	 * ```
+	 */
+	new(cli: String, options?: SystemWorkerOptions) : SystemWorkerProxy;
+	/**
+	 * Calls a system worker (asynchronous mode).
+	 * Use the system worker proxy to get the result.
+	 * @warning The system worker can only launch executable applications. All shell instructions must be preceded by a command line interpreter like `bash`, `sh` or `cmd` depending of the OS.
+	 * @param cli Command line to execute
+	 * @param options Describes command line options
+	 * @returns Returns a system worker proxy
+	 * 
+	 * ```
+	 * // Example 1: Do a simple CLI command
+	 * // Launch "sh" executable with "-c" parameter and "ls -la /Volumes/MyDisk/MyFolder/MySubFolder/" as the action to do
+	 * var myProxy = new SystemWorker( 'sh -c ls -la /Volumes/MyDisk/MyFolder/MySubFolder/' );
+	 * 
+	 * // Example 2: Get the result and display the ouput
+	 * // Launch "git" executable with "--version" parameter
+	 * // Store the result (Buffer) in a variable
+	 * var myProxy = new SystemWorker( 'git --version' );
+	 * 
+	 * // Example 3: Pass root folder options to the system worker
+	 * var options = { folder: '/Users/yann/Desktop' };
+	 * var myProxy = new SystemWorker( 'sh -c ls -la', options);
+	 * 
+	 * // Example 4: Pass parameters, quotes and env variables options to the system worker
+	 * var myFolder = new Folder( 'PROJECT/backend' );
+	 * var options = {
+	 *   parameters : { folder_ref : myFolder },
+	 *   quote : '"',
+	 *   variables : { ENV_VAR_1 : 'value1' }
+	 * };
+     * var myProxy = new SystemWorker( ['ls -la {file_ref}'], options);
+	 * ```
+	 */
+	new(cli: String[], options?: SystemWorkerOptions): SystemWorkerProxy;
+	/**
+	 * Calls a system worker (asynchronous mode).
+	 * Use the system worker proxy to get the result.
+	 * @warning The system worker can only launch executable applications. All shell instructions must be preceded by a command line interpreter like `bash`, `sh` or `cmd` depending of the OS.
+	 * @param cli Command line to execute
+	 * @param options Describes command line options
+	 * @returns Returns the exit status, stdout and sterr
+	 * 
+	 * ```
+	 * // Example 1: Do a simple CLI command
+	 * // Launch "sh" executable with "-c" parameter and "ls -la /Volumes/MyDisk/MyFolder/MySubFolder/" as the action to do
+	 * var myProxy = new SystemWorker( 'sh -c ls -la /Volumes/MyDisk/MyFolder/MySubFolder/' );
+	 * 
+	 * // Example 2: Get the result and display the ouput
+	 * // Launch "git" executable with "--version" parameter
+	 * // Store the result (Buffer) in a variable
+	 * var myProxy = new SystemWorker( 'git --version' );
+	 * 
+	 * // Example 3: Pass root folder options to the system worker
+	 * var options = { folder: '/Users/yann/Desktop' };
+	 * var myProxy = new SystemWorker( 'sh -c ls -la', options);
+	 * 
+	 * // Example 4: Pass parameters, quotes and env variables options to the system worker
+	 * var myFolder = new Folder( 'PROJECT/backend' );
+	 * var options = {
+	 *   parameters : { folder_ref : myFolder },
+	 *   quote : '"',
+	 *   variables : { ENV_VAR_1 : 'value1' }
+	 * };
+     * var myProxy = new SystemWorker( ['ls -la {file_ref}'], options);
+	 * ```
+	 */
+	exec(cli: String, options?: SystemWorkerOptions) : SystemWorkerResult;
+	/**
+	 * Calls to system worker and waits for its response (synchronous mode).
+	 * @warning The system worker can only launch executable applications. All shell instructions must be preceded by a command line interpreter like `bash`, `sh` or `cmd` depending of the OS.
+	 * @param cli Command line to execute. First element is the executable. Then all next elements describe the parameters
+	 * @param options Describes command line options
+	 * @returns Returns the exit status, stdout and sterr
+	 * 
+	 * ```
+	 * // Example 1: Do a simple CLI command
+	 * // Launch "sh" executable with "-c" parameter and "ls -la /Users/<user>/Desktop" as the action to do
+	 * SystemWorker.exec( ['sh', '-c', 'ls -la /Users/<user>/Desktop'] );
+	 * 
+	 * // Example 2: Get the result and display the ouput
+	 * // Launch "git" executable with "--version" parameter
+	 * // Store the result (Buffer) in a variable
+	 * var result = SystemWorker.exec( ['git', '--version'] );
+     * console.log(result.output.toString());
+	 * // git version 2.10.0
+	 * 
+	 * // Example 3: Pass root folder options to the system worker
+	 * var options = { folder: '/Users/<user>/Desktop' };
+     * var result = SystemWorker.exec( ['sh', '-c', 'ls -la'], options);
+	 * console.log(result.output.toString());
+	 * 
+	 * // Example 4: Pass parameters, quotes and env variables options to the system worker
+	 * var myFolder = new Folder( 'PROJECT/backend' );
+	 * var options = {
+	 *   parameters : { folder_ref : myFolder },
+	 *   quote : '"',
+	 *   variables : { ENV_VAR_1 : 'value1' }
+	 * };
+     * var result = SystemWorker.exec( ['sh', '-c', 'ls -la {folder_ref}'], options);
+	 * console.log(result.output.toString());
+	 * ```
+	 */
+	exec(cli: String[], options?: SystemWorkerOptions) : SystemWorkerResult;
+}
+
+interface SystemWorkerOptions {
+	/**
+	 * Root folder for the worker executable. Native relative file paths will be resolved with this folder as parent.
+	 */
+	folder? : String | Folder;
+	/**
+	 * Passes named parameters to command line. `{name}` is replaced with the value of the `options.parameters.name` attribute. Parameters can be of type String, Number, File or Folder.
+	 */
+	parameters? : Object;
+	/**
+	 * Escapes character (can be an empty string). Named parameters may need to be escaped depending on the system worker and OS on which it is executed.
+	 */
+	quote? : String;
+	/**
+	 * String data to pass to system worker.
+	 */
+	stdin? : String;
+	/**
+	 * Defines custom environment variables for the system worker
+	 */
+	variables? : Object;
+	/**
+	 * (default: `false`) `true` to terminate the process tree started by the system worker once terminated, `false` otherwise.
+	 */
+	kill_process_tree? : Boolean;
+}
+
+interface SystemWorkerResult {
+	/**
+	 * Integer value depending on the executable. If the executable considers the operation has been executed successfully, exitStatus value is `0`
+	 */
+	exitStatus : Number;
+	/**
+	 * stdout result of the command
+	 */
+	ouput : Buffer;
+	/**
+	 * stderr result of the command
+	 */
+	error : Buffer;
+}
+
+interface SystemWorkerProxy {
 	/**
 	*Callback to trigger when an error is received
 	*/
@@ -2895,6 +3622,7 @@ interface MIMEMessagePart {
 	*/
 	wait(timeout?: Number) : Boolean;
 }
+
 interface TextStream {
 	/**
 	*creates a new TextStream object
@@ -2942,64 +3670,91 @@ interface TextStream {
 	write(text: String) : void;
 }
 
-	interface User {
-		/**
-		*Full name of the user
-		*/
-		fullName: String;
-		/**
-		*Internal ID of the user
-		*/
-		ID: String;
-		/**
-		*Name of the user
-		*/
-		name: String;
-		/**
-		*Storage object of the user
-		*/
-		storage: Storage;
-		/**
-		*returns an array of the groups to which the User belongs, filtered using the filterString parameter
-		*/
-		filterParents(filterString: String, level?: Boolean) : Array<Group>;
-		/**
-		*returns an array of the groups to which the User belongs, filtered using the filterString parameter
-		*/
-		filterParents(filterString: String, level?: String) : Array<Group>;
-		/**
-		*returns an array of the groups to which either the User belongs
-		*/
-		getParents(level?: Boolean) : Array<Group>;
-		/**
-		*returns an array of the groups to which the User belongs
-		*/
-		getParents(level?: String) : Array<Group>;
-		/**
-		*adds the User to the group(s) you passed in the groupList parameter
-		*/
-		putInto(...groupList: String[]) : void;
-		/**
-		*adds the User to the group(s) you passed in the groupList parameter
-		*/
-		putInto(...groupList: Group[]) : void;
-		/**
-		*removes the User or Group from the solution's Directory
-		*/
-		remove() : void;
-		/**
-		*removes the User from the group(s) you passed in the groupList parameter
-		*/
-		removeFrom(...groupList: String[]) : void;
-		/**
-		*removes the User from the group(s) you passed in the groupList parameter
-		*/
-		removeFrom(...groupList: Group[]) : void;
-		/**
-		*allows you to change the password for the User
-		*/
-		setPassword(password: String) : void;
-	}interface Worker {
+
+interface User {
+	/**
+	 * Describes the user full name
+	 */
+	fullName: String;
+	/**
+	 * Describes the internal user ID
+	 */
+	ID: String;
+	/**
+	 * Describe the user name
+	 */
+	name: String;
+	/**
+	 * Defines the user storage object
+	 * This object is maintained as long as the server is alive. It is not stored after the server shuts down. This property is user-related and not session-related.
+	 * 
+	 * ```
+	 * console.log(myUser.storage);
+	 * ```
+	 */
+	storage: KeyValueStorage;
+	/**
+	 * Get all groups where the user belongs to
+	 * @param level (default: `false`) Set to `true` if you want first level results. Set to `false` otherwise.
+	 * @returns Returns an array of group
+	 */
+	getParents(level?: Boolean) : Array<Group>;
+	/**
+	 * Assignes a user to one or more groups
+	 * @param groupList Describes an array of group name
+	 * @warning All updates done to the `directory` are temporary. Use `directory.save()` in order to survive a reboot. 
+	 * 
+	 * ```
+	 * myUser.putInto( 'sales', 'finance' );
+	 * ```
+	 */
+	putInto(...groupList: String[]) : void;
+	/**
+	 * Assignes a user to one or more groups
+	 * @param groupList Describes an array of group object
+	 * @warning All updates done to the `directory` are temporary. Use `directory.save()` in order to survive a reboot. 
+	 * 
+	 * ```
+	 * var group1 = directory.group( 'finance' ); 
+	 * var group2 = directory.addGroup( 'account' );
+ 	 * myUser.putInto( group1 , group2 )
+	 * ```
+	 */
+	putInto(...groupList: Group[]) : void;
+	/**
+	 * Removes the user from the directory
+	 * @warning All updates done to the `directory` are temporary. Use `directory.save()` in order to survive a reboot. 
+	 */
+	remove() : void;
+	/**
+	 * Removes the user from group list
+	 * @param groupList Describes an array of group name
+	 * @warning All updates done to the `directory` are temporary. Use `directory.save()` in order to survive a reboot. 
+	 * 
+	 * ```
+	 * myUser.removeFrom( 'sales', 'finance' );
+	 * ```
+	 */
+	removeFrom(...groupList: String[]) : void;
+	/**
+	 * Removes the user from group list
+	 * @param groupList Describes an array of group object
+	 * @warning All updates done to the `directory` are temporary. Use `directory.save()` in order to survive a reboot. 
+	 * 
+	 * ```
+	 * var group1 = directory.group( 'finance' ); 
+	 * var group2 = directory.addGroup( 'account' );
+ 	 * myUser.removeFrom( group1 , group2 )
+	 * ```
+	 */
+	removeFrom(...groupList: Group[]) : void;
+	/**
+	 * Update the user password in the directory
+	 * @param password The new password to save
+	 * @warning All updates done to the `directory` are temporary. Use `directory.save()` in order to survive a reboot. 
+	 */
+	setPassword(password: String) : void;
+}interface Worker {
 	/**
 	*constructor of the class objects of the dedicated Worker type
 	*/

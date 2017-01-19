@@ -3,11 +3,10 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Directory | </title>
+	<title>Directory | wakanda-api-reference</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
-	<script src="../assets/js/modernizr.js"></script>
 </head>
 <body>
 <header>
@@ -23,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title"></a>
+					<a href="../index.html" class="title">wakanda-api-reference</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -67,11 +66,26 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>References the directory of the application</p>
+					</div>
+					<pre><code><span class="hljs-regexp">//</span> directory <span class="hljs-keyword">is</span> available <span class="hljs-keyword">from</span> the <span class="hljs-built_in">global</span> object
+<span class="hljs-built_in">console</span>.log(directory);
+</code></pre>
+				</div>
+			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
 						<span class="target">Directory</span>
+						<ul class="tsd-hierarchy">
+							<li>
+								<a href="application.html" class="tsd-signature-type">Application</a>
+							</li>
+						</ul>
 					</li>
 				</ul>
 			</section>
@@ -84,7 +98,6 @@
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="directory.html#currentsession" class="tsd-kind-icon">current<wbr>Session</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="directory.html#currentuser" class="tsd-kind-icon">current<wbr>User</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="directory.html#internalstore" class="tsd-kind-icon">internal<wbr>Store</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section tsd-is-external tsd-is-not-exported">
@@ -93,15 +106,20 @@
 								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="directory.html#addgroup" class="tsd-kind-icon">add<wbr>Group</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="directory.html#adduser" class="tsd-kind-icon">add<wbr>User</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="directory.html#computeha1" class="tsd-kind-icon">computeHA1</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="directory.html#createusersession" class="tsd-kind-icon">create<wbr>User<wbr>Session</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="directory.html#filtergroups" class="tsd-kind-icon">filter<wbr>Groups</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="directory.html#filterusers" class="tsd-kind-icon">filter<wbr>Users</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="directory.html#getloginlistener" class="tsd-kind-icon">get<wbr>Login<wbr>Listener</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="directory.html#getremotegroupbyalias" class="tsd-kind-icon">get<wbr>Remote<wbr>Group<wbr>ByAlias</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="directory.html#getremotegroupbydn" class="tsd-kind-icon">get<wbr>Remote<wbr>Group<wbr>ByDN</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="directory.html#getsession" class="tsd-kind-icon">get<wbr>Session</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="directory.html#getusersessions" class="tsd-kind-icon">get<wbr>User<wbr>Sessions</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="directory.html#group" class="tsd-kind-icon">group</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="directory.html#hasadministrator" class="tsd-kind-icon">has<wbr>Administrator</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="directory.html#loginbykey" class="tsd-kind-icon">login<wbr>ByKey</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="directory.html#loginbypassword" class="tsd-kind-icon">login<wbr>ByPassword</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="directory.html#logout" class="tsd-kind-icon">logout</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="directory.html#save" class="tsd-kind-icon">save</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="directory.html#setloginlistener" class="tsd-kind-icon">set<wbr>Login<wbr>Listener</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="directory.html#setcurrentsession" class="tsd-kind-icon">set<wbr>Current<wbr>Session</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="directory.html#setloginmanager" class="tsd-kind-icon">set<wbr>Login<wbr>Manager</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="directory.html#setsessionmanager" class="tsd-kind-icon">set<wbr>Session<wbr>Manager</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="directory.html#sync" class="tsd-kind-icon">sync</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="directory.html#user" class="tsd-kind-icon">user</a></li>
@@ -118,12 +136,12 @@
 					<div class="tsd-signature tsd-kind-icon">current<wbr>Session<span class="tsd-signature-symbol">:</span> <a href="connectionsession.html" class="tsd-signature-type">ConnectionSession</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/74e9258/api/directory.d.ts#L18">directory.d.ts:18</a></li>
+							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/3b02270/api/directory.d.ts#L55">directory.d.ts:55</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>object identifying the current session under which the current user is actually running on the server</p>
+							<p>The current user session</p>
 						</div>
 					</div>
 				</section>
@@ -133,27 +151,12 @@
 					<div class="tsd-signature tsd-kind-icon">current<wbr>User<span class="tsd-signature-symbol">:</span> <a href="user.html" class="tsd-signature-type">User</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/74e9258/api/directory.d.ts#L14">directory.d.ts:14</a></li>
+							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/3b02270/api/directory.d.ts#L51">directory.d.ts:51</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>The user who opened the current user session on the server</p>
-						</div>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-					<a name="internalstore" class="tsd-anchor"></a>
-					<h3>internal<wbr>Store</h3>
-					<div class="tsd-signature tsd-kind-icon">internal<wbr>Store<span class="tsd-signature-symbol">:</span> <a href="datastore.html" class="tsd-signature-type">Datastore</a></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/74e9258/api/directory.d.ts#L10">directory.d.ts:10</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Internal directory datastore</p>
+							<p>The current user who opened the user session</p>
 						</div>
 					</div>
 				</section>
@@ -164,30 +167,37 @@
 					<a name="addgroup" class="tsd-anchor"></a>
 					<h3>add<wbr>Group</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-						<li class="tsd-signature tsd-kind-icon">add<wbr>Group<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">String</span>, fullName<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">String</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="group.html" class="tsd-signature-type">Group</a></li>
+						<li class="tsd-signature tsd-kind-icon">add<wbr>Group<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">String</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="group.html" class="tsd-signature-type">Group</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/74e9258/api/directory.d.ts#L22">directory.d.ts:22</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/3b02270/api/directory.d.ts#L66">directory.d.ts:66</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>creates a new group in the solution&#39;s Directory and returns it as a Group object</p>
+									<p>Add a new group to the directory and returns it</p>
 								</div>
+								<dl class="tsd-comment-tags">
+									<dt>warning</dt>
+									<dd><p>All updates done to the <code>directory</code> are temporary. Use <code>directory.save()</code> in order to survive a reboot.</p>
+										<pre><code><span class="hljs-attribute">var myNewGroup</span> = directory.addGroup(<span class="hljs-string">'astronauts'</span>);
+</code></pre></dd>
+								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>name: <span class="tsd-signature-type">String</span></h5>
-								</li>
-								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> fullName: <span class="tsd-signature-type">String</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Describes the group name</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="group.html" class="tsd-signature-type">Group</a></h4>
+							<p>Returns the new group</p>
 						</li>
 					</ul>
 				</section>
@@ -201,27 +211,43 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/74e9258/api/directory.d.ts#L26">directory.d.ts:26</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/3b02270/api/directory.d.ts#L79">directory.d.ts:79</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>creates a new user in the solution&#39;s Directory and returns it as a User object</p>
+									<p>Add a new user to the directory and returns it</p>
 								</div>
+								<dl class="tsd-comment-tags">
+									<dt>warning</dt>
+									<dd><p>All updates done to the <code>directory</code> are temporary. Use <code>directory.save()</code> in order to survive a reboot.</p>
+										<pre><code><span class="hljs-attribute">var myNewUser</span> = directory.addUser(<span class="hljs-string">'Thomas Pesquet'</span>);
+</code></pre></dd>
+								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>name: <span class="tsd-signature-type">String</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Describes the user name</p>
+									</div>
 								</li>
 								<li>
 									<h5>password: <span class="tsd-signature-type">String</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Describes the user password</p>
+									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> fullName: <span class="tsd-signature-type">String</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Describes the user fullname</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="user.html" class="tsd-signature-type">User</a></h4>
+							<p>Returns the new user</p>
 						</li>
 					</ul>
 				</section>
@@ -235,12 +261,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/74e9258/api/directory.d.ts#L30">directory.d.ts:30</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/3b02270/api/directory.d.ts#L83">directory.d.ts:83</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>returns the HA1 key resulting from the combination of userName, password and (optionally) realm parameters using a hash function</p>
+									<p>Gets the HA1 key resulting from the combination of userName, password and (optionally) realm parameters using a hash Function</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -260,6 +286,67 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
+					<a name="createusersession" class="tsd-anchor"></a>
+					<h3>create<wbr>User<wbr>Session</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
+						<li class="tsd-signature tsd-kind-icon">create<wbr>User<wbr>Session<span class="tsd-signature-symbol">(</span>sessionObj<span class="tsd-signature-symbol">: </span><a href="connectionsessioninfo.html" class="tsd-signature-type">ConnectionSessionInfo</a>, keepPreviousSession<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/3b02270/api/directory.d.ts#L47">directory.d.ts:47</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Create a new user session and sets it as the current session</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>sessionObj: <a href="connectionsessioninfo.html" class="tsd-signature-type">ConnectionSessionInfo</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Describes the session to create</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> keepPreviousSession: <span class="tsd-signature-type">Boolean</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>(default <code>false</code>) Set to <code>true</code> if you want to keep the previous user session, <code>false</code> if you want to expire the previous user session.</p>
+										<pre><code><span class="hljs-keyword">var</span> cur = currentSession();
+<span class="hljs-built_in">console</span>.log(cur.ID);
+<span class="hljs-comment">// BF44D6E51B8FAKE485D8966ED3EDF6DD</span>
+
+<span class="hljs-comment">// Create a new session and keep previous session</span>
+directory.createUserSession(
+  {
+    <span class="hljs-attr">ID</span>: <span class="hljs-string">'0001000100010001000100010001000100010001'</span>,
+    <span class="hljs-attr">name</span>: <span class="hljs-string">'jsmith'</span>,
+    <span class="hljs-attr">fullName</span>: <span class="hljs-string">'Jennifer Smith'</span>,
+    <span class="hljs-attr">belongsTo</span>: [ <span class="hljs-string">'Manager'</span> ]
+  },
+  <span class="hljs-literal">true</span>
+);
+
+<span class="hljs-built_in">console</span>.log(directory.currentSession.ID);
+<span class="hljs-comment">// 1E121BA4AE82446B9FDB430F0A9055C6</span>
+<span class="hljs-comment">// The new session is now the current session</span>
+
+<span class="hljs-keyword">var</span> previousSession = getSession(<span class="hljs-string">'BF44D6E51B8FAKE485D8966ED3EDF6DD'</span>);
+<span class="hljs-built_in">console</span>.log(previousSession.ID);
+<span class="hljs-comment">// BF44D6E51B8FAKE485D8966ED3EDF6DD</span>
+<span class="hljs-comment">// The previous session is still valid</span>
+</code></pre>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
 					<a name="filtergroups" class="tsd-anchor"></a>
 					<h3>filter<wbr>Groups</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
@@ -269,21 +356,27 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/74e9258/api/directory.d.ts#L34">directory.d.ts:34</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/3b02270/api/directory.d.ts#L93">directory.d.ts:93</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>returns all groups whose name starts with filterString in the Directory</p>
+									<p>Returns all directory groups starting with <code>filterString</code></p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>filterString: <span class="tsd-signature-type">String</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Describe the filtering string</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Array</span></h4>
+							<p>Returns an array of group</p>
+							<pre><code><span class="hljs-attribute">var myGroups</span> = directory.filterGroups(<span class="hljs-string">"*pers"</span>);
+</code></pre>
 						</li>
 					</ul>
 				</section>
@@ -297,43 +390,27 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/74e9258/api/directory.d.ts#L38">directory.d.ts:38</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/3b02270/api/directory.d.ts#L103">directory.d.ts:103</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>returns all users whose names starts with filterString in the Directory</p>
+									<p>Returns all directory users starting with <code>filterString</code></p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>filterString: <span class="tsd-signature-type">String</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Describe the filtering string</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Array</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-					<a name="getloginlistener" class="tsd-anchor"></a>
-					<h3>get<wbr>Login<wbr>Listener</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>Login<wbr>Listener<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">String</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/74e9258/api/directory.d.ts#L42">directory.d.ts:42</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>returns the name of the loginListener function set by setLoginListener( ) for the solution, if any</p>
-								</div>
-							</div>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">String</span></h4>
+							<p>Returns an array of user</p>
+							<pre><code><span class="hljs-attribute">var myUsers</span> = directory.filterUsers(<span class="hljs-string">"Jo*"</span>);
+</code></pre>
 						</li>
 					</ul>
 				</section>
@@ -347,14 +424,9 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/74e9258/api/directory.d.ts#L46">directory.d.ts:46</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/3b02270/api/directory.d.ts#L150">directory.d.ts:150</a></li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>returns the local Group object referencing the remote group with the alias (i.e. the local name) you passed in the alias parameter</p>
-								</div>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
@@ -375,13 +447,18 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/74e9258/api/directory.d.ts#L50">directory.d.ts:50</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/3b02270/api/directory.d.ts#L155">directory.d.ts:155</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>returns a local Group object referencing the remote group that corresponds to the unique Distinguished Name (DN) you passed in the dn parameter</p>
+									<p>returns a local Group Object referencing the remote group that corresponds to the unique Distinguished Name (DN) you passed in the dn parameter</p>
 								</div>
+								<dl class="tsd-comment-tags">
+									<dt>warning</dt>
+									<dd><p>Requires LDAP component.</p>
+									</dd>
+								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -390,6 +467,120 @@
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="group.html" class="tsd-signature-type">Group</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
+					<a name="getsession" class="tsd-anchor"></a>
+					<h3>get<wbr>Session</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Session<span class="tsd-signature-symbol">(</span>sessionID<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">String</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="connectionsession.html" class="tsd-signature-type">ConnectionSession</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/3b02270/api/directory.d.ts#L117">directory.d.ts:117</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Get an active session object from a session id</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>sessionID: <span class="tsd-signature-type">String</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Describes the string session id</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="connectionsession.html" class="tsd-signature-type">ConnectionSession</a></h4>
+							<p>Returns the session object if any</p>
+							<pre><code><span class="hljs-attribute">var previousSession</span> = getSession(<span class="hljs-string">'BF44D6E51B8FAKE485D8966ED3EDF6DD'</span>);
+</code></pre>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
+					<a name="getusersessions" class="tsd-anchor"></a>
+					<h3>get<wbr>User<wbr>Sessions</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>User<wbr>Sessions<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Array</span></li>
+						<li class="tsd-signature tsd-kind-icon">get<wbr>User<wbr>Sessions<span class="tsd-signature-symbol">(</span>userId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">String</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Array</span></li>
+						<li class="tsd-signature tsd-kind-icon">get<wbr>User<wbr>Sessions<span class="tsd-signature-symbol">(</span>user<span class="tsd-signature-symbol">: </span><a href="user.html" class="tsd-signature-type">User</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Array</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/3b02270/api/directory.d.ts#L127">directory.d.ts:127</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Get all active user sessions</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Array</span></h4>
+							<p>Returns an array of session object if any</p>
+							<pre><code>// Get all active <span class="hljs-keyword">user</span> <span class="hljs-title">session</span>
+var sessionArray = getUserSessions();
+</code></pre>
+						</li>
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/3b02270/api/directory.d.ts#L138">directory.d.ts:138</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Get all active user sessions for a user ID</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>userId: <span class="tsd-signature-type">String</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Describes a user ID.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Array</span></h4>
+							<p>Returns an array of session object if any.</p>
+							<pre><code>// Get all active <span class="hljs-keyword">user</span> <span class="hljs-title">session</span> for the current <span class="hljs-keyword">user</span>
+<span class="hljs-title">var</span> sessionArray = getUserSessions(currentSession().user.ID);
+</code></pre>
+						</li>
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/3b02270/api/directory.d.ts#L149">directory.d.ts:149</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Get all active user sessions for a user</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>user: <a href="user.html" class="tsd-signature-type">User</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Describes a user object.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Array</span></h4>
+							<p>Returns an array of session object if any.</p>
+							<pre><code>// Get all active <span class="hljs-keyword">user</span> <span class="hljs-title">session</span> for the current <span class="hljs-keyword">user</span>
+<span class="hljs-title">var</span> sessionArray = getUserSessions(currentSession().user);
+</code></pre>
 						</li>
 					</ul>
 				</section>
@@ -403,43 +594,146 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/74e9258/api/directory.d.ts#L54">directory.d.ts:54</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/3b02270/api/directory.d.ts#L165">directory.d.ts:165</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>returns a Group object containing the group corresponding to the name (or ID) you passed in the name parameter</p>
+									<p>Gets a group from its name or ID</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>name: <span class="tsd-signature-type">String</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Describes the group name or ID</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="group.html" class="tsd-signature-type">Group</a></h4>
+							<p>Returns the group</p>
+							<pre><code><span class="hljs-keyword">var</span> myGroup = directory.<span class="hljs-keyword">group</span>( <span class="hljs-string">"Spies"</span> );
+</code></pre>
 						</li>
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-					<a name="hasadministrator" class="tsd-anchor"></a>
-					<h3>has<wbr>Administrator</h3>
+					<a name="loginbykey" class="tsd-anchor"></a>
+					<h3>login<wbr>ByKey</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-						<li class="tsd-signature tsd-kind-icon">has<wbr>Administrator<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Boolean</span></li>
+						<li class="tsd-signature tsd-kind-icon">login<wbr>ByKey<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">String</span>, key<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">String</span>, timeOut<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Boolean</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/74e9258/api/directory.d.ts#L58">directory.d.ts:58</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/3b02270/api/directory.d.ts#L178">directory.d.ts:178</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>returns true if the solution is currently running under the controlled admin access mode, and false if it is under the free access mode</p>
+									<p>Authenticates a user by their name and key and, in case of success, opens a new user Session on the server</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>name: <span class="tsd-signature-type">String</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Describes the user name</p>
+									</div>
+								</li>
+								<li>
+									<h5>key: <span class="tsd-signature-type">String</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Describes a computed key associated to the user</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> timeOut: <span class="tsd-signature-type">Number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Defines the user session timeout (in seconds)</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Boolean</span></h4>
+							<p>Returns <code>true</code> if authentication succeed and <code>false</code> if an error occured</p>
+							<pre><code><span class="hljs-selector-tag">loginByKey</span>(<span class="hljs-string">'john'</span>, <span class="hljs-string">'6153A6FA0E4880D9B8D0BE4720F78E895265D0A9'</span>);
+<span class="hljs-selector-tag">loginByKey</span>(<span class="hljs-string">'john'</span>, <span class="hljs-string">'6153A6FA0E4880D9B8D0BE4720F78E895265D0A9'</span>, <span class="hljs-number">60</span>*<span class="hljs-number">60</span>);
+</code></pre>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
+					<a name="loginbypassword" class="tsd-anchor"></a>
+					<h3>login<wbr>ByPassword</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
+						<li class="tsd-signature tsd-kind-icon">login<wbr>ByPassword<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">String</span>, password<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">String</span>, timeOut<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/3b02270/api/directory.d.ts#L191">directory.d.ts:191</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Authenticates a user by their name and password and, in case of success, opens a new user Session on the server</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>name: <span class="tsd-signature-type">String</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Describes the user name</p>
+									</div>
+								</li>
+								<li>
+									<h5>password: <span class="tsd-signature-type">String</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Describes the user password</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> timeOut: <span class="tsd-signature-type">Number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Defines the user session timeout (in seconds)</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Boolean</span></h4>
+							<p>Returns <code>true</code> if authentication succeed and <code>false</code> if an error occured</p>
+							<pre><code><span class="hljs-selector-tag">loginByPassword</span>(<span class="hljs-string">'john'</span>, <span class="hljs-string">'my-password'</span>);
+<span class="hljs-selector-tag">loginByPassword</span>(<span class="hljs-string">'john'</span>, <span class="hljs-string">'my-password'</span>, <span class="hljs-number">60</span>*<span class="hljs-number">60</span>);
+</code></pre>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
+					<a name="logout" class="tsd-anchor"></a>
+					<h3>logout</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
+						<li class="tsd-signature tsd-kind-icon">logout<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/3b02270/api/directory.d.ts#L200">directory.d.ts:200</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Logs out the user from its current session on the Wakanda server</p>
 								</div>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Boolean</span></h4>
+							<p>Returns <code>true</code> if the user has been successfully logged out and <code>false</code> if an error occured</p>
+							<pre><code>logout()<span class="hljs-comment">;</span>
+</code></pre>
 						</li>
 					</ul>
 				</section>
@@ -454,88 +748,154 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/74e9258/api/directory.d.ts#L62">directory.d.ts:62</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/3b02270/api/directory.d.ts#L211">directory.d.ts:211</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>saves all changes made to the open solution directory</p>
+									<p>Saves all changes made in the directory</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> backup: <span class="tsd-signature-type">String</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Describes a file path for the directory backup.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Boolean</span></h4>
+							<p>Returns <code>true</code> if successfully saved, <code>false</code> otherwise.</p>
+							<pre><code><span class="hljs-built_in">directory</span>.<span class="hljs-built_in">save</span>();
+<span class="hljs-built_in">directory</span>.<span class="hljs-built_in">save</span>( 'c:/wakanda/backups/date.waDirectory' );
+</code></pre>
 						</li>
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/74e9258/api/directory.d.ts#L66">directory.d.ts:66</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/3b02270/api/directory.d.ts#L222">directory.d.ts:222</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>saves all changes made to the open solution directory</p>
+									<p>Saves all changes made in the directory</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> backup: <a href="file.html" class="tsd-signature-type">File</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Describes a file for the directory backup.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Boolean</span></h4>
+							<p>Returns <code>true</code> if successfully saved, <code>false</code> otherwise.</p>
+							<pre><code><span class="hljs-keyword">var</span> myFile = <span class="hljs-keyword">File</span>( <span class="hljs-string">'c:/wakanda/backups/date.waDirectory'</span> );
+directory.save( myFile );
+</code></pre>
 						</li>
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-					<a name="setloginlistener" class="tsd-anchor"></a>
-					<h3>set<wbr>Login<wbr>Listener</h3>
+					<a name="setcurrentsession" class="tsd-anchor"></a>
+					<h3>set<wbr>Current<wbr>Session</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-						<li class="tsd-signature tsd-kind-icon">set<wbr>Login<wbr>Listener<span class="tsd-signature-symbol">(</span>loginListener<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">String</span>, group<span class="tsd-signature-symbol">?: </span><a href="group.html" class="tsd-signature-type">Group</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-						<li class="tsd-signature tsd-kind-icon">set<wbr>Login<wbr>Listener<span class="tsd-signature-symbol">(</span>loginListener<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">String</span>, group<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">String</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">set<wbr>Current<wbr>Session<span class="tsd-signature-symbol">(</span>sessionId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">String</span>, forceExpire<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/74e9258/api/directory.d.ts#L74">directory.d.ts:74</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/3b02270/api/directory.d.ts#L239">directory.d.ts:239</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>set a loginListener function to handle login requests for your Wakanda solution</p>
+									<p>sets the session whose UUID is passed in sessionID as the new current session of the running thread</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>loginListener: <span class="tsd-signature-type">String</span></h5>
+									<h5>sessionId: <span class="tsd-signature-type">String</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Describes the active user session to set as current user session</p>
+									</div>
 								</li>
 								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> group: <a href="group.html" class="tsd-signature-type">Group</a></h5>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> forceExpire: <span class="tsd-signature-type">Boolean</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>(default: <code>false</code>) Set to <code>true</code> if the previous user session must expire, <code>false</code> otherwise.</p>
+										<pre><code><span class="hljs-selector-tag">console</span><span class="hljs-selector-class">.log</span>(directory.currentSession.ID);
+<span class="hljs-comment">// 2EA82764A075497181278B2F05DA2EDA</span>
+<span class="hljs-selector-tag">setCurrentSession</span>(<span class="hljs-string">'E8CBA745124D4BE4BF7D5A224183EC8E'</span>, true);
+<span class="hljs-selector-tag">console</span><span class="hljs-selector-class">.log</span>(directory.currentSession.ID);
+<span class="hljs-comment">// E8CBA745124D4BE4BF7D5A224183EC8E</span>
+<span class="hljs-selector-tag">getSession</span>(<span class="hljs-string">'2EA82764A075497181278B2F05DA2EDA'</span>);
+<span class="hljs-comment">// null</span>
+<span class="hljs-comment">// Previous session has expire</span>
+</code></pre>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
+					<a name="setloginmanager" class="tsd-anchor"></a>
+					<h3>set<wbr>Login<wbr>Manager</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
+						<li class="tsd-signature tsd-kind-icon">set<wbr>Login<wbr>Manager<span class="tsd-signature-symbol">(</span>moduleName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">String</span>, group<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">String</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/74e9258/api/directory.d.ts#L78">directory.d.ts:78</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/3b02270/api/directory.d.ts#L304">directory.d.ts:304</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>set a loginListener function to handle login requests for your Wakanda solution</p>
+									<p>Defines a module to manage all login requests to Wakanda Server.</p>
 								</div>
+								<pre><code><span class="hljs-selector-tag">directory</span><span class="hljs-selector-class">.setLoginManager</span>(<span class="hljs-string">'my-login-module'</span>);
+<span class="hljs-selector-tag">directory</span><span class="hljs-selector-class">.setLoginManager</span>(<span class="hljs-string">'my-login-module'</span>, <span class="hljs-string">'myDirectoryGroup'</span>);
+</code></pre><p>This module is defined inside <code>&lt;PROJECT&gt;/backend/modules/my-login-module</code> or <code>&lt;SOLUTION&gt;/modules/my-login-module</code>.
+									If the module is not found in the project, it is then check inside the solution.
+								It must export a <code>login()</code> method and return the <code>user</code> object.</p>
+								<pre><code>exports.login = function(username, password){
+  // Verify the username/password through Directory <span class="hljs-keyword">or</span> any other <span class="hljs-keyword">User</span> <span class="hljs-title">DB</span>
+  if (user) // If <span class="hljs-keyword">user</span> <span class="hljs-title">is</span> authenticated then return the <span class="hljs-keyword">user</span> <span class="hljs-title">object</span>
+    return {
+      ID: <span class="hljs-number">545642165412</span>, // Unique <span class="hljs-keyword">user</span> <span class="hljs-title">ID</span>. It must not collide with an existing Wakanda <span class="hljs-keyword">User</span> <span class="hljs-title">ID</span> from the Directory.
+      name: user.name,
+      fullName: user.fullname,
+      belongsTo: 'free-customer', // References the Directory <span class="hljs-keyword">group</span> <span class="hljs-title">where</span> the <span class="hljs-keyword">user</span> <span class="hljs-title">belongs</span>
+      storage: {} // Defines the sessionStorage <span class="hljs-keyword">property</span><span class="hljs-title"> </span>of the <span class="hljs-keyword">user</span> <span class="hljs-title">session</span>
+    };
+  }
+  else if (!user) // If <span class="hljs-keyword">user</span> <span class="hljs-title">not</span> authenticated then return an error
+  {
+    return {
+      error: <span class="hljs-number">548</span>, // Error code returned
+      errorMessage: 'Authentication failed. Login <span class="hljs-keyword">or</span> Password maybe wrong.' // Error text returned
+    };
+  }
+  else // <span class="hljs-keyword">or</span> continue using the standard process (with the internal directory)
+  {
+    return <span class="hljs-literal">false</span>;
+  }
+}
+</code></pre>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>loginListener: <span class="tsd-signature-type">String</span></h5>
+									<h5>moduleName: <span class="tsd-signature-type">String</span></h5>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> group: <span class="tsd-signature-type">String</span></h5>
@@ -555,18 +915,36 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/74e9258/api/directory.d.ts#L70">directory.d.ts:70</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/3b02270/api/directory.d.ts#L265">directory.d.ts:265</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>set a Wakanda SSJS module as session manager, to handle all session operations : readSession, writeSession and deleteSession</p>
+									<p>Set a SSJS module as session manager</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>modulePath: <span class="tsd-signature-type">String</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Describes the module path</p>
+										<pre><code>directory.setSessionManager(<span class="hljs-string">'session'</span>); <span class="hljs-regexp">//</span> Refers to &lt;project&gt;<span class="hljs-regexp">/backend/m</span>odules<span class="hljs-regexp">/session module</span>
+</code></pre><p>The module must export the following methods to handle all session operations:</p>
+										<pre><code>exports.readSession = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(session)</span></span>{
+  <span class="hljs-comment">// Handle your read action here</span>
+  <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>; <span class="hljs-comment">// Return true if success, false otherwise</span>
+}
+exports.writeSession = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(session)</span></span>{
+  <span class="hljs-comment">// Handle your write action here</span>
+  <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>; <span class="hljs-comment">// Return true if success, false otherwise</span>
+}
+exports.deleteSession =<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(session)</span></span>{
+  <span class="hljs-comment">// Handle your delete action here</span>
+  <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>; <span class="hljs-comment">// Return true if success, false otherwise</span>
+}
+</code></pre>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
@@ -583,13 +961,18 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/74e9258/api/directory.d.ts#L82">directory.d.ts:82</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/3b02270/api/directory.d.ts#L309">directory.d.ts:309</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>synchronizes the local Wakanda directory (.waDirectory file) with a remote LDAP directory</p>
+									<p>Synchronizes the local Wakanda directory with a remote LDAP directory</p>
 								</div>
+								<dl class="tsd-comment-tags">
+									<dt>warning</dt>
+									<dd><p>Requires LDAP component.</p>
+									</dd>
+								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -611,21 +994,27 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/74e9258/api/directory.d.ts#L86">directory.d.ts:86</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/3b02270/api/directory.d.ts#L319">directory.d.ts:319</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>returns an User object containing the user corresponding to the name (or ID) you passed in the name parameter</p>
+									<p>Gets a user from its name or ID</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>name: <span class="tsd-signature-type">String</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Describes the user name or ID</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="user.html" class="tsd-signature-type">User</a></h4>
+							<p>Returns the user</p>
+							<pre><code><span class="hljs-attribute">var myUser</span> = directory.user( <span class="hljs-string">"Thomas Pesquet"</span> );
+</code></pre>
 						</li>
 					</ul>
 				</section>
@@ -652,9 +1041,6 @@
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
 								<a href="directory.html#currentuser" class="tsd-kind-icon">current<wbr>User</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="directory.html#internalstore" class="tsd-kind-icon">internal<wbr>Store</a>
-							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
 								<a href="directory.html#addgroup" class="tsd-kind-icon">add<wbr>Group</a>
 							</li>
@@ -665,13 +1051,13 @@
 								<a href="directory.html#computeha1" class="tsd-kind-icon">computeHA1</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
+								<a href="directory.html#createusersession" class="tsd-kind-icon">create<wbr>User<wbr>Session</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
 								<a href="directory.html#filtergroups" class="tsd-kind-icon">filter<wbr>Groups</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
 								<a href="directory.html#filterusers" class="tsd-kind-icon">filter<wbr>Users</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="directory.html#getloginlistener" class="tsd-kind-icon">get<wbr>Login<wbr>Listener</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
 								<a href="directory.html#getremotegroupbyalias" class="tsd-kind-icon">get<wbr>Remote<wbr>Group<wbr>ByAlias</a>
@@ -680,16 +1066,31 @@
 								<a href="directory.html#getremotegroupbydn" class="tsd-kind-icon">get<wbr>Remote<wbr>Group<wbr>ByDN</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
+								<a href="directory.html#getsession" class="tsd-kind-icon">get<wbr>Session</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
+								<a href="directory.html#getusersessions" class="tsd-kind-icon">get<wbr>User<wbr>Sessions</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
 								<a href="directory.html#group" class="tsd-kind-icon">group</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="directory.html#hasadministrator" class="tsd-kind-icon">has<wbr>Administrator</a>
+								<a href="directory.html#loginbykey" class="tsd-kind-icon">login<wbr>ByKey</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
+								<a href="directory.html#loginbypassword" class="tsd-kind-icon">login<wbr>ByPassword</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
+								<a href="directory.html#logout" class="tsd-kind-icon">logout</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
 								<a href="directory.html#save" class="tsd-kind-icon">save</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="directory.html#setloginlistener" class="tsd-kind-icon">set<wbr>Login<wbr>Listener</a>
+								<a href="directory.html#setcurrentsession" class="tsd-kind-icon">set<wbr>Current<wbr>Session</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
+								<a href="directory.html#setloginmanager" class="tsd-kind-icon">set<wbr>Login<wbr>Manager</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
 								<a href="directory.html#setsessionmanager" class="tsd-kind-icon">set<wbr>Session<wbr>Manager</a>
@@ -709,7 +1110,7 @@
 		</div>
 	</div>
 </div>
-<footer class="with-border-bottom">
+<footer>
 	<div class="container">
 		<h2>Legend</h2>
 		<div class="tsd-legend-group">
@@ -768,9 +1169,6 @@
 		</div>
 	</div>
 </footer>
-<div class="container tsd-generator">
-	<p>Generated using <a href="http://typedoc.io" target="_blank">TypeDoc</a></p>
-</div>
 <div class="overlay"></div>
 <script src="../assets/js/main.js"></script>
 <script>if (location.protocol == 'file:') document.write('<script src="../assets/js/search.js"><' + '/script>');</script>

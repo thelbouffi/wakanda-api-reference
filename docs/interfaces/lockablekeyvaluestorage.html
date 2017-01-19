@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Worker | wakanda-api-reference</title>
+	<title>LockableKeyValueStorage | wakanda-api-reference</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,10 +56,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="worker.html">Worker</a>
+					<a href="lockablekeyvaluestorage.html">LockableKeyValueStorage</a>
 				</li>
 			</ul>
-			<h1>Interface Worker</h1>
+			<h1>Interface LockableKeyValueStorage</h1>
 		</div>
 	</div>
 </header>
@@ -70,7 +70,12 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">Worker</span>
+						<a href="keyvaluestorage.html" class="tsd-signature-type">KeyValueStorage</a>
+						<ul class="tsd-hierarchy">
+							<li>
+								<span class="target">LockableKeyValueStorage</span>
+							</li>
+						</ul>
 					</li>
 				</ul>
 			</section>
@@ -78,180 +83,177 @@
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
-						<section class="tsd-index-section tsd-is-external tsd-is-not-exported">
-							<h3>Constructors</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-constructor tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="worker.html#constructor" class="tsd-kind-icon">constructor</a></li>
-							</ul>
-						</section>
-						<section class="tsd-index-section tsd-is-external tsd-is-not-exported">
+						<section class="tsd-index-section tsd-is-inherited tsd-is-external tsd-is-not-exported">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="worker.html#binarytype" class="tsd-kind-icon">binary<wbr>Type</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="worker.html#onclose" class="tsd-kind-icon">onclose</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="worker.html#onerror" class="tsd-kind-icon">onerror</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited tsd-is-external tsd-is-not-exported"><a href="lockablekeyvaluestorage.html#length" class="tsd-kind-icon">length</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section tsd-is-external tsd-is-not-exported">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="worker.html#close" class="tsd-kind-icon">close</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="worker.html#onmessage" class="tsd-kind-icon">onmessage</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="worker.html#postmessage" class="tsd-kind-icon">post<wbr>Message</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="worker.html#terminate" class="tsd-kind-icon">terminate</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="worker.html#wait" class="tsd-kind-icon">wait</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-inherited tsd-is-external tsd-is-not-exported"><a href="lockablekeyvaluestorage.html#clear" class="tsd-kind-icon">clear</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-inherited tsd-is-external tsd-is-not-exported"><a href="lockablekeyvaluestorage.html#getitem" class="tsd-kind-icon">get<wbr>Item</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="lockablekeyvaluestorage.html#lock" class="tsd-kind-icon">lock</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-inherited tsd-is-external tsd-is-not-exported"><a href="lockablekeyvaluestorage.html#removeitem" class="tsd-kind-icon">remove<wbr>Item</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-inherited tsd-is-external tsd-is-not-exported"><a href="lockablekeyvaluestorage.html#setitem" class="tsd-kind-icon">set<wbr>Item</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="lockablekeyvaluestorage.html#trylock" class="tsd-kind-icon">try<wbr>Lock</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="lockablekeyvaluestorage.html#unlock" class="tsd-kind-icon">unlock</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
-			<section class="tsd-panel-group tsd-member-group tsd-is-external tsd-is-not-exported">
-				<h2>Constructors</h2>
-				<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-					<a name="constructor" class="tsd-anchor"></a>
-					<h3>constructor</h3>
-					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Worker<span class="tsd-signature-symbol">(</span>scriptPath<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">String</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="worker.html" class="tsd-signature-type">Worker</a></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/3b02270/api/worker.d.ts#L1">worker.d.ts:1</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>constructor of the class objects of the dedicated Worker type</p>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>scriptPath: <span class="tsd-signature-type">String</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="worker.html" class="tsd-signature-type">Worker</a></h4>
-						</li>
-					</ul>
-				</section>
-			</section>
-			<section class="tsd-panel-group tsd-member-group tsd-is-external tsd-is-not-exported">
+			<section class="tsd-panel-group tsd-member-group tsd-is-inherited tsd-is-external tsd-is-not-exported">
 				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-					<a name="binarytype" class="tsd-anchor"></a>
-					<h3>binary<wbr>Type</h3>
-					<div class="tsd-signature tsd-kind-icon">binary<wbr>Type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">String</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited tsd-is-external tsd-is-not-exported">
+					<a name="length" class="tsd-anchor"></a>
+					<h3>length</h3>
+					<div class="tsd-signature tsd-kind-icon">length<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Number</span></div>
 					<aside class="tsd-sources">
+						<p>Inherited from <a href="keyvaluestorage.html">KeyValueStorage</a>.<a href="keyvaluestorage.html#length">length</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/3b02270/api/worker.d.ts#L9">worker.d.ts:9</a></li>
+							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/3b02270/api/keyvaluestorage.d.ts#L20">keyvaluestorage.d.ts:20</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>(WebSockets only) Data type of the client message</p>
-						</div>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-					<a name="onclose" class="tsd-anchor"></a>
-					<h3>onclose</h3>
-					<div class="tsd-signature tsd-kind-icon">onclose<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Function</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/3b02270/api/worker.d.ts#L13">worker.d.ts:13</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>(WebSockets only) Callback to trigger when the client socket is closed</p>
-						</div>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-					<a name="onerror" class="tsd-anchor"></a>
-					<h3>onerror</h3>
-					<div class="tsd-signature tsd-kind-icon">onerror<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Function</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/3b02270/api/worker.d.ts#L17">worker.d.ts:17</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Callback to trigger when an error is reported</p>
+							<p>Gets the number of key/value pairs currently present in the storage object</p>
 						</div>
 					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group tsd-is-external tsd-is-not-exported">
 				<h2>Methods</h2>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-					<a name="close" class="tsd-anchor"></a>
-					<h3>close</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-						<li class="tsd-signature tsd-kind-icon">close<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-inherited tsd-is-external tsd-is-not-exported">
+					<a name="clear" class="tsd-anchor"></a>
+					<h3>clear</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-inherited tsd-is-external tsd-is-not-exported">
+						<li class="tsd-signature tsd-kind-icon">clear<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
+								<p>Inherited from <a href="keyvaluestorage.html">KeyValueStorage</a>.<a href="keyvaluestorage.html#clear">clear</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/3b02270/api/worker.d.ts#L25">worker.d.ts:25</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/3b02270/api/keyvaluestorage.d.ts#L24">keyvaluestorage.d.ts:24</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>ends the thread from which it is called</p>
+									<p>Removes all key/value pairs from the storage object</p>
 								</div>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-					<a name="onmessage" class="tsd-anchor"></a>
-					<h3>onmessage</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-						<li class="tsd-signature tsd-kind-icon">onmessage<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-inherited tsd-is-external tsd-is-not-exported">
+					<a name="getitem" class="tsd-anchor"></a>
+					<h3>get<wbr>Item</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-inherited tsd-is-external tsd-is-not-exported">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Item<span class="tsd-signature-symbol">(</span>key<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">String</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
+								<p>Inherited from <a href="keyvaluestorage.html">KeyValueStorage</a>.<a href="keyvaluestorage.html#getitem">getItem</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/3b02270/api/worker.d.ts#L21">worker.d.ts:21</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/3b02270/api/keyvaluestorage.d.ts#L28">keyvaluestorage.d.ts:28</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Callback to trigger when a message is received</p>
-								</div>
-							</div>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-					<a name="postmessage" class="tsd-anchor"></a>
-					<h3>post<wbr>Message</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-						<li class="tsd-signature tsd-kind-icon">post<wbr>Message<span class="tsd-signature-symbol">(</span>messageData<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/3b02270/api/worker.d.ts#L29">worker.d.ts:29</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>exchange data between a parent Worker proxy and a dedicated Web worker</p>
+									<p>Gets a copy of the value from the storage object</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>messageData: <span class="tsd-signature-type">any</span></h5>
+									<h5>key: <span class="tsd-signature-type">String</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
+					<a name="lock" class="tsd-anchor"></a>
+					<h3>lock</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
+						<li class="tsd-signature tsd-kind-icon">lock<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/3b02270/api/keyvaluestorage.d.ts#L5">keyvaluestorage.d.ts:5</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Locks the storage object. Only the current thread can read or modify the storage object.</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-inherited tsd-is-external tsd-is-not-exported">
+					<a name="removeitem" class="tsd-anchor"></a>
+					<h3>remove<wbr>Item</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-inherited tsd-is-external tsd-is-not-exported">
+						<li class="tsd-signature tsd-kind-icon">remove<wbr>Item<span class="tsd-signature-symbol">(</span>key<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">String</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="keyvaluestorage.html">KeyValueStorage</a>.<a href="keyvaluestorage.html#removeitem">removeItem</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/3b02270/api/keyvaluestorage.d.ts#L32">keyvaluestorage.d.ts:32</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Removes an item from the storage object</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>key: <span class="tsd-signature-type">String</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-inherited tsd-is-external tsd-is-not-exported">
+					<a name="setitem" class="tsd-anchor"></a>
+					<h3>set<wbr>Item</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-inherited tsd-is-external tsd-is-not-exported">
+						<li class="tsd-signature tsd-kind-icon">set<wbr>Item<span class="tsd-signature-symbol">(</span>key<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">String</span>, value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="keyvaluestorage.html">KeyValueStorage</a>.<a href="keyvaluestorage.html#setitem">setItem</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/3b02270/api/keyvaluestorage.d.ts#L36">keyvaluestorage.d.ts:36</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Create or update an item in the storage object</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>key: <span class="tsd-signature-type">String</span></h5>
+								</li>
+								<li>
+									<h5>value: <span class="tsd-signature-type">any</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -259,52 +261,46 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-					<a name="terminate" class="tsd-anchor"></a>
-					<h3>terminate</h3>
+					<a name="trylock" class="tsd-anchor"></a>
+					<h3>try<wbr>Lock</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-						<li class="tsd-signature tsd-kind-icon">terminate<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">try<wbr>Lock<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Boolean</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/3b02270/api/worker.d.ts#L33">worker.d.ts:33</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/3b02270/api/keyvaluestorage.d.ts#L9">keyvaluestorage.d.ts:9</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>terminate the dedicated worker execution</p>
+									<p>Tries to lock the storage object. Returns <code>true</code> in case of success and false otherwise</p>
 								</div>
 							</div>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-					<a name="wait" class="tsd-anchor"></a>
-					<h3>wait</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-						<li class="tsd-signature tsd-kind-icon">wait<span class="tsd-signature-symbol">(</span>timeout<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Boolean</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/3b02270/api/worker.d.ts#L37">worker.d.ts:37</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>allows a thread to handle events and to continue to exist after the complete code executes</p>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> timeout: <span class="tsd-signature-type">Number</span></h5>
-								</li>
-							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Boolean</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
+					<a name="unlock" class="tsd-anchor"></a>
+					<h3>unlock</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
+						<li class="tsd-signature tsd-kind-icon">unlock<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/3b02270/api/keyvaluestorage.d.ts#L13">keyvaluestorage.d.ts:13</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Removes a lock that was previously put on the storage object</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -323,34 +319,31 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface tsd-is-external tsd-is-not-exported">
-						<a href="worker.html" class="tsd-kind-icon">Worker</a>
+						<a href="lockablekeyvaluestorage.html" class="tsd-kind-icon">Lockable<wbr>Key<wbr>Value<wbr>Storage</a>
 						<ul>
-							<li class=" tsd-kind-constructor tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="worker.html#constructor" class="tsd-kind-icon">constructor</a>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited tsd-is-external tsd-is-not-exported">
+								<a href="lockablekeyvaluestorage.html#length" class="tsd-kind-icon">length</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="worker.html#binarytype" class="tsd-kind-icon">binary<wbr>Type</a>
+							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-inherited tsd-is-external tsd-is-not-exported">
+								<a href="lockablekeyvaluestorage.html#clear" class="tsd-kind-icon">clear</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="worker.html#onclose" class="tsd-kind-icon">onclose</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="worker.html#onerror" class="tsd-kind-icon">onerror</a>
+							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-inherited tsd-is-external tsd-is-not-exported">
+								<a href="lockablekeyvaluestorage.html#getitem" class="tsd-kind-icon">get<wbr>Item</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="worker.html#close" class="tsd-kind-icon">close</a>
+								<a href="lockablekeyvaluestorage.html#lock" class="tsd-kind-icon">lock</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-inherited tsd-is-external tsd-is-not-exported">
+								<a href="lockablekeyvaluestorage.html#removeitem" class="tsd-kind-icon">remove<wbr>Item</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-inherited tsd-is-external tsd-is-not-exported">
+								<a href="lockablekeyvaluestorage.html#setitem" class="tsd-kind-icon">set<wbr>Item</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="worker.html#onmessage" class="tsd-kind-icon">onmessage</a>
+								<a href="lockablekeyvaluestorage.html#trylock" class="tsd-kind-icon">try<wbr>Lock</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="worker.html#postmessage" class="tsd-kind-icon">post<wbr>Message</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="worker.html#terminate" class="tsd-kind-icon">terminate</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="worker.html#wait" class="tsd-kind-icon">wait</a>
+								<a href="lockablekeyvaluestorage.html#unlock" class="tsd-kind-icon">unlock</a>
 							</li>
 						</ul>
 					</li>

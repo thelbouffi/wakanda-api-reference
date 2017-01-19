@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>OS | wakanda-api-reference</title>
+	<title>NodeWorker | wakanda-api-reference</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,21 +56,78 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="os.html">OS</a>
+					<a href="nodeworker.html">NodeWorker</a>
 				</li>
 			</ul>
-			<h1>Interface OS</h1>
+			<h1>Interface NodeWorker</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>Here is an example of a worker file</p>
+					</div>
+					<p>Callback to trigger when a new caller creates a SharedWorker proxy object</p>
+					<pre><code>onconnect: <span class="hljs-function"><span class="hljs-keyword">Function</span>;</span>
+</code></pre><p>Get port to communicate with the worker proxy.
+					Always use <code>ports[0]</code>.</p>
+					<pre><code><span class="hljs-symbol">ports:</span> Array<span class="hljs-params">&lt;Port&gt;</span>;
+</code></pre><p>Close the worker.</p>
+					<pre><code><span class="hljs-built_in">close</span>() : <span class="hljs-keyword">void</span>;
+</code></pre><p>Allows a thread to handle events and to continue to exist after the complete code executes.</p>
+					<dl class="tsd-comment-tags">
+						<dt>warning</dt>
+						<dd><p>There is an implicit <code>wait()</code> in worker. No need to add another.</p>
+							<pre><code><span class="hljs-keyword">wait</span>(timeout?: <span class="hljs-keyword">Number</span>) : Boolean;
+</code></pre><p>Worker example</p>
+							<pre><code><span class="hljs-comment">// Describes the worker.js file</span>
+<span class="hljs-comment">// Called when a new worker is created</span>
+onconnect = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"> msg </span>)
+</span>{
+   <span class="hljs-comment">// Get the worker port for communication with the worker proxy</span>
+   <span class="hljs-keyword">var</span> workerPort = msg.ports[<span class="hljs-number">0</span>];
+
+   <span class="hljs-comment">// Send a message to the worker proxy. The worker is up and running.</span>
+   workerPort.postMessage({<span class="hljs-keyword">type</span>: <span class="hljs-string">'connected'</span>, says: <span class="hljs-string">"I'm alive!"</span>});
+
+   <span class="hljs-comment">// Listen for worker proxy messages</span>
+   workerPort.onmessage = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"> event </span>)
+   </span>{
+      <span class="hljs-comment">// We've got a message !</span>
+      <span class="hljs-comment">// The `event.data` is what the worker proxy sends using `postMessage()`. Could be a String, Number or an Object type.</span>
+      <span class="hljs-comment">// Here, `event.data` contains an object: `{type: String, says: String}`</span>
+      <span class="hljs-keyword">var</span> message = event.data;
+      <span class="hljs-keyword">switch</span>( message.type )
+      {
+        <span class="hljs-comment">// It's a hello world message</span>
+        <span class="hljs-keyword">case</span> <span class="hljs-string">'hello'</span>:
+          <span class="hljs-comment">// Reply to the worker proxy</span>
+          workerPort.postMessage( {<span class="hljs-keyword">type</span>: <span class="hljs-string">'hello'</span>, says: <span class="hljs-string">'Hello to you too!'</span>} );
+          <span class="hljs-keyword">break</span>;
+
+        <span class="hljs-comment">// It's a terminate message</span>
+        <span class="hljs-keyword">case</span> <span class="hljs-string">'close'</span>:
+          <span class="hljs-comment">// Reply to the worker proxy</span>
+          workerPort.postMessage( {<span class="hljs-keyword">type</span>: <span class="hljs-string">'close'</span>, says: <span class="hljs-string">'I will be back!'</span>} );
+          <span class="hljs-comment">// Close the worker</span>
+          close();
+          <span class="hljs-keyword">break</span>;
+      }
+   }
+}
+</code></pre></dd>
+					</dl>
+				</div>
+			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">OS</span>
+						<span class="target">NodeWorker</span>
 					</li>
 				</ul>
 			</section>
@@ -79,93 +136,93 @@
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section tsd-is-external tsd-is-not-exported">
-							<h3>Properties</h3>
+							<h3>Constructors</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="os.html#islinux" class="tsd-kind-icon">is<wbr>Linux</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="os.html#ismac" class="tsd-kind-icon">is<wbr>Mac</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="os.html#iswindows" class="tsd-kind-icon">is<wbr>Windows</a></li>
+								<li class="tsd-kind-constructor tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="nodeworker.html#constructor" class="tsd-kind-icon">constructor</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section tsd-is-external tsd-is-not-exported">
-							<h3>Methods</h3>
+							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="os.html#networkinterfaces" class="tsd-kind-icon">network<wbr>Interfaces</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="nodeworker.html#port" class="tsd-kind-icon">port</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group tsd-is-external tsd-is-not-exported">
-				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-					<a name="islinux" class="tsd-anchor"></a>
-					<h3>is<wbr>Linux</h3>
-					<div class="tsd-signature tsd-kind-icon">is<wbr>Linux<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Boolean</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/3b02270/api/os.d.ts#L5">os.d.ts:5</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>True if the server is running under a Unix OS, false otherwise</p>
-						</div>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-					<a name="ismac" class="tsd-anchor"></a>
-					<h3>is<wbr>Mac</h3>
-					<div class="tsd-signature tsd-kind-icon">is<wbr>Mac<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Boolean</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/3b02270/api/os.d.ts#L9">os.d.ts:9</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>True if the server is running under an OSX (Mac) OS, false otherwise</p>
-						</div>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-					<a name="iswindows" class="tsd-anchor"></a>
-					<h3>is<wbr>Windows</h3>
-					<div class="tsd-signature tsd-kind-icon">is<wbr>Windows<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Boolean</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/3b02270/api/os.d.ts#L13">os.d.ts:13</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>True if the server is running under a Windows OS, false otherwise</p>
-						</div>
-					</div>
-				</section>
-			</section>
-			<section class="tsd-panel-group tsd-member-group tsd-is-external tsd-is-not-exported">
-				<h2>Methods</h2>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-					<a name="networkinterfaces" class="tsd-anchor"></a>
-					<h3>network<wbr>Interfaces</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-						<li class="tsd-signature tsd-kind-icon">network<wbr>Interfaces<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Object</span></li>
+				<h2>Constructors</h2>
+				<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
+					<a name="constructor" class="tsd-anchor"></a>
+					<h3>constructor</h3>
+					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Node<wbr>Worker<span class="tsd-signature-symbol">(</span>scriptPath<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">String</span>, workerName<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">String</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="sharedworker.html" class="tsd-signature-type">SharedWorker</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/3b02270/api/os.d.ts#L17">os.d.ts:17</a></li>
+									<li>Defined in nodeworker.d.ts:74</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>returns a list of available network interfaces on the server</p>
+									<p>Shared worker constructor.
+										Creates a new shared worker in its own thread if it does not exist yet. Then it returns a proxy object to communicate with the shared worker thread.
+									Shared workers can be addressed from any thread, they are uniquely identified by their path and name.</p>
 								</div>
 							</div>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Object</span></h4>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>scriptPath: <span class="tsd-signature-type">String</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>Describes the path to worker javaScript file</p>
+										</div>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> workerName: <span class="tsd-signature-type">String</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>Describes the worker name</p>
+										</div>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="sharedworker.html" class="tsd-signature-type">SharedWorker</a></h4>
+							<p>Returns a shared worker proxy</p>
+							<pre><code>// <span class="hljs-string">"worker.js"</span> <span class="hljs-built_in">is</span> defined <span class="hljs-keyword">in</span> &lt;PROJECT&gt;/backend/worker.js
+<span class="hljs-built_in">var</span> myWorkerProxy = <span class="hljs-built_in">new</span> SharedWorker(<span class="hljs-string">"backend/worker.js"</span>, <span class="hljs-string">"my-worker-name"</span>);
+</code></pre>
 						</li>
 					</ul>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group tsd-is-external tsd-is-not-exported">
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
+					<a name="port" class="tsd-anchor"></a>
+					<h3>port</h3>
+					<div class="tsd-signature tsd-kind-icon">port<span class="tsd-signature-symbol">:</span> <a href="port.html" class="tsd-signature-type">Port</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in nodeworker.d.ts:101</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Use the proxy port to communicate with the share worker thread.</p>
+						</div>
+						<pre><code><span class="hljs-comment">// Create a new SharedWorker and get the proxy worker</span>
+<span class="hljs-keyword">var</span> myWorkerProxy = <span class="hljs-keyword">new</span> <span class="hljs-type">SharedWorker</span>(<span class="hljs-string">"backend/worker.js"</span>, <span class="hljs-string">"my-worker-name"</span>);
+<span class="hljs-comment">// Get the proxy worker port for communication</span>
+<span class="hljs-keyword">var</span> workerProxyPort = myWorkerProxy.port;
+<span class="hljs-comment">// Send a "wake up" message to the worker</span>
+workerProxyPort.postMessage(<span class="hljs-string">'wake-up'</span>);
+</code></pre>
+					</div>
 				</section>
 			</section>
 		</div>
@@ -182,19 +239,13 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface tsd-is-external tsd-is-not-exported">
-						<a href="os.html" class="tsd-kind-icon">OS</a>
+						<a href="nodeworker.html" class="tsd-kind-icon">Node<wbr>Worker</a>
 						<ul>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="os.html#islinux" class="tsd-kind-icon">is<wbr>Linux</a>
+							<li class=" tsd-kind-constructor tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
+								<a href="nodeworker.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="os.html#ismac" class="tsd-kind-icon">is<wbr>Mac</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="os.html#iswindows" class="tsd-kind-icon">is<wbr>Windows</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="os.html#networkinterfaces" class="tsd-kind-icon">network<wbr>Interfaces</a>
+								<a href="nodeworker.html#port" class="tsd-kind-icon">port</a>
 							</li>
 						</ul>
 					</li>

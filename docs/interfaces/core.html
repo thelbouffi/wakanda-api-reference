@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>MIMEMessage | wakanda-api-reference</title>
+	<title>Core | wakanda-api-reference</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,10 +56,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="mimemessage.html">MIMEMessage</a>
+					<a href="core.html">Core</a>
 				</li>
 			</ul>
-			<h1>Interface MIMEMessage</h1>
+			<h1>Interface Core</h1>
 		</div>
 	</div>
 </header>
@@ -70,154 +70,178 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">MIMEMessage</span>
+						<span class="target">Core</span>
+						<ul class="tsd-hierarchy">
+							<li>
+								<a href="application.html" class="tsd-signature-type">Application</a>
+							</li>
+						</ul>
 					</li>
 				</ul>
-			</section>
-			<section class="tsd-panel tsd-kind-interface tsd-is-external tsd-is-not-exported">
-				<h3 class="tsd-before-signature">Indexable</h3>
-				<div class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">[</span>n: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">]: </span><a href="mimemessagepart.html" class="tsd-signature-type">MIMEMessagePart</a></div>
-				<div class="tsd-comment tsd-typography">
-					<div class="lead">
-						<p>nth part of the multipart MIME message</p>
-					</div>
-				</div>
 			</section>
 			<section class="tsd-panel-group tsd-index-group">
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
-						<section class="tsd-index-section tsd-is-external tsd-is-not-exported">
+						<section class="tsd-index-section tsd-is-not-exported">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="mimemessage.html#boundary" class="tsd-kind-icon">boundary</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="mimemessage.html#count" class="tsd-kind-icon">count</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="mimemessage.html#encoding" class="tsd-kind-icon">encoding</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="mimemessage.html#length" class="tsd-kind-icon">length</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="core.html#buffer" class="tsd-kind-icon">Buffer</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="core.html#console" class="tsd-kind-icon">console</a></li>
 							</ul>
 						</section>
-						<section class="tsd-index-section tsd-is-external tsd-is-not-exported">
+						<section class="tsd-index-section tsd-is-not-exported">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="mimemessage.html#toblob" class="tsd-kind-icon">to<wbr>Blob</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="mimemessage.html#tobuffer" class="tsd-kind-icon">to<wbr>Buffer</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-not-exported"><a href="core.html#progressindicator" class="tsd-kind-icon">Progress<wbr>Indicator</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-not-exported"><a href="core.html#generateuuid" class="tsd-kind-icon">generateUUID</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-not-exported"><a href="core.html#getprogressindicator" class="tsd-kind-icon">get<wbr>Progress<wbr>Indicator</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
-			<section class="tsd-panel-group tsd-member-group tsd-is-external tsd-is-not-exported">
+			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
 				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-					<a name="boundary" class="tsd-anchor"></a>
-					<h3>boundary</h3>
-					<div class="tsd-signature tsd-kind-icon">boundary<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">String</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="buffer" class="tsd-anchor"></a>
+					<h3>Buffer</h3>
+					<div class="tsd-signature tsd-kind-icon">Buffer<span class="tsd-signature-symbol">:</span> <a href="buffer.html" class="tsd-signature-type">Buffer</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/3b02270/api/mime.d.ts#L11">mime.d.ts:11</a></li>
+							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/3b02270/api/application.d.ts#L108">application.d.ts:108</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Boundary tag used to delimit the parts</p>
+							<p>References the buffer constructor</p>
 						</div>
 					</div>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-					<a name="count" class="tsd-anchor"></a>
-					<h3>count</h3>
-					<div class="tsd-signature tsd-kind-icon">count<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Number</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="console" class="tsd-anchor"></a>
+					<h3>console</h3>
+					<div class="tsd-signature tsd-kind-icon">console<span class="tsd-signature-symbol">:</span> <a href="console.html" class="tsd-signature-type">Console</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/3b02270/api/mime.d.ts#L15">mime.d.ts:15</a></li>
+							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/3b02270/api/application.d.ts#L104">application.d.ts:104</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Number of parts</p>
-						</div>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-					<a name="encoding" class="tsd-anchor"></a>
-					<h3>encoding</h3>
-					<div class="tsd-signature tsd-kind-icon">encoding<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">String</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/3b02270/api/mime.d.ts#L19">mime.d.ts:19</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Encoding type: &#39;multipart/form-data&#39; or &#39;application/x-www-form-urlencoded&#39;</p>
-						</div>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-					<a name="length" class="tsd-anchor"></a>
-					<h3>length</h3>
-					<div class="tsd-signature tsd-kind-icon">length<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Number</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/3b02270/api/mime.d.ts#L23">mime.d.ts:23</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Number of parts</p>
+							<p>References the console of the application</p>
 						</div>
 					</div>
 				</section>
 			</section>
-			<section class="tsd-panel-group tsd-member-group tsd-is-external tsd-is-not-exported">
+			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
 				<h2>Methods</h2>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-					<a name="toblob" class="tsd-anchor"></a>
-					<h3>to<wbr>Blob</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-						<li class="tsd-signature tsd-kind-icon">to<wbr>Blob<span class="tsd-signature-symbol">(</span>mimeType<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">String</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="blob.html" class="tsd-signature-type">Blob</a></li>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="progressindicator" class="tsd-anchor"></a>
+					<h3>Progress<wbr>Indicator</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-not-exported">
+						<li class="tsd-signature tsd-kind-icon">Progress<wbr>Indicator<span class="tsd-signature-symbol">(</span>numElements<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Number</span>, sessionName<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">String</span>, stoppable<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Boolean</span>, unused<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">String</span>, name<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">String</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="progressindicator.html" class="tsd-signature-type">ProgressIndicator</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/3b02270/api/mime.d.ts#L27">mime.d.ts:27</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/3b02270/api/application.d.ts#L131">application.d.ts:131</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>returns the MIME message as a Blob object</p>
+									<p>Creates a progress indicator</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> mimeType: <span class="tsd-signature-type">String</span></h5>
+									<h5>numElements: <span class="tsd-signature-type">Number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Number of elements to count</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> sessionName: <span class="tsd-signature-type">String</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Name of execution session for progress indicator</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> stoppable: <span class="tsd-signature-type">Boolean</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p><code>true</code>if the progress indicator can be stopped, <code>false</code> otherwise</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> unused: <span class="tsd-signature-type">String</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Not used, always pass an empty string (&quot;&quot;)</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> name: <span class="tsd-signature-type">String</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Unique name of object on the server</p>
+									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="blob.html" class="tsd-signature-type">Blob</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="progressindicator.html" class="tsd-signature-type">ProgressIndicator</a></h4>
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-					<a name="tobuffer" class="tsd-anchor"></a>
-					<h3>to<wbr>Buffer</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-						<li class="tsd-signature tsd-kind-icon">to<wbr>Buffer<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="generateuuid" class="tsd-anchor"></a>
+					<h3>generateUUID</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-not-exported">
+						<li class="tsd-signature tsd-kind-icon">generateUUID<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">String</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/3b02270/api/mime.d.ts#L31">mime.d.ts:31</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/3b02270/api/application.d.ts#L118">application.d.ts:118</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>returns the MIME message as a Buffer object</p>
+									<p>Create a valid UUID string</p>
 								</div>
 							</div>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">String</span></h4>
+							<p>Returns a string with the generated UUID</p>
+							<pre><code><span class="hljs-selector-tag">generateUUID</span>();
+<span class="hljs-comment">// 9AE457F4B557BD7895AD4712345ABCDE</span>
+</code></pre>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="getprogressindicator" class="tsd-anchor"></a>
+					<h3>get<wbr>Progress<wbr>Indicator</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-not-exported">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Progress<wbr>Indicator<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">String</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="progressindicator.html" class="tsd-signature-type">ProgressIndicator</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/3b02270/api/application.d.ts#L122">application.d.ts:122</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Gets the named progress indicator object</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>name: <span class="tsd-signature-type">String</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="progressindicator.html" class="tsd-signature-type">ProgressIndicator</a></h4>
 						</li>
 					</ul>
 				</section>
@@ -235,26 +259,23 @@
 				<ul class="before-current">
 				</ul>
 				<ul class="current">
-					<li class="current tsd-kind-interface tsd-is-external tsd-is-not-exported">
-						<a href="mimemessage.html" class="tsd-kind-icon">MIMEMessage</a>
+					<li class="current tsd-kind-interface tsd-is-not-exported">
+						<a href="core.html" class="tsd-kind-icon">Core</a>
 						<ul>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="mimemessage.html#boundary" class="tsd-kind-icon">boundary</a>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="core.html#buffer" class="tsd-kind-icon">Buffer</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="mimemessage.html#count" class="tsd-kind-icon">count</a>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="core.html#console" class="tsd-kind-icon">console</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="mimemessage.html#encoding" class="tsd-kind-icon">encoding</a>
+							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="core.html#progressindicator" class="tsd-kind-icon">Progress<wbr>Indicator</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="mimemessage.html#length" class="tsd-kind-icon">length</a>
+							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="core.html#generateuuid" class="tsd-kind-icon">generateUUID</a>
 							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="mimemessage.html#toblob" class="tsd-kind-icon">to<wbr>Blob</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="mimemessage.html#tobuffer" class="tsd-kind-icon">to<wbr>Buffer</a>
+							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="core.html#getprogressindicator" class="tsd-kind-icon">get<wbr>Progress<wbr>Indicator</a>
 							</li>
 						</ul>
 					</li>

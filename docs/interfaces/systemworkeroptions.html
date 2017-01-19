@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>OS | wakanda-api-reference</title>
+	<title>SystemWorkerOptions | wakanda-api-reference</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,10 +56,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="os.html">OS</a>
+					<a href="systemworkeroptions.html">SystemWorkerOptions</a>
 				</li>
 			</ul>
-			<h1>Interface OS</h1>
+			<h1>Interface SystemWorkerOptions</h1>
 		</div>
 	</div>
 </header>
@@ -70,7 +70,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">OS</span>
+						<span class="target">SystemWorkerOptions</span>
 					</li>
 				</ul>
 			</section>
@@ -81,15 +81,12 @@
 						<section class="tsd-index-section tsd-is-external tsd-is-not-exported">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="os.html#islinux" class="tsd-kind-icon">is<wbr>Linux</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="os.html#ismac" class="tsd-kind-icon">is<wbr>Mac</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="os.html#iswindows" class="tsd-kind-icon">is<wbr>Windows</a></li>
-							</ul>
-						</section>
-						<section class="tsd-index-section tsd-is-external tsd-is-not-exported">
-							<h3>Methods</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="os.html#networkinterfaces" class="tsd-kind-icon">network<wbr>Interfaces</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="systemworkeroptions.html#folder" class="tsd-kind-icon">folder</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="systemworkeroptions.html#kill_process_tree" class="tsd-kind-icon">kill_<wbr>process_<wbr>tree</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="systemworkeroptions.html#parameters" class="tsd-kind-icon">parameters</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="systemworkeroptions.html#quote" class="tsd-kind-icon">quote</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="systemworkeroptions.html#stdin" class="tsd-kind-icon">stdin</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="systemworkeroptions.html#variables" class="tsd-kind-icon">variables</a></li>
 							</ul>
 						</section>
 					</div>
@@ -98,74 +95,94 @@
 			<section class="tsd-panel-group tsd-member-group tsd-is-external tsd-is-not-exported">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-					<a name="islinux" class="tsd-anchor"></a>
-					<h3>is<wbr>Linux</h3>
-					<div class="tsd-signature tsd-kind-icon">is<wbr>Linux<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Boolean</span></div>
+					<a name="folder" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> folder</h3>
+					<div class="tsd-signature tsd-kind-icon">folder<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">String</span><span class="tsd-signature-symbol"> | </span><a href="folder.html" class="tsd-signature-type">Folder</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/3b02270/api/os.d.ts#L5">os.d.ts:5</a></li>
+							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/3b02270/api/systemworker.d.ts#L146">systemworker.d.ts:146</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>True if the server is running under a Unix OS, false otherwise</p>
+							<p>Root folder for the worker executable. Native relative file paths will be resolved with this folder as parent.</p>
 						</div>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-					<a name="ismac" class="tsd-anchor"></a>
-					<h3>is<wbr>Mac</h3>
-					<div class="tsd-signature tsd-kind-icon">is<wbr>Mac<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Boolean</span></div>
+					<a name="kill_process_tree" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> kill_<wbr>process_<wbr>tree</h3>
+					<div class="tsd-signature tsd-kind-icon">kill_<wbr>process_<wbr>tree<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/3b02270/api/os.d.ts#L9">os.d.ts:9</a></li>
+							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/3b02270/api/systemworker.d.ts#L166">systemworker.d.ts:166</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>True if the server is running under an OSX (Mac) OS, false otherwise</p>
+							<p>(default: <code>false</code>) <code>true</code> to terminate the process tree started by the system worker once terminated, <code>false</code> otherwise.</p>
 						</div>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-					<a name="iswindows" class="tsd-anchor"></a>
-					<h3>is<wbr>Windows</h3>
-					<div class="tsd-signature tsd-kind-icon">is<wbr>Windows<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Boolean</span></div>
+					<a name="parameters" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> parameters</h3>
+					<div class="tsd-signature tsd-kind-icon">parameters<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/3b02270/api/os.d.ts#L13">os.d.ts:13</a></li>
+							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/3b02270/api/systemworker.d.ts#L150">systemworker.d.ts:150</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>True if the server is running under a Windows OS, false otherwise</p>
+							<p>Passes named parameters to command line. <code>{name}</code> is replaced with the value of the <code>options.parameters.name</code> attribute. Parameters can be of type String, Number, File or Folder.</p>
 						</div>
 					</div>
 				</section>
-			</section>
-			<section class="tsd-panel-group tsd-member-group tsd-is-external tsd-is-not-exported">
-				<h2>Methods</h2>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-					<a name="networkinterfaces" class="tsd-anchor"></a>
-					<h3>network<wbr>Interfaces</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-						<li class="tsd-signature tsd-kind-icon">network<wbr>Interfaces<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Object</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/3b02270/api/os.d.ts#L17">os.d.ts:17</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>returns a list of available network interfaces on the server</p>
-								</div>
-							</div>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Object</span></h4>
-						</li>
-					</ul>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
+					<a name="quote" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> quote</h3>
+					<div class="tsd-signature tsd-kind-icon">quote<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">String</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/3b02270/api/systemworker.d.ts#L154">systemworker.d.ts:154</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Escapes character (can be an empty string). Named parameters may need to be escaped depending on the system worker and OS on which it is executed.</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
+					<a name="stdin" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> stdin</h3>
+					<div class="tsd-signature tsd-kind-icon">stdin<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">String</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/3b02270/api/systemworker.d.ts#L158">systemworker.d.ts:158</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>String data to pass to system worker.</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
+					<a name="variables" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> variables</h3>
+					<div class="tsd-signature tsd-kind-icon">variables<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Object</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/3b02270/api/systemworker.d.ts#L162">systemworker.d.ts:162</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Defines custom environment variables for the system worker</p>
+						</div>
+					</div>
 				</section>
 			</section>
 		</div>
@@ -182,19 +199,25 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface tsd-is-external tsd-is-not-exported">
-						<a href="os.html" class="tsd-kind-icon">OS</a>
+						<a href="systemworkeroptions.html" class="tsd-kind-icon">System<wbr>Worker<wbr>Options</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="os.html#islinux" class="tsd-kind-icon">is<wbr>Linux</a>
+								<a href="systemworkeroptions.html#folder" class="tsd-kind-icon">folder</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="os.html#ismac" class="tsd-kind-icon">is<wbr>Mac</a>
+								<a href="systemworkeroptions.html#kill_process_tree" class="tsd-kind-icon">kill_<wbr>process_<wbr>tree</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="os.html#iswindows" class="tsd-kind-icon">is<wbr>Windows</a>
+								<a href="systemworkeroptions.html#parameters" class="tsd-kind-icon">parameters</a>
 							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="os.html#networkinterfaces" class="tsd-kind-icon">network<wbr>Interfaces</a>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
+								<a href="systemworkeroptions.html#quote" class="tsd-kind-icon">quote</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
+								<a href="systemworkeroptions.html#stdin" class="tsd-kind-icon">stdin</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
+								<a href="systemworkeroptions.html#variables" class="tsd-kind-icon">variables</a>
 							</li>
 						</ul>
 					</li>

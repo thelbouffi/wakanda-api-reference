@@ -36,9 +36,4 @@
 		*returns Wakanda Server's "walib" folder, containing the libraries and services available client-side
 		*/
 		getWalibFolder(kind: String, format?: String) : Folder;
-		/**
-		*quits Wakanda Server
-		* @deprecated use kill command instead
-		*/
-		quitServer() : void;
 	}

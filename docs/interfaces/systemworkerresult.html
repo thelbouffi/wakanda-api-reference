@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>OS | wakanda-api-reference</title>
+	<title>SystemWorkerResult | wakanda-api-reference</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,10 +56,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="os.html">OS</a>
+					<a href="systemworkerresult.html">SystemWorkerResult</a>
 				</li>
 			</ul>
-			<h1>Interface OS</h1>
+			<h1>Interface SystemWorkerResult</h1>
 		</div>
 	</div>
 </header>
@@ -70,7 +70,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">OS</span>
+						<span class="target">SystemWorkerResult</span>
 					</li>
 				</ul>
 			</section>
@@ -81,15 +81,9 @@
 						<section class="tsd-index-section tsd-is-external tsd-is-not-exported">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="os.html#islinux" class="tsd-kind-icon">is<wbr>Linux</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="os.html#ismac" class="tsd-kind-icon">is<wbr>Mac</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="os.html#iswindows" class="tsd-kind-icon">is<wbr>Windows</a></li>
-							</ul>
-						</section>
-						<section class="tsd-index-section tsd-is-external tsd-is-not-exported">
-							<h3>Methods</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="os.html#networkinterfaces" class="tsd-kind-icon">network<wbr>Interfaces</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="systemworkerresult.html#error" class="tsd-kind-icon">error</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="systemworkerresult.html#exitstatus" class="tsd-kind-icon">exit<wbr>Status</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="systemworkerresult.html#ouput" class="tsd-kind-icon">ouput</a></li>
 							</ul>
 						</section>
 					</div>
@@ -98,74 +92,49 @@
 			<section class="tsd-panel-group tsd-member-group tsd-is-external tsd-is-not-exported">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-					<a name="islinux" class="tsd-anchor"></a>
-					<h3>is<wbr>Linux</h3>
-					<div class="tsd-signature tsd-kind-icon">is<wbr>Linux<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Boolean</span></div>
+					<a name="error" class="tsd-anchor"></a>
+					<h3>error</h3>
+					<div class="tsd-signature tsd-kind-icon">error<span class="tsd-signature-symbol">:</span> <a href="buffer.html" class="tsd-signature-type">Buffer</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/3b02270/api/os.d.ts#L5">os.d.ts:5</a></li>
+							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/3b02270/api/systemworker.d.ts#L181">systemworker.d.ts:181</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>True if the server is running under a Unix OS, false otherwise</p>
+							<p>stderr result of the command</p>
 						</div>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-					<a name="ismac" class="tsd-anchor"></a>
-					<h3>is<wbr>Mac</h3>
-					<div class="tsd-signature tsd-kind-icon">is<wbr>Mac<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Boolean</span></div>
+					<a name="exitstatus" class="tsd-anchor"></a>
+					<h3>exit<wbr>Status</h3>
+					<div class="tsd-signature tsd-kind-icon">exit<wbr>Status<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/3b02270/api/os.d.ts#L9">os.d.ts:9</a></li>
+							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/3b02270/api/systemworker.d.ts#L173">systemworker.d.ts:173</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>True if the server is running under an OSX (Mac) OS, false otherwise</p>
+							<p>Integer value depending on the executable. If the executable considers the operation has been executed successfully, exitStatus value is <code>0</code></p>
 						</div>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-					<a name="iswindows" class="tsd-anchor"></a>
-					<h3>is<wbr>Windows</h3>
-					<div class="tsd-signature tsd-kind-icon">is<wbr>Windows<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Boolean</span></div>
+					<a name="ouput" class="tsd-anchor"></a>
+					<h3>ouput</h3>
+					<div class="tsd-signature tsd-kind-icon">ouput<span class="tsd-signature-symbol">:</span> <a href="buffer.html" class="tsd-signature-type">Buffer</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/3b02270/api/os.d.ts#L13">os.d.ts:13</a></li>
+							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/3b02270/api/systemworker.d.ts#L177">systemworker.d.ts:177</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>True if the server is running under a Windows OS, false otherwise</p>
+							<p>stdout result of the command</p>
 						</div>
 					</div>
-				</section>
-			</section>
-			<section class="tsd-panel-group tsd-member-group tsd-is-external tsd-is-not-exported">
-				<h2>Methods</h2>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-					<a name="networkinterfaces" class="tsd-anchor"></a>
-					<h3>network<wbr>Interfaces</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-						<li class="tsd-signature tsd-kind-icon">network<wbr>Interfaces<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Object</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/3b02270/api/os.d.ts#L17">os.d.ts:17</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>returns a list of available network interfaces on the server</p>
-								</div>
-							</div>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Object</span></h4>
-						</li>
-					</ul>
 				</section>
 			</section>
 		</div>
@@ -182,19 +151,16 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface tsd-is-external tsd-is-not-exported">
-						<a href="os.html" class="tsd-kind-icon">OS</a>
+						<a href="systemworkerresult.html" class="tsd-kind-icon">System<wbr>Worker<wbr>Result</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="os.html#islinux" class="tsd-kind-icon">is<wbr>Linux</a>
+								<a href="systemworkerresult.html#error" class="tsd-kind-icon">error</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="os.html#ismac" class="tsd-kind-icon">is<wbr>Mac</a>
+								<a href="systemworkerresult.html#exitstatus" class="tsd-kind-icon">exit<wbr>Status</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="os.html#iswindows" class="tsd-kind-icon">is<wbr>Windows</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="os.html#networkinterfaces" class="tsd-kind-icon">network<wbr>Interfaces</a>
+								<a href="systemworkerresult.html#ouput" class="tsd-kind-icon">ouput</a>
 							</li>
 						</ul>
 					</li>
