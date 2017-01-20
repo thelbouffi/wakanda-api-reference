@@ -245,7 +245,7 @@ interface FileSystem {
 	 * @returns Returns a string with the full text file content.
 	 * 
 	 * ```
-	 * var myQuote = loadText( 'C:/texts/under-the-red-sky.jpg' );
+	 * var myQuote = loadText( 'c:/texts/under-the-red-sky.txt' );
 	 * var newSong = new ds.Quotes();
  	 * newSong.author = 'Bob Dylan';
 	 * newSong.quote = myQuote;
@@ -260,7 +260,7 @@ interface FileSystem {
 	 * @returns Returns a string with the full text file content.
 	 * 
 	 * ```
-	 * var myFile = File( 'C:/texts/under-the-red-sky.jpg' );
+	 * var myFile = File( 'c:/texts/under-the-red-sky.txt' );
 	 * var myQuote = loadText( myFile );
 	 * var newSong = new ds.Quotes();
  	 * newSong.author = 'Bob Dylan';
