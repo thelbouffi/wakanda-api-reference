@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Job | </title>
+	<title>NodeWorkerProxy | </title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,10 +56,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="job.html">Job</a>
+					<a href="nodeworkerproxy.html">NodeWorkerProxy</a>
 				</li>
 			</ul>
-			<h1>Interface Job</h1>
+			<h1>Interface NodeWorkerProxy</h1>
 		</div>
 	</div>
 </header>
@@ -70,7 +70,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">Job</span>
+						<span class="target">NodeWorkerProxy</span>
 					</li>
 				</ul>
 			</section>
@@ -81,14 +81,7 @@
 						<section class="tsd-index-section tsd-is-external tsd-is-not-exported">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="job.html#id" class="tsd-kind-icon">id</a></li>
-							</ul>
-						</section>
-						<section class="tsd-index-section tsd-is-external tsd-is-not-exported">
-							<h3>Methods</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="job.html#log" class="tsd-kind-icon">log</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="job.html#terminate" class="tsd-kind-icon">terminate</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="nodeworkerproxy.html#port" class="tsd-kind-icon">port</a></li>
 							</ul>
 						</section>
 					</div>
@@ -97,78 +90,26 @@
 			<section class="tsd-panel-group tsd-member-group tsd-is-external tsd-is-not-exported">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-					<a name="id" class="tsd-anchor"></a>
-					<h3>id</h3>
-					<div class="tsd-signature tsd-kind-icon">id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">String</span></div>
+					<a name="port" class="tsd-anchor"></a>
+					<h3>port</h3>
+					<div class="tsd-signature tsd-kind-icon">port<span class="tsd-signature-symbol">:</span> <a href="port.html" class="tsd-signature-type">Port</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/b400fe2/api/job.d.ts#L6">job.d.ts:6</a></li>
+							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/b400fe2/api/nodeworker.d.ts#L109">nodeworker.d.ts:109</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Unique ID of the job on the server</p>
+							<p>Use the proxy port to communicate with the node worker thread.</p>
 						</div>
+						<pre><code><span class="hljs-comment">// Create a new NodeWorker and get the proxy worker</span>
+<span class="hljs-keyword">var</span> myWorkerProxy = <span class="hljs-keyword">new</span> <span class="hljs-type">NodeWorker</span>(<span class="hljs-string">"backend/worker.js"</span>, <span class="hljs-string">"my-worker-name"</span>);
+<span class="hljs-comment">// Get the proxy worker port for communication</span>
+<span class="hljs-keyword">var</span> workerProxyPort = myWorkerProxy.port;
+<span class="hljs-comment">// Send a "wake up" message to the worker</span>
+workerProxyPort.postMessage(<span class="hljs-string">'wake-up'</span>);
+</code></pre>
 					</div>
-				</section>
-			</section>
-			<section class="tsd-panel-group tsd-member-group tsd-is-external tsd-is-not-exported">
-				<h2>Methods</h2>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-					<a name="log" class="tsd-anchor"></a>
-					<h3>log</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-						<li class="tsd-signature tsd-kind-icon">log<span class="tsd-signature-symbol">(</span>messageInfo<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">String</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/b400fe2/api/job.d.ts#L10">job.d.ts:10</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>logs the messageInfo event for the job</p>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>messageInfo: <span class="tsd-signature-type">String</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-					<a name="terminate" class="tsd-anchor"></a>
-					<h3>terminate</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-						<li class="tsd-signature tsd-kind-icon">terminate<span class="tsd-signature-symbol">(</span>messageInfo<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">String</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/b400fe2/api/job.d.ts#L14">job.d.ts:14</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>logs the messageInfo event for the job and terminates the job</p>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>messageInfo: <span class="tsd-signature-type">String</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-						</li>
-					</ul>
 				</section>
 			</section>
 		</div>
@@ -185,16 +126,10 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface tsd-is-external tsd-is-not-exported">
-						<a href="job.html" class="tsd-kind-icon">Job</a>
+						<a href="nodeworkerproxy.html" class="tsd-kind-icon">Node<wbr>Worker<wbr>Proxy</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="job.html#id" class="tsd-kind-icon">id</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="job.html#log" class="tsd-kind-icon">log</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="job.html#terminate" class="tsd-kind-icon">terminate</a>
+								<a href="nodeworkerproxy.html#port" class="tsd-kind-icon">port</a>
 							</li>
 						</ul>
 					</li>

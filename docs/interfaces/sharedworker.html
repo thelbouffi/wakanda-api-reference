@@ -83,6 +83,8 @@
 						<dt>warning</dt>
 						<dd><p>There is an implicit <code>wait()</code> in worker. No need to add another.</p>
 							<pre><code><span class="hljs-keyword">wait</span>(timeout?: <span class="hljs-keyword">Number</span>) : Boolean;
+</code></pre><p>Requires a SSJS module. This module should be defined in <code>PROJECT/backend/modules</code></p>
+							<pre><code><span class="hljs-attribute">var myModule</span> = require(<span class="hljs-string">'module'</span>);
 </code></pre><p>Worker example</p>
 							<pre><code><span class="hljs-comment">// Describes the content of the worker.js file</span>
 <span class="hljs-comment">// Called when a new worker is created</span>
@@ -156,7 +158,7 @@ onconnect = <span class="hljs-function"><span class="hljs-keyword">function</spa
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e7c5c23/api/sharedworker.d.ts#L74">sharedworker.d.ts:74</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/b400fe2/api/sharedworker.d.ts#L79">sharedworker.d.ts:79</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">

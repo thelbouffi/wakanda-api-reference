@@ -71,7 +71,7 @@
 					<div class="lead">
 						<p>Here is an example of a worker file</p>
 					</div>
-					<p>Callback to trigger when a new caller creates a SharedWorker proxy object</p>
+					<p>Callback to trigger when a new caller creates a NodeWorker proxy object</p>
 					<pre><code>onconnect: <span class="hljs-function"><span class="hljs-keyword">Function</span>;</span>
 </code></pre><p>Get port to communicate with the worker proxy.
 					Always use <code>ports[0]</code>.</p>
@@ -83,8 +83,10 @@
 						<dt>warning</dt>
 						<dd><p>There is an implicit <code>wait()</code> in worker. No need to add another.</p>
 							<pre><code><span class="hljs-keyword">wait</span>(timeout?: <span class="hljs-keyword">Number</span>) : Boolean;
+</code></pre><p>Requires a node module. This module should be defined in <code>PROJECT/node_modules</code></p>
+							<pre><code><span class="hljs-attribute">var myModule</span> = requireNode(<span class="hljs-string">'module'</span>);
 </code></pre><p>Worker example</p>
-							<pre><code><span class="hljs-comment">// Describes the worker.js file</span>
+							<pre><code><span class="hljs-comment">// Describes the content of the worker.js file</span>
 <span class="hljs-comment">// Called when a new worker is created</span>
 onconnect = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"> msg </span>)
 </span>{
@@ -141,12 +143,6 @@ onconnect = <span class="hljs-function"><span class="hljs-keyword">function</spa
 								<li class="tsd-kind-constructor tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="nodeworker.html#constructor" class="tsd-kind-icon">constructor</a></li>
 							</ul>
 						</section>
-						<section class="tsd-index-section tsd-is-external tsd-is-not-exported">
-							<h3>Properties</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="nodeworker.html#port" class="tsd-kind-icon">port</a></li>
-							</ul>
-						</section>
 					</div>
 				</section>
 			</section>
@@ -156,20 +152,20 @@ onconnect = <span class="hljs-function"><span class="hljs-keyword">function</spa
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Node<wbr>Worker<span class="tsd-signature-symbol">(</span>scriptPath<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">String</span>, workerName<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">String</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="sharedworker.html" class="tsd-signature-type">SharedWorker</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Node<wbr>Worker<span class="tsd-signature-symbol">(</span>scriptPath<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">String</span>, workerName<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">String</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="nodeworkerproxy.html" class="tsd-signature-type">NodeWorkerProxy</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e7c5c23/api/nodeworker.d.ts#L74">nodeworker.d.ts:74</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/b400fe2/api/nodeworker.d.ts#L79">nodeworker.d.ts:79</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Shared worker constructor.
-										Creates a new shared worker in its own thread if it does not exist yet. Then it returns a proxy object to communicate with the shared worker thread.
-									Shared workers can be addressed from any thread, they are uniquely identified by their path and name.</p>
+									<p>Node worker constructor.
+										Creates a new node worker in its own thread if it does not exist yet. Then it returns a proxy object to communicate with the node worker thread.
+									Node workers can be addressed from any thread, they are uniquely identified by their path and name.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -191,38 +187,13 @@ onconnect = <span class="hljs-function"><span class="hljs-keyword">function</spa
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="sharedworker.html" class="tsd-signature-type">SharedWorker</a></h4>
-							<p>Returns a shared worker proxy</p>
+							<h4 class="tsd-returns-title">Returns <a href="nodeworkerproxy.html" class="tsd-signature-type">NodeWorkerProxy</a></h4>
+							<p>Returns a node worker proxy</p>
 							<pre><code>// <span class="hljs-string">"worker.js"</span> <span class="hljs-built_in">is</span> defined <span class="hljs-keyword">in</span> &lt;PROJECT&gt;/backend/worker.js
-<span class="hljs-built_in">var</span> myWorkerProxy = <span class="hljs-built_in">new</span> SharedWorker(<span class="hljs-string">"backend/worker.js"</span>, <span class="hljs-string">"my-worker-name"</span>);
+<span class="hljs-built_in">var</span> myWorkerProxy = <span class="hljs-built_in">new</span> NodeWorker(<span class="hljs-string">"backend/worker.js"</span>, <span class="hljs-string">"my-worker-name"</span>);
 </code></pre>
 						</li>
 					</ul>
-				</section>
-			</section>
-			<section class="tsd-panel-group tsd-member-group tsd-is-external tsd-is-not-exported">
-				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-					<a name="port" class="tsd-anchor"></a>
-					<h3>port</h3>
-					<div class="tsd-signature tsd-kind-icon">port<span class="tsd-signature-symbol">:</span> <a href="port.html" class="tsd-signature-type">Port</a></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e7c5c23/api/nodeworker.d.ts#L101">nodeworker.d.ts:101</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Use the proxy port to communicate with the share worker thread.</p>
-						</div>
-						<pre><code><span class="hljs-comment">// Create a new SharedWorker and get the proxy worker</span>
-<span class="hljs-keyword">var</span> myWorkerProxy = <span class="hljs-keyword">new</span> <span class="hljs-type">SharedWorker</span>(<span class="hljs-string">"backend/worker.js"</span>, <span class="hljs-string">"my-worker-name"</span>);
-<span class="hljs-comment">// Get the proxy worker port for communication</span>
-<span class="hljs-keyword">var</span> workerProxyPort = myWorkerProxy.port;
-<span class="hljs-comment">// Send a "wake up" message to the worker</span>
-workerProxyPort.postMessage(<span class="hljs-string">'wake-up'</span>);
-</code></pre>
-					</div>
 				</section>
 			</section>
 		</div>
@@ -243,9 +214,6 @@ workerProxyPort.postMessage(<span class="hljs-string">'wake-up'</span>);
 						<ul>
 							<li class=" tsd-kind-constructor tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
 								<a href="nodeworker.html#constructor" class="tsd-kind-icon">constructor</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="nodeworker.html#port" class="tsd-kind-icon">port</a>
 							</li>
 						</ul>
 					</li>
