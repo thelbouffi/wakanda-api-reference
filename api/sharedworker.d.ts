@@ -29,7 +29,12 @@
  * wait(timeout?: Number) : Boolean;
  * ```
  * 
+ * Requires a SSJS module. This module should be defined in `PROJECT/backend/modules`
  * 
+ * ```
+ * var myModule = require('module');
+ * ```
+ *
  * Worker example
  * 
  * ```

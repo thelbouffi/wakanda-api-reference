@@ -256,7 +256,14 @@ interface SystemWorkerProxy {
      * Useful when an attempt to write in the stdin of the external process with `postMessage()` is stuck. `endOfInput()` will release the execution.
      * 
      * ```
-     * workerProxy.endOfInput();
+     * // Create some data to gzip
+     * var input = new Buffer( 'abcde', 'ascii' );
+     * // Create an asynchronous system worker
+     * var worker = new SystemWorker( 'gzip' );
+     * // Send the compressed file on stdin.
+     * worker.postMessage( input );
+     * // Note that we call endOfInput() to indicate we're done. gzip (and most program waiting data from stdin) will wait for more data until the input is explicitely closed.
+     * worker.endOfInput();
      * ```
      */
     endOfInput() : void;
@@ -265,20 +272,39 @@ interface SystemWorkerProxy {
      */
     getInfos() : Object;
     /**
-     * Returns the number of SystemWorker objects currently running on the server
+     * Write on the input stream (stdin) of the external process
+     * 
+     * ```
+     * // Create an asynchronous system worker
+     * var worker = new SystemWorker( 'gzip' );
+     * // Send the compressed file on stdin.
+     * worker.postMessage( 'abcde' );
+     * // Note that we call endOfInput() to indicate we're done. gzip (and most program waiting data from stdin) will wait for more data until the input is explicitely closed.
+     * worker.endOfInput();
      */
-    getNumberRunning() : Number;
-    /**
-    *write on the input stream (stdin) of the external process
-    */
     postMessage(stdin: String) : void;
     /**
-    *write on the input stream (stdin) of the external process
-    */
+     * Write on the input stream (stdin) of the external process
+     * 
+     * ```
+     * // Create some data to gzip
+     * var input = new Buffer( 'abcde', 'ascii' );
+     * // Create an asynchronous system worker
+     * var worker = new SystemWorker( 'gzip' );
+     * // Send the compressed file on stdin.
+     * worker.postMessage( input );
+     * // Note that we call endOfInput() to indicate we're done. gzip (and most program waiting data from stdin) will wait for more data until the input is explicitely closed.
+     * worker.endOfInput();
+     */
     postMessage(stdin: Buffer) : void;
     /**
-    *set the type of data exchanged in the SystemWorker through the onmessage and onerror properties
-    */
+     * Set the type of data exchanged in the SystemWorker through the onmessage and onerror properties.
+     * @param binary `true` to return binary data by `onmessage` and `onerror`, `false` otherwise.
+     * 
+     * ```
+     * workerProxy.setBinary(true);
+     * ```
+     */
     setBinary(binary: Boolean) : void;
     /**
      * Forces the system worker to terminate its execution.

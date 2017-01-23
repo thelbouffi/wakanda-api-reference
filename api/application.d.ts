@@ -35,281 +35,281 @@
 interface Application extends Directory, Data, Core, Threads, FileSystem, HTTP, Storage {}
 
 interface Data {
-	/**
-	 * Reference the datastore of the application
-	 */
-	ds: Datastore;
-	/**
-	*starts the backup of the closed datastore defined by model and data
-	*/
-	backupDataStore(model: File, data: File, settings: Object, options?: Object) : File;
-	/**
-	*compacts the datastore's data file designated by model and data, and generates the compactedData data file.
-	*/
-	compactDataStore(model: File, data: File, options?: Object, compactedData?: File) : void;
-	/**
-	*returns an Array that lists the 20 most recent backup manifests recorded in the specified backup registry
-	*/
-	getBackupRegistry(registryFolder: Folder) : Array<Object>;
-	/**
-	*returns an Object containing the default backup settings for the solution
-	*/
-	getBackupSettings() : Object;
-	/**
-	*returns information about the journal of the datastore whose data file you passed in dataFile
-	*/
-	getJournalInfo(dataFile: File, options?: Object) : Object;
-	/**
-	*returns information about the journal of the datastore whose data file you passed in dataFile
-	*/
-	getJournalInfo(dataFile: String, options?: Object) : Object;
-	/**
-	*returns an Array that lists the 20 most recent backup manifests recorded in the backup registry default folder of the application
-	*/
-	getLastBackups() : Array<Object>;
-	/**
-	*allows you to partially or fully integrate a journal file into a datastore
-	*/
-	integrateDataStoreJournal(model: File, data: File, journal: File, options?: Object) : Object;
-	/**
-	*repairs the datastore's data file defined by model and data, and generates the repairedData data file.
-	*/
-	repairDataStore(model: File, data: File, options?: Object, repairedData?: File) : void;
-	/**
-	*resets the current journal of the datastore whose data file you passed in dataFile
-	*/
-	resetDataStoreJournal(dataFile: File) : Object;
-	/**
-	*resets the current journal of the datastore whose data file you passed in dataFile
-	*/
-	resetDataStoreJournal(dataFile: String) : Object;
-	/**
-	*allows you to restore a data folder previously archived
-	*/
-	restoreDataStore(manifest: File, restoreFolder: Folder, options?: Object) : Object;
-	/**
-	*allows you to restore a data folder previously archived
-	*/
-	restoreDataStore(config: Object, options?: Object) : Object;
-	/**
-	*verifies the internal structure of the objects contained in the datastore designated by model and data.
-	*/
-	verifyDataStore(model: File, data: File, options: Object) : void;
+    /**
+     * Reference the datastore of the application
+     */
+    ds: Datastore;
+    /**
+    *starts the backup of the closed datastore defined by model and data
+    */
+    backupDataStore(model: File, data: File, settings: Object, options?: Object) : File;
+    /**
+    *compacts the datastore's data file designated by model and data, and generates the compactedData data file.
+    */
+    compactDataStore(model: File, data: File, options?: Object, compactedData?: File) : void;
+    /**
+    *returns an Array that lists the 20 most recent backup manifests recorded in the specified backup registry
+    */
+    getBackupRegistry(registryFolder: Folder) : Array<Object>;
+    /**
+    *returns an Object containing the default backup settings for the solution
+    */
+    getBackupSettings() : Object;
+    /**
+    *returns information about the journal of the datastore whose data file you passed in dataFile
+    */
+    getJournalInfo(dataFile: File, options?: Object) : Object;
+    /**
+    *returns information about the journal of the datastore whose data file you passed in dataFile
+    */
+    getJournalInfo(dataFile: String, options?: Object) : Object;
+    /**
+    *returns an Array that lists the 20 most recent backup manifests recorded in the backup registry default folder of the application
+    */
+    getLastBackups() : Array<Object>;
+    /**
+    *allows you to partially or fully integrate a journal file into a datastore
+    */
+    integrateDataStoreJournal(model: File, data: File, journal: File, options?: Object) : Object;
+    /**
+    *repairs the datastore's data file defined by model and data, and generates the repairedData data file.
+    */
+    repairDataStore(model: File, data: File, options?: Object, repairedData?: File) : void;
+    /**
+    *resets the current journal of the datastore whose data file you passed in dataFile
+    */
+    resetDataStoreJournal(dataFile: File) : Object;
+    /**
+    *resets the current journal of the datastore whose data file you passed in dataFile
+    */
+    resetDataStoreJournal(dataFile: String) : Object;
+    /**
+    *allows you to restore a data folder previously archived
+    */
+    restoreDataStore(manifest: File, restoreFolder: Folder, options?: Object) : Object;
+    /**
+    *allows you to restore a data folder previously archived
+    */
+    restoreDataStore(config: Object, options?: Object) : Object;
+    /**
+    *verifies the internal structure of the objects contained in the datastore designated by model and data.
+    */
+    verifyDataStore(model: File, data: File, options: Object) : void;
 }
 
 interface Core {
-	/**
-	 * References the console of the application
-	 */
-	console: Console;
-	/**
-	 * References the buffer constructor
-	 */
-	Buffer: Buffer;
-	/**
-	 * Create a valid UUID string
-	 * @returns Returns a string with the generated UUID
-	 * 
-	 * ```
-	 * generateUUID();
+    /**
+     * References the console of the application
+     */
+    console: Console;
+    /**
+     * References the buffer constructor
+     */
+    Buffer: Buffer;
+    /**
+     * Create a valid UUID string
+     * @returns Returns a string with the generated UUID
+     * 
+     * ```
+     * generateUUID();
      * // 9AE457F4B557BD7895AD4712345ABCDE
-	 * ```
-	 */
-	generateUUID() : String;
-	/**
-	 * Gets the named progress indicator object
-	 */
-	getProgressIndicator(name: String) : ProgressIndicator;
-	/**
-	 * Creates a progress indicator
-	 * @param numElements Number of elements to count
-	 * @param sessionName Name of execution session for progress indicator
-	 * @param stoppable `true`if the progress indicator can be stopped, `false` otherwise
-	 * @param unused Not used, always pass an empty string ("")	
-	 * @param name Unique name of object on the server
-	 */
-	ProgressIndicator(numElements: Number, sessionName?: String, stoppable?: Boolean, unused?: String, name?: String) : ProgressIndicator;
+     * ```
+     */
+    generateUUID() : String;
+    /**
+     * Gets the named progress indicator object
+     */
+    getProgressIndicator(name: String) : ProgressIndicator;
+    /**
+     * Creates a progress indicator
+     * @param numElements Number of elements to count
+     * @param sessionName Name of execution session for progress indicator
+     * @param stoppable `true`if the progress indicator can be stopped, `false` otherwise
+     * @param unused Not used, always pass an empty string ("")	
+     * @param name Unique name of object on the server
+     */
+    ProgressIndicator(numElements: Number, sessionName?: String, stoppable?: Boolean, unused?: String, name?: String) : ProgressIndicator;
 }
 
 interface Threads {
-	/**
-	 * Ends the current thread.
-	 * 
-	 * ```
-	 * close();
-	 * ```
-	 */
-	close() : void;
-	/**
-	 * Exit pending `wait()` in the current thread. Does not impact pending `wait()` in other threads.
-	 * 
-	 * ```
-	 * exitWait();
-	 * ```
-	 */
-	exitWait() : void;
-	/**
-	 * References the node worker constructor
-	 */
-	NodeWorker: NodeWorker;
-	/**
-	 * References the shared worker constructor
-	 */
-	SharedWorker: SharedWorker;
-	/**
-	 * References the system worker constructor
-	 */
-	SystemWorker: SystemWorker;
-	/**
-	 * References the mutex constructor
-	 */
-	Mutex(key: String) : Mutex;
-	/**
-	 * Require a SSJS module (CommonJS compliant).
-	 * This module must be defined in `PROJECT/backend/modules/`.
-	 * @param moduleId Describes the module id and path
-	 * @returns Returns the exported API of the given module
-	 * ```
-	 * // Get the module defined in PROJECT/backend/modules/mail
-	 * var mail = require('mail');
-	 * // Get the module defined in PROJECT/backend/modules/customers/platinium
-	 * var platiniumCustomers = require('/customers/platinium'); 
-	 * ```
-	 */
-	require(moduleId: String) : Module;
-	/**
-	 * Require a NodeJS module.
-	 * This module must be defined in `PROJECT/backend/node_modules`.
-	 * @warning This API is only available inside a Node worker (See ShareWorker for more details)
-	 * @param moduleId Describes the module id and path
-	 * @returns Returns the exported API of the given module
-	 * ```
-	 * // Get the Node module defined in PROJECT/backend/node_modules/http
-	 * var http = requireNode('http'); 
-	 * ```
-	 */
-	requireNode(moduleId: String) : Module;
-	/**
-	 * Allows a thread to handle events and to continue to exist after the complete code executes
-	 * @param timeout Milliseconds to wait for. If none, it's an infinite wait. Can be squeeze with an `exitWait()`.
-	 * 
-	 * ```
-	 * // Wait for 100ms
-	 * wait(100);
-	 * // Wait for the end of time
-	 * wait();
-	 * ```
-	 */
-	wait(timeout?: Number) : void;
+    /**
+     * Ends the current thread.
+     * 
+     * ```
+     * close();
+     * ```
+     */
+    close() : void;
+    /**
+     * Exit pending `wait()` in the current thread. Does not impact pending `wait()` in other threads.
+     * 
+     * ```
+     * exitWait();
+     * ```
+     */
+    exitWait() : void;
+    /**
+     * References the node worker constructor
+     */
+    NodeWorker: NodeWorker;
+    /**
+     * References the shared worker constructor
+     */
+    SharedWorker: SharedWorker;
+    /**
+     * References the system worker constructor
+     */
+    SystemWorker: SystemWorker;
+    /**
+     * References the mutex constructor
+     */
+    Mutex(key: String) : Mutex;
+    /**
+     * Require a SSJS module (CommonJS compliant).
+     * This module must be defined in `PROJECT/backend/modules/`.
+     * @param moduleId Describes the module id and path
+     * @returns Returns the exported API of the given module
+     * ```
+     * // Get the module defined in PROJECT/backend/modules/mail
+     * var mail = require('mail');
+     * // Get the module defined in PROJECT/backend/modules/customers/platinium
+     * var platiniumCustomers = require('/customers/platinium'); 
+     * ```
+     */
+    require(moduleId: String) : Module;
+    /**
+     * Require a NodeJS module.
+     * This module must be defined in `PROJECT/backend/node_modules`.
+     * @warning This API is only available inside a Node worker (See ShareWorker for more details)
+     * @param moduleId Describes the module id and path
+     * @returns Returns the exported API of the given module
+     * ```
+     * // Get the Node module defined in PROJECT/backend/node_modules/http
+     * var http = requireNode('http'); 
+     * ```
+     */
+    requireNode(moduleId: String) : Module;
+    /**
+     * Allows a thread to handle events and to continue to exist after the complete code executes
+     * @param timeout Milliseconds to wait for. If none, it's an infinite wait. Can be squeeze with an `exitWait()`.
+     * 
+     * ```
+     * // Wait for 100ms
+     * wait(100);
+     * // Wait for the end of time
+     * wait();
+     * ```
+     */
+    wait(timeout?: Number) : void;
 }
 
 interface FileSystem {
-	BinaryStream:BinaryStream;
+    BinaryStream:BinaryStream;
     Blob:Blob;
-	File:File;
-	Folder:Folder;
-	TextStream:TextStream;
-	/**
-	 * Loads an image from its path.
-	 * @param file Image path to load (POSIX path). Supports PNG and JPG files.
-	 * @returns Returns the image through Image object.
-	 * 
-	 * ```
-	 * var myPict = loadImage( 'C:/images/tulips.jpg' );
-	 * var newPict = new ds.Pict();
- 	 * newPict.name = 'Flower';
-	 * newPict.photo = myPict;
-	 * newPict.save();
-	 * ```
-	 */
-	loadImage(file: String) : Image;
-	/**
-	 * Loads an image from a File object.
-	 * @param file File object that reference an image. Supports PNG and JPG files.
-	 * @returns Returns the image through Image object.
-	 * 
-	 * ```
-	 * var myFile = File( 'C:/images/tulips.jpg' );
-	 * var myPict = loadImage(myFile);
-	 * var newPict = new ds.Pict();
- 	 * newPict.name = 'Flower';
-	 * newPict.photo = myPict;
-	 * newPict.save();
-	 * ```
-	 */
-	loadImage(file: File) : Image;
-	/**
-	 * Loads the content of a text file from its path.
-	 * @param file File path to load (POSIX path).
-	 * @param charset Defines the charset to use to read the file (Default: 7 = UTF-8). See [charset values](http://doc.wakanda.org/home2.en.html#/Wakanda/0.Beta/TextStream.301-684310.en.html) for more details.
-	 * @returns Returns a string with the full text file content.
-	 * 
-	 * ```
-	 * var myQuote = loadText( 'c:/texts/under-the-red-sky.txt' );
-	 * var newSong = new ds.Quotes();
- 	 * newSong.author = 'Bob Dylan';
-	 * newSong.quote = myQuote;
-	 * newSong.save();
-	 * ```
-	 */
-	loadText(file: String, charset?: Number) : String;
-	/**
-	 * Loads the content of a text file from a File object.
-	 * @param file File object that reference a text file.
-	 * @param charset Defines the charset to use to read the file (Default: 7 = UTF-8). See [charset values](http://doc.wakanda.org/home2.en.html#/Wakanda/0.Beta/TextStream.301-684310.en.html) for more details.
-	 * @returns Returns a string with the full text file content.
-	 * 
-	 * ```
-	 * var myFile = File( 'c:/texts/under-the-red-sky.txt' );
-	 * var myQuote = loadText( myFile );
-	 * var newSong = new ds.Quotes();
- 	 * newSong.author = 'Bob Dylan';
-	 * newSong.quote = myQuote;
-	 * newSong.save();
-	 * ```
-	 */
-	loadText(file: File, charset?: Number) : String;
-	/**
-	 * Saves the text into a file.
-	 * @param textToSave Text string to save.
-	 * @param file File path where to update (POSIX path).
-	 * @param charset Defines the charset of the text string (Default: 7 = UTF-8). See [charset values](http://doc.wakanda.org/home2.en.html#/Wakanda/0.Beta/TextStream.301-684310.en.html) for more details.
-	 * 
-	 * ```
-	 * saveText( 'Hello World ! Here is my text saved.', 'C:/texts/chapter-1.txt' );
-	 * ```
-	 */
-	saveText(textToSave: String, file: String, charset?: Number) : void;
-	/**
-	 * Saves the text into a file.
-	 * @param textToSave Text string to save.
-	 * @param file File path where to update (POSIX path).
-	 * @param charset Defines the charset of the text string (Default: 7 = UTF-8). See [charset values](http://doc.wakanda.org/home2.en.html#/Wakanda/0.Beta/TextStream.301-684310.en.html) for more details.
-	 * 
-	 * ```
-	 * var myFile = File( 'C:/texts/chapter-1.txt' );
-	 * saveText( 'Hello World ! Here is my text saved.', myFile );
-	 * ```
-	 */
-	saveText(textToSave: String, file: File, charset?: Number) : void;
+    File:File;
+    Folder:Folder;
+    TextStream:TextStream;
+    /**
+     * Loads an image from its path.
+     * @param file Image path to load (POSIX path). Supports PNG and JPG files.
+     * @returns Returns the image through Image object.
+     * 
+     * ```
+     * var myPict = loadImage( 'C:/images/tulips.jpg' );
+     * var newPict = new ds.Pict();
+      * newPict.name = 'Flower';
+     * newPict.photo = myPict;
+     * newPict.save();
+     * ```
+     */
+    loadImage(file: String) : Image;
+    /**
+     * Loads an image from a File object.
+     * @param file File object that reference an image. Supports PNG and JPG files.
+     * @returns Returns the image through Image object.
+     * 
+     * ```
+     * var myFile = File( 'C:/images/tulips.jpg' );
+     * var myPict = loadImage(myFile);
+     * var newPict = new ds.Pict();
+      * newPict.name = 'Flower';
+     * newPict.photo = myPict;
+     * newPict.save();
+     * ```
+     */
+    loadImage(file: File) : Image;
+    /**
+     * Loads the content of a text file from its path.
+     * @param file File path to load (POSIX path).
+     * @param charset Defines the charset to use to read the file (Default: 7 = UTF-8). See [charset values](http://doc.wakanda.org/home2.en.html#/Wakanda/0.Beta/TextStream.301-684310.en.html) for more details.
+     * @returns Returns a string with the full text file content.
+     * 
+     * ```
+     * var myQuote = loadText( 'c:/texts/under-the-red-sky.txt' );
+     * var newSong = new ds.Quotes();
+     * newSong.author = 'Bob Dylan';
+     * newSong.quote = myQuote;
+     * newSong.save();
+     * ```
+     */
+    loadText(file: String, charset?: Number) : String;
+    /**
+     * Loads the content of a text file from a File object.
+     * @param file File object that reference a text file.
+     * @param charset Defines the charset to use to read the file (Default: 7 = UTF-8). See [charset values](http://doc.wakanda.org/home2.en.html#/Wakanda/0.Beta/TextStream.301-684310.en.html) for more details.
+     * @returns Returns a string with the full text file content.
+     * 
+     * ```
+     * var myFile = File( 'c:/texts/under-the-red-sky.txt' );
+     * var myQuote = loadText( myFile );
+     * var newSong = new ds.Quotes();
+     * newSong.author = 'Bob Dylan';
+     * newSong.quote = myQuote;
+     * newSong.save();
+     * ```
+     */
+    loadText(file: File, charset?: Number) : String;
+    /**
+     * Saves the text into a file.
+     * @param textToSave Text string to save.
+     * @param file File path where to update (POSIX path).
+     * @param charset Defines the charset of the text string (Default: 7 = UTF-8). See [charset values](http://doc.wakanda.org/home2.en.html#/Wakanda/0.Beta/TextStream.301-684310.en.html) for more details.
+     * 
+     * ```
+     * saveText( 'Hello World ! Here is my text saved.', 'C:/texts/chapter-1.txt' );
+     * ```
+     */
+    saveText(textToSave: String, file: String, charset?: Number) : void;
+    /**
+     * Saves the text into a file.
+     * @param textToSave Text string to save.
+     * @param file File path where to update (POSIX path).
+     * @param charset Defines the charset of the text string (Default: 7 = UTF-8). See [charset values](http://doc.wakanda.org/home2.en.html#/Wakanda/0.Beta/TextStream.301-684310.en.html) for more details.
+     * 
+     * ```
+     * var myFile = File( 'C:/texts/chapter-1.txt' );
+     * saveText( 'Hello World ! Here is my text saved.', myFile );
+     * ```
+     */
+    saveText(textToSave: String, file: File, charset?: Number) : void;
 }
 
 interface HTTP {
-	/**
-	 * Reference the HTTP server of the application
-	 */
-	httpServer: HttpServer;
-	XMLHttpRequest:XMLHttpRequest;
+    /**
+     * Reference the HTTP server of the application
+     */
+    httpServer: HttpServer;
+    XMLHttpRequest:XMLHttpRequest;
 }
 
 interface Storage {
-	/**
-	 * Reference the HTTP session storage of the application
-	 */
-	sessionStorage: LockableKeyValueStorage;
-	/**
-	 * Reference the application storage
-	 */
-	storage: LockableKeyValueStorage;
+    /**
+     * Reference the HTTP session storage of the application
+     */
+    sessionStorage: LockableKeyValueStorage;
+    /**
+     * Reference the application storage
+     */
+    storage: LockableKeyValueStorage;
 
 }

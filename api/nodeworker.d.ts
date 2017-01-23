@@ -3,7 +3,7 @@
 /**
  * Here is an example of a worker file
  * 
- * Callback to trigger when a new caller creates a SharedWorker proxy object
+ * Callback to trigger when a new caller creates a NodeWorker proxy object
  * 
  * ```
  * onconnect: Function;
@@ -29,11 +29,16 @@
  * wait(timeout?: Number) : Boolean;
  * ```
  * 
+ * Requires a node module. This module should be defined in `PROJECT/node_modules`
+ * 
+ * ```
+ * var myModule = requireNode('module');
+ * ```
  * 
  * Worker example
  * 
  * ```
- * // Describes the worker.js file
+ * // Describes the content of the worker.js file
  * // Called when a new worker is created
  * onconnect = function( msg )
  * {
@@ -73,25 +78,28 @@
 
 interface NodeWorker {
     /**
-     * Shared worker constructor.
-     * Creates a new shared worker in its own thread if it does not exist yet. Then it returns a proxy object to communicate with the shared worker thread.
-     * Shared workers can be addressed from any thread, they are uniquely identified by their path and name.
+     * Node worker constructor.
+     * Creates a new node worker in its own thread if it does not exist yet. Then it returns a proxy object to communicate with the node worker thread.
+     * Node workers can be addressed from any thread, they are uniquely identified by their path and name.
      * @param scriptPath Describes the path to worker javaScript file
      * @param workerName Describes the worker name
-     * @returns Returns a shared worker proxy
+     * @returns Returns a node worker proxy
      * 
      * ```
      * // "worker.js" is defined in <PROJECT>/backend/worker.js
-     * var myWorkerProxy = new SharedWorker("backend/worker.js", "my-worker-name");
+     * var myWorkerProxy = new NodeWorker("backend/worker.js", "my-worker-name");
      * ```
      */
-    new(scriptPath: String, workerName?: String) : SharedWorker;
+    new(scriptPath: String, workerName?: String) : NodeWorkerProxy ;
+}
+
+interface NodeWorkerProxy {
     /**
-     * Use the proxy port to communicate with the share worker thread.
+     * Use the proxy port to communicate with the node worker thread.
      * 
      * ```
-     * // Create a new SharedWorker and get the proxy worker
-     * var myWorkerProxy = new SharedWorker("backend/worker.js", "my-worker-name");
+     * // Create a new NodeWorker and get the proxy worker
+     * var myWorkerProxy = new NodeWorker("backend/worker.js", "my-worker-name");
      * // Get the proxy worker port for communication
      * var workerProxyPort = myWorkerProxy.port;
      * // Send a "wake up" message to the worker

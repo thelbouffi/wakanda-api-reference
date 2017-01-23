@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Storage | </title>
+	<title>SystemWorkerEvent | </title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,10 +56,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="storage.html">Storage</a>
+					<a href="systemworkerevent.html">SystemWorkerEvent</a>
 				</li>
 			</ul>
-			<h1>Interface Storage</h1>
+			<h1>Interface SystemWorkerEvent</h1>
 		</div>
 	</div>
 </header>
@@ -70,12 +70,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">Storage</span>
-						<ul class="tsd-hierarchy">
-							<li>
-								<a href="application.html" class="tsd-signature-type">Application</a>
-							</li>
-						</ul>
+						<span class="target">SystemWorkerEvent</span>
 					</li>
 				</ul>
 			</section>
@@ -83,45 +78,109 @@
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
-						<section class="tsd-index-section tsd-is-not-exported">
+						<section class="tsd-index-section tsd-is-external tsd-is-not-exported">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="storage.html#sessionstorage" class="tsd-kind-icon">session<wbr>Storage</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="storage.html#storage-1" class="tsd-kind-icon">storage</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="systemworkerevent.html#data" class="tsd-kind-icon">data</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="systemworkerevent.html#exitstatus" class="tsd-kind-icon">exit<wbr>Status</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="systemworkerevent.html#forced" class="tsd-kind-icon">forced</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="systemworkerevent.html#hasstarted" class="tsd-kind-icon">has<wbr>Started</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="systemworkerevent.html#target" class="tsd-kind-icon">target</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="systemworkerevent.html#type" class="tsd-kind-icon">type</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
-			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
+			<section class="tsd-panel-group tsd-member-group tsd-is-external tsd-is-not-exported">
 				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
-					<a name="sessionstorage" class="tsd-anchor"></a>
-					<h3>session<wbr>Storage</h3>
-					<div class="tsd-signature tsd-kind-icon">session<wbr>Storage<span class="tsd-signature-symbol">:</span> <a href="lockablekeyvaluestorage.html" class="tsd-signature-type">LockableKeyValueStorage</a></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
+					<a name="data" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> data</h3>
+					<div class="tsd-signature tsd-kind-icon">data<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">String</span><span class="tsd-signature-symbol"> | </span><a href="buffer.html" class="tsd-signature-type">Buffer</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e7c5c23/api/application.d.ts#L309">application.d.ts:309</a></li>
+							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e7c5c23/api/systemworker.d.ts#L204">systemworker.d.ts:204</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Reference the HTTP session storage of the application</p>
+							<p>Content of stdout</p>
 						</div>
 					</div>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
-					<a name="storage-1" class="tsd-anchor"></a>
-					<h3>storage</h3>
-					<div class="tsd-signature tsd-kind-icon">storage<span class="tsd-signature-symbol">:</span> <a href="lockablekeyvaluestorage.html" class="tsd-signature-type">LockableKeyValueStorage</a></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
+					<a name="exitstatus" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> exit<wbr>Status</h3>
+					<div class="tsd-signature tsd-kind-icon">exit<wbr>Status<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e7c5c23/api/application.d.ts#L313">application.d.ts:313</a></li>
+							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e7c5c23/api/systemworker.d.ts#L212">systemworker.d.ts:212</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Reference the application storage</p>
+							<p>Exit status returned by the executed command</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
+					<a name="forced" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> forced</h3>
+					<div class="tsd-signature tsd-kind-icon">forced<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e7c5c23/api/systemworker.d.ts#L216">systemworker.d.ts:216</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p><code>true</code> if the user called <code>terminate()</code></p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
+					<a name="hasstarted" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> has<wbr>Started</h3>
+					<div class="tsd-signature tsd-kind-icon">has<wbr>Started<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e7c5c23/api/systemworker.d.ts#L208">systemworker.d.ts:208</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p><code>true</code> if the command line has been correctly executed</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
+					<a name="target" class="tsd-anchor"></a>
+					<h3>target</h3>
+					<div class="tsd-signature tsd-kind-icon">target<span class="tsd-signature-symbol">:</span> <a href="systemworkerproxy.html" class="tsd-signature-type">SystemWorkerProxy</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e7c5c23/api/systemworker.d.ts#L200">systemworker.d.ts:200</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>SystemWorker proxy which triggered the callback</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
+					<a name="type" class="tsd-anchor"></a>
+					<h3>type</h3>
+					<div class="tsd-signature tsd-kind-icon">type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">String</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e7c5c23/api/systemworker.d.ts#L196">systemworker.d.ts:196</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Either <code>message</code>, <code>error</code> or <code>terminate</code></p>
 						</div>
 					</div>
 				</section>
@@ -139,14 +198,26 @@
 				<ul class="before-current">
 				</ul>
 				<ul class="current">
-					<li class="current tsd-kind-interface tsd-is-not-exported">
-						<a href="storage.html" class="tsd-kind-icon">Storage</a>
+					<li class="current tsd-kind-interface tsd-is-external tsd-is-not-exported">
+						<a href="systemworkerevent.html" class="tsd-kind-icon">System<wbr>Worker<wbr>Event</a>
 						<ul>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
-								<a href="storage.html#sessionstorage" class="tsd-kind-icon">session<wbr>Storage</a>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
+								<a href="systemworkerevent.html#data" class="tsd-kind-icon">data</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
-								<a href="storage.html#storage-1" class="tsd-kind-icon">storage</a>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
+								<a href="systemworkerevent.html#exitstatus" class="tsd-kind-icon">exit<wbr>Status</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
+								<a href="systemworkerevent.html#forced" class="tsd-kind-icon">forced</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
+								<a href="systemworkerevent.html#hasstarted" class="tsd-kind-icon">has<wbr>Started</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
+								<a href="systemworkerevent.html#target" class="tsd-kind-icon">target</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
+								<a href="systemworkerevent.html#type" class="tsd-kind-icon">type</a>
 							</li>
 						</ul>
 					</li>

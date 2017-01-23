@@ -91,7 +91,6 @@
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="systemworkerproxy.html#endofinput" class="tsd-kind-icon">end<wbr>OfInput</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="systemworkerproxy.html#getinfos" class="tsd-kind-icon">get<wbr>Infos</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="systemworkerproxy.html#getnumberrunning" class="tsd-kind-icon">get<wbr>Number<wbr>Running</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="systemworkerproxy.html#postmessage" class="tsd-kind-icon">post<wbr>Message</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="systemworkerproxy.html#setbinary" class="tsd-kind-icon">set<wbr>Binary</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="systemworkerproxy.html#terminate" class="tsd-kind-icon">terminate</a></li>
@@ -106,72 +105,125 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
 					<a name="onerror" class="tsd-anchor"></a>
 					<h3>onerror</h3>
-					<div class="tsd-signature tsd-kind-icon">onerror<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Function</span></div>
+					<div class="tsd-signature tsd-kind-icon">onerror<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/81f7c6f/api/systemworker.d.ts#L188">systemworker.d.ts:188</a></li>
+							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e7c5c23/api/systemworker.d.ts#L230">systemworker.d.ts:230</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Callback to trigger when an error is received</p>
+							<p>Callback for system worker errors.</p>
 						</div>
+						<pre><code><span class="hljs-comment">// Receives an error</span>
+workerProxy.onerror = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">( event )</span> {</span>
+    console.<span class="hljs-built_in">log</span>( event.<span class="hljs-built_in">type</span> +<span class="hljs-string">': '</span>+ event.data );
+}
+</code></pre>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-siganture">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property tsd-is-not-exported">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>event<span class="tsd-signature-symbol">: </span><a href="systemworkerevent.html" class="tsd-signature-type">SystemWorkerEvent</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>event: <a href="systemworkerevent.html" class="tsd-signature-type">SystemWorkerEvent</a></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
 					<a name="onmessage" class="tsd-anchor"></a>
 					<h3>onmessage</h3>
-					<div class="tsd-signature tsd-kind-icon">onmessage<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Function</span></div>
+					<div class="tsd-signature tsd-kind-icon">onmessage<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/81f7c6f/api/systemworker.d.ts#L211">systemworker.d.ts:211</a></li>
+							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e7c5c23/api/systemworker.d.ts#L242">systemworker.d.ts:242</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Callback event when a message is received from the system worker</p>
+							<p>Callback for system worker messages.
+							The message can be sent into multiple chunks.</p>
 						</div>
-						<dl class="tsd-comment-tags">
-							<dt>param</dt>
-							<dd><p>Describes the message received</p>
-							</dd>
-							<dt>param</dt>
-							<dd><p>Describes the message received</p>
-							</dd>
-							<dt>param</dt>
-							<dd><p>Describes the message received</p>
-							</dd>
-							<dt>param</dt>
-							<dd><p>Describes the message received</p>
-								<pre><code><span class="hljs-keyword">var</span> worker = <span class="hljs-keyword">new</span> SystemWorker( <span class="hljs-string">'sh -c ls -la /Users/&lt;user&gt;/Desktop'</span> );
-<span class="hljs-comment">// Received message chunck</span>
-worker.onmessage = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"> message </span>) </span>{
-    <span class="hljs-built_in">console</span>.log(message.data);
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'[Chunck ends]'</span>);
+						<pre><code><span class="hljs-comment">// Receives a message chunck</span>
+workerProxy.onmessage = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">( event )</span> {</span>
+    console.<span class="hljs-built_in">log</span>( event.<span class="hljs-built_in">type</span> +<span class="hljs-string">': '</span>+ event.data );
 }
-worker.onterminated = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"> message </span>) </span>{
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'[System worker ends]'</span>);
-}
-<span class="hljs-comment">// For testing purpose, wait for the worker to end. This makes it very similar to SystemWorker.exec().</span>
-<span class="hljs-comment">// In real application, keep working in parallels and do not pause the current thread</span>
-worker.wait();
-</code></pre></dd>
-						</dl>
+</code></pre>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-siganture">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property tsd-is-not-exported">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>event<span class="tsd-signature-symbol">: </span><a href="systemworkerevent.html" class="tsd-signature-type">SystemWorkerEvent</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>event: <a href="systemworkerevent.html" class="tsd-signature-type">SystemWorkerEvent</a></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
 					<a name="onterminated" class="tsd-anchor"></a>
 					<h3>onterminated</h3>
-					<div class="tsd-signature tsd-kind-icon">onterminated<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Function</span></div>
+					<div class="tsd-signature tsd-kind-icon">onterminated<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/81f7c6f/api/systemworker.d.ts#L215">systemworker.d.ts:215</a></li>
+							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e7c5c23/api/systemworker.d.ts#L253">systemworker.d.ts:253</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Callback to trigger when the external process is terminating</p>
+							<p>Callback when the external process is terminating</p>
 						</div>
+						<pre><code><span class="hljs-comment">// Receives an "end" event from system worker</span>
+workerProxy.onterminated = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">( event )</span> {</span>
+    console.<span class="hljs-built_in">log</span>( event.<span class="hljs-built_in">type</span> +<span class="hljs-string">': with exitStatus:'</span>+ event.exitStatus );
+}
+</code></pre>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-siganture">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property tsd-is-not-exported">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>event<span class="tsd-signature-symbol">: </span><a href="systemworkerevent.html" class="tsd-signature-type">SystemWorkerEvent</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>event: <a href="systemworkerevent.html" class="tsd-signature-type">SystemWorkerEvent</a></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
 					</div>
 				</section>
 			</section>
@@ -187,13 +239,16 @@ worker.wait();
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/81f7c6f/api/systemworker.d.ts#L219">systemworker.d.ts:219</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e7c5c23/api/systemworker.d.ts#L262">systemworker.d.ts:262</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>closes the input stream (stdin) of the external process</p>
+									<p>Closes the input stream (stdin) of the external process.
+									Useful when an attempt to write in the stdin of the external process with <code>postMessage()</code> is stuck. <code>endOfInput()</code> will release the execution.</p>
 								</div>
+								<pre><code>workerProxy.endOfInput()<span class="hljs-comment">;</span>
+</code></pre>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
@@ -209,37 +264,15 @@ worker.wait();
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/81f7c6f/api/systemworker.d.ts#L223">systemworker.d.ts:223</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e7c5c23/api/systemworker.d.ts#L266">systemworker.d.ts:266</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>returns an object containing information about the SystemWorker</p>
+									<p>Returns system worker information</p>
 								</div>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Object</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-					<a name="getnumberrunning" class="tsd-anchor"></a>
-					<h3>get<wbr>Number<wbr>Running</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>Number<wbr>Running<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Number</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/81f7c6f/api/systemworker.d.ts#L227">systemworker.d.ts:227</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>returns the number of SystemWorker objects currently running on the server</p>
-								</div>
-							</div>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Number</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -254,7 +287,7 @@ worker.wait();
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/81f7c6f/api/systemworker.d.ts#L231">systemworker.d.ts:231</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e7c5c23/api/systemworker.d.ts#L270">systemworker.d.ts:270</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -273,7 +306,7 @@ worker.wait();
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/81f7c6f/api/systemworker.d.ts#L235">systemworker.d.ts:235</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e7c5c23/api/systemworker.d.ts#L274">systemworker.d.ts:274</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -301,18 +334,23 @@ worker.wait();
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/81f7c6f/api/systemworker.d.ts#L239">systemworker.d.ts:239</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e7c5c23/api/systemworker.d.ts#L283">systemworker.d.ts:283</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>set the type of data exchanged in the SystemWorker through the onmessage and onerror properties</p>
+									<p>Set the type of data exchanged in the SystemWorker through the onmessage and onerror properties.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>binary: <span class="tsd-signature-type">Boolean</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p><code>true</code> to return binary data by <code>onmessage</code> and <code>onerror</code>, <code>false</code> otherwise.</p>
+										<pre><code>workerProxy.setBinary(true)<span class="hljs-comment">;</span>
+</code></pre>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -323,27 +361,36 @@ worker.wait();
 					<a name="terminate" class="tsd-anchor"></a>
 					<h3>terminate</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-						<li class="tsd-signature tsd-kind-icon">terminate<span class="tsd-signature-symbol">(</span>waitForTermination<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Boolean</span>, killProcessTree<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">terminate<span class="tsd-signature-symbol">(</span>waitForTermination<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Boolean</span>, killProcessTree<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/81f7c6f/api/systemworker.d.ts#L243">systemworker.d.ts:243</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e7c5c23/api/systemworker.d.ts#L294">systemworker.d.ts:294</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>forces the external process to terminate its execution</p>
+									<p>Forces the system worker to terminate its execution.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>waitForTermination: <span class="tsd-signature-type">Boolean</span></h5>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> waitForTermination: <span class="tsd-signature-type">Boolean</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>(default: <code>false</code>) <code>true</code> if the current thread must wait for the system worker execution to end</p>
+									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> killProcessTree: <span class="tsd-signature-type">Boolean</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>(default: <code>false</code>) <code>true</code> if the system worker and all his childs must end</p>
+										<pre><code>workerProxy.<span class="hljs-keyword">terminate</span>();
+workerProxy.<span class="hljs-keyword">terminate</span>(<span class="hljs-literal">true</span>, <span class="hljs-literal">true</span>);
+</code></pre>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -360,18 +407,24 @@ worker.wait();
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/81f7c6f/api/systemworker.d.ts#L247">systemworker.d.ts:247</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e7c5c23/api/systemworker.d.ts#L304">systemworker.d.ts:304</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>allows you to set a waiting time for the SystemWorker to execute</p>
+									<p>Wait for the end of the system worker execution</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> timeout: <span class="tsd-signature-type">Number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Millisecond to wait for.</p>
+										<pre><code>workerProxy.wait(<span class="hljs-number">1000</span>)<span class="hljs-comment">;</span>
+workerProxy.wait()<span class="hljs-comment">;</span>
+</code></pre>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Boolean</span></h4>
@@ -409,9 +462,6 @@ worker.wait();
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
 								<a href="systemworkerproxy.html#getinfos" class="tsd-kind-icon">get<wbr>Infos</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="systemworkerproxy.html#getnumberrunning" class="tsd-kind-icon">get<wbr>Number<wbr>Running</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
 								<a href="systemworkerproxy.html#postmessage" class="tsd-kind-icon">post<wbr>Message</a>
