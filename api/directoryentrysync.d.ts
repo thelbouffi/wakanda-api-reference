@@ -8,23 +8,23 @@
 		/**
 		*File system of the entry
 		*/
-		filesystem: FileSystemSync;
+		readonly filesystem: FileSystemSync;
 		/**
 		*Absolute path of the entry
 		*/
-		fullPath: String;
+		readonly fullPath: String;
 		/**
 		*True if the EntrySync is a directory
 		*/
-		isDirectory: Boolean;
+		readonly isDirectory: Boolean;
 		/**
 		*True if the EntrySync is a file
 		*/
-		isFile: Boolean;
+		readonly isFile: Boolean;
 		/**
 		*Name of the entry, excluding the path leading to it
 		*/
-		name: String;
+		readonly name: String;
 		/**
 		*copies the EntrySync object to a different location in the filesystem
 		*/

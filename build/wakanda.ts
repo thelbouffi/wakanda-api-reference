@@ -126,6 +126,7 @@ var XMLHttpRequest = application.XMLHttpRequest;
 
 
 
+
 interface Application extends Directory, Data, Core, Threads, FileSystem, HTTP, Storage {}
 
 interface Data {
@@ -628,7 +629,7 @@ interface Blob {
 	 * @param end (default: blob.size)
 	 * @param mimeType
 	 * 
-	 * # Example 1: Slice a blob
+	 * #### Example 1: Slice a blob
 	 * ```
 	 * var myBlob = new Blob( 20 , 88, 'application/octet-stream' );
      * console.log( myBlob.toString() );
@@ -638,7 +639,7 @@ interface Blob {
      * // XXXXX
 	 * ```
 	 * 
-	 * # Example 2: Slice a blob
+	 * #### Example 2: Slice a blob
 	 * ```
 	 * var myBlob = new Blob( 20 , 88, 'application/octet-stream' );
      * console.log( myBlob.toString() );
@@ -648,7 +649,7 @@ interface Blob {
      * // XXXXXXXXXXXXXXX
 	 * ```
 	 * 
-	 * # Example 3: Slice a file
+	 * #### Example 3: Slice a file
 	 * ```
 	 * var myFile = File( 'PROJECT/backend/bootstrap.js' );
 	 * var myBlobSlice = myFile.slice( 0, 100 );
@@ -728,7 +729,7 @@ interface BufferInstance {
 	/**
 	 * Number of bytes of the buffer.
 	 */
-	length: Number;
+	readonly length: Number;
 	/**
 	 * Copies the current buffer into the target buffer.
 	 * @param targetBuffer Defines the buffer where to copy the data
@@ -763,7 +764,7 @@ interface BufferInstance {
 	/**
 	 * Converts the buffer contents into a string
 	 */
-	toString(encoding: String, start: Number, end?: Number) : String;
+	toString(encoding: String, start?: Number, end?: Number) : String;
 	/**
 	 * Writes the string parameter to the Buffer at the offset position and returns the number of bytes written
 	 */
@@ -1908,23 +1909,23 @@ interface Directory {
 		/**
 		*File system of the entry
 		*/
-		filesystem: FileSystemSync;
+		readonly filesystem: FileSystemSync;
 		/**
 		*Absolute path of the entry
 		*/
-		fullPath: String;
+		readonly fullPath: String;
 		/**
 		*True if the EntrySync is a directory
 		*/
-		isDirectory: Boolean;
+		readonly isDirectory: Boolean;
 		/**
 		*True if the EntrySync is a file
 		*/
-		isFile: Boolean;
+		readonly isFile: Boolean;
 		/**
 		*Name of the entry, excluding the path leading to it
 		*/
-		name: String;
+		readonly name: String;
 		/**
 		*copies the EntrySync object to a different location in the filesystem
 		*/
@@ -2028,125 +2029,207 @@ interface Directory {
 
 
 
-	
-	interface File extends Blob {
-		/**
-		*constructor of the File type objects
-		*/
-		new(absolutePath: String) : File;
-		/**
-		*constructor of the File type objects
-		*/
-		new(path: Folder, fileName: String) : File;
-		/**
-		*constructor of the File type objects
-		*/
-		new(path: FileSystemSync, fileName: String) : File;
-		/**
-		*Creation date for the file
-		*/
-		creationDate: Date;
-		/**
-		*True if the file exists at the defined path. Otherwise, it returns false.
-		*/
-		exists: Boolean;
-		/**
-		*File extension
-		*/
-		extension: String;
-		/**
-		*FileSystem of the object
-		*/
-		filesystem: FileSystemSync;
-		/**
-		*Last modification date for the file
-		*/
-		//lastModifiedDate: Date;
-		/**
-		*Name of the file with the extension and without the path
-		*/
-		//name: String;
-		/**
-		*Name of the file without the extension
-		*/
-		nameNoExt: String;
-		/**
-		*Parent folder of the file
-		*/
-		parent: Folder;
-		/**
-		*Full path of the file
-		*/
-		path: String;
-		/**
-		*True if the file is read only. Otherwise, it returns false.
-		*/
-		readOnly: Boolean;
-		/**
-		*True if the file is visible. Otherwise, it returns false.
-		*/
-		visible: Boolean;
-		/**
-		*stores the file referenced in the File on disk
-		*/
-		create() : Boolean;
-		/**
-		*returns the size of the free space (expressed in bytes) available on the volume where the File or Folder object is stored
-		*/
-		getFreeSpace(quotas?: Boolean) : Number;
-		/**
-		*returns the size of the free space (expressed in bytes) available on the volume where the File or Folder object is stored
-		*/
-		getFreeSpace(quotas?: String) : Number;
-		/**
-		*returns the absolute URL of the File or Folder object
-		*/
-		getURL(encoding?: Boolean) : String;
-		/**
-		*returns the absolute URL of the File or Folder object
-		*/
-		getURL(encoding?: String) : String;
-		/**
-		*returns the total size (expressed in bytes) of the volume where the File or Folder object is stored
-		*/
-		getVolumeSize() : Number;
-		/**
-		*class method can be used with the File( ) constructor to know if path corresponds to a file on disk
-		*/
-		isFile(path: String) : Boolean;
-		/**
-		*moves the file referenced in the File object (the source object) to the specified destination
-		*/
-		moveTo(destination: File, overwrite?: Boolean) : void;
-		/**
-		*moves the file referenced in the File object (the source object) to the specified destination
-		*/
-		moveTo(destination: File, overwrite?: String) : void;
-		/**
-		*moves the file referenced in the File object (the source object) to the specified destination
-		*/
-		moveTo(destination: String, overwrite?: Boolean) : void;
-		/**
-		*moves the file referenced in the File object (the source object) to the specified destination
-		*/
-		moveTo(destination: String, overwrite?: String) : void;
-		/**
-		*puts the file pointer on the next file within an iteration of files
-		*/
-		next() : Boolean;
-		/**
-		*removes the file or folder referenced in the File or Folder object from the storage volume
-		*/
-		remove() : Boolean;
-		/**
-		*allows you to rename a file on disk referenced in the File object
-		*/
-		setName(newName: String) : Boolean;
-		/**
-		*checks the validity of the pointer to the current File object within an iteration of files
-		*/
-		valid() : Boolean;
-	}
+interface File {
+	/**
+	 * References a file.
+	 * The file does not have to exist.
+	 * @param path Absolute path of the file to reference.
+	 * 
+	 * #### Example 1: Get a reference to an existing file
+	 * ```
+	 * var myFile = new File( 'PROJECT/backend/bootstrap.js' );
+	 * console.log( myFile.exists );
+	 * // true
+	 * ```
+	 * 
+	 * #### Example 2: Get a reference to a missing file
+	 * ```
+	 * var myFile = new File( 'PROJECT/backend/file-to-create.js' );
+	 * console.log( myFile.exists );
+	 * // false
+	 * ```
+	 */
+	new(path: String) : FileInstance;
+	/**
+	 * References a file.
+	 * The file does not have to exist.
+	 * @param folder Folder containing the file
+	 * @param fileName Name of the file to reference in the folder path
+	 * 
+	 * #### Example 1: Get a reference to an existing file
+	 * ```
+	 * var myFolder = new Folder( 'PROJECT/backend/' );
+	 * var myFile = new File( myFolder, 'bootstrap.js' );
+	 * console.log( myFile.exists );
+	 * // true
+	 * ```
+	 * 
+	 * #### Example 2: Get a reference to a missing file
+	 * ```
+	 * var myFolder = new Folder( 'PROJECT/backend/' );
+	 * var myFile = new File( myFolder, 'file-to-create.js' );
+	 * console.log( myFile.exists );
+	 * // false
+	 * ```
+	 */
+	new(folder: Folder, fileName: String) : FileInstance;
+	/**
+	 * Check if the path references a file
+	 * @param path Absolute path to a file
+	 * @returns `true` is the path references a file, `false` otherwise.
+	 * 
+	 * ```
+	 * var myIsFile = File.isFile( 'PROJECT/backend/bootstrap.js' );
+	 * console.log( myIsFile );
+	 * // true
+	 * ```
+	 */
+	isFile(path: String) : Boolean;
+}
+
+interface FileInstance extends Blob {
+	/**
+	 * Creation date for the file
+	 */
+	readonly creationDate: Date;
+	/**
+	 * `true` if the file exists at the defined path, `false` otherwise.
+	 */
+	readonly exists: Boolean;
+	/**
+	 * File extension
+	 */
+	readonly extension: String;
+	// /**
+	//  * FileSystem of the object
+	//  */
+	// readonly filesystem: FileSystemSync;
+	/**
+	 * Last modification date for the file if any
+	 */
+	readonly lastModifiedDate: any;
+	/**
+	 * Name of the file with the extension and without the path
+	 */
+	readonly name: string;
+	/**
+	 * Name of the file without the extension
+	 */
+	readonly nameNoExt: String;
+	/**
+	 * Parent folder of the file
+	 */
+	readonly parent: Folder;
+	/**
+	 * Full path of the file
+	 */
+	readonly path: String;
+	/**
+	 * `true` if the file is read only, `false` otherwise.
+	 */
+	readonly readOnly: Boolean;
+	/**
+	 * `true` if the file is visible, `false` otherwise.
+	 */
+	readonly visible: Boolean;
+	/**
+	 * Creates a new file on disk.
+	 * @throws An error if something goes wrong: file already exists, invalid path, ...
+	 * @returns `true` if the file is well created
+	 * 
+	 * ```
+	 * var myFile = new File( 'PROJECT/backend/my-created-file.js' );
+	 * myFile.create();
+	 * // true
+	 * ```
+	 */
+	create() : Boolean;
+	/**
+	 * Returns the size of the free space (expressed in bytes) available on the volume where the File or Folder object is stored
+	 */
+	getFreeSpace(quotas?: Boolean) : Number;
+	/**
+	 * Returns the absolute URL of the File or Folder object
+	 */
+	getURL(encoding?: Boolean) : String;
+	/**
+	 * Returns the total size (expressed in bytes) of the volume where the File or Folder object is stored
+	 */
+	getVolumeSize() : Number;
+	/**
+	 * Moves the file to the specified destination.
+	 * @warning After the `moveTo()` action, the file referenced is still the source file and not the destination file. Therefore, the referenced file does not exist anymore.
+	 * @param file Destination file path
+	 * @param overwrite `true` if the file can be overwritten, `false` otherwise
+	 * 
+	 * ```
+	 * var myFile = new File( 'PROJECT/backend/my-file.js' );
+	 * myFile.create();
+	 * myFile.moveTo( 'PROJECT/my-moved-file.js', yes );
+	 * // myFile always references the "my-file.js" file
+	 * // The referenced file did not change with the moveTo() action.
+	 * console.log( myFile.path );
+	 * ```
+	 */
+	moveTo(file: File, overwrite?: Boolean) : void;
+	/**
+	 * Moves the file to the specified destination.
+	 * @warning After the `moveTo()` action, the file referenced is still the source file and not the destination file. Therefore, the referenced file does not exist anymore.
+	 * @param file Destination file path
+	 * @param overwrite `true` if the file can be overwritten, `false` otherwise
+	 * 
+	 * ```
+	 * var mySourceFile = new File( 'PROJECT/backend/my-file.js' );
+	 * var myDestinationFile = new File( 'PROJECT/my-moved-file.js' );
+	 * // The file must exists to be renamed
+	 * myFile.create();
+	 * myFile.moveTo( myDestinationFile, yes );
+	 * // myFile always references the "my-file.js" file
+	 * // The referenced file did not change with the moveTo() action.
+	 * console.log( myFile.path );
+	 * // PROJECT/backend/my-file.js
+	 * ```
+	 */
+	moveTo(file: String, overwrite?: Boolean) : void;
+	/**
+	 * Removes the file from the disk
+	 * @returns `true` if the file is not here, `false` otherwise.
+ 	 */
+	remove() : Boolean;
+	/**
+	 * Rename the file on disk
+	 * @warning The file must exist on disk to be renamed
+	 * @warning The file destination must be free
+	 * @param name New file name
+	 * @returns `true` if the file is successfully renamed
+	 * @throws An error if something goes wrong: file already exists, invalid name, ...
+	 * 
+	 * ````
+	 * var myFile = new File( 'PROJECT/backend/my-file.js' );
+	 * // The file must exists to be renamed
+	 * myFile.create();
+	 * // The destination file name must be free
+	 * myFile.setName( 'my-renamed-file.js' );
+	 * // myFile always references the "my-file.js" file
+	 * // The referenced file did not change with the setName() action.
+	 * console.log( myFile.path );
+	 * // PROJECT/backend/my-file.js
+	 * ```
+	 */
+	setName(name: String) : Boolean;
+}
+
+
+// interface FileIterator extends File {
+// 	/**
+// 	*puts the file pointer on the next file within an iteration of files
+// 	*/
+// 	next() : Boolean;
+// 	/**
+// 	*checks the validity of the pointer to the current File object within an iteration of files
+// 	*/
+// 	valid() : Boolean;
+// }
 
 
 	
@@ -2208,12 +2291,16 @@ interface Directory {
 
 	interface FileSystemSync {
 		/**
-		*Name of the file system
-		*/
-		name: String;
+		 * Name of the file system
+		 */
+		readonly name: String;
 		/**
-		*Root directory of the file system
-		*/
+		 * Absolute path of the file system
+		 */
+		readonly path: String;
+		/**
+		 * Root directory of the file system
+		 */
 		root: DirectoryEntrySync;
 	}
 	interface FileWriterSync{

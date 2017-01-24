@@ -71,7 +71,7 @@ interface Blob {
 	 * @param end (default: blob.size)
 	 * @param mimeType
 	 * 
-	 * # Example 1: Slice a blob
+	 * #### Example 1: Slice a blob
 	 * ```
 	 * var myBlob = new Blob( 20 , 88, 'application/octet-stream' );
      * console.log( myBlob.toString() );
@@ -81,7 +81,7 @@ interface Blob {
      * // XXXXX
 	 * ```
 	 * 
-	 * # Example 2: Slice a blob
+	 * #### Example 2: Slice a blob
 	 * ```
 	 * var myBlob = new Blob( 20 , 88, 'application/octet-stream' );
      * console.log( myBlob.toString() );
@@ -91,7 +91,7 @@ interface Blob {
      * // XXXXXXXXXXXXXXX
 	 * ```
 	 * 
-	 * # Example 3: Slice a file
+	 * #### Example 3: Slice a file
 	 * ```
 	 * var myFile = File( 'PROJECT/backend/bootstrap.js' );
 	 * var myBlobSlice = myFile.slice( 0, 100 );

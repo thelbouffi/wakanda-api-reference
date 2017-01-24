@@ -61,7 +61,7 @@ interface BufferInstance {
 	/**
 	 * Number of bytes of the buffer.
 	 */
-	length: Number;
+	readonly length: Number;
 	/**
 	 * Copies the current buffer into the target buffer.
 	 * @param targetBuffer Defines the buffer where to copy the data

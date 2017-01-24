@@ -3,11 +3,15 @@
 
 	interface FileSystemSync {
 		/**
-		*Name of the file system
-		*/
-		name: String;
+		 * Name of the file system
+		 */
+		readonly name: String;
 		/**
-		*Root directory of the file system
-		*/
+		 * Absolute path of the file system
+		 */
+		readonly path: String;
+		/**
+		 * Root directory of the file system
+		 */
 		root: DirectoryEntrySync;
 	}
