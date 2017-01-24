@@ -106,7 +106,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e9a4535/api/systemworker.d.ts#L4">systemworker.d.ts:4</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/b16648a/api/systemworker.d.ts#L4">systemworker.d.ts:4</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -141,35 +141,34 @@
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="systemworkerproxy.html" class="tsd-signature-type">SystemWorkerProxy</a></h4>
 							<p>Returns a system worker proxy</p>
-							<pre><code><span class="hljs-comment">// Example 1: Do a simple CLI command</span>
-<span class="hljs-keyword">var</span> workerProxy = <span class="hljs-keyword">new</span> SystemWorker( <span class="hljs-string">'sh -c ls -la /Users/&lt;user&gt;/Desktop'</span> );
-workerProxy.onerror = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"> event </span>) </span>{
-    <span class="hljs-built_in">console</span>.log( event.type +<span class="hljs-string">': '</span>+ event.data );
+							<h4 id="example-1-do-a-simple-cli-command">Example 1: Do a simple CLI command</h4>
+							<pre><code>var workerProxy = new SystemWorker( <span class="hljs-string">'sh -c ls -la /Users/&lt;user&gt;/Desktop'</span> );
+workerProxy.onerror = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">( event )</span> {</span>
+    console.<span class="hljs-built_in">log</span>( event.<span class="hljs-built_in">type</span> +<span class="hljs-string">': '</span>+ event.data );
 }
-workerProxy.onmessage = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"> message </span>) </span>{
-    <span class="hljs-built_in">console</span>.log( event.type +<span class="hljs-string">': '</span>+ event.data );
+workerProxy.onmessage = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">( message )</span> {</span>
+    console.<span class="hljs-built_in">log</span>( event.<span class="hljs-built_in">type</span> +<span class="hljs-string">': '</span>+ event.data );
 }
-workerProxy.onterminated = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"> event </span>) </span>{
-    <span class="hljs-built_in">console</span>.log( event.type +<span class="hljs-string">': with exitStatus:'</span>+ event.exitStatus );
+workerProxy.onterminated = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">( event )</span> {</span>
+    console.<span class="hljs-built_in">log</span>( event.<span class="hljs-built_in">type</span> +<span class="hljs-string">': with exitStatus:'</span>+ event.exitStatus );
 }
 <span class="hljs-comment">// For testing purpose, wait for the worker to end. This makes it very similar to SystemWorker.exec().</span>
 <span class="hljs-comment">// In real application, keep working in parallels and do not pause the current thread</span>
 workerProxy.wait();
-
-<span class="hljs-comment">// Example 2: Pass parameters, quotes and env variables options to the system worker</span>
-<span class="hljs-keyword">var</span> myFolder = <span class="hljs-keyword">new</span> Folder( <span class="hljs-string">'PROJECT/backend'</span> );
-<span class="hljs-keyword">var</span> options = {
-  <span class="hljs-attr">parameters</span> : { <span class="hljs-attr">folder_ref</span> : myFolder },
-  <span class="hljs-attr">quote</span> : <span class="hljs-string">'"'</span>,
-  <span class="hljs-attr">variables</span> : { <span class="hljs-attr">ENV_VAR_1</span> : <span class="hljs-string">'value1'</span> }
+</code></pre><h4 id="example-2-pass-parameters-quotes-and-env-variables-options-to-the-system-worker">Example 2: Pass parameters, quotes and env variables options to the system worker</h4>
+							<pre><code>var myFolder = new Folder( <span class="hljs-string">'PROJECT/backend'</span> );
+var <span class="hljs-keyword">options</span> = {
+  <span class="hljs-keyword">parameters</span> : { folder_ref <span class="hljs-comment">: myFolder },</span>
+  quote <span class="hljs-comment">:</span> <span class="hljs-comment">'"'</span><span class="hljs-comment">,</span>
+  <span class="hljs-keyword">variables</span> <span class="hljs-comment">: { ENV_VAR_1 :</span> <span class="hljs-comment">'value1'</span><span class="hljs-comment"> }</span>
 };
-<span class="hljs-keyword">var</span> workerProxy = <span class="hljs-keyword">new</span> SystemWorker( <span class="hljs-string">'sh -c ls -la {file_ref}'</span>, options);
+var workerProxy = new SystemWorker( <span class="hljs-string">'sh -c ls -la {file_ref}'</span>, <span class="hljs-keyword">options</span>);
 </code></pre>
 						</li>
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e9a4535/api/systemworker.d.ts#L39">systemworker.d.ts:39</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/b16648a/api/systemworker.d.ts#L41">systemworker.d.ts:41</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -204,29 +203,28 @@ workerProxy.wait();
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="systemworkerproxy.html" class="tsd-signature-type">SystemWorkerProxy</a></h4>
 							<p>Returns a system worker proxy</p>
-							<pre><code><span class="hljs-comment">// Example 1: Do a simple CLI command</span>
-<span class="hljs-keyword">var</span> workerProxy = <span class="hljs-keyword">new</span> SystemWorker( [<span class="hljs-string">'sh'</span>, <span class="hljs-string">'-c'</span>, <span class="hljs-string">'ls -la /Users/&lt;user&gt;/Desktop'</span>] );
-workerProxy.onerror = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"> event </span>) </span>{
-    <span class="hljs-built_in">console</span>.log( event.type +<span class="hljs-string">': '</span>+ event.data );
+							<h4 id="example-1-do-a-simple-cli-command">Example 1: Do a simple CLI command</h4>
+							<pre><code>var workerProxy = new SystemWorker( [<span class="hljs-string">'sh'</span>, <span class="hljs-string">'-c'</span>, <span class="hljs-string">'ls -la /Users/&lt;user&gt;/Desktop'</span>] );
+workerProxy.onerror = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">( event )</span> {</span>
+    console.<span class="hljs-built_in">log</span>( event.<span class="hljs-built_in">type</span> +<span class="hljs-string">': '</span>+ event.data );
 }
-workerProxy.onmessage = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"> message </span>) </span>{
-    <span class="hljs-built_in">console</span>.log( event.type +<span class="hljs-string">': '</span>+ event.data );
+workerProxy.onmessage = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">( message )</span> {</span>
+    console.<span class="hljs-built_in">log</span>( event.<span class="hljs-built_in">type</span> +<span class="hljs-string">': '</span>+ event.data );
 }
-workerProxy.onterminated = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"> event </span>) </span>{
-    <span class="hljs-built_in">console</span>.log( event.type +<span class="hljs-string">': with exitStatus:'</span>+ event.exitStatus );
+workerProxy.onterminated = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">( event )</span> {</span>
+    console.<span class="hljs-built_in">log</span>( event.<span class="hljs-built_in">type</span> +<span class="hljs-string">': with exitStatus:'</span>+ event.exitStatus );
 }
 <span class="hljs-comment">// For testing purpose, wait for the worker to end. This makes it very similar to SystemWorker.exec().</span>
 <span class="hljs-comment">// In real application, keep working in parallels and do not pause the current thread</span>
 workerProxy.wait();
-
-<span class="hljs-comment">// Example 2: Pass parameters, quotes and env variables options to the system worker</span>
-<span class="hljs-keyword">var</span> myFolder = <span class="hljs-keyword">new</span> Folder( <span class="hljs-string">'PROJECT/backend'</span> );
-<span class="hljs-keyword">var</span> options = {
-  <span class="hljs-attr">parameters</span> : { <span class="hljs-attr">folder_ref</span> : myFolder },
-  <span class="hljs-attr">quote</span> : <span class="hljs-string">'"'</span>,
-  <span class="hljs-attr">variables</span> : { <span class="hljs-attr">ENV_VAR_1</span> : <span class="hljs-string">'value1'</span> }
+</code></pre><h4 id="example-2-pass-parameters-quotes-and-env-variables-options-to-the-system-worker">Example 2: Pass parameters, quotes and env variables options to the system worker</h4>
+							<pre><code>var myFolder = new Folder( <span class="hljs-string">'PROJECT/backend'</span> );
+var <span class="hljs-keyword">options</span> = {
+  <span class="hljs-keyword">parameters</span> : { folder_ref <span class="hljs-comment">: myFolder },</span>
+  quote <span class="hljs-comment">:</span> <span class="hljs-comment">'"'</span><span class="hljs-comment">,</span>
+  <span class="hljs-keyword">variables</span> <span class="hljs-comment">: { ENV_VAR_1 :</span> <span class="hljs-comment">'value1'</span><span class="hljs-comment"> }</span>
 };
-<span class="hljs-keyword">var</span> workerProxy = <span class="hljs-keyword">new</span> SystemWorker( [<span class="hljs-string">'sh'</span>, <span class="hljs-string">'-c'</span>, <span class="hljs-string">'ls -la {file_ref}'</span>], options);
+var workerProxy = new SystemWorker( [<span class="hljs-string">'sh'</span>, <span class="hljs-string">'-c'</span>, <span class="hljs-string">'ls -la {file_ref}'</span>], <span class="hljs-keyword">options</span>);
 </code></pre>
 						</li>
 					</ul>
@@ -245,7 +243,7 @@ workerProxy.wait();
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e9a4535/api/systemworker.d.ts#L111">systemworker.d.ts:111</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/b16648a/api/systemworker.d.ts#L121">systemworker.d.ts:121</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -276,37 +274,34 @@ workerProxy.wait();
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="systemworkerresult.html" class="tsd-signature-type">SystemWorkerResult</a></h4>
 							<p>Returns the exit status, stdout and sterr</p>
-							<pre><code><span class="hljs-comment">// Example 1: Do a simple CLI command</span>
-<span class="hljs-comment">// Launch "sh" executable with "-c" parameter and "ls -la /Users/&lt;user&gt;/Desktop" as the action to do</span>
-<span class="hljs-keyword">var</span> workerResult = SystemWorker.exec( '<span class="hljs-keyword">sh</span> -c <span class="hljs-keyword">ls</span> -<span class="hljs-keyword">la</span> /Users/&lt;user&gt;/Desktop' );
-console.<span class="hljs-built_in">log</span>(workerResult.output.<span class="hljs-keyword">toString</span>());
-
-<span class="hljs-comment">// Example 2: Get the result and display the ouput</span>
-<span class="hljs-comment">// Launch "git" executable with "--version" parameter</span>
+							<h4 id="example-1-do-a-simple-cli-command">Example 1: Do a simple CLI command</h4>
+							<pre><code>// Launch <span class="hljs-string">"sh"</span> executable <span class="hljs-keyword">with</span> <span class="hljs-string">"-c"</span> parameter <span class="hljs-literal">and</span> <span class="hljs-string">"ls -la /Users/&lt;user&gt;/Desktop"</span> as the action <span class="hljs-keyword">to</span> <span class="hljs-keyword">do</span>
+var workerResult = SystemWorker.exec( <span class="hljs-string">'sh -c ls -la /Users/&lt;user&gt;/Desktop'</span> )<span class="hljs-comment">;</span>
+console.<span class="hljs-built_in">log</span>(workerResult.output.toString())<span class="hljs-comment">;</span>
+</code></pre><h4 id="example-2-get-the-result-and-display-the-ouput">Example 2: Get the result and display the ouput</h4>
+							<pre><code><span class="hljs-comment">// Launch "git" executable with "--version" parameter</span>
 <span class="hljs-comment">// Store the result (Buffer) in a variable</span>
-<span class="hljs-keyword">var</span> workerResult = SystemWorker.exec( 'git --<span class="hljs-keyword">version</span>' );
-console.<span class="hljs-built_in">log</span>(workerResult.output.<span class="hljs-keyword">toString</span>());
-
-<span class="hljs-comment">// Example 3: Pass root folder options to the system worker</span>
-<span class="hljs-keyword">var</span> options = { folder: '/Users/yann/Desktop' };
+var workerResult = SystemWorker.<span class="hljs-built_in">exec</span>( <span class="hljs-string">'git --version'</span> );
+console.<span class="hljs-built_in">log</span>(workerResult.output.<span class="hljs-built_in">toString</span>());
+</code></pre><h4 id="example-3-pass-root-folder-options-to-the-system-worker">Example 3: Pass root folder options to the system worker</h4>
+							<pre><code><span class="hljs-keyword">var</span> options = { folder: '/Users/yann/Desktop' };
 <span class="hljs-keyword">var</span> workerResult = SystemWorker.exec( '<span class="hljs-keyword">sh</span> -c <span class="hljs-keyword">ls</span> -<span class="hljs-keyword">la</span>', options);
 console.<span class="hljs-built_in">log</span>(workerResult.output.<span class="hljs-keyword">toString</span>());
-
-<span class="hljs-comment">// Example 4: Pass parameters, quotes and env variables options to the system worker</span>
-<span class="hljs-keyword">var</span> myFolder = new Folder( 'PROJECT/backend' );
-<span class="hljs-keyword">var</span> options = {
-  parameters : { folder_ref : myFolder },
-  quote : '"',
-  variables : { ENV_VAR_1 : 'value1' }
+</code></pre><h4 id="example-4-pass-parameters-quotes-and-env-variables-options-to-the-system-worker">Example 4: Pass parameters, quotes and env variables options to the system worker</h4>
+							<pre><code>var myFolder = new Folder( <span class="hljs-string">'PROJECT/backend'</span> );
+var <span class="hljs-keyword">options</span> = {
+  <span class="hljs-keyword">parameters</span> : { folder_ref <span class="hljs-comment">: myFolder },</span>
+  quote <span class="hljs-comment">:</span> <span class="hljs-comment">'"'</span><span class="hljs-comment">,</span>
+  <span class="hljs-keyword">variables</span> <span class="hljs-comment">: { ENV_VAR_1 :</span> <span class="hljs-comment">'value1'</span><span class="hljs-comment"> }</span>
 };
-<span class="hljs-keyword">var</span> workerResult = SystemWorker.exec( '<span class="hljs-keyword">sh</span> -c <span class="hljs-keyword">ls</span> -<span class="hljs-keyword">la</span> {file_ref}', options);
-console.<span class="hljs-built_in">log</span>(workerResult.output.<span class="hljs-keyword">toString</span>());
+var workerResult = SystemWorker.exec( <span class="hljs-string">'sh -c ls -la {file_ref}'</span>, <span class="hljs-keyword">options</span>);
+console.<span class="hljs-built-in">log</span>(workerResult.output.toString());
 </code></pre>
 						</li>
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e9a4535/api/systemworker.d.ts#L147">systemworker.d.ts:147</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/b16648a/api/systemworker.d.ts#L163">systemworker.d.ts:163</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -336,24 +331,21 @@ console.<span class="hljs-built_in">log</span>(workerResult.output.<span class="
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="systemworkerresult.html" class="tsd-signature-type">SystemWorkerResult</a></h4>
 							<p>Returns the exit status, stdout and sterr</p>
-							<pre><code><span class="hljs-comment">// Example 1: Do a simple CLI command</span>
-<span class="hljs-comment">// Launch "sh" executable with "-c" parameter and "ls -la /Users/&lt;user&gt;/Desktop" as the action to do</span>
-var workerResult = SystemWorker.exec( [<span class="hljs-string">'sh'</span>, <span class="hljs-string">'-c'</span>, <span class="hljs-string">'ls -la /Users/&lt;user&gt;/Desktop'</span>] );
-console.<span class="hljs-built-in">log</span>(workerResult.output.toString());
-
-<span class="hljs-comment">// Example 2: Get the result and display the ouput</span>
-<span class="hljs-comment">// Launch "git" executable with "--version" parameter</span>
+							<h4 id="example-1-do-a-simple-cli-command">Example 1: Do a simple CLI command</h4>
+							<pre><code>// Launch <span class="hljs-string">"sh"</span> executable <span class="hljs-keyword">with</span> <span class="hljs-string">"-c"</span> parameter <span class="hljs-literal">and</span> <span class="hljs-string">"ls -la /Users/&lt;user&gt;/Desktop"</span> as the action <span class="hljs-keyword">to</span> <span class="hljs-keyword">do</span>
+var workerResult = SystemWorker.exec( [<span class="hljs-string">'sh'</span>, <span class="hljs-string">'-c'</span>, <span class="hljs-string">'ls -la /Users/&lt;user&gt;/Desktop'</span>] )<span class="hljs-comment">;</span>
+console.<span class="hljs-built_in">log</span>(workerResult.output.toString())<span class="hljs-comment">;</span>
+</code></pre><h4 id="example-2-get-the-result-and-display-the-ouput">Example 2: Get the result and display the ouput</h4>
+							<pre><code><span class="hljs-comment">// Launch "git" executable with "--version" parameter</span>
 <span class="hljs-comment">// Store the result (Buffer) in a variable</span>
-var workerResult = SystemWorker.exec( [<span class="hljs-string">'git'</span>, <span class="hljs-string">'--version'</span>] );
-console.<span class="hljs-built-in">log</span>(workerResult.output.toString());
-
-<span class="hljs-comment">// Example 3: Pass root folder options to the system worker</span>
-var <span class="hljs-keyword">options</span> = { folder: <span class="hljs-string">'/Users/yann/Desktop'</span> };
+var workerResult = SystemWorker.<span class="hljs-built_in">exec</span>( [<span class="hljs-string">'git'</span>, <span class="hljs-string">'--version'</span>] );
+console.<span class="hljs-built_in">log</span>(workerResult.output.<span class="hljs-built_in">toString</span>());
+</code></pre><h4 id="example-3-pass-root-folder-options-to-the-system-worker">Example 3: Pass root folder options to the system worker</h4>
+							<pre><code>var <span class="hljs-keyword">options</span> = { folder: <span class="hljs-string">'/Users/yann/Desktop'</span> };
 var workerResult = SystemWorker.exec( [<span class="hljs-string">'sh'</span>, <span class="hljs-string">'-c'</span>, <span class="hljs-string">'ls -la'</span>], <span class="hljs-keyword">options</span>);
 console.<span class="hljs-built-in">log</span>(workerResult.output.toString());
-
-<span class="hljs-comment">// Example 4: Pass parameters, quotes and env variables options to the system worker</span>
-var myFolder = new Folder( <span class="hljs-string">'PROJECT/backend'</span> );
+</code></pre><h4 id="example-4-pass-parameters-quotes-and-env-variables-options-to-the-system-worker">Example 4: Pass parameters, quotes and env variables options to the system worker</h4>
+							<pre><code>var myFolder = new Folder( <span class="hljs-string">'PROJECT/backend'</span> );
 var <span class="hljs-keyword">options</span> = {
   <span class="hljs-keyword">parameters</span> : { folder_ref <span class="hljs-comment">: myFolder },</span>
   quote <span class="hljs-comment">:</span> <span class="hljs-comment">'"'</span><span class="hljs-comment">,</span>

@@ -557,67 +557,180 @@ interface BinaryStream {
 	setPos(offset: Number) : void;
 }
 
-interface Blob{
+
+interface Blob {
 	/**
-	*constructor of the class objects of type Blob
-	*/
-	new(size: Number, filler?: Number, mimeType?: String) : Blob;
+	 * Creates a new blob.
+	 * @param size (default: 0 byte) Size of the new Blob
+	 * @param defaultByteValue (default: `0`) Defines the character code set as the default value to each blob byte
+	 * @param mimeType Defines the media type of the Blob
+	 * 
+	 * ```
+	 * var myBlob = new Blob( 20 , 88, 'application/octet-stream');
+     * var myString = myBlob.toString();
+     * // XXXXXXXXXXXXXXXXXXXX
+	 * ```
+	 */
+	new(size?: Number, defaultByteValue?: Number, mimeType?: String) : Blob;
 	/**
-	*Size of the Blob in bytes
-	*/
+	 * Size of the Blob in bytes
+	 */
 	readonly size: number;
 	/**
-	*Media type of the Blob expressed as MIME or "" if unknown
-	*/
+	 * Media type of the Blob expressed as MIME or "" if unknown
+	 */
 	readonly type: string;
 	/**
-	*copies the Blob referenced in the BLOB object (the source object) into the specified destination file
-	*/
-	copyTo(destination: File, overwrite?: Boolean) : void;
-	/**
-	*copies the Blob referenced in the BLOB object (the source object) into the specified destination file
-	*/
-	copyTo(destination: File, overwrite?: String) : void;
-	/**
-	*copies the Blob referenced in the BLOB object (the source object) into the specified destination file
-	*/
+	 * Copies the blob into a file.
+	 * @param destination Destination file
+	 * @param overwrite `true` to override existing file if any, `false` otherwise
+	 * 
+	 * #### Example 1: Copy a blob
+	 * ```
+	 * var myBlob = new Blob( 20 ); 
+     * myBlob.copyTo( 'PROJECT/backend/blob_copy.js' );
+	 * ```
+	 * 
+	 * #### Example 2: Copy a file object
+	 * ```
+	 * // Get a file. File object can be manipulate as a Blob
+	 * var myFile = new File( 'PROJECT/backend/bootstrap.js' );
+	 * // Copy the file using the Blob api
+     * myFile.copyTo( 'PROJECT/backend/bootstrap_copy.js' );
+	 * ```
+	 */
 	copyTo(destination: String, overwrite?: Boolean) : void;
 	/**
-	*copies the Blob referenced in the BLOB object (the source object) into the specified destination file
-	*/
-	copyTo(destination: String, overwrite?: String) : void;
+	 * Copies the blob into a file.
+	 * @param destination Destination file
+	 * @param overwrite `true` to override existing file if any, `false` otherwise
+	 *  
+	 * #### Example 1: Copy a blob
+	 * ```
+	 * var myFile = new File( 'PROJECT/backend/blob_copy.js' )
+     * var myBlob = new Blob( 20 ); 
+     * myBlob.copyTo( myFile );
+	 * ```
+	 * 
+	 * #### Example 2: Copy a file object
+	 * ```
+	 * // Get a file. File object can be manipulate as a Blob
+	 * var myFile = new File( 'PROJECT/backend/bootstrap.js' );
+	 * var myFileCopy = new File( 'PROJECT/backend/bootstrap_copy.js' );
+	 * // Copy the file using the Blob api
+     * myFile.copyTo( myFileCopy );
+	 * ```
+	 */
+	copyTo(destination: File, overwrite?: Boolean) : void;
 	/**
-	*creates a new Blob object by referencing the contents of the bytes of the Blob to which it is applied, from start to end
-	*/
-	slice(start: Number, end: Number, mimeType?: String) : Blob;
+	 * Creates a new blob by referencing the contents of the bytes of the Blob to which it is applied, from start to end
+	 * @param start (default: 0)
+	 * @param end (default: blob.size)
+	 * @param mimeType
+	 * 
+	 * # Example 1: Slice a blob
+	 * ```
+	 * var myBlob = new Blob( 20 , 88, 'application/octet-stream' );
+     * console.log( myBlob.toString() );
+     * // XXXXXXXXXXXXXXXXXXXX
+	 * var mySlicedBlob = myBlob.slice( 5, 10 );
+     * console.log( mySlicedBlob.toString() );
+     * // XXXXX
+	 * ```
+	 * 
+	 * # Example 2: Slice a blob
+	 * ```
+	 * var myBlob = new Blob( 20 , 88, 'application/octet-stream' );
+     * console.log( myBlob.toString() );
+     * // XXXXXXXXXXXXXXXXXXXX
+	 * var mySlicedBlob = myBlob.slice( 0, -5 );
+     * console.log( mySlicedBlob.toString() );
+     * // XXXXXXXXXXXXXXX
+	 * ```
+	 * 
+	 * # Example 3: Slice a file
+	 * ```
+	 * var myFile = File( 'PROJECT/backend/bootstrap.js' );
+	 * var myBlobSlice = myFile.slice( 0, 100 );
+	 * console.log( myBlobSlice.toString() );
+	 * ```
+	 */
+	slice(start?: Number, end?: Number, mimeType?: String) : Blob;
 	/**
-	*returns a Buffer object containing a copy of the Blob bytes
-	*/
+	 * Returns a buffer object containing a copy of the blob bytes
+	 */
 	toBuffer() : Buffer;
 	/**
-	*get a string representation of the Blob contents
-	*/
+	 * Get a string representation of the blob contents
+	 */
 	toString(stringFormat?: String) : String;
 }
 
+
+
 interface Buffer {
 	/**
-	 * Buffer constructor
+	 * Creates a new buffer.
 	 * @param size The number of bytes to allocate for the buffer
-	 * @param encoding Encoding available: `ascii`, `utf8`, `ucs2`, `hex`, `base64`
+	 * @param encoding (default: `utf8`) Encoding available: `ascii`, `utf8`, `ucs2`, `hex`, `base64`
 	 * 
 	 * ```
-	 * var myBuffer = new Buffer( 16*1024 );
-	 * var myBuffer = new Buffer( 16*1024, 'utf8' );
+	 * var myBufferInstance = new Buffer( 16*1024 );
+	 * var myBufferInstance = new Buffer( 16*1024, 'utf8' );
 	 * ```
 	 */
-	new(size: Number, encoding?: String) : Buffer;
+	new(size: Number, encoding?: String) : BufferInstance;
 	/**
-	 * Number of bytes of the buffer
+	 * Returns the string byte length.
+	 * Byte length may change depending of the encoding type.
+	 * @param str String to evaluate
+	 * @param encoding (default: `utf8`) Encoding available: `ascii`, `utf8`, `ucs2`, `hex`, `base64`
+	 * 
+	 * ```
+     * var myByteLength = Buffer.byteLength( 'Hello Buffer World !' );
+     * console.log(myByteLength);
+	 * // 20
+	 * ```
+	 */
+	byteLength( str: String, encoding?: String) : Number;
+	/**
+	 * Checks if the object is a buffer
+	 * @param obj Object to evaluate
+	 * @returns Returns `true` is the object is a buffer, `false` otherwise
+	 * 
+	 * #### Example 1: Is my string a buffer ?
+	 * ```
+	 * var isBuffer = Buffer.isBuffer( 'Hello Buffer World !' );
+     * console.log( isBuffer );
+	 * // false
+	 * ```
+	 * 
+	 * #### Example 2: Is my blob a buffer ?
+	 * ```
+	 * var myBlob = new Blob();
+	 * var isBuffer = Buffer.isBuffer( myBlob );
+	 * console.log( isBuffer );
+	 * // false
+	 * ```
+	 * 
+	 * #### Example 3: Is my buffer a buffer ?
+	 * ```
+	 * var myBuffer = new Buffer( '20' );
+	 * var isBuffer = Buffer.isBuffer( myBuffer );
+	 * console.log( isBuffer );
+	 * // true
+	 * ```
+	 */
+	isBuffer( obj: any ) : Boolean;
+}
+
+interface BufferInstance {
+	/**
+	 * Number of bytes of the buffer.
 	 */
 	length: Number;
 	/**
-	 * Copies the current buffer into the target buffer
+	 * Copies the current buffer into the target buffer.
 	 * @param targetBuffer Defines the buffer where to copy the data
 	 * @param targetOffset (default: 0) Byte offset where to start writing the data
 	 * @param sourceOffset (default: 0) Byte offset where to start reading the data
@@ -636,168 +749,168 @@ interface Buffer {
 	 */
 	copy(targetBuffer: Buffer, targetOffset?: Number, sourceOffset?: Number, sourceEnd?: Number) : void;
 	/**
-	*fills the Buffer to which it is applied with the character you passed in value
-	*/
+	 * Fills the Buffer to which it is applied with the character you passed in value
+	 */
 	fill(value: String, offset?: Number, length?: Number) : void;
 	/**
-	*creates a new Buffer object by referencing the contents of the bytes array of the Buffer to which it is applied, from start to end
-	*/
+	 * Creates a new Buffer object by referencing the contents of the bytes array of the Buffer to which it is applied, from start to end
+	 */
 	slice(start: Number, end?: Number) : Buffer;
 	/**
-	*returns a Blob object containing a copy of the Buffer bytes
-	*/
+	 * Returns a Blob object containing a copy of the Buffer bytes
+	 */
 	toBlob(mimeType?: String) : Blob;
 	/**
-	*converts the buffer contents into a string
-	*/
+	 * Converts the buffer contents into a string
+	 */
 	toString(encoding: String, start: Number, end?: Number) : String;
 	/**
-	*writes the string parameter to the Buffer at the offset position and returns the number of bytes written
-	*/
+	 * Writes the string parameter to the Buffer at the offset position and returns the number of bytes written
+	 */
 	write(string: String, offset?: Number, encoding?: String) : Number;
 	/**
-	*returns a 64 bit double value read from the Buffer with the Big Endian format
-	*/
+	 * Returns a 64 bit double value read from the Buffer with the Big Endian format
+	 */
 	readDoubleBE(offset: Number, noAssert?: Boolean) : Number;
 	/**
-	*returns a 64 bit double value read from the Buffer with the Little Endian format
-	*/
+	 * Returns a 64 bit double value read from the Buffer with the Little Endian format
+	 */
 	readDoubleLE(offset: Number, noAssert?: Boolean) : Number;
 	/**
-	*returns a 32-bit float value read from the Buffer with the Big Endian format
-	*/
+	 * Returns a 32-bit float value read from the Buffer with the Big Endian format
+	 */
 	readFloatBE(offset: Number, noAssert?: Boolean) : Number;
 	/**
-	*returns a 32-bit float value read from the Buffer with the Little Endian format
-	*/
+	 * Returns a 32-bit float value read from the Buffer with the Little Endian format
+	 */
 	readFloatLE(offset: Number, noAssert: Boolean) : Number;
 	/**
-	*returns an unsigned 16-bit integer value read from the Buffer with the Big Endian format
-	*/
+	 * Returns an unsigned 16-bit integer value read from the Buffer with the Big Endian format
+	 */
 	readInt16BE(offset: Number, noAssert?: Boolean) : Number;
 	/**
-	*returns a signed 16-bit integer value read from the Buffer with the Little Endian format
-	*/
+	 * Returns a signed 16-bit integer value read from the Buffer with the Little Endian format
+	 */
 	readInt16LE(offset: Number, noAssert?: Boolean) : Number;
 	/**
-	*returns a signed 24-bit integer value read from the Buffer with the Big Endian format
-	*/
+	 * Returns a signed 24-bit integer value read from the Buffer with the Big Endian format
+	 */
 	readInt24BE(offset: Number, noAssert?: Boolean) : Number;
 	/**
-	*returns a signed 24-bit integer value read from the Buffer with the Little Endian format
-	*/
+	 * Returns a signed 24-bit integer value read from the Buffer with the Little Endian format
+	 */
 	readInt24LE(offset: Number, noAssert?: Boolean) : Number;
 	/**
-	*returns a signed 32-bit integer value read from the Buffer with the Big Endian format
-	*/
+	 * Returns a signed 32-bit integer value read from the Buffer with the Big Endian format
+	 */
 	readInt32BE(offset: Number, noAssert?: Boolean) : Number;
 	/**
-	*returns a signed 32-bit integer value read from the Buffer with the Little Endian format
-	*/
+	 * Returns a signed 32-bit integer value read from the Buffer with the Little Endian format
+	 */
 	readInt32LE(offset: Number, noAssert?: Boolean) : Number;
 	/**
-	*returns a signed 8-bit integer value read from the Buffer to which it is applied
-	*/
+	 * Returns a signed 8-bit integer value read from the Buffer to which it is applied
+	 */
 	readInt8(offset: Number, noAssert?: Boolean) : Number;
 	/**
-	*returns an unsigned 16-bit integer value read from the Buffer with the Big Endian format
-	*/
+	 * Returns an unsigned 16-bit integer value read from the Buffer with the Big Endian format
+	 */
 	readUInt16BE(offset: Number, noAssert?: Boolean) : Number;
 	/**
-	*returns an unsigned 16-bit integer value read from the Buffer with the Little Endian format
-	*/
+	 * Returns an unsigned 16-bit integer value read from the Buffer with the Little Endian format
+	 */
 	readUInt16LE(offset: Number, noAssert?: Boolean) : Number;
 	/**
-	*returns an unsigned 24-bit integer value read from the Buffer with the Big Endian format
-	*/
+	 * Returns an unsigned 24-bit integer value read from the Buffer with the Big Endian format
+	 */
 	readUInt24BE(offset: Number, noAssert?: Boolean) : Number;
 	/**
-	*returns an unsigned 24-bit integer value read from the Buffer with the Little Endian format
-	*/
+	 * Returns an unsigned 24-bit integer value read from the Buffer with the Little Endian format
+	 */
 	readUInt24LE(offset: Number, noAssert?: Boolean) : Number;
 	/**
-	*returns an unsigned 32-bit integer value read from the Buffer with the Big Endian format
-	*/
+	 * Returns an unsigned 32-bit integer value read from the Buffer with the Big Endian format
+	 */
 	readUInt32BE(offset: Number, noAssert?: Boolean) : Number;
 	/**
-	*returns an unsigned 32-bit integer value read from the Buffer with the Little Endian format
-	*/
+	 * Returns an unsigned 32-bit integer value read from the Buffer with the Little Endian format
+	 */
 	readUInt32LE(offset: Number, noAssert?: Boolean) : Number;
 	/**
-	*returns an unsigned 8-bit integer value read from the Buffer to which it is applied
-	*/
+	 * Returns an unsigned 8-bit integer value read from the Buffer to which it is applied
+	 */
 	readUInt8(offset: Number, noAssert?: Boolean) : Number;
 	/**
-	*writes the 64-bit double value to the Buffer with the Big Endian format
-	*/
+	 * Writes the 64-bit double value to the Buffer with the Big Endian format
+	 */
 	writeDoubleBE(value: Number, offset: Number, noAssert?: Boolean) : void;
 	/**
-	*writes the 64-bit double value to the Buffer with the Little Endian format
-	*/
+	 * Writes the 64-bit double value to the Buffer with the Little Endian format
+	 */
 	writeDoubleLE(value: Number, offset: Number, noAssert?: Boolean) : void;
 	/**
-	*writes the 32-bit float value to the Buffer with the Big Endian format
-	*/
+	 * Writes the 32-bit float value to the Buffer with the Big Endian format
+	 */
 	writeFloatBE(value: Number, offset: Number, noAssert?: Boolean) : void;
 	/**
-	*writes the 32-bit float value to the Buffer with the Little Endian format
-	*/
+	 * Writes the 32-bit float value to the Buffer with the Little Endian format
+	 */
 	writeFloatLE(value: Number, offset: Number, noAssert?: Boolean) : void;
 	/**
-	*writes the 16-bit signed integer value to the Buffer with the Big Endian format
-	*/
+	 * Writes the 16-bit signed integer value to the Buffer with the Big Endian format
+	 */
 	writeInt16BE(value: Number, offset: Number, noAssert?: Boolean) : void;
 	/**
-	*writes the 16-bit signed integer value to the Buffer with the Little Endian format
-	*/
+	 * Writes the 16-bit signed integer value to the Buffer with the Little Endian format
+	 */
 	writeInt16LE(value: Number, offset: Number, noAssert?: Boolean) : void;
 	/**
-	*writes the 24-bit signed integer value to the Buffer with the Big Endian format
-	*/
+	 * Writes the 24-bit signed integer value to the Buffer with the Big Endian format
+	 */
 	writeInt24BE(value: Number, offset: Number, noAssert?: Boolean) : void;
 	/**
-	*writes the 24-bit signed integer value to the Buffer with the Little Endian format
-	*/
+	 * Writes the 24-bit signed integer value to the Buffer with the Little Endian format
+	 */
 	writeInt24LE(value: Number, offset: Number, noAssert?: Boolean) : void;
 	/**
-	*writes the 32-bit signed integer value to the Buffer with the Big Endian format
-	*/
+	 * Writes the 32-bit signed integer value to the Buffer with the Big Endian format
+	 */
 	writeInt32BE(value: Number, offset: Number, noAssert?: Boolean) : void;
 	/**
-	*writes the 32-bit signed integer value to the Buffer with the Little Endian format
-	*/
+	 * Writes the 32-bit signed integer value to the Buffer with the Little Endian format
+	 */
 	writeInt32LE(value: Number, offset: Number, noAssert?: Boolean) : void;
 	/**
-	*writes the 8-bit signed integer value to the Buffer to which it is applied
-	*/
+	 * Writes the 8-bit signed integer value to the Buffer to which it is applied
+	 */
 	writeInt8(value: Number, offset: Number, noAssert?: Boolean) : void;
 	/**
-	*writes the 16-bit unsigned integer value to the Buffer with the Big Endian format
-	*/
+	 * Writes the 16-bit unsigned integer value to the Buffer with the Big Endian format
+	 */
 	writeUInt16BE(value: Number, offset: Number, noAssert?: Boolean) : void;
 	/**
-	*writes the 16-bit unsigned integer value to the Buffer with the Little Endian format
-	*/
+	 * Writes the 16-bit unsigned integer value to the Buffer with the Little Endian format
+	 */
 	writeUInt16LE(value: Number, offset: Number, noAssert?: Boolean) : void;
 	/**
-	*writes the 24-bit unsigned integer value to the Buffer with the Big Endian format
-	*/
+	 * Writes the 24-bit unsigned integer value to the Buffer with the Big Endian format
+	 */
 	writeUInt24BE(value: Number, offset: Number, noAssert?: Boolean) : void;
 	/**
-	*writes the 24-bit unsigned integer value to the Buffer with the Little Endian format
-	*/
+	 * Writes the 24-bit unsigned integer value to the Buffer with the Little Endian format
+	 */
 	writeUInt24LE(value: Number, offset: Number, noAssert?: Boolean) : void;
 	/**
-	*writes the 32-bit unsigned integer value to the Buffer with the Big Endian format
-	*/
+	 * Writes the 32-bit unsigned integer value to the Buffer with the Big Endian format
+	 */
 	writeUInt32BE(value: Number, offset: Number, noAssert?: Boolean) : void;
 	/**
-	*writes the 32-bit unsigned integer value to the Buffer with the Little Endian format
-	*/
+	 * Writes the 32-bit unsigned integer value to the Buffer with the Little Endian format
+	 */
 	writeUInt32LE(value: Number, offset: Number, noAssert?: Boolean) : void;
 	/**
-	*writes the 8-bit unsigned integer value to the Buffer to which it is applied
-	*/
+	 * Writes the 8-bit unsigned integer value to the Buffer to which it is applied
+	 */
 	writeUInt8(value: Number, offset: Number, noAssert?: Boolean) : void;
 }
 
@@ -1914,8 +2027,9 @@ interface Directory {
 	}
 
 
+
 	
-	interface File {
+	interface File extends Blob {
 		/**
 		*constructor of the File type objects
 		*/
@@ -1969,33 +2083,9 @@ interface Directory {
 		*/
 		readOnly: Boolean;
 		/**
-		*Size of the file in bytes
-		*/
-		size: number;
-		/**
-		*Media type of the Blob expressed as MIME or "" if unknown
-		*/
-		type: string;
-		/**
 		*True if the file is visible. Otherwise, it returns false.
 		*/
 		visible: Boolean;
-		/**
-		*copies the Blob referenced in the BLOB object (the source object) into the specified destination file
-		*/
-		copyTo(destination: File, overwrite?: Boolean) : void;
-		/**
-		*copies the Blob referenced in the BLOB object (the source object) into the specified destination file
-		*/
-		copyTo(destination: File, overwrite?: String) : void;
-		/**
-		*copies the Blob referenced in the BLOB object (the source object) into the specified destination file
-		*/
-		copyTo(destination: String, overwrite?: Boolean) : void;
-		/**
-		*copies the Blob referenced in the BLOB object (the source object) into the specified destination file
-		*/
-		copyTo(destination: String, overwrite?: String) : void;
 		/**
 		*stores the file referenced in the File on disk
 		*/
@@ -2052,18 +2142,6 @@ interface Directory {
 		*allows you to rename a file on disk referenced in the File object
 		*/
 		setName(newName: String) : Boolean;
-		/**
-		*creates a new Blob object by referencing the contents of the bytes of the Blob to which it is applied, from start to end
-		*/
-		slice(start: Number, end: Number, mimeType?: String) : Blob;
-		/**
-		*returns a Buffer object containing a copy of the Blob bytes
-		*/
-		toBuffer() : Buffer;
-		/**
-		*get a string representation of the Blob contents
-		*/
-		toString(stringFormat?: String) : String;
 		/**
 		*checks the validity of the pointer to the current File object within an iteration of files
 		*/
@@ -3455,8 +3533,8 @@ interface SystemWorker {
      * @param options Describes command line options
      * @returns Returns a system worker proxy
      * 
+     * #### Example 1: Do a simple CLI command
      * ```
-     * // Example 1: Do a simple CLI command
      * var workerProxy = new SystemWorker( 'sh -c ls -la /Users/<user>/Desktop' );
      * workerProxy.onerror = function ( event ) {      
      *     console.log( event.type +': '+ event.data );
@@ -3470,8 +3548,10 @@ interface SystemWorker {
      * // For testing purpose, wait for the worker to end. This makes it very similar to SystemWorker.exec().
      * // In real application, keep working in parallels and do not pause the current thread
      * workerProxy.wait();
-     *  
-     * // Example 2: Pass parameters, quotes and env variables options to the system worker
+     * ```
+     * 
+     * #### Example 2: Pass parameters, quotes and env variables options to the system worker
+     * ```
      * var myFolder = new Folder( 'PROJECT/backend' );
      * var options = {
      *   parameters : { folder_ref : myFolder },
@@ -3490,8 +3570,8 @@ interface SystemWorker {
      * @param options Describes command line options
      * @returns Returns a system worker proxy
      * 
+     * #### Example 1: Do a simple CLI command
      * ```
-     * // Example 1: Do a simple CLI command
      * var workerProxy = new SystemWorker( ['sh', '-c', 'ls -la /Users/<user>/Desktop'] );
      * workerProxy.onerror = function ( event ) {      
      *     console.log( event.type +': '+ event.data );
@@ -3505,8 +3585,10 @@ interface SystemWorker {
      * // For testing purpose, wait for the worker to end. This makes it very similar to SystemWorker.exec().
      * // In real application, keep working in parallels and do not pause the current thread
      * workerProxy.wait();
-     *  
-     * // Example 2: Pass parameters, quotes and env variables options to the system worker
+     * ```
+     * 
+     * #### Example 2: Pass parameters, quotes and env variables options to the system worker
+     * ```
      * var myFolder = new Folder( 'PROJECT/backend' );
      * var options = {
      *   parameters : { folder_ref : myFolder },
@@ -3525,24 +3607,30 @@ interface SystemWorker {
      * @param options Describes command line options
      * @returns Returns the exit status, stdout and sterr
      * 
+     * #### Example 1: Do a simple CLI command
      * ```
-     * // Example 1: Do a simple CLI command
      * // Launch "sh" executable with "-c" parameter and "ls -la /Users/<user>/Desktop" as the action to do
      * var workerResult = SystemWorker.exec( 'sh -c ls -la /Users/<user>/Desktop' );
      * console.log(workerResult.output.toString());
+     * ```
      * 
-     * // Example 2: Get the result and display the ouput
+     * #### Example 2: Get the result and display the ouput
+     * ```
      * // Launch "git" executable with "--version" parameter
      * // Store the result (Buffer) in a variable
      * var workerResult = SystemWorker.exec( 'git --version' );
      * console.log(workerResult.output.toString());
+     * ```
      * 
-     * // Example 3: Pass root folder options to the system worker
+     * #### Example 3: Pass root folder options to the system worker
+     * ```
      * var options = { folder: '/Users/yann/Desktop' };
      * var workerResult = SystemWorker.exec( 'sh -c ls -la', options);
      * console.log(workerResult.output.toString());
+     * ```
      * 
-     * // Example 4: Pass parameters, quotes and env variables options to the system worker
+     * #### Example 4: Pass parameters, quotes and env variables options to the system worker
+     * ```
      * var myFolder = new Folder( 'PROJECT/backend' );
      * var options = {
      *   parameters : { folder_ref : myFolder },
@@ -3561,24 +3649,30 @@ interface SystemWorker {
      * @param options Describes command line options
      * @returns Returns the exit status, stdout and sterr
      * 
+     * #### Example 1: Do a simple CLI command
      * ```
-     * // Example 1: Do a simple CLI command
      * // Launch "sh" executable with "-c" parameter and "ls -la /Users/<user>/Desktop" as the action to do
      * var workerResult = SystemWorker.exec( ['sh', '-c', 'ls -la /Users/<user>/Desktop'] );
      * console.log(workerResult.output.toString());
+     * ```
      * 
-     * // Example 2: Get the result and display the ouput
+     * #### Example 2: Get the result and display the ouput
+     * ```
      * // Launch "git" executable with "--version" parameter
      * // Store the result (Buffer) in a variable
      * var workerResult = SystemWorker.exec( ['git', '--version'] );
      * console.log(workerResult.output.toString());
+     * ```
      * 
-     * // Example 3: Pass root folder options to the system worker
+     * #### Example 3: Pass root folder options to the system worker
+     * ```
      * var options = { folder: '/Users/yann/Desktop' };
      * var workerResult = SystemWorker.exec( ['sh', '-c', 'ls -la'], options);
      * console.log(workerResult.output.toString());
+     * ```
      * 
-     * // Example 4: Pass parameters, quotes and env variables options to the system worker
+     * #### Example 4: Pass parameters, quotes and env variables options to the system worker
+     * ```
      * var myFolder = new Folder( 'PROJECT/backend' );
      * var options = {
      *   parameters : { folder_ref : myFolder },

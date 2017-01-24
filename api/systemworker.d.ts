@@ -10,8 +10,8 @@ interface SystemWorker {
      * @param options Describes command line options
      * @returns Returns a system worker proxy
      * 
+     * #### Example 1: Do a simple CLI command
      * ```
-     * // Example 1: Do a simple CLI command
      * var workerProxy = new SystemWorker( 'sh -c ls -la /Users/<user>/Desktop' );
      * workerProxy.onerror = function ( event ) {      
      *     console.log( event.type +': '+ event.data );
@@ -25,8 +25,10 @@ interface SystemWorker {
      * // For testing purpose, wait for the worker to end. This makes it very similar to SystemWorker.exec().
      * // In real application, keep working in parallels and do not pause the current thread
      * workerProxy.wait();
-     *  
-     * // Example 2: Pass parameters, quotes and env variables options to the system worker
+     * ```
+     * 
+     * #### Example 2: Pass parameters, quotes and env variables options to the system worker
+     * ```
      * var myFolder = new Folder( 'PROJECT/backend' );
      * var options = {
      *   parameters : { folder_ref : myFolder },
@@ -45,8 +47,8 @@ interface SystemWorker {
      * @param options Describes command line options
      * @returns Returns a system worker proxy
      * 
+     * #### Example 1: Do a simple CLI command
      * ```
-     * // Example 1: Do a simple CLI command
      * var workerProxy = new SystemWorker( ['sh', '-c', 'ls -la /Users/<user>/Desktop'] );
      * workerProxy.onerror = function ( event ) {      
      *     console.log( event.type +': '+ event.data );
@@ -60,8 +62,10 @@ interface SystemWorker {
      * // For testing purpose, wait for the worker to end. This makes it very similar to SystemWorker.exec().
      * // In real application, keep working in parallels and do not pause the current thread
      * workerProxy.wait();
-     *  
-     * // Example 2: Pass parameters, quotes and env variables options to the system worker
+     * ```
+     * 
+     * #### Example 2: Pass parameters, quotes and env variables options to the system worker
+     * ```
      * var myFolder = new Folder( 'PROJECT/backend' );
      * var options = {
      *   parameters : { folder_ref : myFolder },
@@ -80,24 +84,30 @@ interface SystemWorker {
      * @param options Describes command line options
      * @returns Returns the exit status, stdout and sterr
      * 
+     * #### Example 1: Do a simple CLI command
      * ```
-     * // Example 1: Do a simple CLI command
      * // Launch "sh" executable with "-c" parameter and "ls -la /Users/<user>/Desktop" as the action to do
      * var workerResult = SystemWorker.exec( 'sh -c ls -la /Users/<user>/Desktop' );
      * console.log(workerResult.output.toString());
+     * ```
      * 
-     * // Example 2: Get the result and display the ouput
+     * #### Example 2: Get the result and display the ouput
+     * ```
      * // Launch "git" executable with "--version" parameter
      * // Store the result (Buffer) in a variable
      * var workerResult = SystemWorker.exec( 'git --version' );
      * console.log(workerResult.output.toString());
+     * ```
      * 
-     * // Example 3: Pass root folder options to the system worker
+     * #### Example 3: Pass root folder options to the system worker
+     * ```
      * var options = { folder: '/Users/yann/Desktop' };
      * var workerResult = SystemWorker.exec( 'sh -c ls -la', options);
      * console.log(workerResult.output.toString());
+     * ```
      * 
-     * // Example 4: Pass parameters, quotes and env variables options to the system worker
+     * #### Example 4: Pass parameters, quotes and env variables options to the system worker
+     * ```
      * var myFolder = new Folder( 'PROJECT/backend' );
      * var options = {
      *   parameters : { folder_ref : myFolder },
@@ -116,24 +126,30 @@ interface SystemWorker {
      * @param options Describes command line options
      * @returns Returns the exit status, stdout and sterr
      * 
+     * #### Example 1: Do a simple CLI command
      * ```
-     * // Example 1: Do a simple CLI command
      * // Launch "sh" executable with "-c" parameter and "ls -la /Users/<user>/Desktop" as the action to do
      * var workerResult = SystemWorker.exec( ['sh', '-c', 'ls -la /Users/<user>/Desktop'] );
      * console.log(workerResult.output.toString());
+     * ```
      * 
-     * // Example 2: Get the result and display the ouput
+     * #### Example 2: Get the result and display the ouput
+     * ```
      * // Launch "git" executable with "--version" parameter
      * // Store the result (Buffer) in a variable
      * var workerResult = SystemWorker.exec( ['git', '--version'] );
      * console.log(workerResult.output.toString());
+     * ```
      * 
-     * // Example 3: Pass root folder options to the system worker
+     * #### Example 3: Pass root folder options to the system worker
+     * ```
      * var options = { folder: '/Users/yann/Desktop' };
      * var workerResult = SystemWorker.exec( ['sh', '-c', 'ls -la'], options);
      * console.log(workerResult.output.toString());
+     * ```
      * 
-     * // Example 4: Pass parameters, quotes and env variables options to the system worker
+     * #### Example 4: Pass parameters, quotes and env variables options to the system worker
+     * ```
      * var myFolder = new Folder( 'PROJECT/backend' );
      * var options = {
      *   parameters : { folder_ref : myFolder },

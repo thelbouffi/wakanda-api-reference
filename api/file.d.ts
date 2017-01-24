@@ -1,8 +1,9 @@
 ///<reference path="./filesystemsync.d.ts" />
 ///<reference path="./folder.d.ts" />
 ///<reference path="./buffer.d.ts" />
+///<reference path="./blob.d.ts" />
 	
-	interface File {
+	interface File extends Blob {
 		/**
 		*constructor of the File type objects
 		*/
@@ -56,33 +57,9 @@
 		*/
 		readOnly: Boolean;
 		/**
-		*Size of the file in bytes
-		*/
-		size: number;
-		/**
-		*Media type of the Blob expressed as MIME or "" if unknown
-		*/
-		type: string;
-		/**
 		*True if the file is visible. Otherwise, it returns false.
 		*/
 		visible: Boolean;
-		/**
-		*copies the Blob referenced in the BLOB object (the source object) into the specified destination file
-		*/
-		copyTo(destination: File, overwrite?: Boolean) : void;
-		/**
-		*copies the Blob referenced in the BLOB object (the source object) into the specified destination file
-		*/
-		copyTo(destination: File, overwrite?: String) : void;
-		/**
-		*copies the Blob referenced in the BLOB object (the source object) into the specified destination file
-		*/
-		copyTo(destination: String, overwrite?: Boolean) : void;
-		/**
-		*copies the Blob referenced in the BLOB object (the source object) into the specified destination file
-		*/
-		copyTo(destination: String, overwrite?: String) : void;
 		/**
 		*stores the file referenced in the File on disk
 		*/
@@ -139,18 +116,6 @@
 		*allows you to rename a file on disk referenced in the File object
 		*/
 		setName(newName: String) : Boolean;
-		/**
-		*creates a new Blob object by referencing the contents of the bytes of the Blob to which it is applied, from start to end
-		*/
-		slice(start: Number, end: Number, mimeType?: String) : Blob;
-		/**
-		*returns a Buffer object containing a copy of the Blob bytes
-		*/
-		toBuffer() : Buffer;
-		/**
-		*get a string representation of the Blob contents
-		*/
-		toString(stringFormat?: String) : String;
 		/**
 		*checks the validity of the pointer to the current File object within an iteration of files
 		*/
