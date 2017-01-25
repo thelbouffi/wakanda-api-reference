@@ -306,6 +306,9 @@ interface FileSystem {
     TextStream:TextStream;
     /**
      * Loads an image from its path.
+     * @warning The Image API is partially supported on Linux platforms:
+     * - You can only load images of the PNG or JPG types
+     * - For more details, check [doc center](http://doc.wakanda.org/home2.en.html#/Images/Image-Instances.201-659829.en.html)
      * @param file Image path to load (POSIX path). Supports PNG and JPG files.
      * @returns Returns the image through Image object.
      * 
@@ -320,6 +323,9 @@ interface FileSystem {
     loadImage(file: String) : Image;
     /**
      * Loads an image from a File object.
+     * @warning The Image API is partially supported on Linux platforms:
+     * - You can only load images of the PNG or JPG types
+     * - For more details, check [doc center](http://doc.wakanda.org/home2.en.html#/Images/Image-Instances.201-659829.en.html)
      * @param file File object that reference an image. Supports PNG and JPG files.
      * @returns Returns the image through Image object.
      * 
@@ -2947,7 +2953,7 @@ interface HTTPResponse {
 	/**
 	*Body of the returned message to set
 	*/
-	body: Blob|Image|String;
+	body: Blob | Image | String;
 	/**
 	*Content-type of the response to set
 	*/
@@ -2963,70 +2969,133 @@ interface HTTPResponse {
 	/**
 	*indicates if the contents of the HTTPResponse should be cached on the server
 	*/
-	allowCache(useCache: Boolean) : void;
+	allowCache(useCache: Boolean): void;
 	/**
 	*sets custom compression thresholds for the HTTPResponse
 	*/
-	allowCompression(minThreshold: Number, maxThreshold: Number) : void;
+	allowCompression(minThreshold: Number, maxThreshold: Number): void;
 	/**
 	*sends an HTTPResponse in chunks without knowing in advance the size of the data
 	*/
-	sendChunkedData(data: String) : void;
+	sendChunkedData(data: String): void;
 	/**
 	*sends an HTTPResponse in chunks without knowing in advance the size of the data
 	*/
-	sendChunkedData(data: Image) : void;
+	sendChunkedData(data: Image): void;
 	/**
 	*sends an HTTPResponse in chunks without knowing in advance the size of the data
 	*/
-	sendChunkedData(data: Blob) : void;
+	sendChunkedData(data: Blob): void;
 }
+
+/**
+ *
+ * @warning The Image API is partially supported on Linux platforms:
+ * - You can only load images of the PNG or JPG types
+ * - For more details, check [doc center](http://doc.wakanda.org/home2.en.html#/Images/Image-Instances.201-659829.en.html)
+ */
 
 interface Image {
 	/**
-	*Height of the image
-	*/
-	height: Number;
+	 * Height of the image (pixels)
+	 */
+	readonly height: Number;
 	/**
-	*Size of the image (expressed in bytes)
-	*/
-	length: Number;
+	 * Size of the image (bytes)
+	 */
+	readonly length: Number;
 	/**
-	*Metadata associated with the image
-	*/
-	meta: Object;
+	 * Metadata associated with the image
+	 */
+	readonly meta: Object;
 	/**
-	*Size of the image (expressed in bytes)
-	*/
-	size: Number;
+	 * Size of the image (bytes)
+	 */
+	readonly size: Number;
 	/**
-	*Width of the image (expressed in pixels)
-	*/
-	width: Number;
+	 * Width of the image (pixels)
+	 */
+	readonly width: Number;
 	/**
-	*stores locally the Image object in a file
-	*/
-	save(file: String, type?: String) : void;
+	 * Stores the image object in a file
+	 * @param file Path to the file where to save the image
+	 * @param type New mime type to apply
+	 * @warning Overrides existing files
+	 * 
+	 * #### Example 1: Basic usage
+	 * ```
+	 * var myImage = loadImage( 'PROJECT/backend/my-image.jpg' );
+     * myImage.save( 'PROJECT/backend/my-saved-image.jpg' );
+	 * ```
+	 * #### Example 2: Save image in another format
+	 * ```
+	 * var myImage = loadImage( 'PROJECT/backend/my-image.jpg' );
+     * myImage.save( 'PROJECT/backend/my-png-image.png', 'image/png' );
+	 * ```
+	 */
+	save(file: String, type?: String): void;
 	/**
-	*stores locally the Image object in a file
-	*/
-	save(file: File, type?: String) : void;
+	 * Stores the image object in a file
+	 * @param file File object where to save the image
+	 * @param type New mime type to apply
+	 * @warning Overrides existing files
+	 * 
+	 * #### Example 1: Basic usage
+	 * ```
+	 * var myFile = File( 'PROJECT/backend/my-saved-image.jpg' );
+	 * var myImage = loadImage( 'PROJECT/backend/my-image.jpg' );
+     * myImage.save( myFile );
+	 * ```
+	 * #### Example 2: Save image in another format
+	 * ```
+	 * var myFile = File( 'PROJECT/backend/my-png-image.png' );
+	 * var myImage = loadImage( 'PROJECT/backend/my-image.jpg' );
+     * myImage.save( myFile, 'image/png' );
+	 * ```
+	 */
+	save(file: File, type?: String): void;
 	/**
-	*modifies metadata found in the Image object
-	*/
-	saveMeta(meta: Object) : void;
+	 * Updates the image metadata
+	 * @param meta Object containing the meta to update
+	 * @warning A `save` is required in order to save the metadata on disk
+	 * 
+	 * ```
+	 * var myImage = loadImage( 'PROJECT/backend/my-image.jpg' );
+	 * var newMeta = { IPTC: { Keywords: ['vacation', 'snow']}};
+	 * myImage.saveMeta( newMeta );
+	 * myImage.save( 'PROJECT/backend/my-meta-image.jpg' );
+	 * ```
+	 */
+	saveMeta(meta: Object): void;
+	// /**
+	//  * associate a file path to an Image object
+	// */
+	// setPath(file: File): void;
+	// /**
+	//  * associate a file path to an Image object
+	//  */
+	// setPath(file: String): void;
 	/**
-	*associate a file path to an Image object
-	*/
-	setPath(file: File) : void;
-	/**
-	*associate a file path to an Image object
-	*/
-	setPath(file: String) : void;
-	/**
-	*returns a thumbnail of the source image
-	*/
-	thumbnail(width: Number, height: Number, mode?: Number) : Image;
+	 * returns a thumbnail of the source image
+	 * @param width (pixels) Thumbnail width
+	 * @param height (pixels) Thumbnai height
+	 * @param mode (default: 6) Scale mode to apply. See [doc center](http://doc.wakanda.org/home2.en.html#/Images/Image-Instances/thumbnail.301-663098.en.html) for more details.
+	 * 
+	 * #### Example 1: Basic usage
+	 * ```
+	 * var myImage = loadImage( 'PROJECT/backend/my-image.jpg' );
+     * var myThumbnail = myImage.thumbnail( 50, 50 );
+     * myThumbnail.save( 'PROJECT/backend/my-thumbnail.jpg' );
+	 * ```
+	 * 
+	 * #### Example 2: Change thumbnail mode
+	 * ```
+	 * var myImage = loadImage( 'PROJECT/backend/my-image.jpg' );
+     * var myThumbnail = myImage.thumbnail( 50, 50, 2 );
+     * myThumbnail.save( 'PROJECT/backend/my-thumbnail.jpg' );
+	 * ```
+	 */
+	thumbnail(width: Number, height: Number, mode?: Number): Image;
 }
 	interface Job {
 		/**

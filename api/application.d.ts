@@ -212,6 +212,9 @@ interface FileSystem {
     TextStream:TextStream;
     /**
      * Loads an image from its path.
+     * @warning The Image API is partially supported on Linux platforms:
+     * - You can only load images of the PNG or JPG types
+     * - For more details, check [doc center](http://doc.wakanda.org/home2.en.html#/Images/Image-Instances.201-659829.en.html)
      * @param file Image path to load (POSIX path). Supports PNG and JPG files.
      * @returns Returns the image through Image object.
      * 
@@ -226,6 +229,9 @@ interface FileSystem {
     loadImage(file: String) : Image;
     /**
      * Loads an image from a File object.
+     * @warning The Image API is partially supported on Linux platforms:
+     * - You can only load images of the PNG or JPG types
+     * - For more details, check [doc center](http://doc.wakanda.org/home2.en.html#/Images/Image-Instances.201-659829.en.html)
      * @param file File object that reference an image. Supports PNG and JPG files.
      * @returns Returns the image through Image object.
      * 
