@@ -106,31 +106,53 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Text<wbr>Stream<span class="tsd-signature-symbol">(</span>file<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">String</span>, readMode<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">String</span>, charset<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="textstream.html" class="tsd-signature-type">TextStream</a></li>
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Text<wbr>Stream<span class="tsd-signature-symbol">(</span>file<span class="tsd-signature-symbol">: </span><a href="file.html" class="tsd-signature-type">File</a>, readMode<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">String</span>, charset<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="textstream.html" class="tsd-signature-type">TextStream</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Text<wbr>Stream<span class="tsd-signature-symbol">(</span>file<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">String</span>, mode<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">String</span>, charset<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="textstream.html" class="tsd-signature-type">TextStream</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Text<wbr>Stream<span class="tsd-signature-symbol">(</span>file<span class="tsd-signature-symbol">: </span><a href="file.html" class="tsd-signature-type">File</a>, mode<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">String</span>, charset<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="textstream.html" class="tsd-signature-type">TextStream</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/84526a3/api/textstream.d.ts#L1">textstream.d.ts:1</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/abcca50/api/textstream.d.ts#L3">textstream.d.ts:3</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>creates a new TextStream object</p>
+									<p>Creates a textStream.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>file: <span class="tsd-signature-type">String</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>Binary text file to reference. The file does not to exist</p>
+										</div>
+									</div>
 								</li>
 								<li>
-									<h5>readMode: <span class="tsd-signature-type">String</span></h5>
+									<h5>mode: <span class="tsd-signature-type">String</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>Opens a stream in <code>Write</code>, <code>Read</code> or <code>Overwrite</code> mode</p>
+										</div>
+									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> charset: <span class="tsd-signature-type">Number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>(default: 7) Character set of the text. See more details on <a href="http://doc.wakanda.org/home2.en.html#/Files-and-Folders/TextStream/TextStream.301-684310.en.html">charset</a></p>
+											<pre><code><span class="hljs-comment">// The file does not have to exist</span>
+var myStream = TextStream( <span class="hljs-string">'PROJECT/backend/my-streamed-file.js'</span>, <span class="hljs-string">'write'</span> );
+<span class="hljs-comment">// Creates the file if it does not exist</span>
+myStream.<span class="hljs-built_in">write</span>( <span class="hljs-string">'Hello '</span>+ Date.now() +<span class="hljs-string">' !\n'</span> );
+<span class="hljs-comment">// Important to close the stream every time.</span>
+myStream.<span class="hljs-built_in">close</span>();
+</code></pre>
+										</div>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="textstream.html" class="tsd-signature-type">TextStream</a></h4>
@@ -138,24 +160,46 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/84526a3/api/textstream.d.ts#L5">textstream.d.ts:5</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/abcca50/api/textstream.d.ts#L19">textstream.d.ts:19</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>creates a new TextStream object</p>
+									<p>Creates a textStream.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>file: <a href="file.html" class="tsd-signature-type">File</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>Binary text file to reference. The file does not to exist</p>
+										</div>
+									</div>
 								</li>
 								<li>
-									<h5>readMode: <span class="tsd-signature-type">String</span></h5>
+									<h5>mode: <span class="tsd-signature-type">String</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>Opens a stream in <code>Write</code>, <code>Read</code> or <code>Overwrite</code> mode</p>
+										</div>
+									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> charset: <span class="tsd-signature-type">Number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>(default: 7) Character set of the text. See more details on <a href="http://doc.wakanda.org/home2.en.html#/Files-and-Folders/TextStream/TextStream.301-684310.en.html">charset</a></p>
+											<pre><code><span class="hljs-comment">// The file does not have to exist</span>
+var myStream = TextStream( <span class="hljs-string">'PROJECT/backend/my-streamed-file.js'</span>, <span class="hljs-string">'write'</span> );
+<span class="hljs-comment">// Creates the file if it does not exist</span>
+myStream.<span class="hljs-built_in">write</span>( <span class="hljs-string">'Hello '</span>+ Date.now() +<span class="hljs-string">' !\n'</span> );
+<span class="hljs-comment">// Important to close the stream every time.</span>
+myStream.<span class="hljs-built_in">close</span>();
+</code></pre>
+										</div>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="textstream.html" class="tsd-signature-type">TextStream</a></h4>
@@ -175,13 +219,19 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/84526a3/api/textstream.d.ts#L13">textstream.d.ts:13</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/abcca50/api/textstream.d.ts#L48">textstream.d.ts:48</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>closes the file referenced in the TextStream object</p>
+									<p>Closes the file referenced in the TextStream object.</p>
 								</div>
+								<pre><code><span class="hljs-keyword">var</span> myFile = <span class="hljs-keyword">File</span>( <span class="hljs-string">'PROJECT/backend/my-streamed-file.js'</span> );
+<span class="hljs-keyword">var</span> myStream = TextStream( <span class="hljs-keyword">file</span>, <span class="hljs-string">'write'</span> );
+myStream.<span class="hljs-keyword">write</span>( <span class="hljs-string">'Hello '</span>+ Date.now() +<span class="hljs-string">' !\n'</span> );
+<span class="hljs-comment">// Important to close the stream every time.</span>
+myStream.close();
+</code></pre>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
@@ -197,15 +247,24 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/84526a3/api/textstream.d.ts#L17">textstream.d.ts:17</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/abcca50/api/textstream.d.ts#L63">textstream.d.ts:63</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>returns true if the cursor position is after the last character of the file referenced in the TextStream object</p>
+									<p>Checks if the the cursor position is after the last character of the file referenced in the TextStream object.</p>
 								</div>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Boolean</span></h4>
+							<p><code>true</code> if the cursor position is at the end of file, <code>false</code> otherwise.</p>
+							<pre><code><span class="hljs-keyword">var</span> myStream = TextStream( 'PROJECT/backend/<span class="hljs-keyword">bootstrap</span>.js', '<span class="hljs-keyword">Read</span>' );
+<span class="hljs-comment">// Is end of file reached ?</span>
+<span class="hljs-keyword">while</span>( !myStream.end() ){
+    console.<span class="hljs-built_in">log</span>( myStream.<span class="hljs-keyword">read</span>( 10 ) );
+}
+<span class="hljs-comment">// Important to close the stream every time.</span>
+myStream.<span class="hljs-keyword">close</span>();
+</code></pre>
 						</li>
 					</ul>
 				</section>
@@ -219,12 +278,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/84526a3/api/textstream.d.ts#L21">textstream.d.ts:21</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/abcca50/api/textstream.d.ts#L67">textstream.d.ts:67</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>saves the contents of the buffer to the disk file referenced in the TextStream object</p>
+									<p>Saves the contents of the TextStream buffer to the disk file.</p>
 								</div>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -241,13 +300,22 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/84526a3/api/textstream.d.ts#L25">textstream.d.ts:25</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/abcca50/api/textstream.d.ts#L82">textstream.d.ts:82</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>returns the current position of the cursor in the TextStream object</p>
+									<p>Get the current cursor position in the text stream.</p>
 								</div>
+								<pre><code><span class="hljs-keyword">var</span> myStream = TextStream( 'PROJECT/backend/<span class="hljs-keyword">bootstrap</span>.js', '<span class="hljs-keyword">Read</span>' );
+<span class="hljs-keyword">while</span>( !myStream.end() ){
+    myStream.<span class="hljs-keyword">read</span>( 10 );
+    console.<span class="hljs-built_in">log</span>( myStream.getPos() );
+    <span class="hljs-comment">// 10, 20, 30, ...</span>
+}
+<span class="hljs-comment">// Important to close the stream every time.</span>
+myStream.<span class="hljs-keyword">close</span>();
+</code></pre>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Number</span></h4>
 						</li>
@@ -263,13 +331,19 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/84526a3/api/textstream.d.ts#L29">textstream.d.ts:29</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/abcca50/api/textstream.d.ts#L94">textstream.d.ts:94</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>returns the current size of the stream</p>
+									<p>Get the current text stream size.</p>
 								</div>
+								<pre><code><span class="hljs-keyword">var</span> myStream = TextStream( 'PROJECT/backend/<span class="hljs-keyword">bootstrap</span>.js', '<span class="hljs-keyword">Read</span>' );
+console.<span class="hljs-built_in">log</span>( myStream.getSize() );
+<span class="hljs-comment">// 183</span>
+<span class="hljs-comment">// Important to close the stream every time.</span>
+myStream.<span class="hljs-keyword">close</span>();
+</code></pre>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Number</span></h4>
 						</li>
@@ -279,44 +353,35 @@
 					<a name="read" class="tsd-anchor"></a>
 					<h3>read</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-						<li class="tsd-signature tsd-kind-icon">read<span class="tsd-signature-symbol">(</span>numBytesOrDelimiter<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">String</span></li>
-						<li class="tsd-signature tsd-kind-icon">read<span class="tsd-signature-symbol">(</span>numBytesOrDelimiter<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">String</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">String</span></li>
+						<li class="tsd-signature tsd-kind-icon">read<span class="tsd-signature-symbol">(</span>nbBytes<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">String</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/84526a3/api/textstream.d.ts#L33">textstream.d.ts:33</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/abcca50/api/textstream.d.ts#L109">textstream.d.ts:109</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>reads characters from the file referenced in the TextStream object</p>
+									<p>Reads bytes from the text stream.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> numBytesOrDelimiter: <span class="tsd-signature-type">Number</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">String</span></h4>
-						</li>
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/84526a3/api/textstream.d.ts#L37">textstream.d.ts:37</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>reads characters from the file referenced in the TextStream object</p>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> numBytesOrDelimiter: <span class="tsd-signature-type">String</span></h5>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> nbBytes: <span class="tsd-signature-type">Number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>(default: <code>TextStream.getSize()</code>) Number of bytes to read</p>
+										<pre><code><span class="hljs-keyword">var</span> myStream = TextStream( 'PROJECT/backend/<span class="hljs-keyword">bootstrap</span>.js', '<span class="hljs-keyword">Read</span>' );
+<span class="hljs-keyword">while</span>( !myStream.end() ){
+    <span class="hljs-comment">// Read the next 10 bytes and moves the cursor position accordingly</span>
+    console.<span class="hljs-built_in">log</span>( myStream.<span class="hljs-keyword">read</span>( 10 ) );
+}
+<span class="hljs-comment">// Important to close the stream every time.</span>
+myStream.<span class="hljs-keyword">close</span>();
+</code></pre>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">String</span></h4>
@@ -333,13 +398,22 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/84526a3/api/textstream.d.ts#L41">textstream.d.ts:41</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/abcca50/api/textstream.d.ts#L124">textstream.d.ts:124</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>moves the stream cursor to the beginning of the TextStream object</p>
+									<p>Set the cursor position to the beginning of the TextStream.</p>
 								</div>
+								<pre><code>var myStream = TextStream( <span class="hljs-string">'PROJECT/backend/bootstrap.js'</span>, <span class="hljs-string">'Read'</span> );
+console.<span class="hljs-built_in">log</span>( <span class="hljs-string">'Start: '</span>+ myStream.<span class="hljs-built_in">getPos</span>() );
+myStream.read(<span class="hljs-number">20</span>);
+console.<span class="hljs-built_in">log</span>( <span class="hljs-string">'After read: '</span>+ myStream.<span class="hljs-built_in">getPos</span>() );
+myStream.rewind();
+console.<span class="hljs-built_in">log</span>( <span class="hljs-string">'After rewind: '</span>+ myStream.<span class="hljs-built_in">getPos</span>() );
+<span class="hljs-comment">// Important to close the stream every time.</span>
+myStream.close();
+</code></pre>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
@@ -355,18 +429,27 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/84526a3/api/textstream.d.ts#L45">textstream.d.ts:45</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/abcca50/api/textstream.d.ts#L137">textstream.d.ts:137</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>writes the data you passed in the text parameter in the TextStream object</p>
+									<p>Writes the text in the TextStream.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>text: <span class="tsd-signature-type">String</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>String to write in the TextStream</p>
+										<pre><code><span class="hljs-keyword">var</span> myFile = <span class="hljs-keyword">File</span>( <span class="hljs-string">'PROJECT/backend/my-streamed-file.js'</span> );
+<span class="hljs-keyword">var</span> myStream = TextStream( <span class="hljs-keyword">file</span>, <span class="hljs-string">'write'</span> );
+myStream.<span class="hljs-keyword">write</span>( <span class="hljs-string">'Hello '</span>+ Date.now() +<span class="hljs-string">' !\n'</span> );
+<span class="hljs-comment">// Important to close the stream every time.</span>
+myStream.close();
+</code></pre>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>

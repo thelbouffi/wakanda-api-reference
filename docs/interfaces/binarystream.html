@@ -130,7 +130,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/84526a3/api/binarystream.d.ts#L6">binarystream.d.ts:6</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/abcca50/api/binarystream.d.ts#L6">binarystream.d.ts:6</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -153,9 +153,11 @@
 									<div class="tsd-comment tsd-typography">
 										<div class="lead">
 											<p>(default: <code>read</code>) <code>Write</code> if in write mode, <code>Read</code> otherwise.</p>
-											<pre><code><span class="hljs-keyword">var</span> myFile = <span class="hljs-keyword">File</span>( <span class="hljs-string">'PROJECT/backend/logs/HTTPServer.waLog'</span> );
+											<pre><code><span class="hljs-keyword">var</span> myFile = <span class="hljs-keyword">File</span>( 'PROJECT/backend/logs/HTTPServer.waLog' );
 <span class="hljs-keyword">var</span> readstream = BinaryStream( myFile );
-console.log( <span class="hljs-string">'[chunck] '</span>+ readstream.getBuffer(<span class="hljs-number">1000</span>).toString() );
+console.<span class="hljs-built_in">log</span>( '[chunck] '+ readstream.getBuffer(1000).<span class="hljs-keyword">toString</span>() );
+<span class="hljs-comment">// Important to close the stream after every use to release the referenced file</span>
+readstream.<span class="hljs-keyword">close</span>();
 </code></pre>
 										</div>
 									</div>
@@ -166,7 +168,7 @@ console.log( <span class="hljs-string">'[chunck] '</span>+ readstream.getBuffer(
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/84526a3/api/binarystream.d.ts#L19">binarystream.d.ts:19</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/abcca50/api/binarystream.d.ts#L21">binarystream.d.ts:21</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -190,9 +192,11 @@ console.log( <span class="hljs-string">'[chunck] '</span>+ readstream.getBuffer(
 									<div class="tsd-comment tsd-typography">
 										<div class="lead">
 											<p>(default: <code>read</code>) <code>Write</code> if in write mode, <code>Read</code> otherwise.</p>
-											<pre><code><span class="hljs-keyword">var</span> myFile = <span class="hljs-keyword">File</span>( <span class="hljs-string">'PROJECT/backend/logs/HTTPServer.waLog'</span> );
+											<pre><code><span class="hljs-keyword">var</span> myFile = <span class="hljs-keyword">File</span>( 'PROJECT/backend/logs/HTTPServer.waLog' );
 <span class="hljs-keyword">var</span> readstream = BinaryStream( myFile );
-console.log( <span class="hljs-string">'[chunck] '</span>+ readstream.getBuffer(<span class="hljs-number">1000</span>).toString() );
+console.<span class="hljs-built_in">log</span>( '[chunck] '+ readstream.getBuffer(1000).<span class="hljs-keyword">toString</span>() );
+<span class="hljs-comment">// Important to close the stream after every use to release the referenced file</span>
+readstream.<span class="hljs-keyword">close</span>();
 </code></pre>
 										</div>
 									</div>
@@ -203,7 +207,7 @@ console.log( <span class="hljs-string">'[chunck] '</span>+ readstream.getBuffer(
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/84526a3/api/binarystream.d.ts#L20">binarystream.d.ts:20</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/abcca50/api/binarystream.d.ts#L22">binarystream.d.ts:22</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -231,9 +235,11 @@ console.log( <span class="hljs-string">'[chunck] '</span>+ readstream.getBuffer(
 									<div class="tsd-comment tsd-typography">
 										<div class="lead">
 											<p>(default: <code>read</code>) <code>Write</code> if in write mode, <code>Read</code> otherwise.</p>
-											<pre><code><span class="hljs-keyword">var</span> myFile = <span class="hljs-keyword">File</span>( <span class="hljs-string">'PROJECT/backend/logs/HTTPServer.waLog'</span> );
+											<pre><code><span class="hljs-keyword">var</span> myFile = <span class="hljs-keyword">File</span>( 'PROJECT/backend/logs/HTTPServer.waLog' );
 <span class="hljs-keyword">var</span> readstream = BinaryStream( myFile );
-console.log( <span class="hljs-string">'[chunck] '</span>+ readstream.getBuffer(<span class="hljs-number">1000</span>).toString() );
+console.<span class="hljs-built_in">log</span>( '[chunck] '+ readstream.getBuffer(1000).<span class="hljs-keyword">toString</span>() );
+<span class="hljs-comment">// Important to close the stream after every use to release the referenced file</span>
+readstream.<span class="hljs-keyword">close</span>();
 </code></pre>
 										</div>
 									</div>
@@ -266,6 +272,9 @@ writestream.putBuffer( <span class="hljs-keyword">new</span> Buffer(<span class=
 <span class="hljs-comment">// 250-PIPELINING</span>
 <span class="hljs-comment">// 250-CHUNKING</span>
 <span class="hljs-comment">// 250 SMTPUTF8</span>
+<span class="hljs-comment">// Important to close the stream after every use to release the referenced socket</span>
+readstream.close();
+writestream.close();
 </code></pre>
 										</div>
 									</div>
@@ -276,7 +285,7 @@ writestream.putBuffer( <span class="hljs-keyword">new</span> Buffer(<span class=
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/84526a3/api/binarystream.d.ts#L55">binarystream.d.ts:55</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/abcca50/api/binarystream.d.ts#L60">binarystream.d.ts:60</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -300,9 +309,11 @@ writestream.putBuffer( <span class="hljs-keyword">new</span> Buffer(<span class=
 									<div class="tsd-comment tsd-typography">
 										<div class="lead">
 											<p>(default: <code>read</code>) <code>Write</code> if in write mode, <code>Read</code> otherwise.</p>
-											<pre><code><span class="hljs-keyword">var</span> myFile = <span class="hljs-keyword">File</span>( <span class="hljs-string">'PROJECT/backend/logs/HTTPServer.waLog'</span> );
+											<pre><code><span class="hljs-keyword">var</span> myFile = <span class="hljs-keyword">File</span>( 'PROJECT/backend/logs/HTTPServer.waLog' );
 <span class="hljs-keyword">var</span> readstream = BinaryStream( myFile );
-console.log( <span class="hljs-string">'[chunck] '</span>+ readstream.getBuffer(<span class="hljs-number">1000</span>).toString() );
+console.<span class="hljs-built_in">log</span>( '[chunck] '+ readstream.getBuffer(1000).<span class="hljs-keyword">toString</span>() );
+<span class="hljs-comment">// Important to close the stream after every use to release the referenced file</span>
+readstream.<span class="hljs-keyword">close</span>();
 </code></pre>
 										</div>
 									</div>
@@ -335,6 +346,9 @@ writestream.putBuffer( <span class="hljs-keyword">new</span> Buffer(<span class=
 <span class="hljs-comment">// 250-PIPELINING</span>
 <span class="hljs-comment">// 250-CHUNKING</span>
 <span class="hljs-comment">// 250 SMTPUTF8</span>
+<span class="hljs-comment">// Important to close the stream after every use to release the referenced socket</span>
+readstream.close();
+writestream.close();
 </code></pre>
 										</div>
 									</div>
@@ -357,7 +371,7 @@ writestream.putBuffer( <span class="hljs-keyword">new</span> Buffer(<span class=
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/84526a3/api/binarystream.d.ts#L60">binarystream.d.ts:60</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/abcca50/api/binarystream.d.ts#L65">binarystream.d.ts:65</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -379,13 +393,18 @@ writestream.putBuffer( <span class="hljs-keyword">new</span> Buffer(<span class=
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/84526a3/api/binarystream.d.ts#L64">binarystream.d.ts:64</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/abcca50/api/binarystream.d.ts#L76">binarystream.d.ts:76</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Closes the file referenced in the BinaryStream object</p>
 								</div>
+								<pre><code>var myFile = <span class="hljs-keyword">File</span>( <span class="hljs-symbol">'PROJECT</span>/backend/logs/HTTPServer.waLog' );
+var readstream = BinaryStream( myFile );
+// Important <span class="hljs-keyword">to</span> close the stream <span class="hljs-keyword">after</span> every <span class="hljs-keyword">use</span> <span class="hljs-keyword">to</span> <span class="hljs-keyword">release</span> the referenced <span class="hljs-keyword">file</span>
+readstream.close();
+</code></pre>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
@@ -401,7 +420,7 @@ writestream.putBuffer( <span class="hljs-keyword">new</span> Buffer(<span class=
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/84526a3/api/binarystream.d.ts#L68">binarystream.d.ts:68</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/abcca50/api/binarystream.d.ts#L80">binarystream.d.ts:80</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -423,7 +442,7 @@ writestream.putBuffer( <span class="hljs-keyword">new</span> Buffer(<span class=
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/84526a3/api/binarystream.d.ts#L72">binarystream.d.ts:72</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/abcca50/api/binarystream.d.ts#L84">binarystream.d.ts:84</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -451,7 +470,7 @@ writestream.putBuffer( <span class="hljs-keyword">new</span> Buffer(<span class=
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/84526a3/api/binarystream.d.ts#L76">binarystream.d.ts:76</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/abcca50/api/binarystream.d.ts#L88">binarystream.d.ts:88</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -479,7 +498,7 @@ writestream.putBuffer( <span class="hljs-keyword">new</span> Buffer(<span class=
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/84526a3/api/binarystream.d.ts#L80">binarystream.d.ts:80</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/abcca50/api/binarystream.d.ts#L92">binarystream.d.ts:92</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -501,7 +520,7 @@ writestream.putBuffer( <span class="hljs-keyword">new</span> Buffer(<span class=
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/84526a3/api/binarystream.d.ts#L84">binarystream.d.ts:84</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/abcca50/api/binarystream.d.ts#L96">binarystream.d.ts:96</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -523,7 +542,7 @@ writestream.putBuffer( <span class="hljs-keyword">new</span> Buffer(<span class=
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/84526a3/api/binarystream.d.ts#L88">binarystream.d.ts:88</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/abcca50/api/binarystream.d.ts#L100">binarystream.d.ts:100</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -545,7 +564,7 @@ writestream.putBuffer( <span class="hljs-keyword">new</span> Buffer(<span class=
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/84526a3/api/binarystream.d.ts#L92">binarystream.d.ts:92</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/abcca50/api/binarystream.d.ts#L104">binarystream.d.ts:104</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -567,7 +586,7 @@ writestream.putBuffer( <span class="hljs-keyword">new</span> Buffer(<span class=
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/84526a3/api/binarystream.d.ts#L96">binarystream.d.ts:96</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/abcca50/api/binarystream.d.ts#L108">binarystream.d.ts:108</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -589,7 +608,7 @@ writestream.putBuffer( <span class="hljs-keyword">new</span> Buffer(<span class=
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/84526a3/api/binarystream.d.ts#L100">binarystream.d.ts:100</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/abcca50/api/binarystream.d.ts#L112">binarystream.d.ts:112</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -611,7 +630,7 @@ writestream.putBuffer( <span class="hljs-keyword">new</span> Buffer(<span class=
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/84526a3/api/binarystream.d.ts#L104">binarystream.d.ts:104</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/abcca50/api/binarystream.d.ts#L116">binarystream.d.ts:116</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -633,7 +652,7 @@ writestream.putBuffer( <span class="hljs-keyword">new</span> Buffer(<span class=
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/84526a3/api/binarystream.d.ts#L108">binarystream.d.ts:108</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/abcca50/api/binarystream.d.ts#L120">binarystream.d.ts:120</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -655,7 +674,7 @@ writestream.putBuffer( <span class="hljs-keyword">new</span> Buffer(<span class=
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/84526a3/api/binarystream.d.ts#L112">binarystream.d.ts:112</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/abcca50/api/binarystream.d.ts#L124">binarystream.d.ts:124</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -677,7 +696,7 @@ writestream.putBuffer( <span class="hljs-keyword">new</span> Buffer(<span class=
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/84526a3/api/binarystream.d.ts#L116">binarystream.d.ts:116</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/abcca50/api/binarystream.d.ts#L128">binarystream.d.ts:128</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -711,7 +730,7 @@ writestream.putBuffer( <span class="hljs-keyword">new</span> Buffer(<span class=
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/84526a3/api/binarystream.d.ts#L120">binarystream.d.ts:120</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/abcca50/api/binarystream.d.ts#L132">binarystream.d.ts:132</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -745,7 +764,7 @@ writestream.putBuffer( <span class="hljs-keyword">new</span> Buffer(<span class=
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/84526a3/api/binarystream.d.ts#L124">binarystream.d.ts:124</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/abcca50/api/binarystream.d.ts#L136">binarystream.d.ts:136</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -773,7 +792,7 @@ writestream.putBuffer( <span class="hljs-keyword">new</span> Buffer(<span class=
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/84526a3/api/binarystream.d.ts#L128">binarystream.d.ts:128</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/abcca50/api/binarystream.d.ts#L140">binarystream.d.ts:140</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -801,7 +820,7 @@ writestream.putBuffer( <span class="hljs-keyword">new</span> Buffer(<span class=
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/84526a3/api/binarystream.d.ts#L132">binarystream.d.ts:132</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/abcca50/api/binarystream.d.ts#L144">binarystream.d.ts:144</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -829,7 +848,7 @@ writestream.putBuffer( <span class="hljs-keyword">new</span> Buffer(<span class=
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/84526a3/api/binarystream.d.ts#L136">binarystream.d.ts:136</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/abcca50/api/binarystream.d.ts#L148">binarystream.d.ts:148</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -857,7 +876,7 @@ writestream.putBuffer( <span class="hljs-keyword">new</span> Buffer(<span class=
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/84526a3/api/binarystream.d.ts#L140">binarystream.d.ts:140</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/abcca50/api/binarystream.d.ts#L152">binarystream.d.ts:152</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -885,7 +904,7 @@ writestream.putBuffer( <span class="hljs-keyword">new</span> Buffer(<span class=
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/84526a3/api/binarystream.d.ts#L144">binarystream.d.ts:144</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/abcca50/api/binarystream.d.ts#L156">binarystream.d.ts:156</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -913,7 +932,7 @@ writestream.putBuffer( <span class="hljs-keyword">new</span> Buffer(<span class=
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/84526a3/api/binarystream.d.ts#L148">binarystream.d.ts:148</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/abcca50/api/binarystream.d.ts#L160">binarystream.d.ts:160</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">

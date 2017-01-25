@@ -430,6 +430,8 @@ interface BinaryStream {
 	 * var myFile = File( 'PROJECT/backend/logs/HTTPServer.waLog' );
 	 * var readstream = BinaryStream( myFile );
      * console.log( '[chunck] '+ readstream.getBuffer(1000).toString() );
+	 * // Important to close the stream after every use to release the referenced file
+     * readstream.close();
 	 * ```
 	 */
 	new(binary: String, readMode?: String) : BinaryStream;
@@ -466,6 +468,9 @@ interface BinaryStream {
 	 * // 250-PIPELINING
 	 * // 250-CHUNKING
 	 * // 250 SMTPUTF8
+	 * // Important to close the stream after every use to release the referenced socket
+	 * readstream.close();
+	 * writestream.close();
 	 * ```
 	 */
 	new(binary: Socket, readMode?: String, timeOut?: Number) : BinaryStream;
@@ -476,6 +481,13 @@ interface BinaryStream {
 	changeByteOrder() : void;
 	/**
 	 * Closes the file referenced in the BinaryStream object
+	 * 
+	 * ```
+	 * var myFile = File( 'PROJECT/backend/logs/HTTPServer.waLog' );
+	 * var readstream = BinaryStream( myFile );
+	 * // Important to close the stream after every use to release the referenced file
+     * readstream.close();
+	 * ```
 	 */
 	close() : void;
 	/**
@@ -2953,7 +2965,7 @@ interface HTTPResponse {
 	/**
 	*Body of the returned message to set
 	*/
-	body: Blob | Image | String;
+	body: Blob|Image|String;
 	/**
 	*Content-type of the response to set
 	*/
@@ -2969,23 +2981,23 @@ interface HTTPResponse {
 	/**
 	*indicates if the contents of the HTTPResponse should be cached on the server
 	*/
-	allowCache(useCache: Boolean): void;
+	allowCache(useCache: Boolean) : void;
 	/**
 	*sets custom compression thresholds for the HTTPResponse
 	*/
-	allowCompression(minThreshold: Number, maxThreshold: Number): void;
+	allowCompression(minThreshold: Number, maxThreshold: Number) : void;
 	/**
 	*sends an HTTPResponse in chunks without knowing in advance the size of the data
 	*/
-	sendChunkedData(data: String): void;
+	sendChunkedData(data: String) : void;
 	/**
 	*sends an HTTPResponse in chunks without knowing in advance the size of the data
 	*/
-	sendChunkedData(data: Image): void;
+	sendChunkedData(data: Image) : void;
 	/**
 	*sends an HTTPResponse in chunks without knowing in advance the size of the data
 	*/
-	sendChunkedData(data: Blob): void;
+	sendChunkedData(data: Blob) : void;
 }
 
 /**
@@ -4140,51 +4152,143 @@ interface SystemWorkerProxy {
     wait(timeout?: Number) : Boolean;
 }
 
+
+
 interface TextStream {
 	/**
-	*creates a new TextStream object
-	*/
-	new(file: String, readMode: String, charset?: Number) : TextStream;
+	 * Creates a textStream.
+	 * @param file Binary text file to reference. The file does not to exist
+	 * @param mode Opens a stream in `Write`, `Read` or `Overwrite` mode
+	 * @param charset (default: 7) Character set of the text. See more details on [charset](http://doc.wakanda.org/home2.en.html#/Files-and-Folders/TextStream/TextStream.301-684310.en.html)
+	 * 
+	 * ```
+	 * // The file does not have to exist
+	 * var myStream = TextStream( 'PROJECT/backend/my-streamed-file.js', 'write' );
+	 * // Creates the file if it does not exist
+     * myStream.write( 'Hello '+ Date.now() +' !\n' );
+	 * // Important to close the stream every time.
+     * myStream.close();
+	 * ```
+	 */
+	new (file: String, mode: String, charset?: Number): TextStream;
 	/**
-	*creates a new TextStream object
-	*/
-	new(file: File, readMode: String, charset?: Number) : TextStream;
+	 * Creates a textStream.
+	 * @param file Binary text file to reference. The file does not to exist
+	 * @param mode Opens a stream in `Write`, `Read` or `Overwrite` mode
+	 * @param charset (default: 7) Character set of the text. See more details on [charset](http://doc.wakanda.org/home2.en.html#/Files-and-Folders/TextStream/TextStream.301-684310.en.html)
+	 * 
+	 * ```
+	 * // The file does not have to exist
+	 * var myFile = File( 'PROJECT/backend/my-streamed-file.js' );
+	 * var myStream = TextStream( file, 'write' );
+	 * // Creates the file if it does not exist
+     * myStream.write( 'Hello '+ Date.now() +' !\n' );
+	 * // Important to close the stream every time.
+     * myStream.close();
+	 * ```
+	 */
+	new (file: File, mode: String, charset?: Number): TextStream;
 	/**
-	*closes the file referenced in the TextStream object
-	*/
-	close() : void;
+	 * Closes the file referenced in the TextStream object.
+	 * 
+	 * ```
+	 * var myFile = File( 'PROJECT/backend/my-streamed-file.js' );
+	 * var myStream = TextStream( file, 'write' );
+     * myStream.write( 'Hello '+ Date.now() +' !\n' );
+	 * // Important to close the stream every time.
+     * myStream.close();
+	 * ```
+	 */
+	close(): void;
 	/**
-	*returns true if the cursor position is after the last character of the file referenced in the TextStream object
-	*/
-	end() : Boolean;
+	 * Checks if the the cursor position is after the last character of the file referenced in the TextStream object.
+	 * @returns `true` if the cursor position is at the end of file, `false` otherwise.
+	 * 
+	 * ```
+	 * var myStream = TextStream( 'PROJECT/backend/bootstrap.js', 'Read' );
+	 * // Is end of file reached ?
+     * while( !myStream.end() ){
+	 *     console.log( myStream.read( 10 ) );
+     * }
+	 * // Important to close the stream every time.
+     * myStream.close();
+	 * ```
+	 */
+	end(): Boolean;
 	/**
-	*saves the contents of the buffer to the disk file referenced in the TextStream object
-	*/
-	flush() : void;
+	 * Saves the contents of the TextStream buffer to the disk file.
+	 */
+	flush(): void;
 	/**
-	*returns the current position of the cursor in the TextStream object
-	*/
-	getPos() : Number;
+	 * Get the current cursor position in the text stream.
+	 * 
+	 * ```
+	 * var myStream = TextStream( 'PROJECT/backend/bootstrap.js', 'Read' );
+     * while( !myStream.end() ){
+	 *     myStream.read( 10 );
+	 *     console.log( myStream.getPos() );
+	 *     // 10, 20, 30, ...
+     * }
+	 * // Important to close the stream every time.
+     * myStream.close();
+	 * ```
+	 */
+	getPos(): Number;
 	/**
-	*returns the current size of the stream
-	*/
-	getSize() : Number;
+	 * Get the current text stream size.
+	 * 
+	 * ```
+	 * var myStream = TextStream( 'PROJECT/backend/bootstrap.js', 'Read' );
+     * console.log( myStream.getSize() );
+	 * // 183
+	 * // Important to close the stream every time.
+     * myStream.close();
+	 * ```
+	 */
+	getSize(): Number;
 	/**
-	*reads characters from the file referenced in the TextStream object
-	*/
-	read(numBytesOrDelimiter?: Number) : String;
+	 * Reads bytes from the text stream.
+	 * @param nbBytes (default: `TextStream.getSize()`) Number of bytes to read
+	 * 
+	 * ```
+	 * var myStream = TextStream( 'PROJECT/backend/bootstrap.js', 'Read' );
+     * while( !myStream.end() ){
+	 *     // Read the next 10 bytes and moves the cursor position accordingly
+	 *     console.log( myStream.read( 10 ) );
+     * }
+	 * // Important to close the stream every time.
+     * myStream.close();
+	 * ```
+	 */
+	read(nbBytes?: Number): String;
 	/**
-	*reads characters from the file referenced in the TextStream object
-	*/
-	read(numBytesOrDelimiter?: String) : String;
+	 * Set the cursor position to the beginning of the TextStream.
+	 * 
+	 * ```
+     * var myStream = TextStream( 'PROJECT/backend/bootstrap.js', 'Read' );
+     * console.log( 'Start: '+ myStream.getPos() );
+     * myStream.read(20);
+     * console.log( 'After read: '+ myStream.getPos() );
+     * myStream.rewind();
+     * console.log( 'After rewind: '+ myStream.getPos() );
+	 * // Important to close the stream every time.
+     * myStream.close();
+     * ```
+	 */
+	rewind(): void;
 	/**
-	*moves the stream cursor to the beginning of the TextStream object
-	*/
-	rewind() : void;
-	/**
-	*writes the data you passed in the text parameter in the TextStream object
-	*/
-	write(text: String) : void;
+	 * Writes the text in the TextStream.
+	 * @param text String to write in the TextStream
+	 * 
+	 * ```
+	 * var myFile = File( 'PROJECT/backend/my-streamed-file.js' );
+	 * var myStream = TextStream( file, 'write' );
+     * myStream.write( 'Hello '+ Date.now() +' !\n' );
+	 * // Important to close the stream every time.
+     * myStream.close();
+	 * ```
+	 */
+	write(text: String): void;
 }
 
 

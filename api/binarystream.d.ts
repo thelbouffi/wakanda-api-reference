@@ -14,6 +14,8 @@ interface BinaryStream {
 	 * var myFile = File( 'PROJECT/backend/logs/HTTPServer.waLog' );
 	 * var readstream = BinaryStream( myFile );
      * console.log( '[chunck] '+ readstream.getBuffer(1000).toString() );
+	 * // Important to close the stream after every use to release the referenced file
+     * readstream.close();
 	 * ```
 	 */
 	new(binary: String, readMode?: String) : BinaryStream;
@@ -50,6 +52,9 @@ interface BinaryStream {
 	 * // 250-PIPELINING
 	 * // 250-CHUNKING
 	 * // 250 SMTPUTF8
+	 * // Important to close the stream after every use to release the referenced socket
+	 * readstream.close();
+	 * writestream.close();
 	 * ```
 	 */
 	new(binary: Socket, readMode?: String, timeOut?: Number) : BinaryStream;
@@ -60,6 +65,13 @@ interface BinaryStream {
 	changeByteOrder() : void;
 	/**
 	 * Closes the file referenced in the BinaryStream object
+	 * 
+	 * ```
+	 * var myFile = File( 'PROJECT/backend/logs/HTTPServer.waLog' );
+	 * var readstream = BinaryStream( myFile );
+	 * // Important to close the stream after every use to release the referenced file
+     * readstream.close();
+	 * ```
 	 */
 	close() : void;
 	/**
