@@ -122,18 +122,58 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/abcca50/api/xmlhttprequest.d.ts#L1">xmlhttprequest.d.ts:1</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/58dd0dd/api/xmlhttprequest.d.ts#L3">xmlhttprequest.d.ts:3</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>constructor of the class objects of the XMLHttpRequest type</p>
+									<p>Creates a XMLHttpRequest (XHR).</p>
 								</div>
+								<dl class="tsd-comment-tags">
+									<dt>warning</dt>
+									<dd><p>Sends synchronous XHR request.</p>
+									</dd>
+								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> proxy: <span class="tsd-signature-type">Object</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p><code>{host: String, port: Number}</code> Overrides the system proxy settings</p>
+											<pre><code><span class="hljs-keyword">var</span> xhr = <span class="hljs-keyword">new</span> XMLHttpRequest();
+
+<span class="hljs-comment">// XHR event handler.</span>
+xhr.onreadystatechange = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+
+        <span class="hljs-comment">// Get xhr states</span>
+        <span class="hljs-keyword">var</span> state = <span class="hljs-keyword">this</span>.readyState;
+
+        <span class="hljs-comment">// Only consider the "done" state. Skip others</span>
+        <span class="hljs-keyword">if</span> (state !== <span class="hljs-number">4</span>) {
+            <span class="hljs-keyword">return</span>;
+        }
+
+        <span class="hljs-comment">// Get xhr response headers</span>
+        <span class="hljs-keyword">var</span> headers = <span class="hljs-keyword">this</span>.getAllResponseHeaders();
+
+        <span class="hljs-comment">// Get xhr response text contents</span>
+        <span class="hljs-keyword">var</span> result = <span class="hljs-keyword">this</span>.responseText;
+
+        <span class="hljs-comment">// Display the result when received</span>
+        <span class="hljs-built_in">console</span>.log( result );
+};
+
+<span class="hljs-comment">// Get server rest info</span>
+<span class="hljs-comment">// Synchronous xhr request</span>
+xhr.open( <span class="hljs-string">'GET'</span>, <span class="hljs-string">'http://127.0.0.1:8081/rest/$info'</span> );
+
+<span class="hljs-comment">// Send the XHR request</span>
+xhr.send();
+</code></pre>
+										</div>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="xmlhttprequest.html" class="tsd-signature-type">XMLHttpRequest</a></h4>
@@ -146,105 +186,131 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
 					<a name="onreadystatechange" class="tsd-anchor"></a>
 					<h3>onreadystatechange</h3>
-					<div class="tsd-signature tsd-kind-icon">onreadystatechange<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Function</span></div>
+					<div class="tsd-signature tsd-kind-icon">onreadystatechange<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/abcca50/api/xmlhttprequest.d.ts#L33">xmlhttprequest.d.ts:33</a></li>
+							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/58dd0dd/api/xmlhttprequest.d.ts#L71">xmlhttprequest.d.ts:71</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>defines the event listener function that will handle the various states of the XMLHttpRequest</p>
+							<p>Defines the event listener function that will handle the various states of the XMLHttpRequest.
+							See <a href="http://doc.wakanda.org/home2.en.html#/Wakanda Studio/0.Beta/readyState.303-867831.en.html">doc center</a> for more details about xhr states.</p>
 						</div>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-siganture">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property tsd-is-not-exported">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>this<span class="tsd-signature-symbol">: </span><a href="xmlhttprequest.html" class="tsd-signature-type">XMLHttpRequest</a>, event<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Event</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>this: <a href="xmlhttprequest.html" class="tsd-signature-type">XMLHttpRequest</a></h5>
+											</li>
+											<li>
+												<h5>event: <span class="tsd-signature-type">Event</span></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
 					<a name="readystate" class="tsd-anchor"></a>
 					<h3>ready<wbr>State</h3>
-					<div class="tsd-signature tsd-kind-icon">ready<wbr>State<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Number</span></div>
+					<div class="tsd-signature tsd-kind-icon">ready<wbr>State<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/abcca50/api/xmlhttprequest.d.ts#L9">xmlhttprequest.d.ts:9</a></li>
+							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/58dd0dd/api/xmlhttprequest.d.ts#L46">xmlhttprequest.d.ts:46</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Current state of the request</p>
+							<p>Current state of the request.
+							See <a href="http://doc.wakanda.org/home2.en.html#/Wakanda Studio/0.Beta/readyState.303-867831.en.html">doc center</a> for more details about xhr states.</p>
 						</div>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
 					<a name="response" class="tsd-anchor"></a>
 					<h3>response</h3>
-					<div class="tsd-signature tsd-kind-icon">response<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">String</span></div>
+					<div class="tsd-signature tsd-kind-icon">response<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/abcca50/api/xmlhttprequest.d.ts#L13">xmlhttprequest.d.ts:13</a></li>
+							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/58dd0dd/api/xmlhttprequest.d.ts#L50">xmlhttprequest.d.ts:50</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Response body part (other than text)</p>
+							<p>Response body part (other than text).</p>
 						</div>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
 					<a name="responsetext" class="tsd-anchor"></a>
 					<h3>response<wbr>Text</h3>
-					<div class="tsd-signature tsd-kind-icon">response<wbr>Text<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">String</span></div>
+					<div class="tsd-signature tsd-kind-icon">response<wbr>Text<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/abcca50/api/xmlhttprequest.d.ts#L17">xmlhttprequest.d.ts:17</a></li>
+							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/58dd0dd/api/xmlhttprequest.d.ts#L54">xmlhttprequest.d.ts:54</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Text response entity body</p>
+							<p>Text response entity body.</p>
 						</div>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
 					<a name="responsetype" class="tsd-anchor"></a>
 					<h3>response<wbr>Type</h3>
-					<div class="tsd-signature tsd-kind-icon">response<wbr>Type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">String</span></div>
+					<div class="tsd-signature tsd-kind-icon">response<wbr>Type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/abcca50/api/xmlhttprequest.d.ts#L21">xmlhttprequest.d.ts:21</a></li>
+							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/58dd0dd/api/xmlhttprequest.d.ts#L58">xmlhttprequest.d.ts:58</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Data type of the response (&quot;text&quot; or &quot;blob&quot;)</p>
+							<p>Data type of the response (&quot;text&quot; or &quot;blob&quot;).</p>
 						</div>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
 					<a name="status" class="tsd-anchor"></a>
 					<h3>status</h3>
-					<div class="tsd-signature tsd-kind-icon">status<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Number</span></div>
+					<div class="tsd-signature tsd-kind-icon">status<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/abcca50/api/xmlhttprequest.d.ts#L25">xmlhttprequest.d.ts:25</a></li>
+							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/58dd0dd/api/xmlhttprequest.d.ts#L62">xmlhttprequest.d.ts:62</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>HTTP status code of the response</p>
+							<p>HTTP status code of the response.</p>
 						</div>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
 					<a name="statustext" class="tsd-anchor"></a>
 					<h3>status<wbr>Text</h3>
-					<div class="tsd-signature tsd-kind-icon">status<wbr>Text<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">String</span></div>
+					<div class="tsd-signature tsd-kind-icon">status<wbr>Text<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/abcca50/api/xmlhttprequest.d.ts#L29">xmlhttprequest.d.ts:29</a></li>
+							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/58dd0dd/api/xmlhttprequest.d.ts#L66">xmlhttprequest.d.ts:66</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>HTTP status text of the response</p>
+							<p>HTTP status text of the response.</p>
 						</div>
 					</div>
 				</section>
@@ -261,12 +327,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/abcca50/api/xmlhttprequest.d.ts#L37">xmlhttprequest.d.ts:37</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/58dd0dd/api/xmlhttprequest.d.ts#L75">xmlhttprequest.d.ts:75</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>returns all HTTP headers from the response of the XMLHttprequest</p>
+									<p>Returns all HTTP headers from the response of the XMLHttprequest</p>
 								</div>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">String</span></h4>
@@ -283,12 +349,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/abcca50/api/xmlhttprequest.d.ts#L41">xmlhttprequest.d.ts:41</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/58dd0dd/api/xmlhttprequest.d.ts#L79">xmlhttprequest.d.ts:79</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>returns the value of a specific header field in the response of the XMLHttpRequest</p>
+									<p>Returns the value of a specific header field in the response of the XMLHttpRequest</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -305,30 +371,33 @@
 					<a name="open" class="tsd-anchor"></a>
 					<h3>open</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-						<li class="tsd-signature tsd-kind-icon">open<span class="tsd-signature-symbol">(</span>method<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">String</span>, url<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">String</span>, async<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">open<span class="tsd-signature-symbol">(</span>method<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">String</span>, url<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">String</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/abcca50/api/xmlhttprequest.d.ts#L45">xmlhttprequest.d.ts:45</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/58dd0dd/api/xmlhttprequest.d.ts#L85">xmlhttprequest.d.ts:85</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>declares the HTTP method and the URL of the XMLHttpRequest</p>
+									<p>Declares the HTTP method and the URL of the XMLHttpRequest</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>method: <span class="tsd-signature-type">String</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>HTTP method</p>
+									</div>
 								</li>
 								<li>
 									<h5>url: <span class="tsd-signature-type">String</span></h5>
-								</li>
-								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> async: <span class="tsd-signature-type">Boolean</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>URL of the request</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -346,18 +415,44 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/abcca50/api/xmlhttprequest.d.ts#L49">xmlhttprequest.d.ts:49</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/58dd0dd/api/xmlhttprequest.d.ts#L114">xmlhttprequest.d.ts:114</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>sends the request defined in the XMLHttpRequest</p>
+									<p>Sends the XHR opened request.</p>
 								</div>
+								<dl class="tsd-comment-tags">
+									<dt>warning</dt>
+									<dd><p>Sends synchronous XHR request.</p>
+									</dd>
+								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> data: <span class="tsd-signature-type">String</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Data to send in the request <code>body</code></p>
+										<h4 id="example-1-basic-usage">Example 1: Basic usage</h4>
+										<pre><code><span class="hljs-keyword">var</span> xhr = <span class="hljs-function"><span class="hljs-keyword">new</span> <span class="hljs-title">XMLHttpRequest</span>();
+<span class="hljs-title">xhr</span>.<span class="hljs-title">open</span>( '<span class="hljs-type">GET</span>', 'http://<span class="hljs-number">127.0</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span>:<span class="hljs-number">8081</span>/rest/$info' );
+<span class="hljs-title">xhr</span>.<span class="hljs-title">send</span>();</span>
+</code></pre><h4 id="example-2-upload-file">Example 2: Upload file</h4>
+										<p>See <a href="http://doc.wakanda.org/home2.en.html#/HTTP-REST/Interacting-with-the-Server/upload.303-1158401.en.html">doc center</a> for more details about upload</p>
+										<pre><code><span class="hljs-keyword">var</span> xhr = <span class="hljs-keyword">new</span> XMLHttpRequest();
+xhr.open(<span class="hljs-string">'PUT'</span>, <span class="hljs-string">'http://127.0.0.1:8081/rest/$upload?$rawPict=true'</span>);
+xhr.setRequestHeader( <span class="hljs-string">'Content-Type'</span>, <span class="hljs-string">'image/jpeg'</span> );
+xhr.onreadystatechange = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.readyState !== <span class="hljs-number">4</span>) {
+        <span class="hljs-keyword">return</span>;
+    }
+    <span class="hljs-comment">// Displays the upload result ID to use as reference in Wakanda DB</span>
+    <span class="hljs-built_in">console</span>.log( <span class="hljs-string">'Upload ID:'</span>+ xhr.responseText );
+}
+xhr.send( <span class="hljs-string">'PROJECT/backend/my-image.jpg'</span> );
+</code></pre>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -365,18 +460,45 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/abcca50/api/xmlhttprequest.d.ts#L53">xmlhttprequest.d.ts:53</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/58dd0dd/api/xmlhttprequest.d.ts#L143">xmlhttprequest.d.ts:143</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>sends the request defined in the XMLHttpRequest</p>
+									<p>Sends the XHR opened request.</p>
 								</div>
+								<dl class="tsd-comment-tags">
+									<dt>warning</dt>
+									<dd><p>Sends synchronous XHR request.</p>
+									</dd>
+								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> data: <a href="file.html" class="tsd-signature-type">File</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Data to send in the request <code>body</code></p>
+										<h4 id="example-1-basic-usage">Example 1: Basic usage</h4>
+										<pre><code><span class="hljs-keyword">var</span> xhr = <span class="hljs-function"><span class="hljs-keyword">new</span> <span class="hljs-title">XMLHttpRequest</span>();
+<span class="hljs-title">xhr</span>.<span class="hljs-title">open</span>( '<span class="hljs-type">GET</span>', 'http://<span class="hljs-number">127.0</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span>:<span class="hljs-number">8081</span>/rest/$info' );
+<span class="hljs-title">xhr</span>.<span class="hljs-title">send</span>();</span>
+</code></pre><h4 id="example-2-upload-file">Example 2: Upload file</h4>
+										<p>See <a href="http://doc.wakanda.org/home2.en.html#/HTTP-REST/Interacting-with-the-Server/upload.303-1158401.en.html">doc center</a> for more details about upload
+											```
+											var myFile = File( &#39;PROJECT/backend/my-image.jpg&#39; );
+											var xhr = new XMLHttpRequest();
+											xhr.open(&#39;PUT&#39;, &#39;<a href="http://127.0.0.1:8081/rest/$upload?$rawPict=true">http://127.0.0.1:8081/rest/$upload?$rawPict=true</a>&#39;);
+											xhr.setRequestHeader( &#39;Content-Type&#39;, &#39;image/jpeg&#39; );
+											xhr.onreadystatechange = function() {
+											if (this.readyState !== 4) {
+											return;
+											}
+											// Displays the upload result ID to use as reference in Wakanda DB
+											console.log( &#39;Upload ID:&#39;+ xhr.responseText );
+											}
+										xhr.send( myFile );</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -393,21 +515,27 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/abcca50/api/xmlhttprequest.d.ts#L57">xmlhttprequest.d.ts:57</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/58dd0dd/api/xmlhttprequest.d.ts#L149">xmlhttprequest.d.ts:149</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>allows the request to be authenticated on the remote server with a client certificate, when necessary</p>
+									<p>Allows the request to be authenticated on the remote server with a client certificate, when necessary</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>keyPath: <span class="tsd-signature-type">String</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Path to the PEM format private key</p>
+									</div>
 								</li>
 								<li>
 									<h5>certificatePath: <span class="tsd-signature-type">String</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Path to the local PEM format certificate</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -424,21 +552,33 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/abcca50/api/xmlhttprequest.d.ts#L61">xmlhttprequest.d.ts:61</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/58dd0dd/api/xmlhttprequest.d.ts#L163">xmlhttprequest.d.ts:163</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>set the value of a specific header field of the XMLHttpRequest</p>
+									<p>Set the value of a specific header field of the XMLHttpRequest</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>header: <span class="tsd-signature-type">String</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The header field name</p>
+									</div>
 								</li>
 								<li>
 									<h5>value: <span class="tsd-signature-type">String</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The header field value</p>
+										<pre><code><span class="hljs-keyword">var</span> xhr = <span class="hljs-keyword">new</span> <span class="hljs-type">XMLHttpRequest</span>();
+xhr.open(<span class="hljs-symbol">'GE</span>T', <span class="hljs-symbol">'http</span>:<span class="hljs-comment">//127.0.0.1:8081/rest/$info');</span>
+xhr.setRequestHeader(<span class="hljs-symbol">'X</span>-<span class="hljs-type">Test</span>', <span class="hljs-symbol">'on</span>e');
+xhr.setRequestHeader(<span class="hljs-symbol">'X</span>-<span class="hljs-type">Test</span>', <span class="hljs-symbol">'tw</span>o');
+xhr.send();
+</code></pre>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
