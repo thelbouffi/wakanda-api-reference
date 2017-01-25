@@ -242,7 +242,7 @@ interface FileSystem {
     /**
      * Loads the content of a text file from its path.
      * @param file File path to load (POSIX path).
-     * @param charset Defines the charset to use to read the file (Default: 7 = UTF-8). See [charset values](http://doc.wakanda.org/home2.en.html#/Wakanda/0.Beta/TextStream.301-684310.en.html) for more details.
+     * @param charset (default: 7) Defines the charset to use to read the file. See [charset values](http://doc.wakanda.org/home2.en.html#/Wakanda/0.Beta/TextStream.301-684310.en.html) for more details.
      * @returns Returns a string with the full text file content.
      * 
      * ```
@@ -257,7 +257,7 @@ interface FileSystem {
     /**
      * Loads the content of a text file from a File object.
      * @param file File object that reference a text file.
-     * @param charset Defines the charset to use to read the file (Default: 7 = UTF-8). See [charset values](http://doc.wakanda.org/home2.en.html#/Wakanda/0.Beta/TextStream.301-684310.en.html) for more details.
+     * @param charset (default: 7) Defines the charset to use to read the file. See [charset values](http://doc.wakanda.org/home2.en.html#/Wakanda/0.Beta/TextStream.301-684310.en.html) for more details.
      * @returns Returns a string with the full text file content.
      * 
      * ```
@@ -274,7 +274,7 @@ interface FileSystem {
      * Saves the text into a file.
      * @param textToSave Text string to save.
      * @param file File path where to update (POSIX path).
-     * @param charset Defines the charset of the text string (Default: 7 = UTF-8). See [charset values](http://doc.wakanda.org/home2.en.html#/Wakanda/0.Beta/TextStream.301-684310.en.html) for more details.
+     * @param charset (default: 7) Defines the charset of the text string. See [charset values](http://doc.wakanda.org/home2.en.html#/Wakanda/0.Beta/TextStream.301-684310.en.html) for more details.
      * 
      * ```
      * saveText( 'Hello World ! Here is my text saved.', 'C:/texts/chapter-1.txt' );
@@ -285,7 +285,7 @@ interface FileSystem {
      * Saves the text into a file.
      * @param textToSave Text string to save.
      * @param file File path where to update (POSIX path).
-     * @param charset Defines the charset of the text string (Default: 7 = UTF-8). See [charset values](http://doc.wakanda.org/home2.en.html#/Wakanda/0.Beta/TextStream.301-684310.en.html) for more details.
+     * @param charset (default: 7) Defines the charset of the text string. See [charset values](http://doc.wakanda.org/home2.en.html#/Wakanda/0.Beta/TextStream.301-684310.en.html) for more details.
      * 
      * ```
      * var myFile = File( 'C:/texts/chapter-1.txt' );

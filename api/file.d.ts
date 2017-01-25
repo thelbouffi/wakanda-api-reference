@@ -119,15 +119,17 @@ interface FileInstance extends Blob {
 	 */
 	create() : Boolean;
 	/**
-	 * Returns the size of the free space (expressed in bytes) available on the volume where the File or Folder object is stored
+	 * Returns the size of the free space (expressed in bytes) available on the volume where the File object is stored
+	 * @param quotas (default: `true`) `true` if consider the whole volume, `false` if consider only the allowed size for the quota
 	 */
 	getFreeSpace(quotas?: Boolean) : Number;
 	/**
-	 * Returns the absolute URL of the File or Folder object
+	 * Returns the absolute URL of the File object
+	 * @param encoding (default: `false`) `true` if encode the url, `false` otherwise.
 	 */
 	getURL(encoding?: Boolean) : String;
 	/**
-	 * Returns the total size (expressed in bytes) of the volume where the File or Folder object is stored
+	 * Returns the total size (expressed in bytes) of the volume where the File object is stored
 	 */
 	getVolumeSize() : Number;
 	/**
