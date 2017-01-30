@@ -55,7 +55,7 @@ interface Group {
      * myGroup.putInto( 'sales' );
      * ```
      * 
-     * @warning All updates done to the `directory` are temporary. Use `directory.save()` in order to survive a reboot. 
+     * @warning All updates done to the `directory` are temporary. Use `directory.save()` to save all updates on disk.
      * @param groupList Describes an array of group name
      */
     putInto(...groupList: String[]): void;
@@ -67,13 +67,13 @@ interface Group {
      * myGroup.putInto( SalesGroup );
      * ```
      * 
-     * @warning All updates done to the `directory` are temporary. Use `directory.save()` in order to survive a reboot. 
+     * @warning All updates done to the `directory` are temporary. Use `directory.save()` to save all updates on disk.
      * @param groupList Describes an array of group object
      */
     putInto(...groupList: Group[]): void;
     /**
      * Removes the group from the directory.
-     * @warning All updates done to the `directory` are temporary. Use `directory.save()` in order to survive a reboot. 
+     * @warning All updates done to the `directory` are temporary. Use `directory.save()` to save all updates on disk.
      */
     remove(): void;
     /**
@@ -83,7 +83,7 @@ interface Group {
      * myGroup.removeFrom( 'sales', 'finance' );
      * ```
      * 
-     * @warning All updates done to the `directory` are temporary. Use `directory.save()` in order to survive a reboot. 
+     * @warning All updates done to the `directory` are temporary. Use `directory.save()` to save all updates on disk.
      * @param groupList Describes an array of group name
      */
     removeFrom(...groupList: String[]): void;
@@ -96,7 +96,7 @@ interface Group {
       * myGroup.removeFrom( group1 , group2 )
      * ```
      * 
-     * @warning All updates done to the `directory` are temporary. Use `directory.save()` in order to survive a reboot. 
+     * @warning All updates done to the `directory` are temporary. Use `directory.save()` to save all updates on disk.
      * @param groupList Describes an array of group object
      */
     removeFrom(...groupList: Group[]): void;

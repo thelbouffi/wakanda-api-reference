@@ -1,7 +1,7 @@
 # Wakanda Server Side API Reference
 
+- [Authentication](interfaces/authentication.html)
 - [Data](interfaces/data.html)
-- [Directory](interfaces/directory.html)
 - [Core](interfaces/core.html)
 - [Threads](interfaces/threads.html)
 - [FileSystem](interfaces/filesystem.html)

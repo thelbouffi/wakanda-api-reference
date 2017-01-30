@@ -35,27 +35,31 @@ interface ConnectionSession {
      */
     belongsTo(group: Group): Boolean;
     /**
-     * returns true if the current session belongs to the group and throws an error if false.
+     * Check if the current session belongs to the group.
+     * @returns `true` if the session belongs to the group, throws an error otherwise.
+     * @throws An error if the session does not belongs to the group
      */
     checkPermission(group: String): Boolean;
     /**
-     * returns true if the current session belongs to the group and throws an error if false.
+     * Check if the current session belongs to the group.
+     * @returns `true` if the session belongs to the group, throws an error otherwise.
+     * @throws An error if the session does not belongs to the group
      */
     checkPermission(group: Group): Boolean;
     /**
-     * makes the user session expire.
+     * Expires the user session.
      */
     forceExpire(): void;
     /**
-     * temporarily promotes the current session into the group.
+     * Temporarily promotes the current session into the group.
      */
     promoteWith(group: Group): Number;
     /**
-     * temporarily promotes the current session into the group.
+     * Temporarily promotes the current session into the group.
      */
     promoteWith(group: String): Number;
     /**
-     * stops the temporary promotion set for the current session using the promoteWith( ) method.
+     * Stops the temporary promotion set for the current session using the `promoteWith()` method.
      */
     unPromote(token: Number): void;
 }

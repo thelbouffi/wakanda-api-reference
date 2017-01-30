@@ -6,34 +6,34 @@
 /// <reference path="./console.d.ts" />
 /// <reference path="./datastore.d.ts" />
 /// <reference path="./directory.d.ts" />
-/// <reference path="./directoryentrysync.d.ts" />
-/// <reference path="./entrysync.d.ts" />
+//// <reference path="./directoryentrysync.d.ts" />
+//// <reference path="./entrysync.d.ts" />
 /// <reference path="./file.d.ts" />
-/// <reference path="./filesystemsync.d.ts" />
+//// <reference path="./filesystemsync.d.ts" />
 /// <reference path="./folder.d.ts" />
 /// <reference path="./httpServer.d.ts" />
 /// <reference path="./image.d.ts" />
-/// <reference path="./jobmanager.d.ts" />
+//// <reference path="./jobmanager.d.ts" />
 /// <reference path="./keyvaluestorage.d.ts" />
 /// <reference path="./module.d.ts" />
 /// <reference path="./mutex.d.ts" />
 /// <reference path="./nodeworker.d.ts" />
-/// <reference path="./os.d.ts" />
-/// <reference path="./permissions.d.ts" />
+//// <reference path="./os.d.ts" />
+//// <reference path="./permissions.d.ts" />
 /// <reference path="./port.d.ts" />
-/// <reference path="./process.d.ts" />
+//// <reference path="./process.d.ts" />
 /// <reference path="./progressindicator.d.ts" />
 /// <reference path="./sharedworker.d.ts" />
-/// <reference path="./solution.d.ts" />
-/// <reference path="./socket.d.ts" />
-/// <reference path="./socketsync.d.ts" />
+//// <reference path="./solution.d.ts" />
+//// <reference path="./socket.d.ts" />
+//// <reference path="./socketsync.d.ts" />
 /// <reference path="./systemworker.d.ts" />
 /// <reference path="./textstream.d.ts" />
 /// <reference path="./user.d.ts" />
-/// <reference path="./worker.d.ts" />
+//// <reference path="./worker.d.ts" />
 /// <reference path="./xmlhttprequest.d.ts" />
 
-interface Application extends Directory, Data, Core, Threads, FileSystem, HTTP, Storage { }
+interface Application extends Authentication, Data, Core, Threads, FileSystem, HTTP, Storage { }
 
 interface Data {
     /**
@@ -96,6 +96,13 @@ interface Data {
     *verifies the internal structure of the objects contained in the datastore designated by model and data.
     */
     verifyDataStore(model: File, data: File, options: Object): void;
+}
+
+interface Authentication {
+    /**
+     * References the directory of the application.
+     */
+    directory : Directory;
 }
 
 interface Core {
