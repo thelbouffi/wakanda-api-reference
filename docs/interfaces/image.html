@@ -120,12 +120,12 @@
 					<div class="tsd-signature tsd-kind-icon">height<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/image.d.ts#L14">image.d.ts:14</a></li>
+							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/image.d.ts#L13">image.d.ts:13</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Height of the image (pixels)</p>
+							<p>Height of the image (pixels).</p>
 						</div>
 					</div>
 				</section>
@@ -135,12 +135,12 @@
 					<div class="tsd-signature tsd-kind-icon">length<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/image.d.ts#L18">image.d.ts:18</a></li>
+							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/image.d.ts#L17">image.d.ts:17</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Size of the image (bytes)</p>
+							<p>Size of the image (bytes).</p>
 						</div>
 					</div>
 				</section>
@@ -150,12 +150,12 @@
 					<div class="tsd-signature tsd-kind-icon">meta<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/image.d.ts#L22">image.d.ts:22</a></li>
+							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/image.d.ts#L21">image.d.ts:21</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Metadata associated with the image</p>
+							<p>Metadata associated with the image.</p>
 						</div>
 					</div>
 				</section>
@@ -165,12 +165,12 @@
 					<div class="tsd-signature tsd-kind-icon">size<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/image.d.ts#L26">image.d.ts:26</a></li>
+							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/image.d.ts#L25">image.d.ts:25</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Size of the image (bytes)</p>
+							<p>Size of the image (bytes).</p>
 						</div>
 					</div>
 				</section>
@@ -180,12 +180,12 @@
 					<div class="tsd-signature tsd-kind-icon">width<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/image.d.ts#L30">image.d.ts:30</a></li>
+							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/image.d.ts#L29">image.d.ts:29</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Width of the image (pixels)</p>
+							<p>Width of the image (pixels).</p>
 						</div>
 					</div>
 				</section>
@@ -203,23 +203,24 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/image.d.ts#L48">image.d.ts:48</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/image.d.ts#L48">image.d.ts:48</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Stores the image object in a file</p>
+									<p>Stores the image object in a file.</p>
 								</div>
+								<h4 id="example-1-basic-usage">Example 1: Basic usage</h4>
+								<pre><code><span class="hljs-built_in">var</span> myImage = loadImage( 'PROJECT/backend/my-<span class="hljs-built_in">image</span>.jpg' );
+myImage.<span class="hljs-built_in">save</span>( 'PROJECT/backend/my-saved-<span class="hljs-built_in">image</span>.jpg' );
+</code></pre><h4 id="example-2-save-image-in-another-format">Example 2: Save image in another format</h4>
+								<pre><code>var myImage = loadImage( <span class="hljs-symbol">'PROJECT</span>/backend/my-image.jpg' );
+myImage.save( <span class="hljs-symbol">'PROJECT</span>/backend/my-png-image.png', <span class="hljs-symbol">'image</span>/png' );
+</code></pre>
 								<dl class="tsd-comment-tags">
 									<dt>warning</dt>
 									<dd><p>Overrides existing files</p>
-										<h4 id="example-1-basic-usage">Example 1: Basic usage</h4>
-										<pre><code><span class="hljs-built_in">var</span> myImage = loadImage( 'PROJECT/backend/my-<span class="hljs-built_in">image</span>.jpg' );
-myImage.<span class="hljs-built_in">save</span>( 'PROJECT/backend/my-saved-<span class="hljs-built_in">image</span>.jpg' );
-</code></pre><h4 id="example-2-save-image-in-another-format">Example 2: Save image in another format</h4>
-										<pre><code>var myImage = loadImage( <span class="hljs-symbol">'PROJECT</span>/backend/my-image.jpg' );
-myImage.save( <span class="hljs-symbol">'PROJECT</span>/backend/my-png-image.png', <span class="hljs-symbol">'image</span>/png' );
-</code></pre></dd>
+									</dd>
 								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -242,25 +243,26 @@ myImage.save( <span class="hljs-symbol">'PROJECT</span>/backend/my-png-image.png
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/image.d.ts#L68">image.d.ts:68</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/image.d.ts#L69">image.d.ts:69</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Stores the image object in a file</p>
+									<p>Stores the image object in a file.</p>
 								</div>
-								<dl class="tsd-comment-tags">
-									<dt>warning</dt>
-									<dd><p>Overrides existing files</p>
-										<h4 id="example-1-basic-usage">Example 1: Basic usage</h4>
-										<pre><code><span class="hljs-keyword">var</span> myFile = <span class="hljs-keyword">File</span>( <span class="hljs-string">'PROJECT/backend/my-saved-image.jpg'</span> );
+								<h4 id="example-1-basic-usage">Example 1: Basic usage</h4>
+								<pre><code><span class="hljs-keyword">var</span> myFile = <span class="hljs-keyword">File</span>( <span class="hljs-string">'PROJECT/backend/my-saved-image.jpg'</span> );
 <span class="hljs-keyword">var</span> myImage = loadImage( <span class="hljs-string">'PROJECT/backend/my-image.jpg'</span> );
 myImage.save( myFile );
 </code></pre><h4 id="example-2-save-image-in-another-format">Example 2: Save image in another format</h4>
-										<pre><code><span class="hljs-keyword">var</span> myFile = <span class="hljs-keyword">File</span>( <span class="hljs-string">'PROJECT/backend/my-png-image.png'</span> );
+								<pre><code><span class="hljs-keyword">var</span> myFile = <span class="hljs-keyword">File</span>( <span class="hljs-string">'PROJECT/backend/my-png-image.png'</span> );
 <span class="hljs-keyword">var</span> myImage = loadImage( <span class="hljs-string">'PROJECT/backend/my-image.jpg'</span> );
 myImage.save( myFile, <span class="hljs-string">'image/png'</span> );
-</code></pre></dd>
+</code></pre>
+								<dl class="tsd-comment-tags">
+									<dt>warning</dt>
+									<dd><p>Overrides existing files</p>
+									</dd>
 								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -292,21 +294,22 @@ myImage.save( myFile, <span class="hljs-string">'image/png'</span> );
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/image.d.ts#L81">image.d.ts:81</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/image.d.ts#L83">image.d.ts:83</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Updates the image metadata</p>
+									<p>Updates the image metadata.</p>
 								</div>
-								<dl class="tsd-comment-tags">
-									<dt>warning</dt>
-									<dd><p>A <code>save</code> is required in order to save the metadata on disk</p>
-										<pre><code><span class="hljs-keyword">var</span> myImage = loadImage( <span class="hljs-string">'PROJECT/backend/my-image.jpg'</span> );
+								<pre><code><span class="hljs-keyword">var</span> myImage = loadImage( <span class="hljs-string">'PROJECT/backend/my-image.jpg'</span> );
 <span class="hljs-keyword">var</span> <span class="hljs-keyword">new</span><span class="hljs-type">Meta</span> = { IPTC: <span class="hljs-type"></span>{ Keywords: <span class="hljs-type"></span>[<span class="hljs-string">'vacation'</span>, <span class="hljs-string">'snow'</span>]}};
 myImage.saveMeta( <span class="hljs-keyword">new</span><span class="hljs-type">Meta</span> );
 myImage.save( <span class="hljs-string">'PROJECT/backend/my-meta-image.jpg'</span> );
-</code></pre></dd>
+</code></pre>
+								<dl class="tsd-comment-tags">
+									<dt>warning</dt>
+									<dd><p>A <code>save</code> is required in order to save the metadata on disk</p>
+									</dd>
 								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -332,13 +335,22 @@ myImage.save( <span class="hljs-string">'PROJECT/backend/my-meta-image.jpg'</spa
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/image.d.ts#L110">image.d.ts:110</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/image.d.ts#L113">image.d.ts:113</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>returns a thumbnail of the source image</p>
+									<p>Returns a thumbnail of the source image.</p>
 								</div>
+								<h4 id="example-1-basic-usage">Example 1: Basic usage</h4>
+								<pre><code><span class="hljs-keyword">var</span> myImage = loadImage( <span class="hljs-string">'PROJECT/backend/my-image.jpg'</span> );
+<span class="hljs-keyword">var</span> myThumbnail = myImage.thumbnail( <span class="hljs-number">50</span>, <span class="hljs-number">50</span> );
+myThumbnail.save( <span class="hljs-string">'PROJECT/backend/my-thumbnail.jpg'</span> );
+</code></pre><h4 id="example-2-change-thumbnail-mode">Example 2: Change thumbnail mode</h4>
+								<pre><code><span class="hljs-keyword">var</span> myImage = loadImage( <span class="hljs-string">'PROJECT/backend/my-image.jpg'</span> );
+<span class="hljs-keyword">var</span> myThumbnail = myImage.thumbnail( <span class="hljs-number">50</span>, <span class="hljs-number">50</span>, <span class="hljs-number">2</span> );
+myThumbnail.save( <span class="hljs-string">'PROJECT/backend/my-thumbnail.jpg'</span> );
+</code></pre>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -358,15 +370,6 @@ myImage.save( <span class="hljs-string">'PROJECT/backend/my-meta-image.jpg'</spa
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> mode: <span class="tsd-signature-type">Number</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>(default: 6) Scale mode to apply. See <a href="http://doc.wakanda.org/home2.en.html#/Images/Image-Instances/thumbnail.301-663098.en.html">doc center</a> for more details.</p>
-										<h4 id="example-1-basic-usage">Example 1: Basic usage</h4>
-										<pre><code><span class="hljs-keyword">var</span> myImage = loadImage( <span class="hljs-string">'PROJECT/backend/my-image.jpg'</span> );
-<span class="hljs-keyword">var</span> myThumbnail = myImage.thumbnail( <span class="hljs-number">50</span>, <span class="hljs-number">50</span> );
-myThumbnail.save( <span class="hljs-string">'PROJECT/backend/my-thumbnail.jpg'</span> );
-</code></pre><h4 id="example-2-change-thumbnail-mode">Example 2: Change thumbnail mode</h4>
-										<pre><code><span class="hljs-keyword">var</span> myImage = loadImage( <span class="hljs-string">'PROJECT/backend/my-image.jpg'</span> );
-<span class="hljs-keyword">var</span> myThumbnail = myImage.thumbnail( <span class="hljs-number">50</span>, <span class="hljs-number">50</span>, <span class="hljs-number">2</span> );
-myThumbnail.save( <span class="hljs-string">'PROJECT/backend/my-thumbnail.jpg'</span> );
-</code></pre>
 									</div>
 								</li>
 							</ul>

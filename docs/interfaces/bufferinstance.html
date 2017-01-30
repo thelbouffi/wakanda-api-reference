@@ -142,7 +142,7 @@
 					<div class="tsd-signature tsd-kind-icon">length<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/buffer.d.ts#L64">buffer.d.ts:64</a></li>
+							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/buffer.d.ts#L66">buffer.d.ts:66</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -164,13 +164,22 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/buffer.d.ts#L83">buffer.d.ts:83</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/buffer.d.ts#L86">buffer.d.ts:86</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Copies the current buffer into the target buffer.</p>
 								</div>
+								<pre><code><span class="hljs-keyword">b1 </span>= new <span class="hljs-keyword">Buffer(26);
+</span><span class="hljs-keyword">b2 </span>= new <span class="hljs-keyword">Buffer(26);
+</span>for (var i = <span class="hljs-number">0</span> <span class="hljs-comment">; i &lt; 26 ; i++) {</span>
+  <span class="hljs-keyword">b1[i] </span>= i + <span class="hljs-number">65</span><span class="hljs-comment">; // 65 is "A" character in UTF8</span>
+  <span class="hljs-keyword">b2[i] </span>= <span class="hljs-number">42</span><span class="hljs-comment">; // 42 is "*"</span>
+}
+<span class="hljs-keyword">b1.copy(b2, </span><span class="hljs-number">6</span>, <span class="hljs-number">8</span>, <span class="hljs-number">22</span>)<span class="hljs-comment">;</span>
+<span class="hljs-keyword">b2.toString('utf8', </span><span class="hljs-number">0</span>, <span class="hljs-number">26</span>)<span class="hljs-comment">;</span>
+</code></pre>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -196,15 +205,6 @@
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> sourceEnd: <span class="tsd-signature-type">Number</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>(default: buffer.length) Byte offset where to end reading the data</p>
-										<pre><code><span class="hljs-keyword">b1 </span>= new <span class="hljs-keyword">Buffer(26);
-</span><span class="hljs-keyword">b2 </span>= new <span class="hljs-keyword">Buffer(26);
-</span>for (var i = <span class="hljs-number">0</span> <span class="hljs-comment">; i &lt; 26 ; i++) {</span>
-  <span class="hljs-keyword">b1[i] </span>= i + <span class="hljs-number">65</span><span class="hljs-comment">; // 65 is "A" character in UTF8</span>
-  <span class="hljs-keyword">b2[i] </span>= <span class="hljs-number">42</span><span class="hljs-comment">; // 42 is "*"</span>
-}
-<span class="hljs-keyword">b1.copy(b2, </span><span class="hljs-number">6</span>, <span class="hljs-number">8</span>, <span class="hljs-number">22</span>)<span class="hljs-comment">;</span>
-<span class="hljs-keyword">b2.toString('utf8', </span><span class="hljs-number">0</span>, <span class="hljs-number">26</span>)<span class="hljs-comment">;</span>
-</code></pre>
 									</div>
 								</li>
 							</ul>
@@ -222,12 +222,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/buffer.d.ts#L87">buffer.d.ts:87</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/buffer.d.ts#L90">buffer.d.ts:90</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Fills the Buffer to which it is applied with the character you passed in value</p>
+									<p>Fills the Buffer to which it is applied with the character you passed in value.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -256,12 +256,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/buffer.d.ts#L107">buffer.d.ts:107</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/buffer.d.ts#L110">buffer.d.ts:110</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Returns a 64 bit double value read from the Buffer with the Big Endian format</p>
+									<p>Returns a 64 bit double value read from the Buffer with the Big Endian format.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -287,12 +287,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/buffer.d.ts#L111">buffer.d.ts:111</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/buffer.d.ts#L114">buffer.d.ts:114</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Returns a 64 bit double value read from the Buffer with the Little Endian format</p>
+									<p>Returns a 64 bit double value read from the Buffer with the Little Endian format.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -318,12 +318,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/buffer.d.ts#L115">buffer.d.ts:115</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/buffer.d.ts#L118">buffer.d.ts:118</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Returns a 32-bit float value read from the Buffer with the Big Endian format</p>
+									<p>Returns a 32-bit float value read from the Buffer with the Big Endian format.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -349,12 +349,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/buffer.d.ts#L119">buffer.d.ts:119</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/buffer.d.ts#L122">buffer.d.ts:122</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Returns a 32-bit float value read from the Buffer with the Little Endian format</p>
+									<p>Returns a 32-bit float value read from the Buffer with the Little Endian format.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -380,12 +380,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/buffer.d.ts#L123">buffer.d.ts:123</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/buffer.d.ts#L126">buffer.d.ts:126</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Returns an unsigned 16-bit integer value read from the Buffer with the Big Endian format</p>
+									<p>Returns an unsigned 16-bit integer value read from the Buffer with the Big Endian format.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -411,12 +411,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/buffer.d.ts#L127">buffer.d.ts:127</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/buffer.d.ts#L130">buffer.d.ts:130</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Returns a signed 16-bit integer value read from the Buffer with the Little Endian format</p>
+									<p>Returns a signed 16-bit integer value read from the Buffer with the Little Endian format.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -442,12 +442,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/buffer.d.ts#L131">buffer.d.ts:131</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/buffer.d.ts#L134">buffer.d.ts:134</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Returns a signed 24-bit integer value read from the Buffer with the Big Endian format</p>
+									<p>Returns a signed 24-bit integer value read from the Buffer with the Big Endian format.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -473,12 +473,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/buffer.d.ts#L135">buffer.d.ts:135</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/buffer.d.ts#L138">buffer.d.ts:138</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Returns a signed 24-bit integer value read from the Buffer with the Little Endian format</p>
+									<p>Returns a signed 24-bit integer value read from the Buffer with the Little Endian format.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -504,12 +504,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/buffer.d.ts#L139">buffer.d.ts:139</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/buffer.d.ts#L142">buffer.d.ts:142</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Returns a signed 32-bit integer value read from the Buffer with the Big Endian format</p>
+									<p>Returns a signed 32-bit integer value read from the Buffer with the Big Endian format.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -535,12 +535,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/buffer.d.ts#L143">buffer.d.ts:143</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/buffer.d.ts#L146">buffer.d.ts:146</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Returns a signed 32-bit integer value read from the Buffer with the Little Endian format</p>
+									<p>Returns a signed 32-bit integer value read from the Buffer with the Little Endian format.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -566,12 +566,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/buffer.d.ts#L147">buffer.d.ts:147</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/buffer.d.ts#L150">buffer.d.ts:150</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Returns a signed 8-bit integer value read from the Buffer to which it is applied</p>
+									<p>Returns a signed 8-bit integer value read from the Buffer to which it is applied.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -597,12 +597,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/buffer.d.ts#L151">buffer.d.ts:151</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/buffer.d.ts#L154">buffer.d.ts:154</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Returns an unsigned 16-bit integer value read from the Buffer with the Big Endian format</p>
+									<p>Returns an unsigned 16-bit integer value read from the Buffer with the Big Endian format.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -628,12 +628,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/buffer.d.ts#L155">buffer.d.ts:155</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/buffer.d.ts#L158">buffer.d.ts:158</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Returns an unsigned 16-bit integer value read from the Buffer with the Little Endian format</p>
+									<p>Returns an unsigned 16-bit integer value read from the Buffer with the Little Endian format.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -659,12 +659,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/buffer.d.ts#L159">buffer.d.ts:159</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/buffer.d.ts#L162">buffer.d.ts:162</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Returns an unsigned 24-bit integer value read from the Buffer with the Big Endian format</p>
+									<p>Returns an unsigned 24-bit integer value read from the Buffer with the Big Endian format.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -690,12 +690,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/buffer.d.ts#L163">buffer.d.ts:163</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/buffer.d.ts#L166">buffer.d.ts:166</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Returns an unsigned 24-bit integer value read from the Buffer with the Little Endian format</p>
+									<p>Returns an unsigned 24-bit integer value read from the Buffer with the Little Endian format.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -721,12 +721,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/buffer.d.ts#L167">buffer.d.ts:167</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/buffer.d.ts#L170">buffer.d.ts:170</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Returns an unsigned 32-bit integer value read from the Buffer with the Big Endian format</p>
+									<p>Returns an unsigned 32-bit integer value read from the Buffer with the Big Endian format.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -752,12 +752,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/buffer.d.ts#L171">buffer.d.ts:171</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/buffer.d.ts#L174">buffer.d.ts:174</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Returns an unsigned 32-bit integer value read from the Buffer with the Little Endian format</p>
+									<p>Returns an unsigned 32-bit integer value read from the Buffer with the Little Endian format.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -783,12 +783,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/buffer.d.ts#L175">buffer.d.ts:175</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/buffer.d.ts#L178">buffer.d.ts:178</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Returns an unsigned 8-bit integer value read from the Buffer to which it is applied</p>
+									<p>Returns an unsigned 8-bit integer value read from the Buffer to which it is applied.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -814,12 +814,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/buffer.d.ts#L91">buffer.d.ts:91</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/buffer.d.ts#L94">buffer.d.ts:94</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Creates a new Buffer object by referencing the contents of the bytes array of the Buffer to which it is applied, from start to end</p>
+									<p>Creates a new Buffer object by referencing the contents of the bytes array of the Buffer to which it is applied, from start to end.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -845,12 +845,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/buffer.d.ts#L95">buffer.d.ts:95</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/buffer.d.ts#L98">buffer.d.ts:98</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Returns a Blob object containing a copy of the Buffer bytes</p>
+									<p>Returns a Blob object containing a copy of the Buffer bytes.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -873,12 +873,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/buffer.d.ts#L99">buffer.d.ts:99</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/buffer.d.ts#L102">buffer.d.ts:102</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Converts the buffer contents into a string</p>
+									<p>Converts the buffer contents into a string.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -907,12 +907,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/buffer.d.ts#L103">buffer.d.ts:103</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/buffer.d.ts#L106">buffer.d.ts:106</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Writes the string parameter to the Buffer at the offset position and returns the number of bytes written</p>
+									<p>Writes the string parameter to the Buffer at the offset position and returns the number of bytes written.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -941,12 +941,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/buffer.d.ts#L179">buffer.d.ts:179</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/buffer.d.ts#L182">buffer.d.ts:182</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Writes the 64-bit double value to the Buffer with the Big Endian format</p>
+									<p>Writes the 64-bit double value to the Buffer with the Big Endian format.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -975,12 +975,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/buffer.d.ts#L183">buffer.d.ts:183</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/buffer.d.ts#L186">buffer.d.ts:186</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Writes the 64-bit double value to the Buffer with the Little Endian format</p>
+									<p>Writes the 64-bit double value to the Buffer with the Little Endian format.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1009,12 +1009,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/buffer.d.ts#L187">buffer.d.ts:187</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/buffer.d.ts#L190">buffer.d.ts:190</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Writes the 32-bit float value to the Buffer with the Big Endian format</p>
+									<p>Writes the 32-bit float value to the Buffer with the Big Endian format.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1043,12 +1043,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/buffer.d.ts#L191">buffer.d.ts:191</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/buffer.d.ts#L194">buffer.d.ts:194</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Writes the 32-bit float value to the Buffer with the Little Endian format</p>
+									<p>Writes the 32-bit float value to the Buffer with the Little Endian format.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1077,12 +1077,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/buffer.d.ts#L195">buffer.d.ts:195</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/buffer.d.ts#L198">buffer.d.ts:198</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Writes the 16-bit signed integer value to the Buffer with the Big Endian format</p>
+									<p>Writes the 16-bit signed integer value to the Buffer with the Big Endian format.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1111,12 +1111,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/buffer.d.ts#L199">buffer.d.ts:199</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/buffer.d.ts#L202">buffer.d.ts:202</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Writes the 16-bit signed integer value to the Buffer with the Little Endian format</p>
+									<p>Writes the 16-bit signed integer value to the Buffer with the Little Endian format.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1145,12 +1145,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/buffer.d.ts#L203">buffer.d.ts:203</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/buffer.d.ts#L206">buffer.d.ts:206</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Writes the 24-bit signed integer value to the Buffer with the Big Endian format</p>
+									<p>Writes the 24-bit signed integer value to the Buffer with the Big Endian format.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1179,12 +1179,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/buffer.d.ts#L207">buffer.d.ts:207</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/buffer.d.ts#L210">buffer.d.ts:210</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Writes the 24-bit signed integer value to the Buffer with the Little Endian format</p>
+									<p>Writes the 24-bit signed integer value to the Buffer with the Little Endian format.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1213,12 +1213,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/buffer.d.ts#L211">buffer.d.ts:211</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/buffer.d.ts#L214">buffer.d.ts:214</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Writes the 32-bit signed integer value to the Buffer with the Big Endian format</p>
+									<p>Writes the 32-bit signed integer value to the Buffer with the Big Endian format.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1247,12 +1247,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/buffer.d.ts#L215">buffer.d.ts:215</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/buffer.d.ts#L218">buffer.d.ts:218</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Writes the 32-bit signed integer value to the Buffer with the Little Endian format</p>
+									<p>Writes the 32-bit signed integer value to the Buffer with the Little Endian format.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1281,12 +1281,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/buffer.d.ts#L219">buffer.d.ts:219</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/buffer.d.ts#L222">buffer.d.ts:222</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Writes the 8-bit signed integer value to the Buffer to which it is applied</p>
+									<p>Writes the 8-bit signed integer value to the Buffer to which it is applied.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1315,12 +1315,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/buffer.d.ts#L223">buffer.d.ts:223</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/buffer.d.ts#L226">buffer.d.ts:226</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Writes the 16-bit unsigned integer value to the Buffer with the Big Endian format</p>
+									<p>Writes the 16-bit unsigned integer value to the Buffer with the Big Endian format.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1349,12 +1349,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/buffer.d.ts#L227">buffer.d.ts:227</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/buffer.d.ts#L230">buffer.d.ts:230</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Writes the 16-bit unsigned integer value to the Buffer with the Little Endian format</p>
+									<p>Writes the 16-bit unsigned integer value to the Buffer with the Little Endian format.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1383,12 +1383,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/buffer.d.ts#L231">buffer.d.ts:231</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/buffer.d.ts#L234">buffer.d.ts:234</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Writes the 24-bit unsigned integer value to the Buffer with the Big Endian format</p>
+									<p>Writes the 24-bit unsigned integer value to the Buffer with the Big Endian format.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1417,12 +1417,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/buffer.d.ts#L235">buffer.d.ts:235</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/buffer.d.ts#L238">buffer.d.ts:238</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Writes the 24-bit unsigned integer value to the Buffer with the Little Endian format</p>
+									<p>Writes the 24-bit unsigned integer value to the Buffer with the Little Endian format.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1451,12 +1451,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/buffer.d.ts#L239">buffer.d.ts:239</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/buffer.d.ts#L242">buffer.d.ts:242</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Writes the 32-bit unsigned integer value to the Buffer with the Big Endian format</p>
+									<p>Writes the 32-bit unsigned integer value to the Buffer with the Big Endian format.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1485,12 +1485,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/buffer.d.ts#L243">buffer.d.ts:243</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/buffer.d.ts#L246">buffer.d.ts:246</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Writes the 32-bit unsigned integer value to the Buffer with the Little Endian format</p>
+									<p>Writes the 32-bit unsigned integer value to the Buffer with the Little Endian format.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1519,12 +1519,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/buffer.d.ts#L247">buffer.d.ts:247</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/buffer.d.ts#L250">buffer.d.ts:250</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Writes the 8-bit unsigned integer value to the Buffer to which it is applied</p>
+									<p>Writes the 8-bit unsigned integer value to the Buffer to which it is applied.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>

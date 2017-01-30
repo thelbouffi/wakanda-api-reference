@@ -107,7 +107,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/mutex.d.ts#L1">mutex.d.ts:1</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/mutex.d.ts#L1">mutex.d.ts:1</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -116,6 +116,9 @@
 										Mutex allows to control code execution order and to prevent conflicts in a multi-thread application.
 									It provides a way to pause execution in one thread until a condition is met in another.</p>
 								</div>
+								<pre><code><span class="hljs-comment">// Creates/gets the "writeMutex" mutex available in all threads</span>
+<span class="hljs-keyword">var</span> writeMutex = Mutex(<span class="hljs-string">'writeMutex'</span>);
+</code></pre>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -124,9 +127,6 @@
 									<div class="tsd-comment tsd-typography">
 										<div class="lead">
 											<p>Describes the global mutex key</p>
-											<pre><code><span class="hljs-comment">// Creates/gets the "writeMutex" mutex available in all threads</span>
-<span class="hljs-keyword">var</span> writeMutex = Mutex(<span class="hljs-string">'writeMutex'</span>);
-</code></pre>
 										</div>
 									</div>
 								</li>
@@ -148,19 +148,19 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/mutex.d.ts#L24">mutex.d.ts:24</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/mutex.d.ts#L26">mutex.d.ts:26</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Locks the mutex or wait until it has been released to lock it; the thread execution is paused until then.</p>
 								</div>
+								<pre><code><span class="hljs-keyword">var</span> writeMutex = Mutex(<span class="hljs-string">'writeMutex'</span>);
+writeMutex.<span class="hljs-keyword">lock</span>();
+</code></pre>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Boolean</span></h4>
 							<p>Returns <code>true</code> if the mutex is locked</p>
-							<pre><code><span class="hljs-keyword">var</span> writeMutex = Mutex(<span class="hljs-string">'writeMutex'</span>);
-writeMutex.<span class="hljs-keyword">lock</span>();
-</code></pre>
 						</li>
 					</ul>
 				</section>
@@ -174,19 +174,19 @@ writeMutex.<span class="hljs-keyword">lock</span>();
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/mutex.d.ts#L34">mutex.d.ts:34</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/mutex.d.ts#L37">mutex.d.ts:37</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Tries to lock the mutex or returns false if it is already locked. The thread execution is not paused.</p>
 								</div>
+								<pre><code><span class="hljs-keyword">var</span> writeMutex = Mutex(<span class="hljs-string">'writeMutex'</span>);
+writeMutex.tryLock();
+</code></pre>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Boolean</span></h4>
 							<p>Returns <code>true</code> if the mutex is locked, <code>false</code> otherwise</p>
-							<pre><code><span class="hljs-keyword">var</span> writeMutex = Mutex(<span class="hljs-string">'writeMutex'</span>);
-writeMutex.tryLock();
-</code></pre>
 						</li>
 					</ul>
 				</section>
@@ -200,20 +200,20 @@ writeMutex.tryLock();
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/mutex.d.ts#L45">mutex.d.ts:45</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/mutex.d.ts#L49">mutex.d.ts:49</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Unlock the mutex. The mutex must be lock in the same thread to be unlock.</p>
 								</div>
-							</div>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Boolean</span></h4>
-							<p>Returns <code>true</code> if the mutex is unlocked, <code>false</code> otherwise</p>
-							<pre><code><span class="hljs-keyword">var</span> writeMutex = Mutex(<span class="hljs-string">'writeMutex'</span>);
+								<pre><code><span class="hljs-keyword">var</span> writeMutex = Mutex(<span class="hljs-string">'writeMutex'</span>);
 writeMutex.<span class="hljs-keyword">lock</span>();
 writeMutex.unlock();
 </code></pre>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Boolean</span></h4>
+							<p>Returns <code>true</code> if the mutex is unlocked, <code>false</code> otherwise</p>
 						</li>
 					</ul>
 				</section>

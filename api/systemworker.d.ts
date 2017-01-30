@@ -5,10 +5,6 @@ interface SystemWorker {
     /**
      * Calls a system worker (asynchronous mode).
      * Use the system worker proxy to get the result.
-     * @warning The system worker can only launch executable applications. All shell instructions must be preceded by a command line interpreter like `bash`, `sh` or `cmd` depending of the OS.
-     * @param cli Command line to execute
-     * @param options Describes command line options
-     * @returns Returns a system worker proxy
      * 
      * #### Example 1: Do a simple CLI command
      * ```
@@ -31,21 +27,22 @@ interface SystemWorker {
      * ```
      * var myFolder = new Folder( 'PROJECT/backend' );
      * var options = {
-     *   parameters : { folder_ref : myFolder },
-     *   quote : '"',
-     *   variables : { ENV_VAR_1 : 'value1' }
+     *     parameters : { folder_ref : myFolder },
+     *     quote : '"',
+     *     variables : { ENV_VAR_1 : 'value1' }
      * };
      * var workerProxy = new SystemWorker( 'sh -c ls -la {file_ref}', options);
      * ```
-     */
-    new(cli: String, options?: SystemWorkerOptions) : SystemWorkerProxy;
-    /**
-     * Calls a system worker (asynchronous mode).
-     * Use the system worker proxy to get the result.
+     * 
      * @warning The system worker can only launch executable applications. All shell instructions must be preceded by a command line interpreter like `bash`, `sh` or `cmd` depending of the OS.
      * @param cli Command line to execute
      * @param options Describes command line options
      * @returns Returns a system worker proxy
+     */
+    new (cli: String, options?: SystemWorkerOptions): SystemWorkerProxy;
+    /**
+     * Calls a system worker (asynchronous mode).
+     * Use the system worker proxy to get the result.
      * 
      * #### Example 1: Do a simple CLI command
      * ```
@@ -68,21 +65,22 @@ interface SystemWorker {
      * ```
      * var myFolder = new Folder( 'PROJECT/backend' );
      * var options = {
-     *   parameters : { folder_ref : myFolder },
-     *   quote : '"',
-     *   variables : { ENV_VAR_1 : 'value1' }
+     *     parameters : { folder_ref : myFolder },
+     *     quote : '"',
+     *     variables : { ENV_VAR_1 : 'value1' }
      * };
      * var workerProxy = new SystemWorker( ['sh', '-c', 'ls -la {file_ref}'], options);
      * ```
-     */
-    new(cli: String[], options?: SystemWorkerOptions): SystemWorkerProxy;
-    /**
-     * Calls a system worker (asynchronous mode).
-     * Use the system worker proxy to get the result.
+     * 
      * @warning The system worker can only launch executable applications. All shell instructions must be preceded by a command line interpreter like `bash`, `sh` or `cmd` depending of the OS.
      * @param cli Command line to execute
      * @param options Describes command line options
-     * @returns Returns the exit status, stdout and sterr
+     * @returns Returns a system worker proxy
+     */
+    new (cli: String[], options?: SystemWorkerOptions): SystemWorkerProxy;
+    /**
+     * Calls a system worker (asynchronous mode).
+     * Use the system worker proxy to get the result.
      * 
      * #### Example 1: Do a simple CLI command
      * ```
@@ -110,21 +108,22 @@ interface SystemWorker {
      * ```
      * var myFolder = new Folder( 'PROJECT/backend' );
      * var options = {
-     *   parameters : { folder_ref : myFolder },
-     *   quote : '"',
-     *   variables : { ENV_VAR_1 : 'value1' }
+     *     parameters : { folder_ref : myFolder },
+     *     quote : '"',
+     *     variables : { ENV_VAR_1 : 'value1' }
      * };
      * var workerResult = SystemWorker.exec( 'sh -c ls -la {file_ref}', options);
      * console.log(workerResult.output.toString());
      * ```
-     */
-    exec(cli: String, options?: SystemWorkerOptions) : SystemWorkerResult;
-    /**
-     * Calls to system worker and waits for its response (synchronous mode).
+     * 
      * @warning The system worker can only launch executable applications. All shell instructions must be preceded by a command line interpreter like `bash`, `sh` or `cmd` depending of the OS.
-     * @param cli Command line to execute. First element is the executable. Then all next elements describe the parameters
+     * @param cli Command line to execute
      * @param options Describes command line options
      * @returns Returns the exit status, stdout and sterr
+     */
+    exec(cli: String, options?: SystemWorkerOptions): SystemWorkerResult;
+    /**
+     * Calls to system worker and waits for its response (synchronous mode).
      * 
      * #### Example 1: Do a simple CLI command
      * ```
@@ -152,82 +151,87 @@ interface SystemWorker {
      * ```
      * var myFolder = new Folder( 'PROJECT/backend' );
      * var options = {
-     *   parameters : { folder_ref : myFolder },
-     *   quote : '"',
-     *   variables : { ENV_VAR_1 : 'value1' }
+     *     parameters : { folder_ref : myFolder },
+     *     quote : '"',
+     *     variables : { ENV_VAR_1 : 'value1' }
      * };
      * var workerResult = SystemWorker.exec( ['sh', '-c', 'ls -la {file_ref}'], options);
      * console.log(workerResult.output.toString());
      * ```
+     * 
+     * @warning The system worker can only launch executable applications. All shell instructions must be preceded by a command line interpreter like `bash`, `sh` or `cmd` depending of the OS.
+     * @param cli Command line to execute. First element is the executable. Then all next elements describe the parameters
+     * @param options Describes command line options
+     * @returns Returns the exit status, stdout and sterr
      */
-    exec(cli: String[], options?: SystemWorkerOptions) : SystemWorkerResult;
+    exec(cli: String[], options?: SystemWorkerOptions): SystemWorkerResult;
 }
 
 interface SystemWorkerOptions {
     /**
      * Root folder for the worker executable. Native relative file paths will be resolved with this folder as parent.
      */
-    folder? : String | Folder;
+    folder?: String | Folder;
     /**
      * Passes named parameters to command line. `{name}` is replaced with the value of the `options.parameters.name` attribute. Parameters can be of type String, Number, File or Folder.
      */
-    parameters? : Object;
+    parameters?: Object;
     /**
      * Escapes character (can be an empty string). Named parameters may need to be escaped depending on the system worker and OS on which it is executed.
      */
-    quote? : String;
+    quote?: String;
     /**
      * String data to pass to system worker.
      */
-    stdin? : String;
+    stdin?: String;
     /**
-     * Defines custom environment variables for the system worker
+     * Defines custom environment variables for the system worker.
      */
-    variables? : Object;
+    variables?: Object;
     /**
      * (default: `false`) `true` to terminate the process tree started by the system worker once terminated, `false` otherwise.
      */
-    kill_process_tree? : Boolean;
+    kill_process_tree?: Boolean;
 }
 
 interface SystemWorkerResult {
     /**
-     * Integer value depending on the executable. If the executable considers the operation has been executed successfully, exitStatus value is `0`
+     * Integer value depending on the executable. If the executable considers the operation has been executed successfully, exitStatus value is `0`.
      */
-    exitStatus : Number;
+    exitStatus: Number;
     /**
-     * stdout result of the command
+     * stdout result of the command.
      */
-    ouput : Buffer;
+    ouput: Buffer;
     /**
-     * stderr result of the command
+     * stderr result of the command.
      */
-    error : Buffer;
+    error: Buffer;
 }
 
 interface SystemWorkerEvent {
     /**
-     * Either `message`, `error` or `terminate`
+     * Either `message`, `error` or `terminate`.
      */
     type: String;
     /**
-     * SystemWorker proxy which triggered the callback
+     * SystemWorker proxy which triggered the callback.
      */
     target: SystemWorkerProxy;
     /**
-     * Content of stdout
+     * Content of stdout.
      */
     data?: String | Buffer;
     /**
-     * `true` if the command line has been correctly executed
+     * `true` if the command line has been correctly executed.
      */
     hasStarted?: Boolean;
     /**
-     * Exit status returned by the executed command
+     * Exit status returned by the executed command.
      */
     exitStatus?: Number;
     /**
-     * `true` if the user called `terminate()`
+     * `true` if the user called `terminate()`.
      */
     forced?: Boolean;
 }
@@ -243,7 +247,7 @@ interface SystemWorkerProxy {
      * }
      *```
      */
-    onerror: ( event: SystemWorkerEvent ) => void;
+    onerror: (event: SystemWorkerEvent) => void;
     /**
      * Callback for system worker messages.
      * The message can be sent into multiple chunks.
@@ -255,9 +259,9 @@ interface SystemWorkerProxy {
      * }
      *```
      */
-    onmessage: ( event: SystemWorkerEvent ) => void;
+    onmessage: (event: SystemWorkerEvent) => void;
     /**
-     * Callback when the external process is terminating
+     * Callback when the external process is terminating.
      * 
      * ```
      * // Receives an "end" event from system worker
@@ -266,7 +270,7 @@ interface SystemWorkerProxy {
      * }
      * ```
      */
-    onterminated: ( event: SystemWorkerEvent ) => void;
+    onterminated: (event: SystemWorkerEvent) => void;
     /**
      * Closes the input stream (stdin) of the external process. 
      * Useful when an attempt to write in the stdin of the external process with `postMessage()` is stuck. `endOfInput()` will release the execution.
@@ -282,13 +286,13 @@ interface SystemWorkerProxy {
      * worker.endOfInput();
      * ```
      */
-    endOfInput() : void;
+    endOfInput(): void;
     /**
-     * Returns system worker information
+     * Returns system worker information.
      */
-    getInfos() : Object;
+    getInfos(): Object;
     /**
-     * Write on the input stream (stdin) of the external process
+     * Write on the input stream (stdin) of the external process.
      * 
      * ```
      * // Create an asynchronous system worker
@@ -298,9 +302,9 @@ interface SystemWorkerProxy {
      * // Note that we call endOfInput() to indicate we're done. gzip (and most program waiting data from stdin) will wait for more data until the input is explicitely closed.
      * worker.endOfInput();
      */
-    postMessage(stdin: String) : void;
+    postMessage(stdin: String): void;
     /**
-     * Write on the input stream (stdin) of the external process
+     * Write on the input stream (stdin) of the external process.
      * 
      * ```
      * // Create some data to gzip
@@ -312,36 +316,39 @@ interface SystemWorkerProxy {
      * // Note that we call endOfInput() to indicate we're done. gzip (and most program waiting data from stdin) will wait for more data until the input is explicitely closed.
      * worker.endOfInput();
      */
-    postMessage(stdin: Buffer) : void;
+    postMessage(stdin: Buffer): void;
     /**
      * Set the type of data exchanged in the SystemWorker through the onmessage and onerror properties.
-     * @param binary `true` to return binary data by `onmessage` and `onerror`, `false` otherwise.
      * 
      * ```
      * workerProxy.setBinary(true);
      * ```
+     * 
+     * @param binary `true` to return binary data by `onmessage` and `onerror`, `false` otherwise.
      */
-    setBinary(binary: Boolean) : void;
+    setBinary(binary: Boolean): void;
     /**
      * Forces the system worker to terminate its execution.
-     * @param waitForTermination (default: `false`) `true` if the current thread must wait for the system worker execution to end
-     * @param killProcessTree (default: `false`) `true` if the system worker and all his childs must end
      * 
      * ```
      * workerProxy.terminate();
      * workerProxy.terminate(true, true);
      * ```
+     * 
+     * @param waitForTermination (default: `false`) `true` if the current thread must wait for the system worker execution to end
+     * @param killProcessTree (default: `false`) `true` if the system worker and all his childs must end
      */
-    terminate(waitForTermination?: Boolean, killProcessTree?: Boolean) : void;
+    terminate(waitForTermination?: Boolean, killProcessTree?: Boolean): void;
     /**
-     * Wait for the end of the system worker execution
-     * @param timeout Millisecond to wait for.
+     * Wait for the end of the system worker execution.
      * 
      * ```
      * workerProxy.wait(1000);
      * workerProxy.wait();
      * ```
+     * 
+     * @param timeout Millisecond to wait for.
     */
-    wait(timeout?: Number) : Boolean;
+    wait(timeout?: Number): Boolean;
 }
 

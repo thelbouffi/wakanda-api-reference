@@ -108,12 +108,12 @@
 					<div class="tsd-signature tsd-kind-icon">ID<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">String</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/user.d.ts#L12">user.d.ts:12</a></li>
+							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/user.d.ts#L12">user.d.ts:12</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Describes the internal user ID</p>
+							<p>Describes the internal user ID.</p>
 						</div>
 					</div>
 				</section>
@@ -123,12 +123,12 @@
 					<div class="tsd-signature tsd-kind-icon">full<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">String</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/user.d.ts#L8">user.d.ts:8</a></li>
+							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/user.d.ts#L8">user.d.ts:8</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Describes the user full name</p>
+							<p>Describes the user full name.</p>
 						</div>
 					</div>
 				</section>
@@ -138,12 +138,12 @@
 					<div class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">String</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/user.d.ts#L16">user.d.ts:16</a></li>
+							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/user.d.ts#L16">user.d.ts:16</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Describe the user name</p>
+							<p>Describe the user name.</p>
 						</div>
 					</div>
 				</section>
@@ -153,12 +153,12 @@
 					<div class="tsd-signature tsd-kind-icon">storage<span class="tsd-signature-symbol">:</span> <a href="keyvaluestorage.html" class="tsd-signature-type">KeyValueStorage</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/user.d.ts#L25">user.d.ts:25</a></li>
+							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/user.d.ts#L25">user.d.ts:25</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Defines the user storage object
+							<p>Defines the user storage object.
 							This object is maintained as long as the server is alive. It is not stored after the server shuts down. This property is user-related and not session-related.</p>
 						</div>
 						<pre><code><span class="hljs-selector-tag">console</span><span class="hljs-selector-class">.log</span>(<span class="hljs-selector-tag">myUser</span><span class="hljs-selector-class">.storage</span>);
@@ -178,12 +178,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/user.d.ts#L31">user.d.ts:31</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/user.d.ts#L31">user.d.ts:31</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Get all groups where the user belongs to</p>
+									<p>Get all groups where the user belongs to.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -211,18 +211,19 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/user.d.ts#L41">user.d.ts:41</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/user.d.ts#L42">user.d.ts:42</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Assignes a user to one or more groups</p>
+									<p>Assignes a user to one or more groups.</p>
 								</div>
+								<pre><code><span class="hljs-selector-tag">myUser</span><span class="hljs-selector-class">.putInto</span>( <span class="hljs-string">'sales'</span>, <span class="hljs-string">'finance'</span> );
+</code></pre>
 								<dl class="tsd-comment-tags">
 									<dt>warning</dt>
 									<dd><p>All updates done to the <code>directory</code> are temporary. Use <code>directory.save()</code> in order to survive a reboot.</p>
-										<pre><code><span class="hljs-selector-tag">myUser</span><span class="hljs-selector-class">.putInto</span>( <span class="hljs-string">'sales'</span>, <span class="hljs-string">'finance'</span> );
-</code></pre></dd>
+									</dd>
 								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -239,20 +240,21 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/user.d.ts#L53">user.d.ts:53</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/user.d.ts#L55">user.d.ts:55</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Assignes a user to one or more groups</p>
+									<p>Assignes a user to one or more groups.</p>
 								</div>
+								<pre><code><span class="hljs-keyword">var</span> group1 = directory.<span class="hljs-keyword">group</span>( <span class="hljs-string">'finance'</span> );
+<span class="hljs-keyword">var</span> group2 = directory.addGroup( <span class="hljs-string">'account'</span> );
+myUser.putInto( group1 , group2 )
+</code></pre>
 								<dl class="tsd-comment-tags">
 									<dt>warning</dt>
 									<dd><p>All updates done to the <code>directory</code> are temporary. Use <code>directory.save()</code> in order to survive a reboot.</p>
-										<pre><code><span class="hljs-keyword">var</span> group1 = directory.<span class="hljs-keyword">group</span>( <span class="hljs-string">'finance'</span> );
-<span class="hljs-keyword">var</span> group2 = directory.addGroup( <span class="hljs-string">'account'</span> );
-myUser.putInto( group1 , group2 )
-</code></pre></dd>
+									</dd>
 								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -278,12 +280,12 @@ myUser.putInto( group1 , group2 )
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/user.d.ts#L58">user.d.ts:58</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/user.d.ts#L60">user.d.ts:60</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Removes the user from the directory</p>
+									<p>Removes the user from the directory.</p>
 								</div>
 								<dl class="tsd-comment-tags">
 									<dt>warning</dt>
@@ -306,18 +308,19 @@ myUser.putInto( group1 , group2 )
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/user.d.ts#L68">user.d.ts:68</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/user.d.ts#L71">user.d.ts:71</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Removes the user from group list</p>
+									<p>Removes the user from group list.</p>
 								</div>
+								<pre><code><span class="hljs-selector-tag">myUser</span><span class="hljs-selector-class">.removeFrom</span>( <span class="hljs-string">'sales'</span>, <span class="hljs-string">'finance'</span> );
+</code></pre>
 								<dl class="tsd-comment-tags">
 									<dt>warning</dt>
 									<dd><p>All updates done to the <code>directory</code> are temporary. Use <code>directory.save()</code> in order to survive a reboot.</p>
-										<pre><code><span class="hljs-selector-tag">myUser</span><span class="hljs-selector-class">.removeFrom</span>( <span class="hljs-string">'sales'</span>, <span class="hljs-string">'finance'</span> );
-</code></pre></dd>
+									</dd>
 								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -334,20 +337,21 @@ myUser.putInto( group1 , group2 )
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/user.d.ts#L80">user.d.ts:80</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/user.d.ts#L84">user.d.ts:84</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Removes the user from group list</p>
+									<p>Removes the user from group list.</p>
 								</div>
+								<pre><code><span class="hljs-keyword">var</span> group1 = directory.<span class="hljs-keyword">group</span>( <span class="hljs-string">'finance'</span> );
+<span class="hljs-keyword">var</span> group2 = directory.addGroup( <span class="hljs-string">'account'</span> );
+myUser.removeFrom( group1 , group2 )
+</code></pre>
 								<dl class="tsd-comment-tags">
 									<dt>warning</dt>
 									<dd><p>All updates done to the <code>directory</code> are temporary. Use <code>directory.save()</code> in order to survive a reboot.</p>
-										<pre><code><span class="hljs-keyword">var</span> group1 = directory.<span class="hljs-keyword">group</span>( <span class="hljs-string">'finance'</span> );
-<span class="hljs-keyword">var</span> group2 = directory.addGroup( <span class="hljs-string">'account'</span> );
-myUser.removeFrom( group1 , group2 )
-</code></pre></dd>
+									</dd>
 								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -373,12 +377,12 @@ myUser.removeFrom( group1 , group2 )
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/user.d.ts#L86">user.d.ts:86</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/user.d.ts#L90">user.d.ts:90</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Update the user password in the directory</p>
+									<p>Update the user password in the directory.</p>
 								</div>
 								<dl class="tsd-comment-tags">
 									<dt>warning</dt>

@@ -113,12 +113,12 @@
 					<div class="tsd-signature tsd-kind-icon">Node<wbr>Worker<span class="tsd-signature-symbol">:</span> <a href="nodeworker.html" class="tsd-signature-type">NodeWorker</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/application.d.ts#L155">application.d.ts:155</a></li>
+							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/application.d.ts#L156">application.d.ts:156</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>References the node worker constructor</p>
+							<p>References the node worker constructor.</p>
 						</div>
 					</div>
 				</section>
@@ -128,12 +128,12 @@
 					<div class="tsd-signature tsd-kind-icon">Shared<wbr>Worker<span class="tsd-signature-symbol">:</span> <a href="sharedworker.html" class="tsd-signature-type">SharedWorker</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/application.d.ts#L159">application.d.ts:159</a></li>
+							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/application.d.ts#L160">application.d.ts:160</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>References the shared worker constructor</p>
+							<p>References the shared worker constructor.</p>
 						</div>
 					</div>
 				</section>
@@ -143,12 +143,12 @@
 					<div class="tsd-signature tsd-kind-icon">System<wbr>Worker<span class="tsd-signature-symbol">:</span> <a href="systemworker.html" class="tsd-signature-type">SystemWorker</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/application.d.ts#L163">application.d.ts:163</a></li>
+							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/application.d.ts#L164">application.d.ts:164</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>References the system worker constructor</p>
+							<p>References the system worker constructor.</p>
 						</div>
 					</div>
 				</section>
@@ -165,12 +165,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/application.d.ts#L167">application.d.ts:167</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/application.d.ts#L168">application.d.ts:168</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>References the mutex constructor</p>
+									<p>References the mutex constructor.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -193,7 +193,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/application.d.ts#L143">application.d.ts:143</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/application.d.ts#L144">application.d.ts:144</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -217,7 +217,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/application.d.ts#L151">application.d.ts:151</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/application.d.ts#L152">application.d.ts:152</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -241,7 +241,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/application.d.ts#L180">application.d.ts:180</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/application.d.ts#L183">application.d.ts:183</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -249,6 +249,11 @@
 									<p>Require a SSJS module (CommonJS compliant).
 									This module must be defined in <code>PROJECT/backend/modules/</code>.</p>
 								</div>
+								<pre><code><span class="hljs-comment">// Get the module defined in PROJECT/backend/modules/mail</span>
+<span class="hljs-keyword">var</span> mail = <span class="hljs-built_in">require</span>(<span class="hljs-string">'mail'</span>);
+<span class="hljs-comment">// Get the module defined in PROJECT/backend/modules/customers/platinium</span>
+<span class="hljs-keyword">var</span> platiniumCustomers = <span class="hljs-built_in">require</span>(<span class="hljs-string">'/customers/platinium'</span>);
+</code></pre>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -261,11 +266,6 @@
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="module.html" class="tsd-signature-type">Module</a></h4>
 							<p>Returns the exported API of the given module</p>
-							<pre><code><span class="hljs-comment">// Get the module defined in PROJECT/backend/modules/mail</span>
-<span class="hljs-keyword">var</span> mail = <span class="hljs-built_in">require</span>(<span class="hljs-string">'mail'</span>);
-<span class="hljs-comment">// Get the module defined in PROJECT/backend/modules/customers/platinium</span>
-<span class="hljs-keyword">var</span> platiniumCustomers = <span class="hljs-built_in">require</span>(<span class="hljs-string">'/customers/platinium'</span>);
-</code></pre>
 						</li>
 					</ul>
 				</section>
@@ -279,7 +279,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/application.d.ts#L192">application.d.ts:192</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/application.d.ts#L197">application.d.ts:197</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -287,6 +287,9 @@
 									<p>Require a NodeJS module.
 									This module must be defined in <code>PROJECT/backend/node_modules</code>.</p>
 								</div>
+								<pre><code>// Get the <span class="hljs-keyword">Node</span> <span class="hljs-title">module</span> <span class="hljs-keyword">defined</span> <span class="hljs-keyword">in</span> PROJECT/backend/node_modules/http
+var http = requireNode('http');
+</code></pre>
 								<dl class="tsd-comment-tags">
 									<dt>warning</dt>
 									<dd><p>This API is only available inside a Node worker (See ShareWorker for more details)</p>
@@ -304,9 +307,6 @@
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="module.html" class="tsd-signature-type">Module</a></h4>
 							<p>Returns the exported API of the given module</p>
-							<pre><code>// Get the <span class="hljs-keyword">Node</span> <span class="hljs-title">module</span> <span class="hljs-keyword">defined</span> <span class="hljs-keyword">in</span> PROJECT/backend/node_modules/http
-var http = requireNode('http');
-</code></pre>
 						</li>
 					</ul>
 				</section>
@@ -320,13 +320,18 @@ var http = requireNode('http');
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/application.d.ts#L204">application.d.ts:204</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/application.d.ts#L210">application.d.ts:210</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Allows a thread to handle events and to continue to exist after the complete code executes</p>
+									<p>Allows a thread to handle events and to continue to exist after the complete code executes.</p>
 								</div>
+								<pre><code>// <span class="hljs-keyword">Wait</span> <span class="hljs-keyword">for</span> <span class="hljs-number">100</span>ms
+<span class="hljs-keyword">wait</span>(<span class="hljs-number">100</span>);
+// <span class="hljs-keyword">Wait</span> <span class="hljs-keyword">for</span> the <span class="hljs-keyword">end</span> <span class="hljs-keyword">of</span> <span class="hljs-built_in">time</span>
+<span class="hljs-keyword">wait</span>();
+</code></pre>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -334,11 +339,6 @@ var http = requireNode('http');
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> timeout: <span class="tsd-signature-type">Number</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>Milliseconds to wait for. If none, it&#39;s an infinite wait. Can be squeeze with an <code>exitWait()</code>.</p>
-										<pre><code>// <span class="hljs-keyword">Wait</span> <span class="hljs-keyword">for</span> <span class="hljs-number">100</span>ms
-<span class="hljs-keyword">wait</span>(<span class="hljs-number">100</span>);
-// <span class="hljs-keyword">Wait</span> <span class="hljs-keyword">for</span> the <span class="hljs-keyword">end</span> <span class="hljs-keyword">of</span> <span class="hljs-built_in">time</span>
-<span class="hljs-keyword">wait</span>();
-</code></pre>
 									</div>
 								</li>
 							</ul>

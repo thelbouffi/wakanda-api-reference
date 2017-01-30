@@ -112,7 +112,7 @@
 					<div class="tsd-signature tsd-kind-icon">Binary<wbr>Stream<span class="tsd-signature-symbol">:</span> <a href="binarystream.html" class="tsd-signature-type">BinaryStream</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/application.d.ts#L208">application.d.ts:208</a></li>
+							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/application.d.ts#L214">application.d.ts:214</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -122,7 +122,7 @@
 					<div class="tsd-signature tsd-kind-icon">Blob<span class="tsd-signature-symbol">:</span> <a href="blob.html" class="tsd-signature-type">Blob</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/application.d.ts#L209">application.d.ts:209</a></li>
+							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/application.d.ts#L215">application.d.ts:215</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -132,7 +132,7 @@
 					<div class="tsd-signature tsd-kind-icon">File<span class="tsd-signature-symbol">:</span> <a href="file.html" class="tsd-signature-type">File</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/application.d.ts#L210">application.d.ts:210</a></li>
+							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/application.d.ts#L216">application.d.ts:216</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -142,7 +142,7 @@
 					<div class="tsd-signature tsd-kind-icon">Folder<span class="tsd-signature-symbol">:</span> <a href="folder.html" class="tsd-signature-type">Folder</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/application.d.ts#L211">application.d.ts:211</a></li>
+							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/application.d.ts#L217">application.d.ts:217</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -152,7 +152,7 @@
 					<div class="tsd-signature tsd-kind-icon">Text<wbr>Stream<span class="tsd-signature-symbol">:</span> <a href="textstream.html" class="tsd-signature-type">TextStream</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/application.d.ts#L212">application.d.ts:212</a></li>
+							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/application.d.ts#L218">application.d.ts:218</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -170,13 +170,19 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/application.d.ts#L229">application.d.ts:229</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/application.d.ts#L236">application.d.ts:236</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Loads an image from its path.</p>
 								</div>
+								<pre><code><span class="hljs-keyword">var</span> myPict = loadImage( <span class="hljs-string">'C:/images/tulips.jpg'</span> );
+<span class="hljs-keyword">var</span> <span class="hljs-keyword">new</span><span class="hljs-type">Pict</span> = <span class="hljs-keyword">new</span> <span class="hljs-type">ds</span>.Pict();
+<span class="hljs-keyword">new</span><span class="hljs-type">Pict</span>.name = <span class="hljs-string">'Flower'</span>;
+<span class="hljs-keyword">new</span><span class="hljs-type">Pict</span>.photo = myPict;
+<span class="hljs-keyword">new</span><span class="hljs-type">Pict</span>.save();
+</code></pre>
 								<dl class="tsd-comment-tags">
 									<dt>warning</dt>
 									<dd><p>The Image API is partially supported on Linux platforms:</p>
@@ -198,23 +204,24 @@
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="image.html" class="tsd-signature-type">Image</a></h4>
 							<p>Returns the image through Image object.</p>
-							<pre><code><span class="hljs-keyword">var</span> myPict = loadImage( <span class="hljs-string">'C:/images/tulips.jpg'</span> );
-<span class="hljs-keyword">var</span> <span class="hljs-keyword">new</span><span class="hljs-type">Pict</span> = <span class="hljs-keyword">new</span> <span class="hljs-type">ds</span>.Pict();
-<span class="hljs-keyword">new</span><span class="hljs-type">Pict</span>.name = <span class="hljs-string">'Flower'</span>;
-<span class="hljs-keyword">new</span><span class="hljs-type">Pict</span>.photo = myPict;
-<span class="hljs-keyword">new</span><span class="hljs-type">Pict</span>.save();
-</code></pre>
 						</li>
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/application.d.ts#L247">application.d.ts:247</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/application.d.ts#L255">application.d.ts:255</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Loads an image from a File object.</p>
 								</div>
+								<pre><code><span class="hljs-keyword">var</span> myFile = File( <span class="hljs-string">'C:/images/tulips.jpg'</span> );
+<span class="hljs-keyword">var</span> myPict = loadImage(myFile);
+<span class="hljs-keyword">var</span> <span class="hljs-keyword">new</span><span class="hljs-type">Pict</span> = <span class="hljs-keyword">new</span> <span class="hljs-type">ds</span>.Pict();
+<span class="hljs-keyword">new</span><span class="hljs-type">Pict</span>.name = <span class="hljs-string">'Flower'</span>;
+<span class="hljs-keyword">new</span><span class="hljs-type">Pict</span>.photo = myPict;
+<span class="hljs-keyword">new</span><span class="hljs-type">Pict</span>.save();
+</code></pre>
 								<dl class="tsd-comment-tags">
 									<dt>warning</dt>
 									<dd><p>The Image API is partially supported on Linux platforms:</p>
@@ -236,13 +243,6 @@
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="image.html" class="tsd-signature-type">Image</a></h4>
 							<p>Returns the image through Image object.</p>
-							<pre><code><span class="hljs-keyword">var</span> myFile = File( <span class="hljs-string">'C:/images/tulips.jpg'</span> );
-<span class="hljs-keyword">var</span> myPict = loadImage(myFile);
-<span class="hljs-keyword">var</span> <span class="hljs-keyword">new</span><span class="hljs-type">Pict</span> = <span class="hljs-keyword">new</span> <span class="hljs-type">ds</span>.Pict();
-<span class="hljs-keyword">new</span><span class="hljs-type">Pict</span>.name = <span class="hljs-string">'Flower'</span>;
-<span class="hljs-keyword">new</span><span class="hljs-type">Pict</span>.photo = myPict;
-<span class="hljs-keyword">new</span><span class="hljs-type">Pict</span>.save();
-</code></pre>
 						</li>
 					</ul>
 				</section>
@@ -257,13 +257,19 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/application.d.ts#L262">application.d.ts:262</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/application.d.ts#L271">application.d.ts:271</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Loads the content of a text file from its path.</p>
 								</div>
+								<pre><code><span class="hljs-keyword">var</span> myQuote = loadText( <span class="hljs-string">'c:/texts/under-the-red-sky.txt'</span> );
+<span class="hljs-keyword">var</span> <span class="hljs-keyword">new</span><span class="hljs-type">Song</span> = <span class="hljs-keyword">new</span> <span class="hljs-type">ds</span>.Quotes();
+<span class="hljs-keyword">new</span><span class="hljs-type">Song</span>.author = <span class="hljs-string">'Bob Dylan'</span>;
+<span class="hljs-keyword">new</span><span class="hljs-type">Song</span>.quote = myQuote;
+<span class="hljs-keyword">new</span><span class="hljs-type">Song</span>.save();
+</code></pre>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -282,23 +288,24 @@
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">String</span></h4>
 							<p>Returns a string with the full text file content.</p>
-							<pre><code><span class="hljs-keyword">var</span> myQuote = loadText( <span class="hljs-string">'c:/texts/under-the-red-sky.txt'</span> );
-<span class="hljs-keyword">var</span> <span class="hljs-keyword">new</span><span class="hljs-type">Song</span> = <span class="hljs-keyword">new</span> <span class="hljs-type">ds</span>.Quotes();
-<span class="hljs-keyword">new</span><span class="hljs-type">Song</span>.author = <span class="hljs-string">'Bob Dylan'</span>;
-<span class="hljs-keyword">new</span><span class="hljs-type">Song</span>.quote = myQuote;
-<span class="hljs-keyword">new</span><span class="hljs-type">Song</span>.save();
-</code></pre>
 						</li>
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/application.d.ts#L278">application.d.ts:278</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/application.d.ts#L288">application.d.ts:288</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Loads the content of a text file from a File object.</p>
 								</div>
+								<pre><code><span class="hljs-keyword">var</span> myFile = File( <span class="hljs-string">'c:/texts/under-the-red-sky.txt'</span> );
+<span class="hljs-keyword">var</span> myQuote = loadText( myFile );
+<span class="hljs-keyword">var</span> <span class="hljs-keyword">new</span><span class="hljs-type">Song</span> = <span class="hljs-keyword">new</span> <span class="hljs-type">ds</span>.Quotes();
+<span class="hljs-keyword">new</span><span class="hljs-type">Song</span>.author = <span class="hljs-string">'Bob Dylan'</span>;
+<span class="hljs-keyword">new</span><span class="hljs-type">Song</span>.quote = myQuote;
+<span class="hljs-keyword">new</span><span class="hljs-type">Song</span>.save();
+</code></pre>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -317,13 +324,6 @@
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">String</span></h4>
 							<p>Returns a string with the full text file content.</p>
-							<pre><code><span class="hljs-keyword">var</span> myFile = File( <span class="hljs-string">'c:/texts/under-the-red-sky.txt'</span> );
-<span class="hljs-keyword">var</span> myQuote = loadText( myFile );
-<span class="hljs-keyword">var</span> <span class="hljs-keyword">new</span><span class="hljs-type">Song</span> = <span class="hljs-keyword">new</span> <span class="hljs-type">ds</span>.Quotes();
-<span class="hljs-keyword">new</span><span class="hljs-type">Song</span>.author = <span class="hljs-string">'Bob Dylan'</span>;
-<span class="hljs-keyword">new</span><span class="hljs-type">Song</span>.quote = myQuote;
-<span class="hljs-keyword">new</span><span class="hljs-type">Song</span>.save();
-</code></pre>
 						</li>
 					</ul>
 				</section>
@@ -338,13 +338,15 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/application.d.ts#L289">application.d.ts:289</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/application.d.ts#L300">application.d.ts:300</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Saves the text into a file.</p>
 								</div>
+								<pre><code>saveText( 'Hello World ! Here is my text saved.', 'C<span class="hljs-symbol">:/texts/chapter-1</span>.txt' )<span class="hljs-comment">;</span>
+</code></pre>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -364,8 +366,6 @@
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> charset: <span class="tsd-signature-type">Number</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>(default: 7) Defines the charset of the text string. See <a href="http://doc.wakanda.org/home2.en.html#/Wakanda/0.Beta/TextStream.301-684310.en.html">charset values</a> for more details.</p>
-										<pre><code>saveText( 'Hello World ! Here is my text saved.', 'C<span class="hljs-symbol">:/texts/chapter-1</span>.txt' )<span class="hljs-comment">;</span>
-</code></pre>
 									</div>
 								</li>
 							</ul>
@@ -374,13 +374,16 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/application.d.ts#L301">application.d.ts:301</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/application.d.ts#L313">application.d.ts:313</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Saves the text into a file.</p>
 								</div>
+								<pre><code>var myFile = File( 'C<span class="hljs-symbol">:/texts/chapter-1</span>.txt' )<span class="hljs-comment">;</span>
+saveText( 'Hello World ! Here is my text saved.', myFile )<span class="hljs-comment">;</span>
+</code></pre>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -400,9 +403,6 @@
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> charset: <span class="tsd-signature-type">Number</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>(default: 7) Defines the charset of the text string. See <a href="http://doc.wakanda.org/home2.en.html#/Wakanda/0.Beta/TextStream.301-684310.en.html">charset values</a> for more details.</p>
-										<pre><code>var myFile = File( 'C<span class="hljs-symbol">:/texts/chapter-1</span>.txt' )<span class="hljs-comment">;</span>
-saveText( 'Hello World ! Here is my text saved.', myFile )<span class="hljs-comment">;</span>
-</code></pre>
 									</div>
 								</li>
 							</ul>

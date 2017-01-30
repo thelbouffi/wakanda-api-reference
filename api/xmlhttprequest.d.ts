@@ -3,8 +3,6 @@
 interface XMLHttpRequest {
     /**
      * Creates a XMLHttpRequest (XHR).
-     * @warning Sends synchronous XHR request.
-     * @param proxy `{host: String, port: Number}` Overrides the system proxy settings
      * 
      * ```
      * var xhr = new XMLHttpRequest();
@@ -12,22 +10,22 @@ interface XMLHttpRequest {
      * // XHR event handler. 
      * xhr.onreadystatechange = function() {
      * 
-     * 		// Get xhr states
-     *		var state = this.readyState;
+     *     // Get xhr states
+     *     var state = this.readyState;
      *
-     * 		// Only consider the "done" state. Skip others
-     *		if (state !== 4) { 
-     *			return;
-     *		}
+     *     // Only consider the "done" state. Skip others
+     *     if (state !== 4) { 
+     *         return;
+     *     }
      *
-     *		// Get xhr response headers
-     *		var headers = this.getAllResponseHeaders();
-     *	
-     *		// Get xhr response text contents
-     * 		var result = this.responseText;
-     *	
-     *		// Display the result when received
-     * 		console.log( result );
+     *     // Get xhr response headers
+     *     var headers = this.getAllResponseHeaders();
+     *
+     *     // Get xhr response text contents
+     *     var result = this.responseText;
+     *
+     *     // Display the result when received
+     *     console.log( result );
      * };
      * 
      * // Get server rest info
@@ -37,6 +35,9 @@ interface XMLHttpRequest {
      * // Send the XHR request
      * xhr.send();
      * ```
+     * 
+     * @warning Sends synchronous XHR request.
+     * @param proxy `{host: String, port: Number}` Overrides the system proxy settings
      */
     new (proxy?: Object): XMLHttpRequest;
     /**
@@ -70,23 +71,21 @@ interface XMLHttpRequest {
      */
     onreadystatechange: (this: XMLHttpRequest, event: Event) => any;
     /**
-     * Returns all HTTP headers from the response of the XMLHttprequest
+     * Returns all HTTP headers from the response of the XMLHttprequest.
      */
     getAllResponseHeaders(): String;
     /**
-     * Returns the value of a specific header field in the response of the XMLHttpRequest
+     * Returns the value of a specific header field in the response of the XMLHttpRequest.
      */
     getResponseHeader(header: String): String;
     /**
-     * Declares the HTTP method and the URL of the XMLHttpRequest
+     * Declares the HTTP method and the URL of the XMLHttpRequest.
      * @param method HTTP method
      * @param url URL of the request
      */
     open(method: String, url: String): void;
     /**
      * Sends the XHR opened request.
-     * @warning Sends synchronous XHR request.
-     * @param data Data to send in the request `body`
      * 
      * #### Example 1: Basic usage
      * ```
@@ -110,12 +109,13 @@ interface XMLHttpRequest {
      * }
      * xhr.send( 'PROJECT/backend/my-image.jpg' );
      * ```
+     * 
+     * @warning Sends synchronous XHR request.
+     * @param data Data to send in the request `body`
      */
     send(data?: String): void;
     /**
      * Sends the XHR opened request.
-     * @warning Sends synchronous XHR request.
-     * @param data Data to send in the request `body`
      * 
      * #### Example 1: Basic usage
      * ```
@@ -139,18 +139,20 @@ interface XMLHttpRequest {
      *     console.log( 'Upload ID:'+ xhr.responseText );
      * }
      * xhr.send( myFile );
+     * ```
+     * 
+     * @warning Sends synchronous XHR request.
+     * @param data Data to send in the request `body`
      */
     send(data?: File): void;
     /**
-     * Allows the request to be authenticated on the remote server with a client certificate, when necessary
+     * Allows the request to be authenticated on the remote server with a client certificate, when necessary.
      * @param keyPath Path to the PEM format private key
      * @param certificatePath Path to the local PEM format certificate
      */
     setClientCertificate(keyPath: String, certificatePath: String): void;
     /**
-     * Set the value of a specific header field of the XMLHttpRequest
-     * @param header The header field name
-     * @param value The header field value
+     * Set the value of a specific header field of the XMLHttpRequest.
      * 
      * ```
      * var xhr = new XMLHttpRequest();
@@ -159,6 +161,9 @@ interface XMLHttpRequest {
      * xhr.setRequestHeader('X-Test', 'two');
      * xhr.send();
      * ```
+     * 
+     * @param header The header field name
+     * @param value The header field value
      */
     setRequestHeader(header: String, value: String): void;
 }

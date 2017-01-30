@@ -1,28 +1,28 @@
 ///<reference path="./keyvaluestorage.d.ts" />
 
-interface ConnectionSessionInfo{
+interface ConnectionSessionInfo {
     /**
-     * UUID String referencing the user. It can be any ID but must not be an existing user ID
+     * UUID String referencing the user. It can be any ID but must not be an existing user ID.
      */
-    ID : String;
+    ID: String;
     /**
-     * Username of the User
+     * Username of the User.
      */
-    name : String;
+    name: String;
     /**
-     * Full Name of the User
+     * Full Name of the User.
      */
-    fullName? : String;
+    fullName?: String;
     /**
-     * Array of UUID strings or Array of group names referencing the groups the user must belong to
+     * Array of UUID strings or Array of group names referencing the groups the user must belong to.
      */
-    belongsTo? : String[];
+    belongsTo?: String[];
     /**
-     * Defines the session storage property of the user session
+     * Defines the session storage property of the user session.
      */
-    storage? : KeyValueStorage;
+    storage?: KeyValueStorage;
     /**
-     * Defines the session time to live for the user session
+     * Defines the session time to live for the user session.
      */
-    lifeTime? : Number;
+    lifeTime?: Number;
 }

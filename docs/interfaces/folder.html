@@ -133,7 +133,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/folder.d.ts#L4">folder.d.ts:4</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/folder.d.ts#L4">folder.d.ts:4</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -141,6 +141,15 @@
 									<p>References a folder.
 									The folder does not have to exist.</p>
 								</div>
+								<h4 id="example-1-get-a-reference-to-an-existing-folder">Example 1: Get a reference to an existing folder</h4>
+								<pre><code><span class="hljs-keyword">var</span> myFolder = <span class="hljs-keyword">new</span> <span class="hljs-type">Folder</span>( <span class="hljs-string">'PROJECT/backend'</span> );
+console.log( myFolder.exists );
+<span class="hljs-comment">// true</span>
+</code></pre><h4 id="example-2-get-a-reference-to-a-missing-folder">Example 2: Get a reference to a missing folder</h4>
+								<pre><code><span class="hljs-keyword">var</span> myFolder = <span class="hljs-keyword">new</span> <span class="hljs-type">Folder</span>( <span class="hljs-string">'PROJECT/missing-folder'</span> );
+console.log( myFolder.exists );
+<span class="hljs-comment">// false</span>
+</code></pre>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -149,15 +158,6 @@
 									<div class="tsd-comment tsd-typography">
 										<div class="lead">
 											<p>Absolute path of the folder to reference.</p>
-											<h4 id="example-1-get-a-reference-to-an-existing-folder">Example 1: Get a reference to an existing folder</h4>
-											<pre><code><span class="hljs-keyword">var</span> myFolder = <span class="hljs-keyword">new</span> <span class="hljs-type">Folder</span>( <span class="hljs-string">'PROJECT/backend'</span> );
-console.log( myFolder.exists );
-<span class="hljs-comment">// true</span>
-</code></pre><h4 id="example-2-get-a-reference-to-a-missing-folder">Example 2: Get a reference to a missing folder</h4>
-											<pre><code><span class="hljs-keyword">var</span> myFolder = <span class="hljs-keyword">new</span> <span class="hljs-type">Folder</span>( <span class="hljs-string">'PROJECT/missing-folder'</span> );
-console.log( myFolder.exists );
-<span class="hljs-comment">// false</span>
-</code></pre>
 										</div>
 									</div>
 								</li>
@@ -175,12 +175,12 @@ console.log( myFolder.exists );
 					<div class="tsd-signature tsd-kind-icon">creation<wbr>Date<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Date</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/folder.d.ts#L28">folder.d.ts:28</a></li>
+							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/folder.d.ts#L29">folder.d.ts:29</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Creation date for the folder</p>
+							<p>Creation date for the folder.</p>
 						</div>
 					</div>
 				</section>
@@ -190,7 +190,7 @@ console.log( myFolder.exists );
 					<div class="tsd-signature tsd-kind-icon">exists<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/folder.d.ts#L32">folder.d.ts:32</a></li>
+							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/folder.d.ts#L33">folder.d.ts:33</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -205,12 +205,12 @@ console.log( myFolder.exists );
 					<div class="tsd-signature tsd-kind-icon">extension<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">String</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/folder.d.ts#L36">folder.d.ts:36</a></li>
+							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/folder.d.ts#L37">folder.d.ts:37</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Folder extension</p>
+							<p>Folder extension.</p>
 						</div>
 					</div>
 				</section>
@@ -220,12 +220,12 @@ console.log( myFolder.exists );
 					<div class="tsd-signature tsd-kind-icon">files<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Array</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/folder.d.ts#L40">folder.d.ts:40</a></li>
+							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/folder.d.ts#L41">folder.d.ts:41</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Array of Files</p>
+							<p>Array of Files.</p>
 						</div>
 					</div>
 				</section>
@@ -235,12 +235,12 @@ console.log( myFolder.exists );
 					<div class="tsd-signature tsd-kind-icon">first<wbr>File<span class="tsd-signature-symbol">:</span> <a href="file.html" class="tsd-signature-type">File</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/folder.d.ts#L48">folder.d.ts:48</a></li>
+							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/folder.d.ts#L49">folder.d.ts:49</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>First file found in the folder</p>
+							<p>First file found in the folder.</p>
 						</div>
 					</div>
 				</section>
@@ -250,12 +250,12 @@ console.log( myFolder.exists );
 					<div class="tsd-signature tsd-kind-icon">first<wbr>Folder<span class="tsd-signature-symbol">:</span> <a href="folder.html" class="tsd-signature-type">Folder</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/folder.d.ts#L52">folder.d.ts:52</a></li>
+							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/folder.d.ts#L53">folder.d.ts:53</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>First folder (i.e., subfolder) in the folder</p>
+							<p>First folder (i.e., subfolder) in the folder.</p>
 						</div>
 					</div>
 				</section>
@@ -265,12 +265,12 @@ console.log( myFolder.exists );
 					<div class="tsd-signature tsd-kind-icon">folders<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Array</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/folder.d.ts#L56">folder.d.ts:56</a></li>
+							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/folder.d.ts#L57">folder.d.ts:57</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Array of Folder objects</p>
+							<p>Array of Folder objects.</p>
 						</div>
 					</div>
 				</section>
@@ -280,12 +280,12 @@ console.log( myFolder.exists );
 					<div class="tsd-signature tsd-kind-icon">modification<wbr>Date<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Date</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/folder.d.ts#L60">folder.d.ts:60</a></li>
+							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/folder.d.ts#L61">folder.d.ts:61</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Last modification date for the folder</p>
+							<p>Last modification date for the folder.</p>
 						</div>
 					</div>
 				</section>
@@ -295,12 +295,12 @@ console.log( myFolder.exists );
 					<div class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">String</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/folder.d.ts#L64">folder.d.ts:64</a></li>
+							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/folder.d.ts#L65">folder.d.ts:65</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Name of the folder without the path</p>
+							<p>Name of the folder without the path.</p>
 						</div>
 					</div>
 				</section>
@@ -310,12 +310,12 @@ console.log( myFolder.exists );
 					<div class="tsd-signature tsd-kind-icon">name<wbr>NoExt<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">String</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/folder.d.ts#L68">folder.d.ts:68</a></li>
+							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/folder.d.ts#L69">folder.d.ts:69</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Name of the folder without the extension</p>
+							<p>Name of the folder without the extension.</p>
 						</div>
 					</div>
 				</section>
@@ -325,12 +325,12 @@ console.log( myFolder.exists );
 					<div class="tsd-signature tsd-kind-icon">parent<span class="tsd-signature-symbol">:</span> <a href="folder.html" class="tsd-signature-type">Folder</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/folder.d.ts#L72">folder.d.ts:72</a></li>
+							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/folder.d.ts#L73">folder.d.ts:73</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Parent folder of the folder</p>
+							<p>Parent folder of the folder.</p>
 						</div>
 					</div>
 				</section>
@@ -340,12 +340,12 @@ console.log( myFolder.exists );
 					<div class="tsd-signature tsd-kind-icon">path<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">String</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/folder.d.ts#L76">folder.d.ts:76</a></li>
+							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/folder.d.ts#L77">folder.d.ts:77</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Full path of the folder</p>
+							<p>Full path of the folder.</p>
 						</div>
 					</div>
 				</section>
@@ -355,7 +355,7 @@ console.log( myFolder.exists );
 					<div class="tsd-signature tsd-kind-icon">visible<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/folder.d.ts#L80">folder.d.ts:80</a></li>
+							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/folder.d.ts#L81">folder.d.ts:81</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -377,13 +377,18 @@ console.log( myFolder.exists );
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/folder.d.ts#L93">folder.d.ts:93</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/folder.d.ts#L95">folder.d.ts:95</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Creates a new folder on disk.</p>
 								</div>
+								<pre><code><span class="hljs-keyword">var</span> myFolder = <span class="hljs-keyword">new</span> <span class="hljs-type">Folder</span>( <span class="hljs-string">'PROJECT/backend/my-created-folder'</span> );
+<span class="hljs-keyword">var</span> myResult = myFolder.create();
+console.log( myResult );
+<span class="hljs-comment">// true</span>
+</code></pre>
 								<dl class="tsd-comment-tags">
 									<dt>throws</dt>
 									<dd><p>An error if something goes wrong: folder already exists, invalid path, ...</p>
@@ -392,11 +397,6 @@ console.log( myFolder.exists );
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Boolean</span></h4>
 							<p><code>true</code> if the folder is well created</p>
-							<pre><code><span class="hljs-keyword">var</span> myFolder = <span class="hljs-keyword">new</span> <span class="hljs-type">Folder</span>( <span class="hljs-string">'PROJECT/backend/my-created-folder'</span> );
-<span class="hljs-keyword">var</span> myResult = myFolder.create();
-console.log( myResult );
-<span class="hljs-comment">// true</span>
-</code></pre>
 						</li>
 					</ul>
 				</section>
@@ -410,30 +410,31 @@ console.log( myResult );
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/folder.d.ts#L120">folder.d.ts:120</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/folder.d.ts#L123">folder.d.ts:123</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Calls <code>callback</code> function for each file at the first level of the folder.</p>
 								</div>
-								<dl class="tsd-comment-tags">
-									<dt>warning</dt>
-									<dd><p><code>break</code> is not working in <code>forEachFile</code></p>
-										<h4 id="example-1-basic-usage">Example 1: Basic usage</h4>
-										<pre><code><span class="hljs-keyword">var</span> folder = Folder( <span class="hljs-string">'PROJECT/backend/'</span> );
+								<h4 id="example-1-basic-usage">Example 1: Basic usage</h4>
+								<pre><code><span class="hljs-keyword">var</span> folder = Folder( <span class="hljs-string">'PROJECT/backend/'</span> );
 folder.forEachFile( <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">( <span class="hljs-keyword">file</span> )</span>
 <span class="hljs-comment">{
     console.log( file.path );
 }</span>);</span>
 </code></pre><h4 id="example-2-override-this-">Example 2: Override <code>this</code></h4>
-										<pre><code><span class="hljs-keyword">var</span> folder = Folder( <span class="hljs-string">'PROJECT/backend/'</span> );
+								<pre><code><span class="hljs-keyword">var</span> folder = Folder( <span class="hljs-string">'PROJECT/backend/'</span> );
 folder.forEachFile( <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"> file </span>)
 </span>{
     <span class="hljs-built_in">console</span>.log( <span class="hljs-keyword">this</span> );
 }, {<span class="hljs-attr">data</span>: <span class="hljs-string">'some-data'</span> } );
 <span class="hljs-comment">// {"data":"some-data"}</span>
-</code></pre></dd>
+</code></pre>
+								<dl class="tsd-comment-tags">
+									<dt>warning</dt>
+									<dd><p><code>break</code> is not working in <code>forEachFile</code></p>
+									</dd>
 								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -486,30 +487,31 @@ folder.forEachFile( <span class="hljs-function"><span class="hljs-keyword">funct
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/folder.d.ts#L147">folder.d.ts:147</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/folder.d.ts#L151">folder.d.ts:151</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Calls <code>callback</code> function for each folder at the first level of the folder.</p>
 								</div>
-								<dl class="tsd-comment-tags">
-									<dt>warning</dt>
-									<dd><p><code>break</code> is not working in <code>forEachFolder</code></p>
-										<h4 id="example-1-basic-usage">Example 1: Basic usage</h4>
-										<pre><code><span class="hljs-keyword">var</span> folder = Folder( <span class="hljs-string">'PROJECT/backend/'</span> );
+								<h4 id="example-1-basic-usage">Example 1: Basic usage</h4>
+								<pre><code><span class="hljs-keyword">var</span> folder = Folder( <span class="hljs-string">'PROJECT/backend/'</span> );
 folder.forEachFolder( <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"> folder </span>)
 </span>{
     <span class="hljs-built_in">console</span>.log( folder.path );
 });
 </code></pre><h4 id="example-2-override-this-">Example 2: Override <code>this</code></h4>
-										<pre><code><span class="hljs-keyword">var</span> folder = Folder( <span class="hljs-string">'PROJECT/backend/'</span> );
+								<pre><code><span class="hljs-keyword">var</span> folder = Folder( <span class="hljs-string">'PROJECT/backend/'</span> );
 folder.forEachFolder( <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"> folder </span>)
 </span>{
     <span class="hljs-built_in">console</span>.log( <span class="hljs-keyword">this</span> );
 }, {<span class="hljs-attr">data</span>: <span class="hljs-string">'some-data'</span> } );
 <span class="hljs-comment">// {"data":"some-data"}</span>
-</code></pre></dd>
+</code></pre>
+								<dl class="tsd-comment-tags">
+									<dt>warning</dt>
+									<dd><p><code>break</code> is not working in <code>forEachFolder</code></p>
+									</dd>
 								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -562,12 +564,12 @@ folder.forEachFolder( <span class="hljs-function"><span class="hljs-keyword">fun
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/folder.d.ts#L152">folder.d.ts:152</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/folder.d.ts#L156">folder.d.ts:156</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Returns the size of the free space (expressed in bytes) available on the volume where the Folder object is stored</p>
+									<p>Returns the size of the free space (expressed in bytes) available on the volume where the Folder object is stored.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -593,12 +595,12 @@ folder.forEachFolder( <span class="hljs-function"><span class="hljs-keyword">fun
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/folder.d.ts#L157">folder.d.ts:157</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/folder.d.ts#L161">folder.d.ts:161</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Returns the absolute URL of the Folder object</p>
+									<p>Returns the absolute URL of the Folder object.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -624,12 +626,12 @@ folder.forEachFolder( <span class="hljs-function"><span class="hljs-keyword">fun
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/folder.d.ts#L161">folder.d.ts:161</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/folder.d.ts#L165">folder.d.ts:165</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Returns the total size (expressed in bytes) of the volume where the Folder object is stored</p>
+									<p>Returns the total size (expressed in bytes) of the volume where the Folder object is stored.</p>
 								</div>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Number</span></h4>
@@ -646,13 +648,17 @@ folder.forEachFolder( <span class="hljs-function"><span class="hljs-keyword">fun
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/folder.d.ts#L173">folder.d.ts:173</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/folder.d.ts#L178">folder.d.ts:178</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Check if the path references a folder</p>
+									<p>Check if the path references a folder.</p>
 								</div>
+								<pre><code><span class="hljs-keyword">var</span> myIsFolder = Folder.isFolder( <span class="hljs-string">'PROJECT/backend'</span> );
+<span class="hljs-built_in">console</span>.log( myIsFolder );
+<span class="hljs-comment">// true</span>
+</code></pre>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -665,10 +671,6 @@ folder.forEachFolder( <span class="hljs-function"><span class="hljs-keyword">fun
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Boolean</span></h4>
 							<p><code>true</code> is the path references a folder, <code>false</code> otherwise.</p>
-							<pre><code><span class="hljs-keyword">var</span> myIsFolder = Folder.isFolder( <span class="hljs-string">'PROJECT/backend'</span> );
-<span class="hljs-built_in">console</span>.log( myIsFolder );
-<span class="hljs-comment">// true</span>
-</code></pre>
 						</li>
 					</ul>
 				</section>
@@ -682,33 +684,34 @@ folder.forEachFolder( <span class="hljs-function"><span class="hljs-keyword">fun
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/folder.d.ts#L209">folder.d.ts:209</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/folder.d.ts#L215">folder.d.ts:215</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Calls <code>callback</code> function for each file in the folder tree (first-level and sub-level folder).</p>
 								</div>
-								<dl class="tsd-comment-tags">
-									<dt>warning</dt>
-									<dd><p><code>break</code> is not working in <code>parse</code></p>
-										<h4 id="example-1-basic-usage">Example 1: Basic usage</h4>
-										<pre><code><span class="hljs-keyword">var</span> folder = Folder( <span class="hljs-string">'PROJECT/backend/'</span> );
+								<h4 id="example-1-basic-usage">Example 1: Basic usage</h4>
+								<pre><code><span class="hljs-keyword">var</span> folder = Folder( <span class="hljs-string">'PROJECT/backend/'</span> );
 folder.parse( <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"> file, position, folder </span>)
 </span>{
-       <span class="hljs-built_in">console</span>.log( <span class="hljs-string">'-----------------------------'</span> );
-       <span class="hljs-built_in">console</span>.log( file.path );
-       <span class="hljs-built_in">console</span>.log( position );
-       <span class="hljs-built_in">console</span>.log( folder.path );
+    <span class="hljs-built_in">console</span>.log( <span class="hljs-string">'-----------------------------'</span> );
+    <span class="hljs-built_in">console</span>.log( file.path );
+    <span class="hljs-built_in">console</span>.log( position );
+    <span class="hljs-built_in">console</span>.log( folder.path );
 });
 </code></pre><h4 id="example-2-override-this-">Example 2: Override <code>this</code></h4>
-										<pre><code><span class="hljs-keyword">var</span> folder = Folder( <span class="hljs-string">'PROJECT/backend/'</span> );
+								<pre><code><span class="hljs-keyword">var</span> folder = Folder( <span class="hljs-string">'PROJECT/backend/'</span> );
 folder.parse( <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"> file, position, folder </span>)
 </span>{
     <span class="hljs-built_in">console</span>.log( <span class="hljs-keyword">this</span> );
 }, {<span class="hljs-attr">data</span>: <span class="hljs-string">'some-data'</span> } );
 <span class="hljs-comment">// {"data":"some-data"}</span>
-</code></pre></dd>
+</code></pre>
+								<dl class="tsd-comment-tags">
+									<dt>warning</dt>
+									<dd><p><code>break</code> is not working in <code>parse</code></p>
+									</dd>
 								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -773,12 +776,12 @@ folder.parse( <span class="hljs-function"><span class="hljs-keyword">function</s
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/folder.d.ts#L214">folder.d.ts:214</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/folder.d.ts#L220">folder.d.ts:220</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Removes the folder and its content from the disk</p>
+									<p>Removes the folder and its content from the disk.</p>
 								</div>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Boolean</span></h4>
@@ -796,12 +799,12 @@ folder.parse( <span class="hljs-function"><span class="hljs-keyword">function</s
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/folder.d.ts#L218">folder.d.ts:218</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/folder.d.ts#L224">folder.d.ts:224</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Removes the contents of the folder from the disk</p>
+									<p>Removes the contents of the folder from the disk.</p>
 								</div>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Boolean</span></h4>
@@ -818,23 +821,14 @@ folder.parse( <span class="hljs-function"><span class="hljs-keyword">function</s
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/folder.d.ts#L239">folder.d.ts:239</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/folder.d.ts#L246">folder.d.ts:246</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Rename the folder on disk</p>
+									<p>Rename the folder on disk.</p>
 								</div>
-								<dl class="tsd-comment-tags">
-									<dt>warning</dt>
-									<dd><p>The folder must exist on disk to be renamed</p>
-									</dd>
-									<dt>warning</dt>
-									<dd><p>The folder destination must be free</p>
-									</dd>
-									<dt>throws</dt>
-									<dd><p>An error if something goes wrong: folder already exists, invalid name, ...</p>
-										<pre><code class="lang-`">var myFolder = new Folder( &#39;PROJECT/backend/my-folder&#39; );
+								<pre><code class="lang-`">var myFolder = new Folder( &#39;PROJECT/backend/my-folder&#39; );
 // The folder must exists to be renamed
 myFolder.create();
 // The destination folder name must be free
@@ -844,6 +838,15 @@ myFolder.setName( &#39;my-renamed-folder&#39; );
 console.log( myFolder.path );
 // PROJECT/backend/my-folder
 </code></pre>
+								<dl class="tsd-comment-tags">
+									<dt>warning</dt>
+									<dd><p>The folder must exist on disk to be renamed</p>
+									</dd>
+									<dt>warning</dt>
+									<dd><p>The folder destination must be free</p>
+									</dd>
+									<dt>throws</dt>
+									<dd><p>An error if something goes wrong: folder already exists, invalid name, ...</p>
 									</dd>
 								</dl>
 							</div>

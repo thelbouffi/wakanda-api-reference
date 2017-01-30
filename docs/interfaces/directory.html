@@ -66,16 +66,6 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
-			<section class="tsd-panel tsd-comment">
-				<div class="tsd-comment tsd-typography">
-					<div class="lead">
-						<p>References the directory of the application</p>
-					</div>
-					<pre><code><span class="hljs-regexp">//</span> directory <span class="hljs-keyword">is</span> available <span class="hljs-keyword">from</span> the <span class="hljs-built_in">global</span> object
-<span class="hljs-built_in">console</span>.log(directory);
-</code></pre>
-				</div>
-			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
@@ -136,12 +126,12 @@
 					<div class="tsd-signature tsd-kind-icon">current<wbr>Session<span class="tsd-signature-symbol">:</span> <a href="connectionsession.html" class="tsd-signature-type">ConnectionSession</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/directory.d.ts#L55">directory.d.ts:55</a></li>
+							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/directory.d.ts#L48">directory.d.ts:48</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>The current user session</p>
+							<p>The current user session.</p>
 						</div>
 					</div>
 				</section>
@@ -151,12 +141,12 @@
 					<div class="tsd-signature tsd-kind-icon">current<wbr>User<span class="tsd-signature-symbol">:</span> <a href="user.html" class="tsd-signature-type">User</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/directory.d.ts#L51">directory.d.ts:51</a></li>
+							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/directory.d.ts#L44">directory.d.ts:44</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>The current user who opened the user session</p>
+							<p>The current user who opened the user session.</p>
 						</div>
 					</div>
 				</section>
@@ -173,18 +163,19 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/directory.d.ts#L66">directory.d.ts:66</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/directory.d.ts#L60">directory.d.ts:60</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Add a new group to the directory and returns it</p>
+									<p>Add a new group to the directory and returns it.</p>
 								</div>
+								<pre><code><span class="hljs-attribute">var myNewGroup</span> = directory.addGroup( <span class="hljs-string">'astronauts'</span> );
+</code></pre>
 								<dl class="tsd-comment-tags">
 									<dt>warning</dt>
-									<dd><p>All updates done to the <code>directory</code> are temporary. Use <code>directory.save()</code> in order to survive a reboot.</p>
-										<pre><code><span class="hljs-attribute">var myNewGroup</span> = directory.addGroup(<span class="hljs-string">'astronauts'</span>);
-</code></pre></dd>
+									<dd><p>All updates done to the <code>directory</code> are temporary. Use <code>directory.save()</code> to save all updates on disk.</p>
+									</dd>
 								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -211,18 +202,19 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/directory.d.ts#L79">directory.d.ts:79</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/directory.d.ts#L74">directory.d.ts:74</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Add a new user to the directory and returns it</p>
+									<p>Add a new user to the directory and returns it.</p>
 								</div>
+								<pre><code><span class="hljs-attribute">var myNewUser</span> = directory.addUser( <span class="hljs-string">'Thomas Pesquet'</span> );
+</code></pre>
 								<dl class="tsd-comment-tags">
 									<dt>warning</dt>
-									<dd><p>All updates done to the <code>directory</code> are temporary. Use <code>directory.save()</code> in order to survive a reboot.</p>
-										<pre><code><span class="hljs-attribute">var myNewUser</span> = directory.addUser(<span class="hljs-string">'Thomas Pesquet'</span>);
-</code></pre></dd>
+									<dd><p>All updates done to the <code>directory</code> are temporary. Use <code>directory.save()</code> to save all updates on disk.</p>
+									</dd>
 								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -261,12 +253,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/directory.d.ts#L83">directory.d.ts:83</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/directory.d.ts#L78">directory.d.ts:78</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Gets the HA1 key resulting from the combination of userName, password and (optionally) realm parameters using a hash Function</p>
+									<p>Gets the HA1 key resulting from the combination of userName, password and (optionally) realm parameters using a hash Function.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -295,13 +287,37 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/directory.d.ts#L47">directory.d.ts:47</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/directory.d.ts#L40">directory.d.ts:40</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Create a new user session and sets it as the current session</p>
+									<p>Create a new user session and sets it as the current session.</p>
 								</div>
+								<pre><code><span class="hljs-keyword">var</span> cur = currentSession();
+<span class="hljs-built_in">console</span>.log( cur.ID );
+<span class="hljs-comment">// BF44D6E51B8FAKE485D8966ED3EDF6DD</span>
+
+<span class="hljs-comment">// Create a new session and keep previous session</span>
+directory.createUserSession(
+    {
+        <span class="hljs-attr">ID</span>: <span class="hljs-string">'0001000100010001000100010001000100010001'</span>,
+        <span class="hljs-attr">name</span>: <span class="hljs-string">'jsmith'</span>,
+        <span class="hljs-attr">fullName</span>: <span class="hljs-string">'Jennifer Smith'</span>,
+        <span class="hljs-attr">belongsTo</span>: [ <span class="hljs-string">'Manager'</span> ]
+    },
+    <span class="hljs-literal">true</span>
+);
+
+<span class="hljs-built_in">console</span>.log(directory.currentSession.ID);
+<span class="hljs-comment">// 1E121BA4AE82446B9FDB430F0A9055C6</span>
+<span class="hljs-comment">// The new session is now the current session</span>
+
+<span class="hljs-keyword">var</span> previousSession = getSession( <span class="hljs-string">'BF44D6E51B8FAKE485D8966ED3EDF6DD'</span> );
+<span class="hljs-built_in">console</span>.log( previousSession.ID );
+<span class="hljs-comment">// BF44D6E51B8FAKE485D8966ED3EDF6DD</span>
+<span class="hljs-comment">// The previous session is still valid</span>
+</code></pre>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -315,30 +331,6 @@
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> keepPreviousSession: <span class="tsd-signature-type">Boolean</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>(default <code>false</code>) Set to <code>true</code> if you want to keep the previous user session, <code>false</code> if you want to expire the previous user session.</p>
-										<pre><code><span class="hljs-keyword">var</span> cur = currentSession();
-<span class="hljs-built_in">console</span>.log(cur.ID);
-<span class="hljs-comment">// BF44D6E51B8FAKE485D8966ED3EDF6DD</span>
-
-<span class="hljs-comment">// Create a new session and keep previous session</span>
-directory.createUserSession(
-  {
-    <span class="hljs-attr">ID</span>: <span class="hljs-string">'0001000100010001000100010001000100010001'</span>,
-    <span class="hljs-attr">name</span>: <span class="hljs-string">'jsmith'</span>,
-    <span class="hljs-attr">fullName</span>: <span class="hljs-string">'Jennifer Smith'</span>,
-    <span class="hljs-attr">belongsTo</span>: [ <span class="hljs-string">'Manager'</span> ]
-  },
-  <span class="hljs-literal">true</span>
-);
-
-<span class="hljs-built_in">console</span>.log(directory.currentSession.ID);
-<span class="hljs-comment">// 1E121BA4AE82446B9FDB430F0A9055C6</span>
-<span class="hljs-comment">// The new session is now the current session</span>
-
-<span class="hljs-keyword">var</span> previousSession = getSession(<span class="hljs-string">'BF44D6E51B8FAKE485D8966ED3EDF6DD'</span>);
-<span class="hljs-built_in">console</span>.log(previousSession.ID);
-<span class="hljs-comment">// BF44D6E51B8FAKE485D8966ED3EDF6DD</span>
-<span class="hljs-comment">// The previous session is still valid</span>
-</code></pre>
 									</div>
 								</li>
 							</ul>
@@ -356,13 +348,15 @@ directory.createUserSession(
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/directory.d.ts#L93">directory.d.ts:93</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/directory.d.ts#L89">directory.d.ts:89</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Returns all directory groups starting with <code>filterString</code></p>
+									<p>Returns all directory groups starting with <code>filterString</code>.</p>
 								</div>
+								<pre><code><span class="hljs-attribute">var myGroups</span> = directory.filterGroups( <span class="hljs-string">'*pers'</span> );
+</code></pre>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -375,8 +369,6 @@ directory.createUserSession(
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Array</span></h4>
 							<p>Returns an array of group</p>
-							<pre><code><span class="hljs-attribute">var myGroups</span> = directory.filterGroups(<span class="hljs-string">"*pers"</span>);
-</code></pre>
 						</li>
 					</ul>
 				</section>
@@ -390,13 +382,15 @@ directory.createUserSession(
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/directory.d.ts#L103">directory.d.ts:103</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/directory.d.ts#L100">directory.d.ts:100</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Returns all directory users starting with <code>filterString</code></p>
+									<p>Returns all directory users starting with <code>filterString</code>.</p>
 								</div>
+								<pre><code><span class="hljs-attribute">var myUsers</span> = directory.filterUsers(<span class="hljs-string">"Jo*"</span>);
+</code></pre>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -409,8 +403,6 @@ directory.createUserSession(
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Array</span></h4>
 							<p>Returns an array of user</p>
-							<pre><code><span class="hljs-attribute">var myUsers</span> = directory.filterUsers(<span class="hljs-string">"Jo*"</span>);
-</code></pre>
 						</li>
 					</ul>
 				</section>
@@ -424,9 +416,19 @@ directory.createUserSession(
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/directory.d.ts#L150">directory.d.ts:150</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/directory.d.ts#L151">directory.d.ts:151</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns the local Group Object referencing the remote group with the alias (i.e. the local name) you passed in the alias parameter.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>warning</dt>
+									<dd><p>Requires LDAP component.</p>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
@@ -447,12 +449,12 @@ directory.createUserSession(
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/directory.d.ts#L155">directory.d.ts:155</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/directory.d.ts#L156">directory.d.ts:156</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>returns a local Group Object referencing the remote group that corresponds to the unique Distinguished Name (DN) you passed in the dn parameter</p>
+									<p>returns a local Group Object referencing the remote group that corresponds to the unique Distinguished Name (DN) you passed in the dn parameter.</p>
 								</div>
 								<dl class="tsd-comment-tags">
 									<dt>warning</dt>
@@ -480,13 +482,15 @@ directory.createUserSession(
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/directory.d.ts#L117">directory.d.ts:117</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/directory.d.ts#L111">directory.d.ts:111</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Get an active session object from a session id</p>
+									<p>Get an active session object from a session id.</p>
 								</div>
+								<pre><code><span class="hljs-attribute">var previousSession</span> = getSession( <span class="hljs-string">'BF44D6E51B8FAKE485D8966ED3EDF6DD'</span> );
+</code></pre>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -499,8 +503,6 @@ directory.createUserSession(
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="connectionsession.html" class="tsd-signature-type">ConnectionSession</a></h4>
 							<p>Returns the session object if any</p>
-							<pre><code><span class="hljs-attribute">var previousSession</span> = getSession(<span class="hljs-string">'BF44D6E51B8FAKE485D8966ED3EDF6DD'</span>);
-</code></pre>
 						</li>
 					</ul>
 				</section>
@@ -516,30 +518,33 @@ directory.createUserSession(
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/directory.d.ts#L127">directory.d.ts:127</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/directory.d.ts#L122">directory.d.ts:122</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Get all active user sessions</p>
+									<p>Get all active user sessions.</p>
 								</div>
+								<pre><code>// Get all active <span class="hljs-keyword">user</span> <span class="hljs-title">session</span>
+var sessionArray = getUserSessions();
+</code></pre>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Array</span></h4>
 							<p>Returns an array of session object if any</p>
-							<pre><code>// Get all active <span class="hljs-keyword">user</span> <span class="hljs-title">session</span>
-var sessionArray = getUserSessions();
-</code></pre>
 						</li>
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/directory.d.ts#L138">directory.d.ts:138</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/directory.d.ts#L134">directory.d.ts:134</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Get all active user sessions for a user ID</p>
+									<p>Get all active user sessions for a user ID.</p>
 								</div>
+								<pre><code>// Get all active <span class="hljs-keyword">user</span> <span class="hljs-title">session</span> for the current <span class="hljs-keyword">user</span>
+<span class="hljs-title">var</span> sessionArray = getUserSessions( currentSession().user.ID );
+</code></pre>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -552,20 +557,20 @@ var sessionArray = getUserSessions();
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Array</span></h4>
 							<p>Returns an array of session object if any.</p>
-							<pre><code>// Get all active <span class="hljs-keyword">user</span> <span class="hljs-title">session</span> for the current <span class="hljs-keyword">user</span>
-<span class="hljs-title">var</span> sessionArray = getUserSessions(currentSession().user.ID);
-</code></pre>
 						</li>
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/directory.d.ts#L149">directory.d.ts:149</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/directory.d.ts#L146">directory.d.ts:146</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Get all active user sessions for a user</p>
+									<p>Get all active user sessions for a user.</p>
 								</div>
+								<pre><code>// Get all active <span class="hljs-keyword">user</span> <span class="hljs-title">session</span> for the current <span class="hljs-keyword">user</span>
+<span class="hljs-title">var</span> sessionArray = getUserSessions( currentSession().<span class="hljs-keyword">user</span> <span class="hljs-title">);</span>
+</code></pre>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -578,9 +583,6 @@ var sessionArray = getUserSessions();
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Array</span></h4>
 							<p>Returns an array of session object if any.</p>
-							<pre><code>// Get all active <span class="hljs-keyword">user</span> <span class="hljs-title">session</span> for the current <span class="hljs-keyword">user</span>
-<span class="hljs-title">var</span> sessionArray = getUserSessions(currentSession().user);
-</code></pre>
 						</li>
 					</ul>
 				</section>
@@ -594,13 +596,15 @@ var sessionArray = getUserSessions();
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/directory.d.ts#L165">directory.d.ts:165</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/directory.d.ts#L167">directory.d.ts:167</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Gets a group from its name or ID</p>
+									<p>Gets a group from its name or ID.</p>
 								</div>
+								<pre><code><span class="hljs-keyword">var</span> myGroup = directory.<span class="hljs-keyword">group</span>( <span class="hljs-string">'Spies'</span> );
+</code></pre>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -613,8 +617,6 @@ var sessionArray = getUserSessions();
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="group.html" class="tsd-signature-type">Group</a></h4>
 							<p>Returns the group</p>
-							<pre><code><span class="hljs-keyword">var</span> myGroup = directory.<span class="hljs-keyword">group</span>( <span class="hljs-string">"Spies"</span> );
-</code></pre>
 						</li>
 					</ul>
 				</section>
@@ -628,13 +630,16 @@ var sessionArray = getUserSessions();
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/directory.d.ts#L178">directory.d.ts:178</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/directory.d.ts#L181">directory.d.ts:181</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Authenticates a user by their name and key and, in case of success, opens a new user Session on the server</p>
+									<p>Authenticates a user by their name and key and, in case of success, opens a new user Session on the server.</p>
 								</div>
+								<pre><code><span class="hljs-selector-tag">loginByKey</span>(<span class="hljs-string">'john'</span>, <span class="hljs-string">'6153A6FA0E4880D9B8D0BE4720F78E895265D0A9'</span>);
+<span class="hljs-selector-tag">loginByKey</span>(<span class="hljs-string">'john'</span>, <span class="hljs-string">'6153A6FA0E4880D9B8D0BE4720F78E895265D0A9'</span>, <span class="hljs-number">60</span>*<span class="hljs-number">60</span>);
+</code></pre>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -659,9 +664,6 @@ var sessionArray = getUserSessions();
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Boolean</span></h4>
 							<p>Returns <code>true</code> if authentication succeed and <code>false</code> if an error occured</p>
-							<pre><code><span class="hljs-selector-tag">loginByKey</span>(<span class="hljs-string">'john'</span>, <span class="hljs-string">'6153A6FA0E4880D9B8D0BE4720F78E895265D0A9'</span>);
-<span class="hljs-selector-tag">loginByKey</span>(<span class="hljs-string">'john'</span>, <span class="hljs-string">'6153A6FA0E4880D9B8D0BE4720F78E895265D0A9'</span>, <span class="hljs-number">60</span>*<span class="hljs-number">60</span>);
-</code></pre>
 						</li>
 					</ul>
 				</section>
@@ -675,13 +677,16 @@ var sessionArray = getUserSessions();
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/directory.d.ts#L191">directory.d.ts:191</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/directory.d.ts#L195">directory.d.ts:195</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Authenticates a user by their name and password and, in case of success, opens a new user Session on the server</p>
+									<p>Authenticates a user by their name and password and, in case of success, opens a new user Session on the server.</p>
 								</div>
+								<pre><code><span class="hljs-selector-tag">loginByPassword</span>(<span class="hljs-string">'john'</span>, <span class="hljs-string">'my-password'</span>);
+<span class="hljs-selector-tag">loginByPassword</span>(<span class="hljs-string">'john'</span>, <span class="hljs-string">'my-password'</span>, <span class="hljs-number">60</span>*<span class="hljs-number">60</span>);
+</code></pre>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -706,9 +711,6 @@ var sessionArray = getUserSessions();
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Boolean</span></h4>
 							<p>Returns <code>true</code> if authentication succeed and <code>false</code> if an error occured</p>
-							<pre><code><span class="hljs-selector-tag">loginByPassword</span>(<span class="hljs-string">'john'</span>, <span class="hljs-string">'my-password'</span>);
-<span class="hljs-selector-tag">loginByPassword</span>(<span class="hljs-string">'john'</span>, <span class="hljs-string">'my-password'</span>, <span class="hljs-number">60</span>*<span class="hljs-number">60</span>);
-</code></pre>
 						</li>
 					</ul>
 				</section>
@@ -722,18 +724,18 @@ var sessionArray = getUserSessions();
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/directory.d.ts#L200">directory.d.ts:200</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/directory.d.ts#L205">directory.d.ts:205</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Logs out the user from its current session on the Wakanda server</p>
+									<p>Logs out the user from its current session on the Wakanda server.</p>
 								</div>
+								<pre><code>logout()<span class="hljs-comment">;</span>
+</code></pre>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Boolean</span></h4>
 							<p>Returns <code>true</code> if the user has been successfully logged out and <code>false</code> if an error occured</p>
-							<pre><code>logout()<span class="hljs-comment">;</span>
-</code></pre>
 						</li>
 					</ul>
 				</section>
@@ -748,13 +750,20 @@ var sessionArray = getUserSessions();
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/directory.d.ts#L211">directory.d.ts:211</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/directory.d.ts#L218">directory.d.ts:218</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Saves all changes made in the directory</p>
+									<p>Saves all changes made in the directory.</p>
 								</div>
+								<dl class="tsd-comment-tags">
+									<dt>warning</dt>
+									<dd><p>Destination file must exist</p>
+										<pre><code><span class="hljs-built_in">directory</span>.<span class="hljs-built_in">save</span>();
+<span class="hljs-built_in">directory</span>.<span class="hljs-built_in">save</span>( 'PROJECT/backups/<span class="hljs-number">2016</span>-<span class="hljs-number">01</span>-<span class="hljs-number">01.</span>waDirectory' );
+</code></pre></dd>
+								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -767,20 +776,24 @@ var sessionArray = getUserSessions();
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Boolean</span></h4>
 							<p>Returns <code>true</code> if successfully saved, <code>false</code> otherwise.</p>
-							<pre><code><span class="hljs-built_in">directory</span>.<span class="hljs-built_in">save</span>();
-<span class="hljs-built_in">directory</span>.<span class="hljs-built_in">save</span>( 'c:/wakanda/backups/date.waDirectory' );
-</code></pre>
 						</li>
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/directory.d.ts#L222">directory.d.ts:222</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/directory.d.ts#L230">directory.d.ts:230</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Saves all changes made in the directory</p>
+									<p>Saves all changes made in the directory.</p>
 								</div>
+								<dl class="tsd-comment-tags">
+									<dt>warning</dt>
+									<dd><p>Destination file must exist</p>
+										<pre><code><span class="hljs-keyword">var</span> myFile = <span class="hljs-keyword">File</span>( <span class="hljs-string">'PROJECT/backups/2016-01-01.waDirectory'</span> );
+directory.save( myFile );
+</code></pre></dd>
+								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -793,9 +806,6 @@ var sessionArray = getUserSessions();
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Boolean</span></h4>
 							<p>Returns <code>true</code> if successfully saved, <code>false</code> otherwise.</p>
-							<pre><code><span class="hljs-keyword">var</span> myFile = <span class="hljs-keyword">File</span>( <span class="hljs-string">'c:/wakanda/backups/date.waDirectory'</span> );
-directory.save( myFile );
-</code></pre>
 						</li>
 					</ul>
 				</section>
@@ -809,13 +819,22 @@ directory.save( myFile );
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/directory.d.ts#L239">directory.d.ts:239</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/directory.d.ts#L248">directory.d.ts:248</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>sets the session whose UUID is passed in sessionID as the new current session of the running thread</p>
+									<p>Sets the session whose UUID is passed in sessionID as the new current session of the running thread.</p>
 								</div>
+								<pre><code><span class="hljs-selector-tag">console</span><span class="hljs-selector-class">.log</span>(directory.currentSession.ID);
+<span class="hljs-comment">// 2EA82764A075497181278B2F05DA2EDA</span>
+<span class="hljs-selector-tag">setCurrentSession</span>(<span class="hljs-string">'E8CBA745124D4BE4BF7D5A224183EC8E'</span>, true);
+<span class="hljs-selector-tag">console</span><span class="hljs-selector-class">.log</span>(directory.currentSession.ID);
+<span class="hljs-comment">// E8CBA745124D4BE4BF7D5A224183EC8E</span>
+<span class="hljs-selector-tag">getSession</span>(<span class="hljs-string">'2EA82764A075497181278B2F05DA2EDA'</span>);
+<span class="hljs-comment">// null</span>
+<span class="hljs-comment">// Previous session has expire</span>
+</code></pre>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -829,15 +848,6 @@ directory.save( myFile );
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> forceExpire: <span class="tsd-signature-type">Boolean</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>(default: <code>false</code>) Set to <code>true</code> if the previous user session must expire, <code>false</code> otherwise.</p>
-										<pre><code><span class="hljs-selector-tag">console</span><span class="hljs-selector-class">.log</span>(directory.currentSession.ID);
-<span class="hljs-comment">// 2EA82764A075497181278B2F05DA2EDA</span>
-<span class="hljs-selector-tag">setCurrentSession</span>(<span class="hljs-string">'E8CBA745124D4BE4BF7D5A224183EC8E'</span>, true);
-<span class="hljs-selector-tag">console</span><span class="hljs-selector-class">.log</span>(directory.currentSession.ID);
-<span class="hljs-comment">// E8CBA745124D4BE4BF7D5A224183EC8E</span>
-<span class="hljs-selector-tag">getSession</span>(<span class="hljs-string">'2EA82764A075497181278B2F05DA2EDA'</span>);
-<span class="hljs-comment">// null</span>
-<span class="hljs-comment">// Previous session has expire</span>
-</code></pre>
 									</div>
 								</li>
 							</ul>
@@ -855,7 +865,7 @@ directory.save( myFile );
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/directory.d.ts#L304">directory.d.ts:304</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/directory.d.ts#L317">directory.d.ts:317</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -868,27 +878,27 @@ directory.save( myFile );
 									If the module is not found in the project, it is then check inside the solution.
 								It must export a <code>login()</code> method and return the <code>user</code> object.</p>
 								<pre><code>exports.login = function(username, password){
-  // Verify the username/password through Directory <span class="hljs-keyword">or</span> any other <span class="hljs-keyword">User</span> <span class="hljs-title">DB</span>
-  if (user) // If <span class="hljs-keyword">user</span> <span class="hljs-title">is</span> authenticated then return the <span class="hljs-keyword">user</span> <span class="hljs-title">object</span>
-    return {
-      ID: <span class="hljs-number">545642165412</span>, // Unique <span class="hljs-keyword">user</span> <span class="hljs-title">ID</span>. It must not collide with an existing Wakanda <span class="hljs-keyword">User</span> <span class="hljs-title">ID</span> from the Directory.
-      name: user.name,
-      fullName: user.fullname,
-      belongsTo: 'free-customer', // References the Directory <span class="hljs-keyword">group</span> <span class="hljs-title">where</span> the <span class="hljs-keyword">user</span> <span class="hljs-title">belongs</span>
-      storage: {} // Defines the sessionStorage <span class="hljs-keyword">property</span><span class="hljs-title"> </span>of the <span class="hljs-keyword">user</span> <span class="hljs-title">session</span>
-    };
-  }
-  else if (!user) // If <span class="hljs-keyword">user</span> <span class="hljs-title">not</span> authenticated then return an error
-  {
-    return {
-      error: <span class="hljs-number">548</span>, // Error code returned
-      errorMessage: 'Authentication failed. Login <span class="hljs-keyword">or</span> Password maybe wrong.' // Error text returned
-    };
-  }
-  else // <span class="hljs-keyword">or</span> continue using the standard process (with the internal directory)
-  {
-    return <span class="hljs-literal">false</span>;
-  }
+    // Verify the username/password through Directory <span class="hljs-keyword">or</span> any other <span class="hljs-keyword">User</span> <span class="hljs-title">DB</span>
+    if (user) // If <span class="hljs-keyword">user</span> <span class="hljs-title">is</span> authenticated then return the <span class="hljs-keyword">user</span> <span class="hljs-title">object</span>
+      return {
+        ID: <span class="hljs-number">545642165412</span>, // Unique <span class="hljs-keyword">user</span> <span class="hljs-title">ID</span>. It must not collide with an existing Wakanda <span class="hljs-keyword">User</span> <span class="hljs-title">ID</span> from the Directory.
+        name: user.name,
+        fullName: user.fullname,
+        belongsTo: 'free-customer', // References the Directory <span class="hljs-keyword">group</span> <span class="hljs-title">where</span> the <span class="hljs-keyword">user</span> <span class="hljs-title">belongs</span>
+        storage: {} // Defines the sessionStorage <span class="hljs-keyword">property</span><span class="hljs-title"> </span>of the <span class="hljs-keyword">user</span> <span class="hljs-title">session</span>
+      };
+    }
+    else if (!user) // If <span class="hljs-keyword">user</span> <span class="hljs-title">not</span> authenticated then return an error
+    {
+      return {
+        error: <span class="hljs-number">548</span>, // Error code returned
+        errorMessage: 'Authentication failed. Login <span class="hljs-keyword">or</span> Password maybe wrong.' // Error text returned
+      };
+    }
+    else // <span class="hljs-keyword">or</span> continue using the standard process (with the internal directory)
+    {
+      return <span class="hljs-literal">false</span>;
+    }
 }
 </code></pre>
 							</div>
@@ -896,9 +906,15 @@ directory.save( myFile );
 							<ul class="tsd-parameters">
 								<li>
 									<h5>moduleName: <span class="tsd-signature-type">String</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Module name which handles the login</p>
+									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> group: <span class="tsd-signature-type">String</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Group rights assign to the login manager for handling its actions</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -915,23 +931,16 @@ directory.save( myFile );
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/directory.d.ts#L265">directory.d.ts:265</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/directory.d.ts#L275">directory.d.ts:275</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Set a SSJS module as session manager</p>
+									<p>Set a SSJS module as session manager.</p>
 								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>modulePath: <span class="tsd-signature-type">String</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>Describes the module path</p>
-										<pre><code>directory.setSessionManager(<span class="hljs-string">'session'</span>); <span class="hljs-regexp">//</span> Refers to &lt;project&gt;<span class="hljs-regexp">/backend/m</span>odules<span class="hljs-regexp">/session module</span>
+								<pre><code>directory.setSessionManager(<span class="hljs-string">'session'</span>); <span class="hljs-regexp">//</span> Refers to &lt;project&gt;<span class="hljs-regexp">/backend/m</span>odules<span class="hljs-regexp">/session module</span>
 </code></pre><p>The module must export the following methods to handle all session operations:</p>
-										<pre><code>exports.readSession = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(session)</span></span>{
+								<pre><code>exports.readSession = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(session)</span></span>{
   <span class="hljs-comment">// Handle your read action here</span>
   <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>; <span class="hljs-comment">// Return true if success, false otherwise</span>
 }
@@ -944,6 +953,13 @@ exports.deleteSession =<span class="hljs-function"><span class="hljs-keyword">fu
   <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>; <span class="hljs-comment">// Return true if success, false otherwise</span>
 }
 </code></pre>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>modulePath: <span class="tsd-signature-type">String</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Describes the module path</p>
 									</div>
 								</li>
 							</ul>
@@ -961,12 +977,12 @@ exports.deleteSession =<span class="hljs-function"><span class="hljs-keyword">fu
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/directory.d.ts#L309">directory.d.ts:309</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/directory.d.ts#L322">directory.d.ts:322</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Synchronizes the local Wakanda directory with a remote LDAP directory</p>
+									<p>Synchronizes the local Wakanda directory with a remote LDAP directory.</p>
 								</div>
 								<dl class="tsd-comment-tags">
 									<dt>warning</dt>
@@ -994,13 +1010,15 @@ exports.deleteSession =<span class="hljs-function"><span class="hljs-keyword">fu
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/directory.d.ts#L319">directory.d.ts:319</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/directory.d.ts#L333">directory.d.ts:333</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Gets a user from its name or ID</p>
+									<p>Gets a user from its name or ID.</p>
 								</div>
+								<pre><code><span class="hljs-attribute">var myUser</span> = directory.user( <span class="hljs-string">"Thomas Pesquet"</span> );
+</code></pre>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -1013,8 +1031,6 @@ exports.deleteSession =<span class="hljs-function"><span class="hljs-keyword">fu
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="user.html" class="tsd-signature-type">User</a></h4>
 							<p>Returns the user</p>
-							<pre><code><span class="hljs-attribute">var myUser</span> = directory.user( <span class="hljs-string">"Thomas Pesquet"</span> );
-</code></pre>
 						</li>
 					</ul>
 				</section>

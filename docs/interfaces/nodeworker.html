@@ -69,9 +69,9 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Here is an example of a worker file</p>
+						<p>Here is an example of a worker file.</p>
 					</div>
-					<p>Callback to trigger when a new caller creates a NodeWorker proxy object</p>
+					<p>Callback to trigger when a new caller creates a NodeWorker proxy object.</p>
 					<pre><code>onconnect: <span class="hljs-function"><span class="hljs-keyword">Function</span>;</span>
 </code></pre><p>Get port to communicate with the worker proxy.
 					Always use <code>ports[0]</code>.</p>
@@ -90,36 +90,36 @@
 <span class="hljs-comment">// Called when a new worker is created</span>
 onconnect = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"> msg </span>)
 </span>{
-   <span class="hljs-comment">// Get the worker port for communication with the worker proxy</span>
-   <span class="hljs-keyword">var</span> workerPort = msg.ports[<span class="hljs-number">0</span>];
+    <span class="hljs-comment">// Get the worker port for communication with the worker proxy</span>
+    <span class="hljs-keyword">var</span> workerPort = msg.ports[<span class="hljs-number">0</span>];
 
-   <span class="hljs-comment">// Send a message to the worker proxy. The worker is up and running.</span>
-   workerPort.postMessage({<span class="hljs-keyword">type</span>: <span class="hljs-string">'connected'</span>, says: <span class="hljs-string">"I'm alive!"</span>});
+    <span class="hljs-comment">// Send a message to the worker proxy. The worker is up and running.</span>
+    workerPort.postMessage({<span class="hljs-keyword">type</span>: <span class="hljs-string">'connected'</span>, says: <span class="hljs-string">"I'm alive!"</span>});
 
-   <span class="hljs-comment">// Listen for worker proxy messages</span>
-   workerPort.onmessage = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"> event </span>)
-   </span>{
-      <span class="hljs-comment">// We've got a message !</span>
-      <span class="hljs-comment">// The `event.data` is what the worker proxy sends using `postMessage()`. Could be a String, Number or an Object type.</span>
-      <span class="hljs-comment">// Here, `event.data` contains an object: `{type: String, says: String}`</span>
-      <span class="hljs-keyword">var</span> message = event.data;
-      <span class="hljs-keyword">switch</span>( message.type )
-      {
-        <span class="hljs-comment">// It's a hello world message</span>
-        <span class="hljs-keyword">case</span> <span class="hljs-string">'hello'</span>:
-          <span class="hljs-comment">// Reply to the worker proxy</span>
-          workerPort.postMessage( {<span class="hljs-keyword">type</span>: <span class="hljs-string">'hello'</span>, says: <span class="hljs-string">'Hello to you too!'</span>} );
-          <span class="hljs-keyword">break</span>;
+    <span class="hljs-comment">// Listen for worker proxy messages</span>
+    workerPort.onmessage = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"> event </span>)
+    </span>{
+        <span class="hljs-comment">// We've got a message !</span>
+        <span class="hljs-comment">// The `event.data` is what the worker proxy sends using `postMessage()`. Could be a String, Number or an Object type.</span>
+        <span class="hljs-comment">// Here, `event.data` contains an object: `{type: String, says: String}`</span>
+        <span class="hljs-keyword">var</span> message = event.data;
+        <span class="hljs-keyword">switch</span>( message.type )
+        {
+            <span class="hljs-comment">// It's a hello world message</span>
+            <span class="hljs-keyword">case</span> <span class="hljs-string">'hello'</span>:
+                <span class="hljs-comment">// Reply to the worker proxy</span>
+                workerPort.postMessage( {<span class="hljs-keyword">type</span>: <span class="hljs-string">'hello'</span>, says: <span class="hljs-string">'Hello to you too!'</span>} );
+                <span class="hljs-keyword">break</span>;
 
-        <span class="hljs-comment">// It's a terminate message</span>
-        <span class="hljs-keyword">case</span> <span class="hljs-string">'close'</span>:
-          <span class="hljs-comment">// Reply to the worker proxy</span>
-          workerPort.postMessage( {<span class="hljs-keyword">type</span>: <span class="hljs-string">'close'</span>, says: <span class="hljs-string">'I will be back!'</span>} );
-          <span class="hljs-comment">// Close the worker</span>
-          close();
-          <span class="hljs-keyword">break</span>;
-      }
-   }
+            <span class="hljs-comment">// It's a terminate message</span>
+            <span class="hljs-keyword">case</span> <span class="hljs-string">'close'</span>:
+                <span class="hljs-comment">// Reply to the worker proxy</span>
+                workerPort.postMessage( {<span class="hljs-keyword">type</span>: <span class="hljs-string">'close'</span>, says: <span class="hljs-string">'I will be back!'</span>} );
+                <span class="hljs-comment">// Close the worker</span>
+                close();
+                <span class="hljs-keyword">break</span>;
+        }
+    }
 }
 </code></pre></dd>
 					</dl>
@@ -158,7 +158,7 @@ onconnect = <span class="hljs-function"><span class="hljs-keyword">function</spa
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/nodeworker.d.ts#L79">nodeworker.d.ts:79</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/nodeworker.d.ts#L79">nodeworker.d.ts:79</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -167,6 +167,9 @@ onconnect = <span class="hljs-function"><span class="hljs-keyword">function</spa
 										Creates a new node worker in its own thread if it does not exist yet. Then it returns a proxy object to communicate with the node worker thread.
 									Node workers can be addressed from any thread, they are uniquely identified by their path and name.</p>
 								</div>
+								<pre><code>// <span class="hljs-string">"worker.js"</span> <span class="hljs-built_in">is</span> defined <span class="hljs-keyword">in</span> &lt;PROJECT&gt;/backend/worker.js
+<span class="hljs-built_in">var</span> myWorkerProxy = <span class="hljs-built_in">new</span> NodeWorker(<span class="hljs-string">"backend/worker.js"</span>, <span class="hljs-string">"my-worker-name"</span>);
+</code></pre>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -189,9 +192,6 @@ onconnect = <span class="hljs-function"><span class="hljs-keyword">function</spa
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="nodeworkerproxy.html" class="tsd-signature-type">NodeWorkerProxy</a></h4>
 							<p>Returns a node worker proxy</p>
-							<pre><code>// <span class="hljs-string">"worker.js"</span> <span class="hljs-built_in">is</span> defined <span class="hljs-keyword">in</span> &lt;PROJECT&gt;/backend/worker.js
-<span class="hljs-built_in">var</span> myWorkerProxy = <span class="hljs-built_in">new</span> NodeWorker(<span class="hljs-string">"backend/worker.js"</span>, <span class="hljs-string">"my-worker-name"</span>);
-</code></pre>
 						</li>
 					</ul>
 				</section>

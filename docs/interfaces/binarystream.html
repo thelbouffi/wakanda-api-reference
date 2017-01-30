@@ -130,13 +130,19 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/binarystream.d.ts#L6">binarystream.d.ts:6</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/binarystream.d.ts#L6">binarystream.d.ts:6</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Creates a new BinaryStream object.</p>
 								</div>
+								<pre><code><span class="hljs-keyword">var</span> myFile = <span class="hljs-keyword">File</span>( 'PROJECT/backend/logs/HTTPServer.waLog' );
+<span class="hljs-keyword">var</span> readstream = BinaryStream( myFile );
+console.<span class="hljs-built_in">log</span>( '[chunck] '+ readstream.getBuffer(1000).<span class="hljs-keyword">toString</span>() );
+<span class="hljs-comment">// Important to close the stream after every use to release the referenced file</span>
+readstream.<span class="hljs-keyword">close</span>();
+</code></pre>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -153,12 +159,6 @@
 									<div class="tsd-comment tsd-typography">
 										<div class="lead">
 											<p>(default: <code>read</code>) <code>Write</code> if in write mode, <code>Read</code> otherwise.</p>
-											<pre><code><span class="hljs-keyword">var</span> myFile = <span class="hljs-keyword">File</span>( 'PROJECT/backend/logs/HTTPServer.waLog' );
-<span class="hljs-keyword">var</span> readstream = BinaryStream( myFile );
-console.<span class="hljs-built_in">log</span>( '[chunck] '+ readstream.getBuffer(1000).<span class="hljs-keyword">toString</span>() );
-<span class="hljs-comment">// Important to close the stream after every use to release the referenced file</span>
-readstream.<span class="hljs-keyword">close</span>();
-</code></pre>
 										</div>
 									</div>
 								</li>
@@ -168,7 +168,7 @@ readstream.<span class="hljs-keyword">close</span>();
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/binarystream.d.ts#L21">binarystream.d.ts:21</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/binarystream.d.ts#L21">binarystream.d.ts:21</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -176,6 +176,38 @@ readstream.<span class="hljs-keyword">close</span>();
 									<p>Creates a new BinaryStream object.
 									Creates a new BinaryStream object.</p>
 								</div>
+								<pre><code><span class="hljs-keyword">var</span> myFile = <span class="hljs-keyword">File</span>( 'PROJECT/backend/logs/HTTPServer.waLog' );
+<span class="hljs-keyword">var</span> readstream = BinaryStream( myFile );
+console.<span class="hljs-built_in">log</span>( '[chunck] '+ readstream.getBuffer(1000).<span class="hljs-keyword">toString</span>() );
+<span class="hljs-comment">// Important to close the stream after every use to release the referenced file</span>
+readstream.<span class="hljs-keyword">close</span>();
+</code></pre><pre><code><span class="hljs-keyword">var</span> net = <span class="hljs-built_in">require</span>( <span class="hljs-string">'net'</span> );
+<span class="hljs-comment">// Use a synchronous socket for demo</span>
+<span class="hljs-keyword">var</span> socket = net.connectSync( <span class="hljs-number">25</span>, <span class="hljs-string">'smtp.gmail.com'</span>);
+<span class="hljs-comment">// Create a read BinaryStrean</span>
+<span class="hljs-keyword">var</span> readstream = BinaryStream( socket, <span class="hljs-string">'Read'</span>, <span class="hljs-number">300</span> );
+<span class="hljs-comment">// Create a read BinaryStrean</span>
+<span class="hljs-keyword">var</span> writestream = BinaryStream( socket, <span class="hljs-string">'Write'</span>, <span class="hljs-number">500</span> );
+<span class="hljs-comment">// Get first statement from Gmail</span>
+<span class="hljs-built_in">console</span>.log( <span class="hljs-string">'[CONNECTED] '</span>+ readstream.getBuffer(<span class="hljs-number">1000</span>).toString() );
+<span class="hljs-comment">// 220 smtp.gmail.com ESMTP y80sm15252285wrb.12 - gsmtp</span>
+
+<span class="hljs-comment">// Send greetings to Gmail</span>
+writestream.putBuffer( <span class="hljs-keyword">new</span> Buffer(<span class="hljs-string">'EHLO smtp.gmail.com\r\n'</span>) );
+<span class="hljs-comment">// Get greetings from Gmail + service details</span>
+<span class="hljs-built_in">console</span>.log( <span class="hljs-string">'[EHLO] '</span>+ readstream.getBuffer(<span class="hljs-number">1000</span>).toString() );
+<span class="hljs-comment">// 250-smtp.gmail.com at your service, [195.68.52.79]</span>
+<span class="hljs-comment">// 250-SIZE 35882577</span>
+<span class="hljs-comment">// 250-8BITMIME</span>
+<span class="hljs-comment">// 250-STARTTLS</span>
+<span class="hljs-comment">// 250-ENHANCEDSTATUSCODES</span>
+<span class="hljs-comment">// 250-PIPELINING</span>
+<span class="hljs-comment">// 250-CHUNKING</span>
+<span class="hljs-comment">// 250 SMTPUTF8</span>
+<span class="hljs-comment">// Important to close the stream after every use to release the referenced socket</span>
+readstream.close();
+writestream.close();
+</code></pre>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -192,12 +224,6 @@ readstream.<span class="hljs-keyword">close</span>();
 									<div class="tsd-comment tsd-typography">
 										<div class="lead">
 											<p>(default: <code>read</code>) <code>Write</code> if in write mode, <code>Read</code> otherwise.</p>
-											<pre><code><span class="hljs-keyword">var</span> myFile = <span class="hljs-keyword">File</span>( 'PROJECT/backend/logs/HTTPServer.waLog' );
-<span class="hljs-keyword">var</span> readstream = BinaryStream( myFile );
-console.<span class="hljs-built_in">log</span>( '[chunck] '+ readstream.getBuffer(1000).<span class="hljs-keyword">toString</span>() );
-<span class="hljs-comment">// Important to close the stream after every use to release the referenced file</span>
-readstream.<span class="hljs-keyword">close</span>();
-</code></pre>
 										</div>
 									</div>
 								</li>
@@ -207,13 +233,40 @@ readstream.<span class="hljs-keyword">close</span>();
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/binarystream.d.ts#L22">binarystream.d.ts:22</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/binarystream.d.ts#L22">binarystream.d.ts:22</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Creates a new BinaryStream object.</p>
 								</div>
+								<pre><code><span class="hljs-keyword">var</span> net = <span class="hljs-built_in">require</span>( <span class="hljs-string">'net'</span> );
+<span class="hljs-comment">// Use a synchronous socket for demo</span>
+<span class="hljs-keyword">var</span> socket = net.connectSync( <span class="hljs-number">25</span>, <span class="hljs-string">'smtp.gmail.com'</span>);
+<span class="hljs-comment">// Create a read BinaryStrean</span>
+<span class="hljs-keyword">var</span> readstream = BinaryStream( socket, <span class="hljs-string">'Read'</span>, <span class="hljs-number">300</span> );
+<span class="hljs-comment">// Create a read BinaryStrean</span>
+<span class="hljs-keyword">var</span> writestream = BinaryStream( socket, <span class="hljs-string">'Write'</span>, <span class="hljs-number">500</span> );
+<span class="hljs-comment">// Get first statement from Gmail</span>
+<span class="hljs-built_in">console</span>.log( <span class="hljs-string">'[CONNECTED] '</span>+ readstream.getBuffer(<span class="hljs-number">1000</span>).toString() );
+<span class="hljs-comment">// 220 smtp.gmail.com ESMTP y80sm15252285wrb.12 - gsmtp</span>
+
+<span class="hljs-comment">// Send greetings to Gmail</span>
+writestream.putBuffer( <span class="hljs-keyword">new</span> Buffer(<span class="hljs-string">'EHLO smtp.gmail.com\r\n'</span>) );
+<span class="hljs-comment">// Get greetings from Gmail + service details</span>
+<span class="hljs-built_in">console</span>.log( <span class="hljs-string">'[EHLO] '</span>+ readstream.getBuffer(<span class="hljs-number">1000</span>).toString() );
+<span class="hljs-comment">// 250-smtp.gmail.com at your service, [195.68.52.79]</span>
+<span class="hljs-comment">// 250-SIZE 35882577</span>
+<span class="hljs-comment">// 250-8BITMIME</span>
+<span class="hljs-comment">// 250-STARTTLS</span>
+<span class="hljs-comment">// 250-ENHANCEDSTATUSCODES</span>
+<span class="hljs-comment">// 250-PIPELINING</span>
+<span class="hljs-comment">// 250-CHUNKING</span>
+<span class="hljs-comment">// 250 SMTPUTF8</span>
+<span class="hljs-comment">// Important to close the stream after every use to release the referenced socket</span>
+readstream.close();
+writestream.close();
+</code></pre>
 								<dl class="tsd-comment-tags">
 									<dt>warning</dt>
 									<dd><p>BinaryStreams on sockets use buffer only data.</p>
@@ -235,12 +288,6 @@ readstream.<span class="hljs-keyword">close</span>();
 									<div class="tsd-comment tsd-typography">
 										<div class="lead">
 											<p>(default: <code>read</code>) <code>Write</code> if in write mode, <code>Read</code> otherwise.</p>
-											<pre><code><span class="hljs-keyword">var</span> myFile = <span class="hljs-keyword">File</span>( 'PROJECT/backend/logs/HTTPServer.waLog' );
-<span class="hljs-keyword">var</span> readstream = BinaryStream( myFile );
-console.<span class="hljs-built_in">log</span>( '[chunck] '+ readstream.getBuffer(1000).<span class="hljs-keyword">toString</span>() );
-<span class="hljs-comment">// Important to close the stream after every use to release the referenced file</span>
-readstream.<span class="hljs-keyword">close</span>();
-</code></pre>
 										</div>
 									</div>
 								</li>
@@ -249,7 +296,29 @@ readstream.<span class="hljs-keyword">close</span>();
 									<div class="tsd-comment tsd-typography">
 										<div class="lead">
 											<p>Defines the socket millisecond timeout</p>
-											<pre><code><span class="hljs-keyword">var</span> net = <span class="hljs-built_in">require</span>( <span class="hljs-string">'net'</span> );
+										</div>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="binarystream.html" class="tsd-signature-type">BinaryStream</a></h4>
+						</li>
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/binarystream.d.ts#L60">binarystream.d.ts:60</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Creates a new BinaryStream object.
+									Creates a new BinaryStream object.</p>
+								</div>
+								<pre><code><span class="hljs-keyword">var</span> myFile = <span class="hljs-keyword">File</span>( 'PROJECT/backend/logs/HTTPServer.waLog' );
+<span class="hljs-keyword">var</span> readstream = BinaryStream( myFile );
+console.<span class="hljs-built_in">log</span>( '[chunck] '+ readstream.getBuffer(1000).<span class="hljs-keyword">toString</span>() );
+<span class="hljs-comment">// Important to close the stream after every use to release the referenced file</span>
+readstream.<span class="hljs-keyword">close</span>();
+</code></pre><pre><code><span class="hljs-keyword">var</span> net = <span class="hljs-built_in">require</span>( <span class="hljs-string">'net'</span> );
 <span class="hljs-comment">// Use a synchronous socket for demo</span>
 <span class="hljs-keyword">var</span> socket = net.connectSync( <span class="hljs-number">25</span>, <span class="hljs-string">'smtp.gmail.com'</span>);
 <span class="hljs-comment">// Create a read BinaryStrean</span>
@@ -276,23 +345,6 @@ writestream.putBuffer( <span class="hljs-keyword">new</span> Buffer(<span class=
 readstream.close();
 writestream.close();
 </code></pre>
-										</div>
-									</div>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="binarystream.html" class="tsd-signature-type">BinaryStream</a></h4>
-						</li>
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/binarystream.d.ts#L60">binarystream.d.ts:60</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Creates a new BinaryStream object.
-									Creates a new BinaryStream object.</p>
-								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -309,12 +361,6 @@ writestream.close();
 									<div class="tsd-comment tsd-typography">
 										<div class="lead">
 											<p>(default: <code>read</code>) <code>Write</code> if in write mode, <code>Read</code> otherwise.</p>
-											<pre><code><span class="hljs-keyword">var</span> myFile = <span class="hljs-keyword">File</span>( 'PROJECT/backend/logs/HTTPServer.waLog' );
-<span class="hljs-keyword">var</span> readstream = BinaryStream( myFile );
-console.<span class="hljs-built_in">log</span>( '[chunck] '+ readstream.getBuffer(1000).<span class="hljs-keyword">toString</span>() );
-<span class="hljs-comment">// Important to close the stream after every use to release the referenced file</span>
-readstream.<span class="hljs-keyword">close</span>();
-</code></pre>
 										</div>
 									</div>
 								</li>
@@ -323,33 +369,6 @@ readstream.<span class="hljs-keyword">close</span>();
 									<div class="tsd-comment tsd-typography">
 										<div class="lead">
 											<p>Defines the socket millisecond timeout</p>
-											<pre><code><span class="hljs-keyword">var</span> net = <span class="hljs-built_in">require</span>( <span class="hljs-string">'net'</span> );
-<span class="hljs-comment">// Use a synchronous socket for demo</span>
-<span class="hljs-keyword">var</span> socket = net.connectSync( <span class="hljs-number">25</span>, <span class="hljs-string">'smtp.gmail.com'</span>);
-<span class="hljs-comment">// Create a read BinaryStrean</span>
-<span class="hljs-keyword">var</span> readstream = BinaryStream( socket, <span class="hljs-string">'Read'</span>, <span class="hljs-number">300</span> );
-<span class="hljs-comment">// Create a read BinaryStrean</span>
-<span class="hljs-keyword">var</span> writestream = BinaryStream( socket, <span class="hljs-string">'Write'</span>, <span class="hljs-number">500</span> );
-<span class="hljs-comment">// Get first statement from Gmail</span>
-<span class="hljs-built_in">console</span>.log( <span class="hljs-string">'[CONNECTED] '</span>+ readstream.getBuffer(<span class="hljs-number">1000</span>).toString() );
-<span class="hljs-comment">// 220 smtp.gmail.com ESMTP y80sm15252285wrb.12 - gsmtp</span>
-
-<span class="hljs-comment">// Send greetings to Gmail</span>
-writestream.putBuffer( <span class="hljs-keyword">new</span> Buffer(<span class="hljs-string">'EHLO smtp.gmail.com\r\n'</span>) );
-<span class="hljs-comment">// Get greetings from Gmail + service details</span>
-<span class="hljs-built_in">console</span>.log( <span class="hljs-string">'[EHLO] '</span>+ readstream.getBuffer(<span class="hljs-number">1000</span>).toString() );
-<span class="hljs-comment">// 250-smtp.gmail.com at your service, [195.68.52.79]</span>
-<span class="hljs-comment">// 250-SIZE 35882577</span>
-<span class="hljs-comment">// 250-8BITMIME</span>
-<span class="hljs-comment">// 250-STARTTLS</span>
-<span class="hljs-comment">// 250-ENHANCEDSTATUSCODES</span>
-<span class="hljs-comment">// 250-PIPELINING</span>
-<span class="hljs-comment">// 250-CHUNKING</span>
-<span class="hljs-comment">// 250 SMTPUTF8</span>
-<span class="hljs-comment">// Important to close the stream after every use to release the referenced socket</span>
-readstream.close();
-writestream.close();
-</code></pre>
 										</div>
 									</div>
 								</li>
@@ -371,7 +390,7 @@ writestream.close();
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/binarystream.d.ts#L65">binarystream.d.ts:65</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/binarystream.d.ts#L65">binarystream.d.ts:65</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -393,12 +412,12 @@ writestream.close();
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/binarystream.d.ts#L76">binarystream.d.ts:76</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/binarystream.d.ts#L76">binarystream.d.ts:76</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Closes the file referenced in the BinaryStream object</p>
+									<p>Closes the file referenced in the BinaryStream object.</p>
 								</div>
 								<pre><code>var myFile = <span class="hljs-keyword">File</span>( <span class="hljs-symbol">'PROJECT</span>/backend/logs/HTTPServer.waLog' );
 var readstream = BinaryStream( myFile );
@@ -420,12 +439,12 @@ readstream.close();
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/binarystream.d.ts#L80">binarystream.d.ts:80</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/binarystream.d.ts#L80">binarystream.d.ts:80</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Saves the buffer contents to the disk file referenced in the BinaryStream object</p>
+									<p>Saves the buffer contents to the disk file referenced in the BinaryStream object.</p>
 								</div>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -442,12 +461,12 @@ readstream.close();
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/binarystream.d.ts#L84">binarystream.d.ts:84</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/binarystream.d.ts#L84">binarystream.d.ts:84</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Creates a new BLOB object containing the next sizeToRead data in the BinaryStream object</p>
+									<p>Creates a new BLOB object containing the next sizeToRead data in the BinaryStream object.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -470,12 +489,12 @@ readstream.close();
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/binarystream.d.ts#L88">binarystream.d.ts:88</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/binarystream.d.ts#L88">binarystream.d.ts:88</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Returns a new Buffer object containing the next sizeToRead data in the BinaryStream object</p>
+									<p>Returns a new Buffer object containing the next sizeToRead data in the BinaryStream object.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -498,12 +517,12 @@ readstream.close();
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/binarystream.d.ts#L92">binarystream.d.ts:92</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/binarystream.d.ts#L92">binarystream.d.ts:92</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Returns a number representing the next byte from the BinaryStream object</p>
+									<p>Returns a number representing the next byte from the BinaryStream object.</p>
 								</div>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Number</span></h4>
@@ -520,12 +539,12 @@ readstream.close();
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/binarystream.d.ts#L96">binarystream.d.ts:96</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/binarystream.d.ts#L96">binarystream.d.ts:96</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Returns the next long number (if present) from the BinaryStream object</p>
+									<p>Returns the next long number (if present) from the BinaryStream object.</p>
 								</div>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Number</span></h4>
@@ -542,12 +561,12 @@ readstream.close();
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/binarystream.d.ts#L100">binarystream.d.ts:100</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/binarystream.d.ts#L100">binarystream.d.ts:100</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Returns the next long64 number (if present) from the BinaryStream object</p>
+									<p>Returns the next long64 number (if present) from the BinaryStream object.</p>
 								</div>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Number</span></h4>
@@ -564,12 +583,12 @@ readstream.close();
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/binarystream.d.ts#L104">binarystream.d.ts:104</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/binarystream.d.ts#L104">binarystream.d.ts:104</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Returns the current position of the cursor in the BinaryStream object</p>
+									<p>Returns the current position of the cursor in the BinaryStream object.</p>
 								</div>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Number</span></h4>
@@ -586,12 +605,12 @@ readstream.close();
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/binarystream.d.ts#L108">binarystream.d.ts:108</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/binarystream.d.ts#L108">binarystream.d.ts:108</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Returns the next real (if present) from the BinaryStream object</p>
+									<p>Returns the next real (if present) from the BinaryStream object.</p>
 								</div>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Number</span></h4>
@@ -608,12 +627,12 @@ readstream.close();
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/binarystream.d.ts#L112">binarystream.d.ts:112</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/binarystream.d.ts#L112">binarystream.d.ts:112</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Returns the size of the stream</p>
+									<p>Returns the size of the stream.</p>
 								</div>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Number</span></h4>
@@ -630,12 +649,12 @@ readstream.close();
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/binarystream.d.ts#L116">binarystream.d.ts:116</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/binarystream.d.ts#L116">binarystream.d.ts:116</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Returns the next string (if present) from the BinaryStream object</p>
+									<p>Returns the next string (if present) from the BinaryStream object.</p>
 								</div>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">String</span></h4>
@@ -652,12 +671,12 @@ readstream.close();
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/binarystream.d.ts#L120">binarystream.d.ts:120</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/binarystream.d.ts#L120">binarystream.d.ts:120</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Returns the next word, i.e., a binary integer (if present) from the BinaryStream object</p>
+									<p>Returns the next word, i.e., a binary integer (if present) from the BinaryStream object.</p>
 								</div>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Number</span></h4>
@@ -674,12 +693,12 @@ readstream.close();
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/binarystream.d.ts#L124">binarystream.d.ts:124</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/binarystream.d.ts#L124">binarystream.d.ts:124</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p><code>true</code> if the current data reading in the BinaryStream object is in byte swap mode</p>
+									<p><code>true</code> if the current data reading in the BinaryStream object is in byte swap mode.</p>
 								</div>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Boolean</span></h4>
@@ -696,12 +715,12 @@ readstream.close();
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/binarystream.d.ts#L128">binarystream.d.ts:128</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/binarystream.d.ts#L128">binarystream.d.ts:128</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Writes the BLOB you passed as the blob parameter in the BinaryStream object at the current cursor location</p>
+									<p>Writes the BLOB you passed as the blob parameter in the BinaryStream object at the current cursor location.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -730,12 +749,12 @@ readstream.close();
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/binarystream.d.ts#L132">binarystream.d.ts:132</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/binarystream.d.ts#L132">binarystream.d.ts:132</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Writes the Buffer you passed as the buffer parameter in the BinaryStream object at the current cursor location</p>
+									<p>Writes the Buffer you passed as the buffer parameter in the BinaryStream object at the current cursor location.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -764,12 +783,12 @@ readstream.close();
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/binarystream.d.ts#L136">binarystream.d.ts:136</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/binarystream.d.ts#L136">binarystream.d.ts:136</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Writes the byte value you passed as the parameter in the BinaryStream object at the current cursor location</p>
+									<p>Writes the byte value you passed as the parameter in the BinaryStream object at the current cursor location.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -792,12 +811,12 @@ readstream.close();
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/binarystream.d.ts#L140">binarystream.d.ts:140</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/binarystream.d.ts#L140">binarystream.d.ts:140</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Writes the long value you passed as the parameter in the BinaryStream object at the current cursor location</p>
+									<p>Writes the long value you passed as the parameter in the BinaryStream object at the current cursor location.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -820,12 +839,12 @@ readstream.close();
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/binarystream.d.ts#L144">binarystream.d.ts:144</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/binarystream.d.ts#L144">binarystream.d.ts:144</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Writes the long64 value you passed as the parameter in the BinaryStream object at the current cursor location</p>
+									<p>Writes the long64 value you passed as the parameter in the BinaryStream object at the current cursor location.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -848,12 +867,12 @@ readstream.close();
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/binarystream.d.ts#L148">binarystream.d.ts:148</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/binarystream.d.ts#L148">binarystream.d.ts:148</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Writes the real value you passed as the parameter in the BinaryStream object at the current cursor location</p>
+									<p>Writes the real value you passed as the parameter in the BinaryStream object at the current cursor location.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -876,12 +895,12 @@ readstream.close();
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/binarystream.d.ts#L152">binarystream.d.ts:152</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/binarystream.d.ts#L152">binarystream.d.ts:152</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Writes the string value you passed as the parameter in the BinaryStream object at the current cursor location</p>
+									<p>Writes the string value you passed as the parameter in the BinaryStream object at the current cursor location.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -904,12 +923,12 @@ readstream.close();
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/binarystream.d.ts#L156">binarystream.d.ts:156</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/binarystream.d.ts#L156">binarystream.d.ts:156</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Writes the byte word (i.e., an integer value) you passed as the parameter in the BinaryStream object at the current cursor location</p>
+									<p>Writes the byte word (i.e., an integer value) you passed as the parameter in the BinaryStream object at the current cursor location.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -932,12 +951,12 @@ readstream.close();
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e8effb5/api/binarystream.d.ts#L160">binarystream.d.ts:160</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/binarystream.d.ts#L160">binarystream.d.ts:160</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Moves the stream cursor to the position you passed in offset in the BinaryStream object</p>
+									<p>Moves the stream cursor to the position you passed in offset in the BinaryStream object.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
