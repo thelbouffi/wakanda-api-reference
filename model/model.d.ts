@@ -1,7 +1,7 @@
 ///<reference path="./dataclass.d.ts" />
 ///<reference path="./attribute.d.ts" />
 ///<reference path="./attributeevent.d.ts" />
-///<reference path="./sqlconnectionoptions.d.ts" />
+///<--reference path="./sqlconnectionoptions.d.ts" />
 
 interface Model {
 	/**
