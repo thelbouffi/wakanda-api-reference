@@ -11,17 +11,24 @@ interface Model {
 	/**
 	*allows you to reference and use a remote catalog in your current Wakanda model reference
 	*/
-	mergeOutsideCatalog(localName: String, mergeInfo: String, user: String, password?: String) : void;
+	
+	/**
+	 * deprecated  
+	 * mergeOutsideCatalog(localName: String, mergeInfo: String, user: String, password?: String) : void;
+	/**
+	*allows you to reference and use a remote catalog in your current Wakanda model reference
+	*/ 
+	/** DEPERECATED 
+	 * mergeOutsideCatalog(localName: String, mergeInfo: Object, user: String, password?: String) : void;
 	/**
 	*allows you to reference and use a remote catalog in your current Wakanda model reference
 	*/
-	mergeOutsideCatalog(localName: String, mergeInfo: Object, user: String, password?: String) : void;
-	/**
-	*allows you to reference and use a remote catalog in your current Wakanda model reference
-	*/
-	mergeOutsideCatalog(localName: String, mergeInfo: String, user: String, password?: String) : void;
+	/** DEPERECATED
+	 *mergeOutsideCatalog(localName: String, mergeInfo: String, user: String, password?: String) : void; 
+	 */
+	
 	/**
 	 *allows you to reference and use a remote SQL catalog in your current Wakanda model
-	 */	
-	mergeSQLCatalog(localName: String, mergeInfo: SQLConnectionOptions) : void;
+	 mergeSQLCatalog(localName: String, mergeInfo: SQLConnectionOptions) : void;
+	 */
 }
