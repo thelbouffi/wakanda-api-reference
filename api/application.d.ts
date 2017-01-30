@@ -33,7 +33,7 @@
 /// <reference path="./worker.d.ts" />
 /// <reference path="./xmlhttprequest.d.ts" />
 
-interface Application extends Directory, Data, Core, Threads, FileSystem, HTTP, Storage { }
+interface Application extends Authentication, Data, Core, Threads, FileSystem, HTTP, Storage { }
 
 interface Data {
     /**
@@ -96,6 +96,13 @@ interface Data {
     *verifies the internal structure of the objects contained in the datastore designated by model and data.
     */
     verifyDataStore(model: File, data: File, options: Object): void;
+}
+
+interface Authentication {
+    /**
+     * References the directory of the application.
+     */
+    directory : Directory;
 }
 
 interface Core {
