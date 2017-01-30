@@ -987,27 +987,31 @@ interface ConnectionSession {
      */
     belongsTo(group: Group): Boolean;
     /**
-     * returns true if the current session belongs to the group and throws an error if false.
+     * Check if the current session belongs to the group.
+     * @returns `true` if the session belongs to the group, throws an error otherwise.
+     * @throws An error if the session does not belongs to the group
      */
     checkPermission(group: String): Boolean;
     /**
-     * returns true if the current session belongs to the group and throws an error if false.
+     * Check if the current session belongs to the group.
+     * @returns `true` if the session belongs to the group, throws an error otherwise.
+     * @throws An error if the session does not belongs to the group
      */
     checkPermission(group: Group): Boolean;
     /**
-     * makes the user session expire.
+     * Expires the user session.
      */
     forceExpire(): void;
     /**
-     * temporarily promotes the current session into the group.
+     * Temporarily promotes the current session into the group.
      */
     promoteWith(group: Group): Number;
     /**
-     * temporarily promotes the current session into the group.
+     * Temporarily promotes the current session into the group.
      */
     promoteWith(group: String): Number;
     /**
-     * stops the temporary promotion set for the current session using the promoteWith( ) method.
+     * Stops the temporary promotion set for the current session using the `promoteWith()` method.
      */
     unPromote(token: Number): void;
 }
@@ -1730,41 +1734,41 @@ interface Directory {
      * @returns Returns the session object if any
      */
     getSession(sessionID: String): ConnectionSession;
-    /**
-     * Get all active user sessions.
-     * 
-     * ```
-     * // Get all active user session
-     * var sessionArray = getUserSessions();
-     * ```
-     * 
-     * @returns Returns an array of session object if any
-     */
-    getUserSessions(): Array<ConnectionSession>;
-    /**
-     * Get all active user sessions for a user ID.
-     * 
-     * ```
-     * // Get all active user session for the current user
-     * var sessionArray = getUserSessions( currentSession().user.ID );
-     * ```
-     * 
-     * @param userId Describes a user ID.
-     * @returns Returns an array of session object if any.
-     */
-    getUserSessions(userId: String): Array<ConnectionSession>;
-    /**
-     * Get all active user sessions for a user.
-     * 
-     * ```
-     * // Get all active user session for the current user
-     * var sessionArray = getUserSessions( currentSession().user );
-     * ```
-     * 
-     * @param user Describes a user object.
-     * @returns Returns an array of session object if any.
-     */
-    getUserSessions(user: User): Array<ConnectionSession>;
+    // /**
+    //  * Get all active user sessions.
+    //  * 
+    //  * ```
+    //  * // Get all active user session
+    //  * var sessionArray = getUserSessions();
+    //  * ```
+    //  * 
+    //  * @returns Returns an array of session object if any
+    //  */
+    // getUserSessions(): Array<ConnectionSession>;
+    // /**
+    //  * Get all active user sessions for a user ID.
+    //  * 
+    //  * ```
+    //  * // Get all active user session for the current user
+    //  * var sessionArray = getUserSessions( currentSession().user.ID );
+    //  * ```
+    //  * 
+    //  * @param userId Describes a user ID.
+    //  * @returns Returns an array of session object if any.
+    //  */
+    // getUserSessions(userId: String): Array<ConnectionSession>;
+    // /**
+    //  * Get all active user sessions for a user.
+    //  * 
+    //  * ```
+    //  * // Get all active user session for the current user
+    //  * var sessionArray = getUserSessions( currentSession().user );
+    //  * ```
+    //  * 
+    //  * @param user Describes a user object.
+    //  * @returns Returns an array of session object if any.
+    //  */
+    // getUserSessions(user: User): Array<ConnectionSession>;
     /**
      * Returns the local Group Object referencing the remote group with the alias (i.e. the local name) you passed in the alias parameter.
      * @warning Requires LDAP component.
@@ -1869,26 +1873,60 @@ interface Directory {
      */
     setCurrentSession(sessionId: String, forceExpire?: Boolean): void;
     /**
-     * Set a SSJS module as session manager.
+     * Handles and manages sessions through a SSJS module.
      * 
      * ```
-     * directory.setSessionManager('session'); // Refers to PROJECT/backend/modules/session module
+     * // Usually defined in a boostrap file
+     * directory.setSessionManager( 'session' );
+     * // Refers to PROJECT/backend/modules/session/index.js module
      * ```
      * 
      * The module must export the following methods to handle all session operations:
      * 
      * ```
-     * exports.readSession = function( session ){
-     *     // Handle your read action here
-     *     return true; // Return true if success, false otherwise
-     * }
+     * // PROJECT/backend/modules/session/index.js
+     * // This session manager saves all session in the storage (could be a Redis instead)
+     * 
+     * // Called everytime the server creates or updates a session
      * exports.writeSession = function( session ){
-     *     // Handle your write action here
-     *     return true; // Return true if success, false otherwise
+     *     // Handle/save this data anywhere you want
+     *     console.log( session.userName +' logged-in at '+ new Date() );
+     *     // Save session in the storage
+     *     var sessionInfo = JSON.stringify( session );
+     *     storage[ session.sessionID ] = sessionInfo;
+     *     
+     *     // Return true as everything is ok
+     *     return true;
      * }
-     * exports.deleteSession =function( session ){
-     *     // Handle your delete action here
-     *     return true; // Return true if success, false otherwise
+     * // Called everytime the server needs a session description
+     * exports.readSession = function( session ){
+     *     var sessionID = session.sessionID;
+     *     var sessionInfo = storage[ sessionID ];
+     *     
+     *     if( sessionInfo === undefined ){
+     *         return false; // Error, sessionInfo is empty
+     *     }
+     *     
+     *     sessionInfo = JSON.parse( sessionInfo );
+     *     
+     *     session.userID = sessionInfo.userID;
+     *     session.userName = sessionInfo.userName;
+     *     session.storage = sessionInfo.storage;
+     *     session.belongsTo = sessionInfo.belongsTo;
+     *     session.requestInfo = sessionInfo.requestInfo;
+     *     session.lifeTime = sessionInfo.lifeTime;
+     *     session.expiration = new Date( sessionInfo.expiration );
+     *     
+     *     // Return true as everything is ok
+     *     return true;
+     * }
+     * // Calles everytime the server removes a session
+     * exports.removeSession = function( session ){
+     *     console.log( session.userName +' logged-out at '+ new Date() );
+     *     var sessionID = session.sessionID;
+     *     storage[ sessionID ] = undefined;
+     *     // Return true as everything is ok
+     *     return true;
      * }
      * ```
      * 
@@ -1908,25 +1946,35 @@ interface Directory {
      * It must export a `login()` method and return the `user` object.
      * 
      * ```
+     * // my-login-module/index.js
+     * // Export a login() function
      * exports.login = function(username, password){
      *     // Verify the username/password through Directory or any other User DB
-     *     if (user) // If user is authenticated then return the user object
+     *     // If user is authenticated then return the user object
+     *     if (user)
      *         return {
-     *           ID: 545642165412, // Unique user ID. It must not collide with an existing Wakanda User ID from the Directory.
+     *           // Unique user ID. Must not collide with an existing user ID
+     *           ID: 545642165412,
      *           name: user.name,
      *           fullName: user.fullname,
-     *           belongsTo: 'free-customer', // References the Directory group where the user belongs
-     *           storage: {} // Defines the sessionStorage property of the user session
+     *           // References the Directory group where the user belongs
+     *           belongsTo: 'free-customer',
+     *           // Defines the sessionStorage property of the user session
+     *           storage: {}
      *         };
      *     }
-     *     else if (!user) // If user not authenticated then return an error
+     *     // If user not authenticated then return an error
+     *     else if (!user)
      *     {
      *         return {
-     *           error: 548, // Error code returned
-     *           errorMessage: 'Authentication failed. Login or Password maybe wrong.' // Error text returned
+     *           // Error code returned
+     *           error: 548,
+     *           // Error text returned
+     *           errorMessage: 'Authentication failed. Login or Password maybe wrong.'
      *         };
      *     }
-     *     else // or continue using the standard process (with the internal directory)
+     *     // or continue using the standard process (with the internal directory)
+     *     else
      *     {
      *         return false;
      *     }
@@ -2792,7 +2840,7 @@ interface Group {
      * myGroup.putInto( 'sales' );
      * ```
      * 
-     * @warning All updates done to the `directory` are temporary. Use `directory.save()` in order to survive a reboot. 
+     * @warning All updates done to the `directory` are temporary. Use `directory.save()` to save all updates on disk.
      * @param groupList Describes an array of group name
      */
     putInto(...groupList: String[]): void;
@@ -2804,13 +2852,13 @@ interface Group {
      * myGroup.putInto( SalesGroup );
      * ```
      * 
-     * @warning All updates done to the `directory` are temporary. Use `directory.save()` in order to survive a reboot. 
+     * @warning All updates done to the `directory` are temporary. Use `directory.save()` to save all updates on disk.
      * @param groupList Describes an array of group object
      */
     putInto(...groupList: Group[]): void;
     /**
      * Removes the group from the directory.
-     * @warning All updates done to the `directory` are temporary. Use `directory.save()` in order to survive a reboot. 
+     * @warning All updates done to the `directory` are temporary. Use `directory.save()` to save all updates on disk.
      */
     remove(): void;
     /**
@@ -2820,7 +2868,7 @@ interface Group {
      * myGroup.removeFrom( 'sales', 'finance' );
      * ```
      * 
-     * @warning All updates done to the `directory` are temporary. Use `directory.save()` in order to survive a reboot. 
+     * @warning All updates done to the `directory` are temporary. Use `directory.save()` to save all updates on disk.
      * @param groupList Describes an array of group name
      */
     removeFrom(...groupList: String[]): void;
@@ -2833,7 +2881,7 @@ interface Group {
       * myGroup.removeFrom( group1 , group2 )
      * ```
      * 
-     * @warning All updates done to the `directory` are temporary. Use `directory.save()` in order to survive a reboot. 
+     * @warning All updates done to the `directory` are temporary. Use `directory.save()` to save all updates on disk.
      * @param groupList Describes an array of group object
      */
     removeFrom(...groupList: Group[]): void;
@@ -3310,7 +3358,7 @@ interface KeyValueStorage {
     /**
      * Create or update an item in the storage object.
      */
-    setItem(key: String, value: any): void;
+    setItem(key: String, value: String | Number | Object): void;
 }
 
 
@@ -4475,10 +4523,13 @@ interface User {
      * This object is maintained as long as the server is alive. It is not stored after the server shuts down. This property is user-related and not session-related.
      * 
      * ```
-     * console.log(myUser.storage);
+     * directory.currentUser.storage.setItem( 'itemInBox', 19 );
+     * var result = directory.currentUser.storage.getItem( 'itemInBox' );
+     * console.log(result);
+     * // 19
      * ```
      */
-    storage: KeyValueStorage;
+    storage: LockableKeyValueStorage;
     /**
      * Get all groups where the user belongs to.
      * @param level (default: `false`) Set to `true` if you want first level results. Set to `false` otherwise.
@@ -4492,7 +4543,7 @@ interface User {
      * myUser.putInto( 'sales', 'finance' );
      * ```
      * 
-     * @warning All updates done to the `directory` are temporary. Use `directory.save()` in order to survive a reboot. 
+     * @warning All updates done to the `directory` are temporary. Use `directory.save()` to save all updates on disk.
      * @param groupList Describes an array of group name
      */
     putInto(...groupList: String[]): void;
@@ -4505,13 +4556,13 @@ interface User {
       * myUser.putInto( group1 , group2 )
      * ```
      * 
-     * @warning All updates done to the `directory` are temporary. Use `directory.save()` in order to survive a reboot. 
+     * @warning All updates done to the `directory` are temporary. Use `directory.save()` to save all updates on disk.
      * @param groupList Describes an array of group object
      */
     putInto(...groupList: Group[]): void;
     /**
      * Removes the user from the directory.
-     * @warning All updates done to the `directory` are temporary. Use `directory.save()` in order to survive a reboot. 
+     * @warning All updates done to the `directory` are temporary. Use `directory.save()` to save all updates on disk.
      */
     remove(): void;
     /**
@@ -4521,7 +4572,7 @@ interface User {
      * myUser.removeFrom( 'sales', 'finance' );
      * ```
      * 
-     * @warning All updates done to the `directory` are temporary. Use `directory.save()` in order to survive a reboot. 
+     * @warning All updates done to the `directory` are temporary. Use `directory.save()` to save all updates on disk.
      * @param groupList Describes an array of group name
      */
     removeFrom(...groupList: String[]): void;
@@ -4534,13 +4585,13 @@ interface User {
      * myUser.removeFrom( group1 , group2 )
      * ```
      * 
-     * @warning All updates done to the `directory` are temporary. Use `directory.save()` in order to survive a reboot. 
+     * @warning All updates done to the `directory` are temporary. Use `directory.save()` to save all updates on disk.
      * @param groupList Describes an array of group object
      */
     removeFrom(...groupList: Group[]): void;
     /**
      * Update the user password in the directory.
-     * @warning All updates done to the `directory` are temporary. Use `directory.save()` in order to survive a reboot. 
+     * @warning All updates done to the `directory` are temporary. Use `directory.save()` to save all updates on disk.
      * @param password The new password to save
      */
     setPassword(password: String): void;

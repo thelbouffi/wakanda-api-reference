@@ -108,7 +108,7 @@
 					<div class="tsd-signature tsd-kind-icon">ID<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">String</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/60e20c7/api/user.d.ts#L12">user.d.ts:12</a></li>
+							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e9e0b04/api/user.d.ts#L12">user.d.ts:12</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -123,7 +123,7 @@
 					<div class="tsd-signature tsd-kind-icon">full<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">String</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/60e20c7/api/user.d.ts#L8">user.d.ts:8</a></li>
+							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e9e0b04/api/user.d.ts#L8">user.d.ts:8</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -138,7 +138,7 @@
 					<div class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">String</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/60e20c7/api/user.d.ts#L16">user.d.ts:16</a></li>
+							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e9e0b04/api/user.d.ts#L16">user.d.ts:16</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -150,10 +150,10 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
 					<a name="storage" class="tsd-anchor"></a>
 					<h3>storage</h3>
-					<div class="tsd-signature tsd-kind-icon">storage<span class="tsd-signature-symbol">:</span> <a href="keyvaluestorage.html" class="tsd-signature-type">KeyValueStorage</a></div>
+					<div class="tsd-signature tsd-kind-icon">storage<span class="tsd-signature-symbol">:</span> <a href="lockablekeyvaluestorage.html" class="tsd-signature-type">LockableKeyValueStorage</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/60e20c7/api/user.d.ts#L25">user.d.ts:25</a></li>
+							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e9e0b04/api/user.d.ts#L28">user.d.ts:28</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -161,7 +161,10 @@
 							<p>Defines the user storage object.
 							This object is maintained as long as the server is alive. It is not stored after the server shuts down. This property is user-related and not session-related.</p>
 						</div>
-						<pre><code><span class="hljs-selector-tag">console</span><span class="hljs-selector-class">.log</span>(<span class="hljs-selector-tag">myUser</span><span class="hljs-selector-class">.storage</span>);
+						<pre><code>directory.currentUser.storage.setItem( <span class="hljs-string">'itemInBox'</span>, <span class="hljs-number">19</span> );
+<span class="hljs-keyword">var</span> <span class="hljs-keyword">result</span> = directory.currentUser.storage.getItem( <span class="hljs-string">'itemInBox'</span> );
+console.log(<span class="hljs-keyword">result</span>);
+<span class="hljs-comment">// 19</span>
 </code></pre>
 					</div>
 				</section>
@@ -178,7 +181,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/60e20c7/api/user.d.ts#L31">user.d.ts:31</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e9e0b04/api/user.d.ts#L34">user.d.ts:34</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -211,7 +214,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/60e20c7/api/user.d.ts#L42">user.d.ts:42</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e9e0b04/api/user.d.ts#L45">user.d.ts:45</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -222,7 +225,7 @@
 </code></pre>
 								<dl class="tsd-comment-tags">
 									<dt>warning</dt>
-									<dd><p>All updates done to the <code>directory</code> are temporary. Use <code>directory.save()</code> in order to survive a reboot.</p>
+									<dd><p>All updates done to the <code>directory</code> are temporary. Use <code>directory.save()</code> to save all updates on disk.</p>
 									</dd>
 								</dl>
 							</div>
@@ -240,7 +243,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/60e20c7/api/user.d.ts#L55">user.d.ts:55</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e9e0b04/api/user.d.ts#L58">user.d.ts:58</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -253,7 +256,7 @@ myUser.putInto( group1 , group2 )
 </code></pre>
 								<dl class="tsd-comment-tags">
 									<dt>warning</dt>
-									<dd><p>All updates done to the <code>directory</code> are temporary. Use <code>directory.save()</code> in order to survive a reboot.</p>
+									<dd><p>All updates done to the <code>directory</code> are temporary. Use <code>directory.save()</code> to save all updates on disk.</p>
 									</dd>
 								</dl>
 							</div>
@@ -280,7 +283,7 @@ myUser.putInto( group1 , group2 )
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/60e20c7/api/user.d.ts#L60">user.d.ts:60</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e9e0b04/api/user.d.ts#L63">user.d.ts:63</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -289,7 +292,7 @@ myUser.putInto( group1 , group2 )
 								</div>
 								<dl class="tsd-comment-tags">
 									<dt>warning</dt>
-									<dd><p>All updates done to the <code>directory</code> are temporary. Use <code>directory.save()</code> in order to survive a reboot.</p>
+									<dd><p>All updates done to the <code>directory</code> are temporary. Use <code>directory.save()</code> to save all updates on disk.</p>
 									</dd>
 								</dl>
 							</div>
@@ -308,7 +311,7 @@ myUser.putInto( group1 , group2 )
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/60e20c7/api/user.d.ts#L71">user.d.ts:71</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e9e0b04/api/user.d.ts#L74">user.d.ts:74</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -319,7 +322,7 @@ myUser.putInto( group1 , group2 )
 </code></pre>
 								<dl class="tsd-comment-tags">
 									<dt>warning</dt>
-									<dd><p>All updates done to the <code>directory</code> are temporary. Use <code>directory.save()</code> in order to survive a reboot.</p>
+									<dd><p>All updates done to the <code>directory</code> are temporary. Use <code>directory.save()</code> to save all updates on disk.</p>
 									</dd>
 								</dl>
 							</div>
@@ -337,7 +340,7 @@ myUser.putInto( group1 , group2 )
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/60e20c7/api/user.d.ts#L84">user.d.ts:84</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e9e0b04/api/user.d.ts#L87">user.d.ts:87</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -350,7 +353,7 @@ myUser.removeFrom( group1 , group2 )
 </code></pre>
 								<dl class="tsd-comment-tags">
 									<dt>warning</dt>
-									<dd><p>All updates done to the <code>directory</code> are temporary. Use <code>directory.save()</code> in order to survive a reboot.</p>
+									<dd><p>All updates done to the <code>directory</code> are temporary. Use <code>directory.save()</code> to save all updates on disk.</p>
 									</dd>
 								</dl>
 							</div>
@@ -377,7 +380,7 @@ myUser.removeFrom( group1 , group2 )
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/60e20c7/api/user.d.ts#L90">user.d.ts:90</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/e9e0b04/api/user.d.ts#L93">user.d.ts:93</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -386,7 +389,7 @@ myUser.removeFrom( group1 , group2 )
 								</div>
 								<dl class="tsd-comment-tags">
 									<dt>warning</dt>
-									<dd><p>All updates done to the <code>directory</code> are temporary. Use <code>directory.save()</code> in order to survive a reboot.</p>
+									<dd><p>All updates done to the <code>directory</code> are temporary. Use <code>directory.save()</code> to save all updates on disk.</p>
 									</dd>
 								</dl>
 							</div>

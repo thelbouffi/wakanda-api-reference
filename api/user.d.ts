@@ -19,10 +19,13 @@ interface User {
      * This object is maintained as long as the server is alive. It is not stored after the server shuts down. This property is user-related and not session-related.
      * 
      * ```
-     * console.log(myUser.storage);
+     * directory.currentUser.storage.setItem( 'itemInBox', 19 );
+     * var result = directory.currentUser.storage.getItem( 'itemInBox' );
+     * console.log(result);
+     * // 19
      * ```
      */
-    storage: KeyValueStorage;
+    storage: LockableKeyValueStorage;
     /**
      * Get all groups where the user belongs to.
      * @param level (default: `false`) Set to `true` if you want first level results. Set to `false` otherwise.
@@ -36,7 +39,7 @@ interface User {
      * myUser.putInto( 'sales', 'finance' );
      * ```
      * 
-     * @warning All updates done to the `directory` are temporary. Use `directory.save()` in order to survive a reboot. 
+     * @warning All updates done to the `directory` are temporary. Use `directory.save()` to save all updates on disk.
      * @param groupList Describes an array of group name
      */
     putInto(...groupList: String[]): void;
@@ -49,13 +52,13 @@ interface User {
       * myUser.putInto( group1 , group2 )
      * ```
      * 
-     * @warning All updates done to the `directory` are temporary. Use `directory.save()` in order to survive a reboot. 
+     * @warning All updates done to the `directory` are temporary. Use `directory.save()` to save all updates on disk.
      * @param groupList Describes an array of group object
      */
     putInto(...groupList: Group[]): void;
     /**
      * Removes the user from the directory.
-     * @warning All updates done to the `directory` are temporary. Use `directory.save()` in order to survive a reboot. 
+     * @warning All updates done to the `directory` are temporary. Use `directory.save()` to save all updates on disk.
      */
     remove(): void;
     /**
@@ -65,7 +68,7 @@ interface User {
      * myUser.removeFrom( 'sales', 'finance' );
      * ```
      * 
-     * @warning All updates done to the `directory` are temporary. Use `directory.save()` in order to survive a reboot. 
+     * @warning All updates done to the `directory` are temporary. Use `directory.save()` to save all updates on disk.
      * @param groupList Describes an array of group name
      */
     removeFrom(...groupList: String[]): void;
@@ -78,13 +81,13 @@ interface User {
      * myUser.removeFrom( group1 , group2 )
      * ```
      * 
-     * @warning All updates done to the `directory` are temporary. Use `directory.save()` in order to survive a reboot. 
+     * @warning All updates done to the `directory` are temporary. Use `directory.save()` to save all updates on disk.
      * @param groupList Describes an array of group object
      */
     removeFrom(...groupList: Group[]): void;
     /**
      * Update the user password in the directory.
-     * @warning All updates done to the `directory` are temporary. Use `directory.save()` in order to survive a reboot. 
+     * @warning All updates done to the `directory` are temporary. Use `directory.save()` to save all updates on disk.
      * @param password The new password to save
      */
     setPassword(password: String): void;

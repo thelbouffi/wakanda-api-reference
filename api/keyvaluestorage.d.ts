@@ -33,5 +33,5 @@ interface KeyValueStorage {
     /**
      * Create or update an item in the storage object.
      */
-    setItem(key: String, value: any): void;
+    setItem(key: String, value: String | Number | Object): void;
 }
