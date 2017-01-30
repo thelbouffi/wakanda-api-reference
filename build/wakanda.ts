@@ -1080,8 +1080,9 @@ interface ConnectionSessionInfo {
 }
 
 
+/** FRED TEST */
 interface Datastore {
-
+    
 	/**
 	*Collection of available datastore classes
 	*/
