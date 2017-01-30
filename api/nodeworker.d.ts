@@ -83,8 +83,8 @@ interface NodeWorker {
      * Node workers can be addressed from any thread, they are uniquely identified by their path and name.
      * 
      * ```
-     * // "worker.js" is defined in <PROJECT>/backend/worker.js
-     * var myWorkerProxy = new NodeWorker("backend/worker.js", "my-worker-name");
+     * // "worker.js" is defined in PROJECT/backend/worker.js
+     * var myWorkerProxy = new NodeWorker( 'backend/worker.js', 'my-worker-name' );
      * ```
      * 
      * @param scriptPath Describes the path to worker javaScript file
@@ -100,11 +100,11 @@ interface NodeWorkerProxy {
      * 
      * ```
      * // Create a new NodeWorker and get the proxy worker
-     * var myWorkerProxy = new NodeWorker("backend/worker.js", "my-worker-name");
+     * var myWorkerProxy = new NodeWorker( 'backend/worker.js', 'my-worker-name' );
      * // Get the proxy worker port for communication
      * var workerProxyPort = myWorkerProxy.port;
      * // Send a "wake up" message to the worker
-     * workerProxyPort.postMessage('wake-up');
+     * workerProxyPort.postMessage( 'wake-up' );
      * ```
      */
     port: Port;

@@ -95,7 +95,7 @@
 					<div class="tsd-signature tsd-kind-icon">port<span class="tsd-signature-symbol">:</span> <a href="port.html" class="tsd-signature-type">Port</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2fc55c/api/sharedworker.d.ts#L110">sharedworker.d.ts:110</a></li>
+							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/60e20c7/api/sharedworker.d.ts#L110">sharedworker.d.ts:110</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -103,11 +103,11 @@
 							<p>Use the proxy port to communicate with the share worker thread.</p>
 						</div>
 						<pre><code><span class="hljs-comment">// Create a new SharedWorker and get the proxy worker</span>
-<span class="hljs-keyword">var</span> myWorkerProxy = <span class="hljs-keyword">new</span> <span class="hljs-type">SharedWorker</span>(<span class="hljs-string">"backend/worker.js"</span>, <span class="hljs-string">"my-worker-name"</span>);
+<span class="hljs-keyword">var</span> myWorkerProxy = <span class="hljs-keyword">new</span> <span class="hljs-type">SharedWorker</span>( <span class="hljs-string">'backend/worker.js'</span>, <span class="hljs-string">'my-worker-name'</span> );
 <span class="hljs-comment">// Get the proxy worker port for communication</span>
 <span class="hljs-keyword">var</span> workerProxyPort = myWorkerProxy.port;
 <span class="hljs-comment">// Send a "wake up" message to the worker</span>
-workerProxyPort.postMessage(<span class="hljs-string">'wake-up'</span>);
+workerProxyPort.postMessage( <span class="hljs-string">'wake-up'</span> );
 </code></pre>
 					</div>
 				</section>

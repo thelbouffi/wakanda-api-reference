@@ -2,7 +2,7 @@
 ///<reference path="./folder.d.ts" />
 ///<reference path="./blob.d.ts" />
 
-interface File {
+interface File extends Blob {
     /**
      * References a file.
      * The file does not have to exist.
@@ -23,7 +23,7 @@ interface File {
      * 
      * @param path Absolute path of the file to reference.
      */
-    new (path: String): FileInstance;
+    new (path: String): File;
     /**
      * References a file.
      * The file does not have to exist.
@@ -47,23 +47,7 @@ interface File {
      * @param folder Folder containing the file
      * @param fileName Name of the file to reference in the folder path
      */
-    new (folder: Folder, fileName: String): FileInstance;
-    /**
-     * Check if the path references a file.
-     * 
-     * ```
-     * var myIsFile = File.isFile( 'PROJECT/backend/bootstrap.js' );
-     * console.log( myIsFile );
-     * // true
-     * ```
-     * 
-     * @param path Absolute path to a file
-     * @returns `true` is the path references a file, `false` otherwise.
-     */
-    isFile(path: String): Boolean;
-}
-
-interface FileInstance extends Blob {
+    new (folder: Folder, fileName: String): File;
     /**
      * Creation date for the file.
      */
@@ -136,6 +120,19 @@ interface FileInstance extends Blob {
      * Returns the total size (expressed in bytes) of the volume where the File object is stored.
      */
     getVolumeSize(): Number;
+    /**
+     * Check if the path references a file.
+     * 
+     * ```
+     * var myIsFile = File.isFile( 'PROJECT/backend/bootstrap.js' );
+     * console.log( myIsFile );
+     * // true
+     * ```
+     * 
+     * @param path Absolute path to a file
+     * @returns `true` is the path references a file, `false` otherwise.
+     */
+    isFile(path: String): Boolean;
     /**
      * Moves the file to the specified destination.
      * 

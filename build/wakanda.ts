@@ -1644,7 +1644,7 @@ interface Directory {
      *     true
      * );
      * 
-     * console.log(directory.currentSession.ID);
+     * console.log( directory.currentSession.ID );
      * // 1E121BA4AE82446B9FDB430F0A9055C6
      * // The new session is now the current session
      * 
@@ -1810,7 +1810,7 @@ interface Directory {
      * 
      * @param name Describes the user name
      * @param password Describes the user password
-     * @param timeOut Defines the user session timeout (in seconds)
+     * @param timeOut (seconds) Defines the user session timeout
      * @returns Returns `true` if authentication succeed and `false` if an error occured
      */
     loginByPassword(name: String, password: String, timeOut?: Number): Boolean;
@@ -1826,25 +1826,26 @@ interface Directory {
     logout(): Boolean;
     /**
      * Saves all changes made in the directory.
-     * @warning Destination file must exist
      * 
      * ```
      * directory.save();
      * directory.save( 'PROJECT/backups/2016-01-01.waDirectory' );
      * ```
      * 
+     * @warning Destination file must exist
      * @param backup Describes a file path for the directory backup.
      * @returns Returns `true` if successfully saved, `false` otherwise.
      */
     save(backup?: String): Boolean;
     /**
      * Saves all changes made in the directory.
-     * @warning Destination file must exist
      * 
      * ```
      * var myFile = File( 'PROJECT/backups/2016-01-01.waDirectory' );
      * directory.save( myFile );
      * ```
+     * 
+     * @warning Destination file must exist
      * @param backup Describes a file for the directory backup.
      * @returns Returns `true` if successfully saved, `false` otherwise.
      */
@@ -1871,23 +1872,23 @@ interface Directory {
      * Set a SSJS module as session manager.
      * 
      * ```
-     * directory.setSessionManager('session'); // Refers to <project>/backend/modules/session module
+     * directory.setSessionManager('session'); // Refers to PROJECT/backend/modules/session module
      * ```
      * 
      * The module must export the following methods to handle all session operations:
      * 
      * ```
-     * exports.readSession = function(session){
-     *   // Handle your read action here
-     *   return true; // Return true if success, false otherwise
+     * exports.readSession = function( session ){
+     *     // Handle your read action here
+     *     return true; // Return true if success, false otherwise
      * }
-     * exports.writeSession = function(session){
-     *   // Handle your write action here
-     *   return true; // Return true if success, false otherwise
+     * exports.writeSession = function( session ){
+     *     // Handle your write action here
+     *     return true; // Return true if success, false otherwise
      * }
-     * exports.deleteSession =function(session){
-     *   // Handle your delete action here
-     *   return true; // Return true if success, false otherwise
+     * exports.deleteSession =function( session ){
+     *     // Handle your delete action here
+     *     return true; // Return true if success, false otherwise
      * }
      * ```
      * 
@@ -1902,7 +1903,7 @@ interface Directory {
      * directory.setLoginManager('my-login-module', 'myDirectoryGroup');
      * ```
      * 
-     * This module is defined inside `<PROJECT>/backend/modules/my-login-module` or `<SOLUTION>/modules/my-login-module`.
+     * This module is defined inside `PROJECT/backend/modules/my-login-module` or `SOLUTION/modules/my-login-module`.
      * If the module is not found in the project, it is then check inside the solution.
      * It must export a `login()` method and return the `user` object.
      * 
@@ -1910,24 +1911,24 @@ interface Directory {
      * exports.login = function(username, password){
      *     // Verify the username/password through Directory or any other User DB
      *     if (user) // If user is authenticated then return the user object
-     *       return {
-     *         ID: 545642165412, // Unique user ID. It must not collide with an existing Wakanda User ID from the Directory.
-     *         name: user.name,
-     *         fullName: user.fullname,
-     *         belongsTo: 'free-customer', // References the Directory group where the user belongs
-     *         storage: {} // Defines the sessionStorage property of the user session
-     *       };
+     *         return {
+     *           ID: 545642165412, // Unique user ID. It must not collide with an existing Wakanda User ID from the Directory.
+     *           name: user.name,
+     *           fullName: user.fullname,
+     *           belongsTo: 'free-customer', // References the Directory group where the user belongs
+     *           storage: {} // Defines the sessionStorage property of the user session
+     *         };
      *     }
      *     else if (!user) // If user not authenticated then return an error
      *     {
-     *       return {
-     *         error: 548, // Error code returned
-     *         errorMessage: 'Authentication failed. Login or Password maybe wrong.' // Error text returned
-     *       };
+     *         return {
+     *           error: 548, // Error code returned
+     *           errorMessage: 'Authentication failed. Login or Password maybe wrong.' // Error text returned
+     *         };
      *     }
      *     else // or continue using the standard process (with the internal directory)
      *     {
-     *       return false;
+     *         return false;
      *     }
      * }
      * ```
@@ -1945,7 +1946,7 @@ interface Directory {
      * Gets a user from its name or ID.
      * 
      * ```
-     * var myUser = directory.user( "Thomas Pesquet" );
+     * var myUser = directory.user( 'Thomas Pesquet' );
      * ```
      * 
      * @param name Describes the user name or ID
@@ -2083,7 +2084,7 @@ interface Directory {
 
 
 
-interface File {
+interface File extends Blob {
     /**
      * References a file.
      * The file does not have to exist.
@@ -2104,7 +2105,7 @@ interface File {
      * 
      * @param path Absolute path of the file to reference.
      */
-    new (path: String): FileInstance;
+    new (path: String): File;
     /**
      * References a file.
      * The file does not have to exist.
@@ -2128,23 +2129,7 @@ interface File {
      * @param folder Folder containing the file
      * @param fileName Name of the file to reference in the folder path
      */
-    new (folder: Folder, fileName: String): FileInstance;
-    /**
-     * Check if the path references a file.
-     * 
-     * ```
-     * var myIsFile = File.isFile( 'PROJECT/backend/bootstrap.js' );
-     * console.log( myIsFile );
-     * // true
-     * ```
-     * 
-     * @param path Absolute path to a file
-     * @returns `true` is the path references a file, `false` otherwise.
-     */
-    isFile(path: String): Boolean;
-}
-
-interface FileInstance extends Blob {
+    new (folder: Folder, fileName: String): File;
     /**
      * Creation date for the file.
      */
@@ -2217,6 +2202,19 @@ interface FileInstance extends Blob {
      * Returns the total size (expressed in bytes) of the volume where the File object is stored.
      */
     getVolumeSize(): Number;
+    /**
+     * Check if the path references a file.
+     * 
+     * ```
+     * var myIsFile = File.isFile( 'PROJECT/backend/bootstrap.js' );
+     * console.log( myIsFile );
+     * // true
+     * ```
+     * 
+     * @param path Absolute path to a file
+     * @returns `true` is the path references a file, `false` otherwise.
+     */
+    isFile(path: String): Boolean;
     /**
      * Moves the file to the specified destination.
      * 
@@ -3517,8 +3515,8 @@ interface NodeWorker {
      * Node workers can be addressed from any thread, they are uniquely identified by their path and name.
      * 
      * ```
-     * // "worker.js" is defined in <PROJECT>/backend/worker.js
-     * var myWorkerProxy = new NodeWorker("backend/worker.js", "my-worker-name");
+     * // "worker.js" is defined in PROJECT/backend/worker.js
+     * var myWorkerProxy = new NodeWorker( 'backend/worker.js', 'my-worker-name' );
      * ```
      * 
      * @param scriptPath Describes the path to worker javaScript file
@@ -3534,11 +3532,11 @@ interface NodeWorkerProxy {
      * 
      * ```
      * // Create a new NodeWorker and get the proxy worker
-     * var myWorkerProxy = new NodeWorker("backend/worker.js", "my-worker-name");
+     * var myWorkerProxy = new NodeWorker( 'backend/worker.js', 'my-worker-name' );
      * // Get the proxy worker port for communication
      * var workerProxyPort = myWorkerProxy.port;
      * // Send a "wake up" message to the worker
-     * workerProxyPort.postMessage('wake-up');
+     * workerProxyPort.postMessage( 'wake-up' );
      * ```
      */
     port: Port;
@@ -3782,8 +3780,8 @@ interface SharedWorker {
      * Shared workers can be addressed from any thread, they are uniquely identified by their path and name.
      * 
      * ```
-     * // "worker.js" is defined in <PROJECT>/backend/worker.js
-     * var myWorkerProxy = new SharedWorker("backend/worker.js", "my-worker-name");
+     * // "worker.js" is defined in PROJECT/backend/worker.js
+     * var myWorkerProxy = new SharedWorker( 'backend/worker.js', 'my-worker-name' );
      * ```
      * 
      * @param scriptPath Describes the path to worker javaScript file
@@ -3799,11 +3797,11 @@ interface SharedWorkerProxy {
      * 
      * ```
      * // Create a new SharedWorker and get the proxy worker
-     * var myWorkerProxy = new SharedWorker("backend/worker.js", "my-worker-name");
+     * var myWorkerProxy = new SharedWorker( 'backend/worker.js', 'my-worker-name' );
      * // Get the proxy worker port for communication
      * var workerProxyPort = myWorkerProxy.port;
      * // Send a "wake up" message to the worker
-     * workerProxyPort.postMessage('wake-up');
+     * workerProxyPort.postMessage( 'wake-up' );
      * ```
      */
     port: Port;

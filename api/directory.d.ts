@@ -251,21 +251,21 @@ interface Directory {
      * Set a SSJS module as session manager.
      * 
      * ```
-     * directory.setSessionManager('session'); // Refers to <project>/backend/modules/session module
+     * directory.setSessionManager('session'); // Refers to PROJECT/backend/modules/session module
      * ```
      * 
      * The module must export the following methods to handle all session operations:
      * 
      * ```
-     * exports.readSession = function(session){
+     * exports.readSession = function( session ){
      *     // Handle your read action here
      *     return true; // Return true if success, false otherwise
      * }
-     * exports.writeSession = function(session){
+     * exports.writeSession = function( session ){
      *     // Handle your write action here
      *     return true; // Return true if success, false otherwise
      * }
-     * exports.deleteSession =function(session){
+     * exports.deleteSession =function( session ){
      *     // Handle your delete action here
      *     return true; // Return true if success, false otherwise
      * }
@@ -282,7 +282,7 @@ interface Directory {
      * directory.setLoginManager('my-login-module', 'myDirectoryGroup');
      * ```
      * 
-     * This module is defined inside `<PROJECT>/backend/modules/my-login-module` or `<SOLUTION>/modules/my-login-module`.
+     * This module is defined inside `PROJECT/backend/modules/my-login-module` or `SOLUTION/modules/my-login-module`.
      * If the module is not found in the project, it is then check inside the solution.
      * It must export a `login()` method and return the `user` object.
      * 
@@ -325,7 +325,7 @@ interface Directory {
      * Gets a user from its name or ID.
      * 
      * ```
-     * var myUser = directory.user( "Thomas Pesquet" );
+     * var myUser = directory.user( 'Thomas Pesquet' );
      * ```
      * 
      * @param name Describes the user name or ID
