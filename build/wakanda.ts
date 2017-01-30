@@ -2788,216 +2788,301 @@ interface Group {
 	 * @warning Requires LDAP component
 	 */
 	setAlias(alias: String) : void;
-}	
-	
-	
-	interface HttpServer {
-		/**
-		*Cache properties of the HTTP server
-		*/
-		cache: HttpServerCache;
-		/**
-		*Default charset value
-		*/
-		defaultCharSet: String;
-		/**
-		*Host name of the server
-		*/
-		hostName: String;
-		/**
-		*IP address of the server
-		*/
-		ipAddress: String;
-		/**
-		*Port listened to by the server
-		*/
-		port: Number;
-		/**
-		 *The current HTTP Request Object
-		 */
-		request: HTTPRequest;
-		/**
-		 *The current HTTP Response Object
-		 */
-		response: HTTPResponse;
-		/**
-		*SSL properties of the server
-		*/
-		ssl: HttpServerSSL;
-		/**
-		*Current status of the HTTP server
-		*/
-		started: Boolean;
-		/**
-		*installs a request handler function on the server
-		*/
-		addRequestHandler(pattern: String, filePath: String, functionName: String) : void;
-		/**
-		*installs a WebSocket handler script on the server
-		*/
-		addWebSocketHandler(pattern: String, filePath: String, socketID: String, shared: Boolean) : void;
-		/**
-		*uninstalls an existing HTTP request handler function running on the server
-		*/
-		removeRequestHandler(pattern: String, filePath: String, functionName: String) : void;
-		/**
-		*removes the WebSocket handler socketID from the server
-		*/
-		removeWebSocketHandler(socketID: String) : void;
-		/**
-		*starts the Wakanda HTTP server
-		*/
-		start() : void;
-		/**
-		*stops the Wakanda HTTP server
-		*/
-		stop() : void;
-	}
-	
-	interface HttpServerCache {
-		/**
-		*Status of the HTTP server cache
-		*/
-		enabled: Boolean;
-		/**
-		*Size of the HTTP server cache in memory
-		*/
-		memorySize: Number;
-	}
-	
-	interface HttpServerSSL {
-		/**
-		*Status of the SSL protocol on the server
-		*/
-		enabled: Boolean;
-		/**
-		*Port number for SSL connections
-		*/
-		port: Number;
-		/**
-		*returns the full path to the SSL certificates folder used by the server (if any)
-		*/
-		getCertificatePath() : String;
-	}
+}
+
+
+interface HttpServer {
+	/**
+	 * Cache properties of the HTTP server
+	 */
+	readonly cache: HttpServerCache;
+	/**
+	 * Default charset value
+	 */
+	readonly defaultCharSet: String;
+	/**
+	 * Host name of the server
+	 */
+	readonly hostName: String;
+	/**
+	 * IP address of the server
+	 */
+	readonly ipAddress: String;
+	/**
+	 * Port listened to by the server
+	 */
+	readonly port: Number;
+	/**
+	 * The current HTTP Request Object
+     */
+	readonly request: HTTPRequest;
+	/**
+	 * The current HTTP Response Object
+	 */
+	readonly response: HTTPResponse;
+	/**
+	 * SSL properties of the server
+	 */
+	readonly ssl: HttpServerSSL;
+	/**
+	 * Current status of the HTTP server
+	 */
+	readonly started: Boolean;
+	/**
+	 * Adds a request handler function on the server.
+	 * It is recommended to write all request handler in the `bootstrap.js` file in order to be available at server start up.
+	 * 
+	 * #### Example 1: Add a request handler
+	 * ```
+	 * // It is recommended to write these lines in bootstrap.js
+	 * // On every "/ping" requests, call "hello()" function in "request-greetings.js"
+	 * httpServer.addRequestHandler('^/ping$', 'request-greetings.js', 'pong');
+	 * ```
+	 * 
+	 * @param pattern Regexp pattern to intercept a HTTP request
+	 * @param filePath Path to the file that defines the functionName
+	 * @param functionName Function name which handles the request and returns the request response
+	 * 
+	 * #### Example 2: Handle the request
+	 * ```
+	 * // request-greetings.js
+	 * function pong( request, response ){
+	 *     return 'pong';
+	 * }
+	 * ```
+	 */
+	addRequestHandler(pattern: String, filePath: String, functionName: String): void;
+	/**
+	 * Adds a WebSocket handler script on the server
+	 * It is recommended to write all websocket handler in the `bootstrap.js` file in order to be available at server start up.
+	 * 
+	 * #### Example 1: Add a websocket handler
+	 * ```
+	 * // It is recommended to write these lines in bootstrap.js
+	 * httpServer.addWebSocketHandler('^/ping$', './backend/websocket-greetings.js', 'websocket-id', true);
+	 * ```
+	 * 
+	 * @param pattern Regexp pattern to intercept a HTTP request
+	 * @param filePath Absolute or relative path from the project to the file that defines the websocket handler. Filesystem are not working in filePath parameter (`PROJECT`, `SOLUTION`, ...).
+	 * 
+	 * #### Example 2: Handle the websocket
+	 * ```
+	 * // ./backend/websocket-greetings.js
+	 * // Same as for ShareWorker
+	 * // Called every time a new websocket is connected
+	 * onconnect = function ( msg ) {
+	 * 
+	 *     // Get the websocket port
+	 *     var wsPort = msg.ports[0];
+	 * 
+	 *     // Called every time a client sends a message    
+	 *     wsPort.onmessage = function( message ) {
+	 * 
+	 *         // Process data send by the client
+	 *         if ( message.data == 'hello' ){
+	 *             console.log( 'websocket data received: '+ message.data );
+	 *             // Send a response to client
+	 *             wsPort.postMessage( 'Hello back !' );
+	 *         }else{
+	 *             console.log( 'websocket data skipped: '+ JSON.stringify(message) );
+	 *         }
+	 *     };
+	 * 
+	 *     // Called when the socket receives an error
+	 *     wsPort.onerror = function() { 
+	 *         // Handle websocket errors
+	 *     };
+	 * 
+	 *     // Called when the socket is closed
+	 *     wsPort.onclose = function() { 
+	 *         // Do nothing and wait for another websocket connection
+	 *     };
+	 * };
+	 * ```
+	 * 
+	 * @param socketID Socket ID usefull for `removeWebSocketHandler()`
+	 * @param sharedWorker `true` if uses shared worker (recommended). `false` if uses dedicated worker.
+	 */
+	addWebSocketHandler(pattern: String, filePath: String, socketID: String, sharedWorker: Boolean): void;
+	/**
+	 * Removes an existing request handler function on the server.
+	 * 
+	 * ```
+	 * // Must match parameters of "addRequestHandler()"
+	 * // httpServer.addRequestHandler('^/ping$', 'request-greetings.js', 'pong');
+	 * httpServer.removeRequestHandler('^/ping$', 'request-greetings.js', 'pong');
+	 * ```
+	 * 
+	 * @param pattern Regexp pattern to intercept a HTTP request
+	 * @param filePath Path to the file that defines the functionName
+	 * @param functionName Function name which handles the request
+	 */
+	removeRequestHandler(pattern: String, filePath: String, functionName: String): void;
+	/**
+	 * Removes an existing websocket handler on the server.
+	 * 
+	 * ```
+	 * // Must match socketID parameter of "addWebSocketHandler()"
+	 * // httpServer.addWebSocketHandler('^/ping$', 'backend/websocket-greetings.js', 'websocket-id', true);
+	 * httpServer.httpServer.removeWebSocketHandler( 'websocket-id' );
+	 * ```
+	 * 
+	 * @param socketID Identifies the websocket to remove
+	 */
+	removeWebSocketHandler(socketID: String): void;
+	/**
+	 * Starts the Wakanda HTTP server
+	 */
+	start(): void;
+	/**
+	 * Stops the Wakanda HTTP server
+	 */
+	stop(): void;
+}
+
+interface HttpServerCache {
+	/**
+	 * Status of the HTTP server cache
+	 */
+	readonly enabled: Boolean;
+	/**
+	 * Size of the HTTP server cache in memory
+	 */
+	readonly memorySize: Number;
+}
+
+interface HttpServerSSL {
+	/**
+	 * Status of the SSL protocol on the server
+	 */
+	readonly enabled: Boolean;
+	/**
+	 * Port number for SSL connections
+	 */
+	readonly port: Number;
+	/**
+	 * Get the full path to the SSL certificates folder used by the server (if any)
+	 */
+	getCertificateFolder(): String;
+	/**
+	 * Get the full path to the SSL certificates path used by the server (if any)
+	 */
+	getCertificatePath(): String;
+}
+
 
 
 interface HTTPRequest {
     /**
-	*Body of the received message
-	*/
-	body: String|Image|Blob;
+	 * Body of the received message
+	 */
+	body: String | Image | Blob;
 	/**
-	*Content-type of the request as defined in the header
-	*/
+	 * Content-type of the request as defined in the header
+	 */
 	contentType: String;
 	/**
-	*Header of the HTTPRequest
-	*/
+	 * Header of the HTTPRequest
+	 */
 	headers: String[];
 	/**
-	*Host header of the request
-	*/
+	 * Host header of the request
+	 */
 	host: String;
 	/**
-	*True if the connection uses SSL, false otherwise
-	*/
+	 * True if the connection uses SSL, false otherwise
+	 */
 	isSSL: Boolean;
 	/**
-	*Local server IP address (IPv4 or IPv6)
-	*/
+	 * Local server IP address (IPv4 or IPv6)
+	 */
 	localAddress: String;
 	/**
-	*Local server port number
-	*/
+	 * Local server port number
+	 */
 	localPort: Number;
 	/**
-	*HTTP method name
-	*/
+	 * HTTP method name
+	 */
 	method: String;
 	/**
-	*Parts of a HTTP body (for multipart forms)
-	*/
+	 * Parts of a HTTP body (for multipart forms)
+	 */
 	parts: MIMEMessage;
 	/**
-	*User password for authentified requests (BASIC mode only)
-	*/
+	 * User password for authentified requests (BASIC mode only)
+	 */
 	password: String;
 	/**
-	*Raw URL of the request
-	*/
+	 * Raw URL of the request
+	 */
 	rawURL: String;
 	/**
-	*Remote client IP address (IPv4 or IPv6)
-	*/
+	 * Remote client IP address (IPv4 or IPv6)
+	 */
 	remoteAddress: String;
 	/**
-	*Remote client port number
-	*/
+	 * Remote client port number
+	 */
 	remotePort: Number;
 	/**
-	*Request-line received by the server
-	*/
+	 * Request-line received by the server
+	 */
 	requestLine: String;
 	/**
-	*Decoded URL of the request
-	*/
+	 * Decoded URL of the request
+	 */
 	url: String;
 	/**
-	*Path part of the request
-	*/
+	 * Path part of the request
+	 */
 	urlPath: String;
 	/**
-	*Query part of the request
-	*/
+	 * Query part of the request
+	 */
 	urlQuery: String;
 	/**
-	*User name for authentified request
-	*/
+	 * User name for authentified request
+	 */
 	user: String;
 	/**
-	*Version of the HTTP protocol
-	*/
+	 * Version of the HTTP protocol
+	 */
 	version: String;
 }
 
 
 interface HTTPResponse {
 	/**
-	*Body of the returned message to set
-	*/
-	body: Blob|Image|String;
+	 * Body of the returned message to set
+	 */
+	body: Blob | Image | String;
 	/**
-	*Content-type of the response to set
-	*/
+	 * Content-type of the response to set
+	 */
 	contentType: String;
 	/**
-	*Header of the HTTPResponse
-	*/
+	 * Header of the HTTPResponse
+	 */
 	headers: String[];
 	/**
-	*Return status code to set
-	*/
+	 * Return status code to set
+	 */
 	statusCode: Number;
 	/**
-	*indicates if the contents of the HTTPResponse should be cached on the server
-	*/
+	 * Indicates if the contents of the HTTPResponse should be cached on the server
+	 */
 	allowCache(useCache: Boolean) : void;
 	/**
-	*sets custom compression thresholds for the HTTPResponse
-	*/
+	 * Sets custom compression thresholds for the HTTPResponse
+	 * @param minThreshold Minimum size (in bytes) below which the response should not be compressed or -1 to use default value
+	 * @param maxThreshold Maximum size (in bytes) up to which the response should not be compressed or -1 to use default value
+	 */
 	allowCompression(minThreshold: Number, maxThreshold: Number) : void;
 	/**
-	*sends an HTTPResponse in chunks without knowing in advance the size of the data
-	*/
-	sendChunkedData(data: String) : void;
-	/**
-	*sends an HTTPResponse in chunks without knowing in advance the size of the data
-	*/
-	sendChunkedData(data: Image) : void;
-	/**
-	*sends an HTTPResponse in chunks without knowing in advance the size of the data
-	*/
-	sendChunkedData(data: Blob) : void;
+	 * Sends an HTTPResponse in chunks without knowing in advance the size of the data
+	 */
+	sendChunkedData(data: String | Image | Blob) : void;
 }
 
 /**
@@ -3171,69 +3256,70 @@ interface KeyValueStorage {
 	setItem(key: String, value: any) : void;
 }
 
+
 interface MIMEMessage {
     /**
-	*nth part of the multipart MIME message
-	*/
+	 * nth part of the multipart MIME message
+	 */
     [n: number]: MIMEMessagePart;
 	/**
-	*Boundary tag used to delimit the parts
-	*/
+	 * Boundary tag used to delimit the parts
+	 */
 	boundary: String;
 	/**
-	*Number of parts
-	*/
+	 * Number of parts
+	 */
 	count: Number;
 	/**
-	*Encoding type: 'multipart/form-data' or 'application/x-www-form-urlencoded'
-	*/
+	 * Encoding type: 'multipart/form-data' or 'application/x-www-form-urlencoded'
+	 */
 	encoding: String;
 	/**
-	*Number of parts
-	*/
+	 * Number of parts
+	 */
 	length: Number;
 	/**
-	*returns the MIME message as a Blob object
-	*/
+	 * Returns the MIME message as a Blob object
+	 */
 	toBlob(mimeType?: String) : Blob;
 	/**
-	*returns the MIME message as a Buffer object
-	*/
+	 * Returns the MIME message as a Buffer object
+	 */
 	toBuffer() : void;
 }
 
 interface MIMEMessagePart {
     /**
-	*Body as a BLOB
-	*/
+	 * Body as a BLOB
+	 */
 	asBlob: Blob;
 	/**
-	*Body as an image
-	*/
+	 * Body as an image
+	 */
 	asPicture: Image;
 	/**
-	*Body as a Text string
-	*/
+	 * Body as a Text string
+	 */
 	asText: String;
 	/**
-	*Name of the uploaded file
-	*/
+	 * Name of the uploaded file
+	 */
 	fileName: String;
 	/**
-	*Content-type of the part
-	*/
+	 * Content-type of the part
+	 */
 	mediaType: String;
 	/**
-	*Input field name
-	*/
+	 * Input field name
+	 */
 	name: String;
 	/**
-	*Size of the body (in bytes)
-	*/
+	 * Size of the body (in bytes)
+	 */
 	size: Number;
 	/**
-	*saves the body of the part in the file whose path is passed in filePath
-	*/
+	 * Saves the body of the part in the file whose path is passed in filePath
+	 */
 	save(filePath: String, overWrite?: Boolean) : void;
 }
 	interface Module {

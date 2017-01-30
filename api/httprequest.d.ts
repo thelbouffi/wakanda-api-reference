@@ -1,81 +1,82 @@
+/// <reference path="./blob.d.ts" />
 /// <reference path="./image.d.ts" />
 /// <reference path="./mime.d.ts" />
 
 interface HTTPRequest {
     /**
-	*Body of the received message
-	*/
-	body: String|Image|Blob;
+	 * Body of the received message
+	 */
+	body: String | Image | Blob;
 	/**
-	*Content-type of the request as defined in the header
-	*/
+	 * Content-type of the request as defined in the header
+	 */
 	contentType: String;
 	/**
-	*Header of the HTTPRequest
-	*/
+	 * Header of the HTTPRequest
+	 */
 	headers: String[];
 	/**
-	*Host header of the request
-	*/
+	 * Host header of the request
+	 */
 	host: String;
 	/**
-	*True if the connection uses SSL, false otherwise
-	*/
+	 * True if the connection uses SSL, false otherwise
+	 */
 	isSSL: Boolean;
 	/**
-	*Local server IP address (IPv4 or IPv6)
-	*/
+	 * Local server IP address (IPv4 or IPv6)
+	 */
 	localAddress: String;
 	/**
-	*Local server port number
-	*/
+	 * Local server port number
+	 */
 	localPort: Number;
 	/**
-	*HTTP method name
-	*/
+	 * HTTP method name
+	 */
 	method: String;
 	/**
-	*Parts of a HTTP body (for multipart forms)
-	*/
+	 * Parts of a HTTP body (for multipart forms)
+	 */
 	parts: MIMEMessage;
 	/**
-	*User password for authentified requests (BASIC mode only)
-	*/
+	 * User password for authentified requests (BASIC mode only)
+	 */
 	password: String;
 	/**
-	*Raw URL of the request
-	*/
+	 * Raw URL of the request
+	 */
 	rawURL: String;
 	/**
-	*Remote client IP address (IPv4 or IPv6)
-	*/
+	 * Remote client IP address (IPv4 or IPv6)
+	 */
 	remoteAddress: String;
 	/**
-	*Remote client port number
-	*/
+	 * Remote client port number
+	 */
 	remotePort: Number;
 	/**
-	*Request-line received by the server
-	*/
+	 * Request-line received by the server
+	 */
 	requestLine: String;
 	/**
-	*Decoded URL of the request
-	*/
+	 * Decoded URL of the request
+	 */
 	url: String;
 	/**
-	*Path part of the request
-	*/
+	 * Path part of the request
+	 */
 	urlPath: String;
 	/**
-	*Query part of the request
-	*/
+	 * Query part of the request
+	 */
 	urlQuery: String;
 	/**
-	*User name for authentified request
-	*/
+	 * User name for authentified request
+	 */
 	user: String;
 	/**
-	*Version of the HTTP protocol
-	*/
+	 * Version of the HTTP protocol
+	 */
 	version: String;
 }
