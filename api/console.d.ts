@@ -2,7 +2,7 @@ interface WAKConsole {
     /**
      * Get logged messages.
      * 
-     * ```
+     * ```javascript
      * var lastLogs = console.content.join('\n');
      * ```
      */
@@ -16,7 +16,7 @@ interface WAKConsole {
     /**
      * Writes message to the log file and the debugger's console.
      * 
-     * ```
+     * ```javascript
      * console.log('Hello World!');
      * // Hello World!
      * console.log("I'm %d years old.", userAge);

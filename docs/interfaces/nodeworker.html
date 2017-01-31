@@ -72,21 +72,26 @@
 						<p>Here is an example of a worker file.</p>
 					</div>
 					<p>Callback to trigger when a new caller creates a NodeWorker proxy object.</p>
-					<pre><code>onconnect: <span class="hljs-function"><span class="hljs-keyword">Function</span>;</span>
-</code></pre><p>Get port to communicate with the worker proxy.
+					<pre><code class="lang-javascript">onconnect: <span class="hljs-built_in">Function</span>;
+</code></pre>
+					<p>Get port to communicate with the worker proxy.
 					Always use <code>ports[0]</code>.</p>
-					<pre><code><span class="hljs-symbol">ports:</span> Array<span class="hljs-params">&lt;Port&gt;</span>;
-</code></pre><p>Close the worker.</p>
-					<pre><code><span class="hljs-built_in">close</span>() : <span class="hljs-keyword">void</span>;
-</code></pre><p>Allows a thread to handle events and to continue to exist after the complete code executes.</p>
+					<pre><code class="lang-javascript">ports: <span class="hljs-built_in">Array</span>&lt;Port&gt;;
+</code></pre>
+					<p>Close the worker.</p>
+					<pre><code class="lang-javascript">close() : <span class="hljs-keyword">void</span>;
+</code></pre>
+					<p>Allows a thread to handle events and to continue to exist after the complete code executes.</p>
 					<dl class="tsd-comment-tags">
 						<dt>warning</dt>
 						<dd><p>There is an implicit <code>wait()</code> in worker. No need to add another.</p>
-							<pre><code><span class="hljs-keyword">wait</span>(timeout?: <span class="hljs-keyword">Number</span>) : Boolean;
-</code></pre><p>Requires a node module. This module should be defined in <code>PROJECT/node_modules</code></p>
-							<pre><code><span class="hljs-attribute">var myModule</span> = requireNode(<span class="hljs-string">'module'</span>);
-</code></pre><p>Worker example</p>
-							<pre><code><span class="hljs-comment">// Describes the content of the worker.js file</span>
+							<pre><code class="lang-javascript">wait(timeout?: <span class="hljs-built_in">Number</span>) : <span class="hljs-built_in">Boolean</span>;
+</code></pre>
+							<p>Requires a node module. This module should be defined in <code>PROJECT/node_modules</code></p>
+							<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> myModule = requireNode(<span class="hljs-string">'module'</span>);
+</code></pre>
+							<p>Worker example</p>
+							<pre><code class="lang-javascript"><span class="hljs-comment">// Describes the content of the worker.js file</span>
 <span class="hljs-comment">// Called when a new worker is created</span>
 onconnect = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"> msg </span>)
 </span>{
@@ -94,7 +99,7 @@ onconnect = <span class="hljs-function"><span class="hljs-keyword">function</spa
     <span class="hljs-keyword">var</span> workerPort = msg.ports[<span class="hljs-number">0</span>];
 
     <span class="hljs-comment">// Send a message to the worker proxy. The worker is up and running.</span>
-    workerPort.postMessage({<span class="hljs-keyword">type</span>: <span class="hljs-string">'connected'</span>, says: <span class="hljs-string">"I'm alive!"</span>});
+    workerPort.postMessage({<span class="hljs-attr">type</span>: <span class="hljs-string">'connected'</span>, <span class="hljs-attr">says</span>: <span class="hljs-string">"I'm alive!"</span>});
 
     <span class="hljs-comment">// Listen for worker proxy messages</span>
     workerPort.onmessage = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"> event </span>)
@@ -108,20 +113,21 @@ onconnect = <span class="hljs-function"><span class="hljs-keyword">function</spa
             <span class="hljs-comment">// It's a hello world message</span>
             <span class="hljs-keyword">case</span> <span class="hljs-string">'hello'</span>:
                 <span class="hljs-comment">// Reply to the worker proxy</span>
-                workerPort.postMessage( {<span class="hljs-keyword">type</span>: <span class="hljs-string">'hello'</span>, says: <span class="hljs-string">'Hello to you too!'</span>} );
+                workerPort.postMessage( {<span class="hljs-attr">type</span>: <span class="hljs-string">'hello'</span>, <span class="hljs-attr">says</span>: <span class="hljs-string">'Hello to you too!'</span>} );
                 <span class="hljs-keyword">break</span>;
 
             <span class="hljs-comment">// It's a terminate message</span>
             <span class="hljs-keyword">case</span> <span class="hljs-string">'close'</span>:
                 <span class="hljs-comment">// Reply to the worker proxy</span>
-                workerPort.postMessage( {<span class="hljs-keyword">type</span>: <span class="hljs-string">'close'</span>, says: <span class="hljs-string">'I will be back!'</span>} );
+                workerPort.postMessage( {<span class="hljs-attr">type</span>: <span class="hljs-string">'close'</span>, <span class="hljs-attr">says</span>: <span class="hljs-string">'I will be back!'</span>} );
                 <span class="hljs-comment">// Close the worker</span>
                 close();
                 <span class="hljs-keyword">break</span>;
         }
     }
 }
-</code></pre></dd>
+</code></pre>
+						</dd>
 					</dl>
 				</div>
 			</section>
@@ -158,7 +164,7 @@ onconnect = <span class="hljs-function"><span class="hljs-keyword">function</spa
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/7356c46/api/nodeworker.d.ts#L79">nodeworker.d.ts:79</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/1baef3c/api/nodeworker.d.ts#L79">nodeworker.d.ts:79</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -167,8 +173,8 @@ onconnect = <span class="hljs-function"><span class="hljs-keyword">function</spa
 										Creates a new node worker in its own thread if it does not exist yet. Then it returns a proxy object to communicate with the node worker thread.
 									Node workers can be addressed from any thread, they are uniquely identified by their path and name.</p>
 								</div>
-								<pre><code>// <span class="hljs-string">"worker.js"</span> <span class="hljs-keyword">is</span> defined <span class="hljs-keyword">in</span> PROJECT/backend/worker.js
-var myWorkerProxy = <span class="hljs-keyword">new</span> NodeWorker( <span class="hljs-symbol">'backend</span>/worker.js', <span class="hljs-symbol">'my</span>-worker-name' );
+								<pre><code class="lang-javascript"><span class="hljs-comment">// "worker.js" is defined in PROJECT/backend/worker.js</span>
+<span class="hljs-keyword">var</span> myWorkerProxy = <span class="hljs-keyword">new</span> NodeWorker( <span class="hljs-string">'backend/worker.js'</span>, <span class="hljs-string">'my-worker-name'</span> );
 </code></pre>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>

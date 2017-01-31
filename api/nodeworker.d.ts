@@ -5,39 +5,39 @@
  * 
  * Callback to trigger when a new caller creates a NodeWorker proxy object.
  * 
- * ```
+ * ```javascript
  * onconnect: Function;
  * ```
  * 
  * Get port to communicate with the worker proxy.
  * Always use `ports[0]`.
  * 
- * ```
+ * ```javascript
  * ports: Array<Port>;
  * ```
  * 
  * Close the worker.
  * 
- * ```
+ * ```javascript
  * close() : void;
  * ```
  * 
  * Allows a thread to handle events and to continue to exist after the complete code executes.
  * @warning There is an implicit `wait()` in worker. No need to add another.
  * 
- * ```
+ * ```javascript
  * wait(timeout?: Number) : Boolean;
  * ```
  * 
  * Requires a node module. This module should be defined in `PROJECT/node_modules`
  * 
- * ```
+ * ```javascript
  * var myModule = requireNode('module');
  * ```
  * 
  * Worker example
  * 
- * ```
+ * ```javascript
  * // Describes the content of the worker.js file
  * // Called when a new worker is created
  * onconnect = function( msg )
@@ -82,7 +82,7 @@ interface NodeWorker {
      * Creates a new node worker in its own thread if it does not exist yet. Then it returns a proxy object to communicate with the node worker thread.
      * Node workers can be addressed from any thread, they are uniquely identified by their path and name.
      * 
-     * ```
+     * ```javascript
      * // "worker.js" is defined in PROJECT/backend/worker.js
      * var myWorkerProxy = new NodeWorker( 'backend/worker.js', 'my-worker-name' );
      * ```
@@ -98,7 +98,7 @@ interface WAKNodeWorkerProxy {
     /**
      * Use the proxy port to communicate with the node worker thread.
      * 
-     * ```
+     * ```javascript
      * // Create a new NodeWorker and get the proxy worker
      * var myWorkerProxy = new NodeWorker( 'backend/worker.js', 'my-worker-name' );
      * // Get the proxy worker port for communication

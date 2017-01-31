@@ -101,19 +101,19 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/7356c46/api/port.d.ts#L18">port.d.ts:18</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/1baef3c/api/port.d.ts#L18">port.d.ts:18</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Listen for worker or proxy worker errors.</p>
 								</div>
-								<pre><code>workerPort.onerror = function( <span class="hljs-keyword">error</span> )
-{
+								<pre><code class="lang-javascript">workerPort.onerror = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"> error </span>)
+</span>{
    <span class="hljs-comment">// We've got an error !</span>
-   console.<span class="hljs-keyword">log</span>(<span class="hljs-string">'Error message: '</span>+ <span class="hljs-keyword">error</span>.message);
-   console.<span class="hljs-keyword">log</span>(<span class="hljs-string">'From file: '</span>+ <span class="hljs-keyword">error</span>.filename);
-   console.<span class="hljs-keyword">log</span>(<span class="hljs-string">'Line: '</span>+ <span class="hljs-keyword">error</span>.lineno);
+   <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Error message: '</span>+ error.message);
+   <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'From file: '</span>+ error.filename);
+   <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Line: '</span>+ error.lineno);
 }
 </code></pre>
 							</div>
@@ -140,33 +140,33 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/7356c46/api/port.d.ts#L51">port.d.ts:51</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/1baef3c/api/port.d.ts#L51">port.d.ts:51</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Listen for worker or proxy worker messages.</p>
 								</div>
-								<pre><code>workerPort.onmessage = function( message )
-{
+								<pre><code class="lang-javascript">workerPort.onmessage = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"> message </span>)
+</span>{
     <span class="hljs-comment">// We've got a message !</span>
     <span class="hljs-comment">// The `message.data` is what the worker proxy sends using `postMessage()`. Could be a String, Number or an Object type.</span>
     <span class="hljs-comment">// Here, `message.data` contains an object: `{type: String, says: String}`</span>
     <span class="hljs-keyword">var</span> action = message.data;
-    <span class="hljs-keyword">switch</span>( action.<span class="hljs-keyword">type</span> )
+    <span class="hljs-keyword">switch</span>( action.type )
     {
         <span class="hljs-comment">// It's a hello world message</span>
         <span class="hljs-keyword">case</span> <span class="hljs-string">'hello'</span>:
             <span class="hljs-comment">// Reply to the worker proxy</span>
-            workerPort.postMessage( {<span class="hljs-keyword">type</span>: <span class="hljs-string">'hello'</span>, says: <span class="hljs-string">'Hello to you too!'</span>} );
+            workerPort.postMessage( {<span class="hljs-attr">type</span>: <span class="hljs-string">'hello'</span>, <span class="hljs-attr">says</span>: <span class="hljs-string">'Hello to you too!'</span>} );
             <span class="hljs-keyword">break</span>;
 
         <span class="hljs-comment">// It's a terminate message</span>
         <span class="hljs-keyword">case</span> <span class="hljs-string">'close'</span>:
             <span class="hljs-comment">// Reply to the worker proxy</span>
-            workerPort.postMessage( {<span class="hljs-keyword">type</span>: <span class="hljs-string">'close'</span>, says: <span class="hljs-string">'I will be back!'</span>} );
+            workerPort.postMessage( {<span class="hljs-attr">type</span>: <span class="hljs-string">'close'</span>, <span class="hljs-attr">says</span>: <span class="hljs-string">'I will be back!'</span>} );
             <span class="hljs-comment">// Close the worker</span>
-            <span class="hljs-built_in">close</span>();
+            close();
             <span class="hljs-keyword">break</span>;
     }
 }
@@ -195,29 +195,30 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/7356c46/api/port.d.ts#L81">port.d.ts:81</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/1baef3c/api/port.d.ts#L81">port.d.ts:81</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Send a message to the worker or proxy worker.</p>
 								</div>
-								<p>Use case 1: From a worker proxy</p>
-								<pre><code><span class="hljs-comment">// Create a new SharedWorker and get the proxy worker</span>
-<span class="hljs-keyword">var</span> myProxyWorker = <span class="hljs-keyword">new</span> <span class="hljs-type">SharedWorker</span>(<span class="hljs-string">"backend/worker.js"</span>, <span class="hljs-string">"my-worker-name"</span>);
+								<h4 id="example-1-from-a-worker-proxy">Example 1: From a worker proxy</h4>
+								<pre><code class="lang-javascript"><span class="hljs-comment">// Create a new SharedWorker and get the proxy worker</span>
+<span class="hljs-keyword">var</span> myProxyWorker = <span class="hljs-keyword">new</span> SharedWorker(<span class="hljs-string">"backend/worker.js"</span>, <span class="hljs-string">"my-worker-name"</span>);
 <span class="hljs-comment">// Get the proxy worker port for communication</span>
 <span class="hljs-keyword">var</span> proxyWorkerPort = myProxyWorker.port;
 <span class="hljs-comment">// Send a "wake up" message to the worker</span>
 proxyWorkerPort.postMessage(<span class="hljs-string">'wake-up'</span>);
-</code></pre><p>Use case 2: From a worker</p>
-								<pre><code><span class="hljs-comment">// worker.js</span>
-onconnect = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">( msg )</span>
+</code></pre>
+								<h4 id="example-2-from-a-worker">Example 2: From a worker</h4>
+								<pre><code class="lang-javascript"><span class="hljs-comment">// worker.js</span>
+onconnect = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"> msg </span>)
 </span>{
     <span class="hljs-comment">// Get the worker port for communication with the worker proxy</span>
     <span class="hljs-keyword">var</span> workerPort = msg.ports[<span class="hljs-number">0</span>];
 
     <span class="hljs-comment">// Send a message to the worker proxy. The worker is up and running.</span>
-    workerPort.postMessage({type: <span class="hljs-string">'connected'</span>, says: <span class="hljs-string">'Hello world!'</span>});
+    workerPort.postMessage({<span class="hljs-attr">type</span>: <span class="hljs-string">'connected'</span>, <span class="hljs-attr">says</span>: <span class="hljs-string">'Hello world!'</span>});
 }
 </code></pre>
 							</div>

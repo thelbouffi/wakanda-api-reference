@@ -105,7 +105,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/7356c46/api/folder.d.ts#L3">folder.d.ts:3</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/1baef3c/api/folder.d.ts#L3">folder.d.ts:3</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -114,12 +114,13 @@
 									The folder does not have to exist.</p>
 								</div>
 								<h4 id="example-1-get-a-reference-to-an-existing-folder">Example 1: Get a reference to an existing folder</h4>
-								<pre><code><span class="hljs-keyword">var</span> myFolder = <span class="hljs-keyword">new</span> <span class="hljs-type">Folder</span>( <span class="hljs-string">'PROJECT/backend'</span> );
-console.log( myFolder.exists );
+								<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> myFolder = <span class="hljs-keyword">new</span> Folder( <span class="hljs-string">'PROJECT/backend'</span> );
+<span class="hljs-built_in">console</span>.log( myFolder.exists );
 <span class="hljs-comment">// true</span>
-</code></pre><h4 id="example-2-get-a-reference-to-a-missing-folder">Example 2: Get a reference to a missing folder</h4>
-								<pre><code><span class="hljs-keyword">var</span> myFolder = <span class="hljs-keyword">new</span> <span class="hljs-type">Folder</span>( <span class="hljs-string">'PROJECT/missing-folder'</span> );
-console.log( myFolder.exists );
+</code></pre>
+								<h4 id="example-2-get-a-reference-to-a-missing-folder">Example 2: Get a reference to a missing folder</h4>
+								<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> myFolder = <span class="hljs-keyword">new</span> Folder( <span class="hljs-string">'PROJECT/missing-folder'</span> );
+<span class="hljs-built_in">console</span>.log( myFolder.exists );
 <span class="hljs-comment">// false</span>
 </code></pre>
 							</div>
@@ -151,14 +152,14 @@ console.log( myFolder.exists );
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/7356c46/api/folder.d.ts#L37">folder.d.ts:37</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/1baef3c/api/folder.d.ts#L37">folder.d.ts:37</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Check if the path references a folder.</p>
 								</div>
-								<pre><code><span class="hljs-keyword">var</span> myIsFolder = Folder.isFolder( <span class="hljs-string">'PROJECT/backend'</span> );
+								<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> myIsFolder = Folder.isFolder( <span class="hljs-string">'PROJECT/backend'</span> );
 <span class="hljs-built_in">console</span>.log( myIsFolder );
 <span class="hljs-comment">// true</span>
 </code></pre>

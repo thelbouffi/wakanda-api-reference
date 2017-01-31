@@ -109,7 +109,7 @@ interface Core {
     /**
      * Create a valid UUID string.
      * 
-     * ```
+     * ```javascript
      * generateUUID();
      * // 9AE457F4B557BD7895AD4712345ABCDE
      * ```
@@ -136,7 +136,7 @@ interface Threads {
     /**
      * Ends the current thread.
      * 
-     * ```
+     * ```javascript
      * close();
      * ```
      */
@@ -144,7 +144,7 @@ interface Threads {
     /**
      * Exit pending `wait()` in the current thread. Does not impact pending `wait()` in other threads.
      * 
-     * ```
+     * ```javascript
      * exitWait();
      * ```
      */
@@ -169,7 +169,7 @@ interface Threads {
      * Require a SSJS module (CommonJS compliant).
      * This module must be defined in `PROJECT/backend/modules/`.
      * 
-     * ```
+     * ```javascript
      * // Get the module defined in PROJECT/backend/modules/mail
      * var mail = require('mail');
      * // Get the module defined in PROJECT/backend/modules/customers/platinium
@@ -184,7 +184,7 @@ interface Threads {
      * Require a NodeJS module.
      * This module must be defined in `PROJECT/backend/node_modules`.
      * 
-     * ```
+     * ```javascript
      * // Get the Node module defined in PROJECT/backend/node_modules/http
      * var http = requireNode('http'); 
      * ```
@@ -197,7 +197,7 @@ interface Threads {
     /**
      * Allows a thread to handle events and to continue to exist after the complete code executes.
      * 
-     * ```
+     * ```javascript
      * // Wait for 100ms
      * wait(100);
      * // Wait for the end of time
@@ -218,7 +218,7 @@ interface FileSystem {
     /**
      * Loads an image from its path.
      * 
-     * ```
+     * ```javascript
      * var myPict = loadImage( 'C:/images/tulips.jpg' );
      * var newPict = new ds.Pict();
       * newPict.name = 'Flower';
@@ -236,7 +236,7 @@ interface FileSystem {
     /**
      * Loads an image from a File object.
      * 
-     * ```
+     * ```javascript
      * var myFile = new File( 'C:/images/tulips.jpg' );
      * var myPict = loadImage(myFile);
      * var newPict = new ds.Pict();
@@ -255,7 +255,7 @@ interface FileSystem {
     /**
      * Loads the content of a text file from its path.
      * 
-     * ```
+     * ```javascript
      * var myQuote = loadText( 'c:/texts/under-the-red-sky.txt' );
      * var newSong = new ds.Quotes();
      * newSong.author = 'Bob Dylan';
@@ -271,7 +271,7 @@ interface FileSystem {
     /**
      * Loads the content of a text file from a File object.
      * 
-     * ```
+     * ```javascript
      * var myFile = new File( 'c:/texts/under-the-red-sky.txt' );
      * var myQuote = loadText( myFile );
      * var newSong = new ds.Quotes();
@@ -288,7 +288,7 @@ interface FileSystem {
     /**
      * Saves the text into a file.
      * 
-     * ```
+     * ```javascript
      * saveText( 'Hello World ! Here is my text saved.', 'C:/texts/chapter-1.txt' );
      * ```
      * 
@@ -300,7 +300,7 @@ interface FileSystem {
     /**
      * Saves the text into a file.
      * 
-     * ```
+     * ```javascript
      * var myFile = new File( 'C:/texts/chapter-1.txt' );
      * saveText( 'Hello World ! Here is my text saved.', myFile );
      * ```

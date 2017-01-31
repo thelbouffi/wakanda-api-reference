@@ -6,14 +6,14 @@ interface Folder {
      * The folder does not have to exist.
      * 
      * #### Example 1: Get a reference to an existing folder
-     * ```
+     * ```javascript
      * var myFolder = new Folder( 'PROJECT/backend' );
      * console.log( myFolder.exists );
      * // true
      * ```
      * 
      * #### Example 2: Get a reference to a missing folder
-     * ```
+     * ```javascript
      * var myFolder = new Folder( 'PROJECT/missing-folder' );
      * console.log( myFolder.exists );
      * // false
@@ -25,7 +25,7 @@ interface Folder {
     /**
      * Check if the path references a folder.
      * 
-     * ```
+     * ```javascript
      * var myIsFolder = Folder.isFolder( 'PROJECT/backend' );
      * console.log( myIsFolder );
      * // true
@@ -97,7 +97,7 @@ interface WAKFolderInstance {
     /**
      * Creates a new folder on disk.
      * 
-     * ```
+     * ```javascript
      * var myFolder = new Folder( 'PROJECT/backend/my-created-folder' );
      * var myResult = myFolder.create();
      * console.log( myResult );
@@ -112,7 +112,7 @@ interface WAKFolderInstance {
      * Calls `callback` function for each file at the first level of the folder.
      * 
      * #### Example 1: Basic usage
-     * ```
+     * ```javascript
      * var folder = new Folder( 'PROJECT/backend/' );
      * folder.forEachFile( function( file )
      * {
@@ -121,7 +121,7 @@ interface WAKFolderInstance {
      * ```
      * 
      * #### Example 2: Override `this`
-     * ```
+     * ```javascript
      * var folder = new Folder( 'PROJECT/backend/' );
      * folder.forEachFile( function( file )
      * {
@@ -140,7 +140,7 @@ interface WAKFolderInstance {
      * Calls `callback` function for each folder at the first level of the folder.
      * 
      * #### Example 1: Basic usage
-     * ```
+     * ```javascript
      * var folder = new Folder( 'PROJECT/backend/' );
      * folder.forEachFolder( function( folder )
      * {
@@ -149,7 +149,7 @@ interface WAKFolderInstance {
      * ```
      * 
      * #### Example 2: Override `this`
-     * ```
+     * ```javascript
      * var folder = new Folder( 'PROJECT/backend/' );
      * folder.forEachFolder( function( folder )
      * {
@@ -186,7 +186,7 @@ interface WAKFolderInstance {
      * Calls `callback` function for each file in the folder tree (first-level and sub-level folder).
      * 
      * #### Example 1: Basic usage
-     * ```
+     * ```javascript
      * var folder = new Folder( 'PROJECT/backend/' );
      * folder.parse( function( file, position, folder )
      * {
@@ -198,7 +198,7 @@ interface WAKFolderInstance {
      * ```
      * 
      * #### Example 2: Override `this`
-     * ```
+     * ```javascript
      * var folder = new Folder( 'PROJECT/backend/' );
      * folder.parse( function( file, position, folder )
      * {
@@ -227,7 +227,7 @@ interface WAKFolderInstance {
     /**
      * Rename the folder on disk.
      * 
-     * ````
+     * ```javascript
      * var myFolder = new Folder( 'PROJECT/backend/my-folder' );
      * // The folder must exists to be renamed
      * myFolder.create();

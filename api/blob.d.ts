@@ -5,7 +5,7 @@ interface Blob {
     /**
      * Creates a new blob.
      * 
-     * ```
+     * ```javascript
      * var myBlob = new Blob( 20 , 88, 'application/octet-stream');
      * var myString = myBlob.toString();
      * // XXXXXXXXXXXXXXXXXXXX
@@ -31,24 +31,24 @@ interface WAKBlobInstance {
      * Copies the blob into a file.
      * 
      * #### Example 1: Copy a blob
-     * ```
+     * ```javascript
      * var myBlob = new Blob( 20 ); 
      * myBlob.copyTo( 'PROJECT/backend/blob_copy.js' );
      * ```
      * or
-     * ```
+     * ```javascript
      * var myFile = new File( 'PROJECT/backend/blob_copy.js' );
      * var myBlob = new Blob( 20 ); 
      * myBlob.copyTo( myFile );
      * ```
      * 
      * #### Example 2: Copy a file
-     * ```
+     * ```javascript
      * var myFile = new File( 'PROJECT/backend/bootstrap.js' );
      * myFile.copyTo( 'PROJECT/backend/bootstrap_copy.js' );
      * ```
      * or
-     * ```
+     * ```javascript
      * var myFile = new File( 'PROJECT/backend/bootstrap.js' );
      * var myFileCopy = new File( 'PROJECT/backend/bootstrap_copy.js' );
      * myFile.copyTo( myFileCopy );
@@ -63,7 +63,7 @@ interface WAKBlobInstance {
      * Creates a new blob by referencing the contents of the bytes of the Blob to which it is applied, from start to end.
      * 
      * #### Example 1: Slice a blob
-     * ```
+     * ```javascript
      * var myBlob = new Blob( 20 , 88, 'application/octet-stream' );
      * console.log( myBlob.toString() );
      * // XXXXXXXXXXXXXXXXXXXX
@@ -73,7 +73,7 @@ interface WAKBlobInstance {
      * ```
      * 
      * #### Example 2: Slice a blob
-     * ```
+     * ```javascript
      * var myBlob = new Blob( 20 , 88, 'application/octet-stream' );
      * console.log( myBlob.toString() );
      * // XXXXXXXXXXXXXXXXXXXX
@@ -83,7 +83,7 @@ interface WAKBlobInstance {
      * ```
      * 
      * #### Example 3: Slice a file
-     * ```
+     * ```javascript
      * var myFile = new File( 'PROJECT/backend/bootstrap.js' );
      * var myBlobSlice = myFile.slice( 0, 100 );
      * console.log( myBlobSlice.toString() );

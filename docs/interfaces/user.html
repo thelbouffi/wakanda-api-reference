@@ -108,7 +108,7 @@
 					<div class="tsd-signature tsd-kind-icon">ID<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">String</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/7356c46/api/user.d.ts#L12">user.d.ts:12</a></li>
+							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/1baef3c/api/user.d.ts#L12">user.d.ts:12</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -123,7 +123,7 @@
 					<div class="tsd-signature tsd-kind-icon">full<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">String</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/7356c46/api/user.d.ts#L8">user.d.ts:8</a></li>
+							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/1baef3c/api/user.d.ts#L8">user.d.ts:8</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -138,7 +138,7 @@
 					<div class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">String</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/7356c46/api/user.d.ts#L16">user.d.ts:16</a></li>
+							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/1baef3c/api/user.d.ts#L16">user.d.ts:16</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -153,7 +153,7 @@
 					<div class="tsd-signature tsd-kind-icon">storage<span class="tsd-signature-symbol">:</span> <a href="lockablekeyvaluestorage.html" class="tsd-signature-type">LockableKeyValueStorage</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/7356c46/api/user.d.ts#L28">user.d.ts:28</a></li>
+							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/1baef3c/api/user.d.ts#L28">user.d.ts:28</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -161,9 +161,9 @@
 							<p>Defines the user storage object.
 							This object is maintained as long as the server is alive. It is not stored after the server shuts down. This property is user-related and not session-related.</p>
 						</div>
-						<pre><code>directory.currentUser.storage.setItem( <span class="hljs-string">'itemInBox'</span>, <span class="hljs-number">19</span> );
-<span class="hljs-keyword">var</span> <span class="hljs-keyword">result</span> = directory.currentUser.storage.getItem( <span class="hljs-string">'itemInBox'</span> );
-console.log(<span class="hljs-keyword">result</span>);
+						<pre><code class="lang-javascript">directory.currentUser.storage.setItem( <span class="hljs-string">'itemInBox'</span>, <span class="hljs-number">19</span> );
+<span class="hljs-keyword">var</span> result = directory.currentUser.storage.getItem( <span class="hljs-string">'itemInBox'</span> );
+<span class="hljs-built_in">console</span>.log(result);
 <span class="hljs-comment">// 19</span>
 </code></pre>
 					</div>
@@ -181,7 +181,7 @@ console.log(<span class="hljs-keyword">result</span>);
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/7356c46/api/user.d.ts#L34">user.d.ts:34</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/1baef3c/api/user.d.ts#L34">user.d.ts:34</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -214,14 +214,14 @@ console.log(<span class="hljs-keyword">result</span>);
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/7356c46/api/user.d.ts#L45">user.d.ts:45</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/1baef3c/api/user.d.ts#L45">user.d.ts:45</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Assignes a user to one or more groups.</p>
 								</div>
-								<pre><code><span class="hljs-selector-tag">myUser</span><span class="hljs-selector-class">.putInto</span>( <span class="hljs-string">'sales'</span>, <span class="hljs-string">'finance'</span> );
+								<pre><code class="lang-javascript">myUser.putInto( <span class="hljs-string">'sales'</span>, <span class="hljs-string">'finance'</span> );
 </code></pre>
 								<dl class="tsd-comment-tags">
 									<dt>warning</dt>
@@ -243,14 +243,14 @@ console.log(<span class="hljs-keyword">result</span>);
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/7356c46/api/user.d.ts#L58">user.d.ts:58</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/1baef3c/api/user.d.ts#L58">user.d.ts:58</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Assignes a user to one or more groups.</p>
 								</div>
-								<pre><code><span class="hljs-keyword">var</span> group1 = directory.<span class="hljs-keyword">group</span>( <span class="hljs-string">'finance'</span> );
+								<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> group1 = directory.group( <span class="hljs-string">'finance'</span> );
 <span class="hljs-keyword">var</span> group2 = directory.addGroup( <span class="hljs-string">'account'</span> );
 myUser.putInto( group1 , group2 )
 </code></pre>
@@ -283,7 +283,7 @@ myUser.putInto( group1 , group2 )
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/7356c46/api/user.d.ts#L63">user.d.ts:63</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/1baef3c/api/user.d.ts#L63">user.d.ts:63</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -311,14 +311,14 @@ myUser.putInto( group1 , group2 )
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/7356c46/api/user.d.ts#L74">user.d.ts:74</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/1baef3c/api/user.d.ts#L74">user.d.ts:74</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Removes the user from group list.</p>
 								</div>
-								<pre><code><span class="hljs-selector-tag">myUser</span><span class="hljs-selector-class">.removeFrom</span>( <span class="hljs-string">'sales'</span>, <span class="hljs-string">'finance'</span> );
+								<pre><code class="lang-javascript">myUser.removeFrom( <span class="hljs-string">'sales'</span>, <span class="hljs-string">'finance'</span> );
 </code></pre>
 								<dl class="tsd-comment-tags">
 									<dt>warning</dt>
@@ -340,14 +340,14 @@ myUser.putInto( group1 , group2 )
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/7356c46/api/user.d.ts#L87">user.d.ts:87</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/1baef3c/api/user.d.ts#L87">user.d.ts:87</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Removes the user from group list.</p>
 								</div>
-								<pre><code><span class="hljs-keyword">var</span> group1 = directory.<span class="hljs-keyword">group</span>( <span class="hljs-string">'finance'</span> );
+								<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> group1 = directory.group( <span class="hljs-string">'finance'</span> );
 <span class="hljs-keyword">var</span> group2 = directory.addGroup( <span class="hljs-string">'account'</span> );
 myUser.removeFrom( group1 , group2 )
 </code></pre>
@@ -380,7 +380,7 @@ myUser.removeFrom( group1 , group2 )
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/7356c46/api/user.d.ts#L93">user.d.ts:93</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/1baef3c/api/user.d.ts#L93">user.d.ts:93</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">

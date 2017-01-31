@@ -206,7 +206,7 @@ interface Core {
     /**
      * Create a valid UUID string.
      * 
-     * ```
+     * ```javascript
      * generateUUID();
      * // 9AE457F4B557BD7895AD4712345ABCDE
      * ```
@@ -233,7 +233,7 @@ interface Threads {
     /**
      * Ends the current thread.
      * 
-     * ```
+     * ```javascript
      * close();
      * ```
      */
@@ -241,7 +241,7 @@ interface Threads {
     /**
      * Exit pending `wait()` in the current thread. Does not impact pending `wait()` in other threads.
      * 
-     * ```
+     * ```javascript
      * exitWait();
      * ```
      */
@@ -266,7 +266,7 @@ interface Threads {
      * Require a SSJS module (CommonJS compliant).
      * This module must be defined in `PROJECT/backend/modules/`.
      * 
-     * ```
+     * ```javascript
      * // Get the module defined in PROJECT/backend/modules/mail
      * var mail = require('mail');
      * // Get the module defined in PROJECT/backend/modules/customers/platinium
@@ -281,7 +281,7 @@ interface Threads {
      * Require a NodeJS module.
      * This module must be defined in `PROJECT/backend/node_modules`.
      * 
-     * ```
+     * ```javascript
      * // Get the Node module defined in PROJECT/backend/node_modules/http
      * var http = requireNode('http'); 
      * ```
@@ -294,7 +294,7 @@ interface Threads {
     /**
      * Allows a thread to handle events and to continue to exist after the complete code executes.
      * 
-     * ```
+     * ```javascript
      * // Wait for 100ms
      * wait(100);
      * // Wait for the end of time
@@ -315,7 +315,7 @@ interface FileSystem {
     /**
      * Loads an image from its path.
      * 
-     * ```
+     * ```javascript
      * var myPict = loadImage( 'C:/images/tulips.jpg' );
      * var newPict = new ds.Pict();
       * newPict.name = 'Flower';
@@ -333,7 +333,7 @@ interface FileSystem {
     /**
      * Loads an image from a File object.
      * 
-     * ```
+     * ```javascript
      * var myFile = new File( 'C:/images/tulips.jpg' );
      * var myPict = loadImage(myFile);
      * var newPict = new ds.Pict();
@@ -352,7 +352,7 @@ interface FileSystem {
     /**
      * Loads the content of a text file from its path.
      * 
-     * ```
+     * ```javascript
      * var myQuote = loadText( 'c:/texts/under-the-red-sky.txt' );
      * var newSong = new ds.Quotes();
      * newSong.author = 'Bob Dylan';
@@ -368,7 +368,7 @@ interface FileSystem {
     /**
      * Loads the content of a text file from a File object.
      * 
-     * ```
+     * ```javascript
      * var myFile = new File( 'c:/texts/under-the-red-sky.txt' );
      * var myQuote = loadText( myFile );
      * var newSong = new ds.Quotes();
@@ -385,7 +385,7 @@ interface FileSystem {
     /**
      * Saves the text into a file.
      * 
-     * ```
+     * ```javascript
      * saveText( 'Hello World ! Here is my text saved.', 'C:/texts/chapter-1.txt' );
      * ```
      * 
@@ -397,7 +397,7 @@ interface FileSystem {
     /**
      * Saves the text into a file.
      * 
-     * ```
+     * ```javascript
      * var myFile = new File( 'C:/texts/chapter-1.txt' );
      * saveText( 'Hello World ! Here is my text saved.', myFile );
      * ```
@@ -437,8 +437,21 @@ interface BinaryStream {
     /**
      * Creates a new BinaryStream object.
      * 
-     * #### Example 1: Use BinarySteam with File
+     * ```javascript
+     * var readstream = new BinaryStream( 'PROJECT/backend/logs/HTTPServer.waLog' );
+     * console.log( '[chunck] '+ readstream.getBuffer(1000).toString() );
+     * // Important to close the stream after every use to release the referenced file
+     * readstream.close();
      * ```
+     * 
+     * @param binary Describes the binary to read/write.
+     * @param readMode (default: `read`) `Write` if in write mode, `Read` otherwise.
+     */
+    new (binary: String, readMode?: String): WAKBinaryStreamInstance;
+    /**
+     * Creates a new BinaryStream object.
+     * 
+     * ```javascript
      * var myFile = new File( 'PROJECT/backend/logs/HTTPServer.waLog' );
      * var readstream = new BinaryStream( myFile );
      * console.log( '[chunck] '+ readstream.getBuffer(1000).toString() );
@@ -446,8 +459,14 @@ interface BinaryStream {
      * readstream.close();
      * ```
      * 
-     * #### Example 2: Use BinarySteam with Socket
-     * ```
+     * @param binary Describes the binary to read/write.
+     * @param readMode (default: `read`) `Write` if in write mode, `Read` otherwise.
+     */
+    new (binary: WAKFileInstance, readMode?: String): WAKBinaryStreamInstance;
+    /**
+     * Creates a new BinaryStream object.
+     * 
+     * ```javascript
      * var net = require( 'net' );
      * // Use a synchronous socket for demo
      * var socket = net.connectSync( 25, 'smtp.gmail.com');
@@ -480,9 +499,18 @@ interface BinaryStream {
      * @param readMode (default: `read`) `Write` if in write mode, `Read` otherwise.
      * @param timeOut Defines the socket millisecond timeout
      */
-    new (binary: String, readMode?: String): WAKBinaryStreamInstance;
-    new (binary: WAKFileInstance, readMode?: String): WAKBinaryStreamInstance;
     new (binary: Socket, readMode?: String, timeOut?: Number): WAKBinaryStreamInstance;
+    /**
+     * Creates a new BinaryStream object
+     * 
+     * ```javascript
+     * 
+     * ```
+     * 
+     * @param binary Describes the binary to read/write.
+     * @param readMode (default: `read`) `Write` if in write mode, `Read` otherwise.
+     * @param timeOut Defines the socket millisecond timeout
+     */
     new (binary: SocketSync, readMode?: String, timeOut?: Number): WAKBinaryStreamInstance;
 }
 
@@ -494,7 +522,7 @@ interface WAKBinaryStreamInstance {
     /**
      * Closes the file referenced in the BinaryStream object.
      * 
-     * ```
+     * ```javascript
      * var myFile = new File( 'PROJECT/backend/logs/HTTPServer.waLog' );
      * var readstream = new BinaryStream( myFile );
      * // Important to close the stream after every use to release the referenced file
@@ -593,7 +621,7 @@ interface Blob {
     /**
      * Creates a new blob.
      * 
-     * ```
+     * ```javascript
      * var myBlob = new Blob( 20 , 88, 'application/octet-stream');
      * var myString = myBlob.toString();
      * // XXXXXXXXXXXXXXXXXXXX
@@ -619,24 +647,24 @@ interface WAKBlobInstance {
      * Copies the blob into a file.
      * 
      * #### Example 1: Copy a blob
-     * ```
+     * ```javascript
      * var myBlob = new Blob( 20 ); 
      * myBlob.copyTo( 'PROJECT/backend/blob_copy.js' );
      * ```
      * or
-     * ```
+     * ```javascript
      * var myFile = new File( 'PROJECT/backend/blob_copy.js' );
      * var myBlob = new Blob( 20 ); 
      * myBlob.copyTo( myFile );
      * ```
      * 
      * #### Example 2: Copy a file
-     * ```
+     * ```javascript
      * var myFile = new File( 'PROJECT/backend/bootstrap.js' );
      * myFile.copyTo( 'PROJECT/backend/bootstrap_copy.js' );
      * ```
      * or
-     * ```
+     * ```javascript
      * var myFile = new File( 'PROJECT/backend/bootstrap.js' );
      * var myFileCopy = new File( 'PROJECT/backend/bootstrap_copy.js' );
      * myFile.copyTo( myFileCopy );
@@ -651,7 +679,7 @@ interface WAKBlobInstance {
      * Creates a new blob by referencing the contents of the bytes of the Blob to which it is applied, from start to end.
      * 
      * #### Example 1: Slice a blob
-     * ```
+     * ```javascript
      * var myBlob = new Blob( 20 , 88, 'application/octet-stream' );
      * console.log( myBlob.toString() );
      * // XXXXXXXXXXXXXXXXXXXX
@@ -661,7 +689,7 @@ interface WAKBlobInstance {
      * ```
      * 
      * #### Example 2: Slice a blob
-     * ```
+     * ```javascript
      * var myBlob = new Blob( 20 , 88, 'application/octet-stream' );
      * console.log( myBlob.toString() );
      * // XXXXXXXXXXXXXXXXXXXX
@@ -671,7 +699,7 @@ interface WAKBlobInstance {
      * ```
      * 
      * #### Example 3: Slice a file
-     * ```
+     * ```javascript
      * var myFile = new File( 'PROJECT/backend/bootstrap.js' );
      * var myBlobSlice = myFile.slice( 0, 100 );
      * console.log( myBlobSlice.toString() );
@@ -696,7 +724,7 @@ interface Buffer {
     /**
      * Creates a new buffer.
      * 
-     * ```
+     * ```javascript
      * var myBufferInstance = new Buffer( 16*1024 );
      * var myBufferInstance = new Buffer( 16*1024, 'utf8' );
      * ```
@@ -709,7 +737,7 @@ interface Buffer {
      * Returns the string byte length.
      * Byte length may change depending of the encoding type.
      * 
-     * ```
+     * ```javascript
      * var myByteLength = Buffer.byteLength( 'Hello Buffer World !' );
      * console.log(myByteLength);
      * // 20
@@ -723,14 +751,14 @@ interface Buffer {
      * Checks if the object is a buffer.
      * 
      * #### Example 1: Is my string a buffer ?
-     * ```
+     * ```javascript
      * var isBuffer = Buffer.isBuffer( 'Hello Buffer World !' );
      * console.log( isBuffer );
      * // false
      * ```
      * 
      * #### Example 2: Is my blob a buffer ?
-     * ```
+     * ```javascript
      * var myBlob = new Blob();
      * var isBuffer = Buffer.isBuffer( myBlob );
      * console.log( isBuffer );
@@ -738,7 +766,7 @@ interface Buffer {
      * ```
      * 
      * #### Example 3: Is my buffer a buffer ?
-     * ```
+     * ```javascript
      * var myBuffer = new Buffer( '20' );
      * var isBuffer = Buffer.isBuffer( myBuffer );
      * console.log( isBuffer );
@@ -759,7 +787,7 @@ interface WAKBufferInstance {
     /**
      * Copies the current buffer into the target buffer.
      * 
-     * ```
+     * ```javascript
      * b1 = new Buffer(26);
      * b2 = new Buffer(26);
      * for (var i = 0 ; i < 26 ; i++) {
@@ -1035,7 +1063,7 @@ interface WAKConnectionSessionInfo {
     /**
      * Get logged messages.
      * 
-     * ```
+     * ```javascript
      * var lastLogs = console.content.join('\n');
      * ```
      */
@@ -1049,7 +1077,7 @@ interface WAKConnectionSessionInfo {
     /**
      * Writes message to the log file and the debugger's console.
      * 
-     * ```
+     * ```javascript
      * console.log('Hello World!');
      * // Hello World!
      * console.log("I'm %d years old.", userAge);
@@ -1623,7 +1651,7 @@ interface WAKDirectory {
     /**
      * Create a new user session and sets it as the current session.
      * 
-     * ```
+     * ```javascript
      * var cur = currentSession();
      * console.log( cur.ID );
      * // BF44D6E51B8FAKE485D8966ED3EDF6DD
@@ -1665,7 +1693,7 @@ interface WAKDirectory {
     /**
      * Add a new group to the directory and returns it.
      * 
-     * ```
+     * ```javascript
      * var myNewGroup = directory.addGroup( 'astronauts' );
      * ```
      * 
@@ -1677,7 +1705,7 @@ interface WAKDirectory {
     /**
      * Add a new user to the directory and returns it.
      * 
-     * ```
+     * ```javascript
      * var myNewUser = directory.addUser( 'Thomas Pesquet' );
      * ```
      * 
@@ -1695,7 +1723,7 @@ interface WAKDirectory {
     /**
      * Returns all directory groups starting with `filterString`.
      * 
-     * ```
+     * ```javascript
      * var myGroups = directory.filterGroups( '*pers' );
      * ```
      * 
@@ -1706,7 +1734,7 @@ interface WAKDirectory {
     /**
      * Returns all directory users starting with `filterString`.
      * 
-     * ```
+     * ```javascript
      * var myUsers = directory.filterUsers("Jo*");
      * ```
      * 
@@ -1717,7 +1745,7 @@ interface WAKDirectory {
     /**
      * Get an active session object from a session id.
      * 
-     * ```
+     * ```javascript
      * var previousSession = getSession( 'BF44D6E51B8FAKE485D8966ED3EDF6DD' );
      * ```
      * 
@@ -1728,7 +1756,7 @@ interface WAKDirectory {
     // /**
     //  * Get all active user sessions.
     //  * 
-    //  * ```
+    //  * ```javascript
     //  * // Get all active user session
     //  * var sessionArray = getUserSessions();
     //  * ```
@@ -1739,7 +1767,7 @@ interface WAKDirectory {
     // /**
     //  * Get all active user sessions for a user ID.
     //  * 
-    //  * ```
+    //  * ```javascript
     //  * // Get all active user session for the current user
     //  * var sessionArray = getUserSessions( currentSession().user.ID );
     //  * ```
@@ -1751,7 +1779,7 @@ interface WAKDirectory {
     // /**
     //  * Get all active user sessions for a user.
     //  * 
-    //  * ```
+    //  * ```javascript
     //  * // Get all active user session for the current user
     //  * var sessionArray = getUserSessions( currentSession().user );
     //  * ```
@@ -1773,7 +1801,7 @@ interface WAKDirectory {
     /**
      * Gets a group from its name or ID.
      * 
-     * ```
+     * ```javascript
      * var myGroup = directory.group( 'Spies' );
      * ```
      * 
@@ -1784,7 +1812,7 @@ interface WAKDirectory {
     /**
      * Authenticates a user by their name and key and, in case of success, opens a new user Session on the server.
      * 
-     * ```
+     * ```javascript
      * loginByKey('john', '6153A6FA0E4880D9B8D0BE4720F78E895265D0A9');
      * loginByKey('john', '6153A6FA0E4880D9B8D0BE4720F78E895265D0A9', 60*60);
      * ```
@@ -1798,7 +1826,7 @@ interface WAKDirectory {
     /**
      * Authenticates a user by their name and password and, in case of success, opens a new user Session on the server.
      * 
-     * ```
+     * ```javascript
      * loginByPassword('john', 'my-password');
      * loginByPassword('john', 'my-password', 60*60);
      * ```
@@ -1812,7 +1840,7 @@ interface WAKDirectory {
     /**
      * Logs out the user from its current session on the Wakanda server.
      * 
-     * ```
+     * ```javascript
      * logout();
      * ```
      * 
@@ -1822,7 +1850,7 @@ interface WAKDirectory {
     /**
      * Saves all changes made in the directory.
      * 
-     * ```
+     * ```javascript
      * directory.save();
      * directory.save( 'PROJECT/backups/2016-01-01.waDirectory' );
      * ```
@@ -1835,7 +1863,7 @@ interface WAKDirectory {
     /**
      * Saves all changes made in the directory.
      * 
-     * ```
+     * ```javascript
      * var myFile = new File( 'PROJECT/backups/2016-01-01.waDirectory' );
      * directory.save( myFile );
      * ```
@@ -1848,7 +1876,7 @@ interface WAKDirectory {
     /**
      * Sets the session whose UUID is passed in sessionID as the new current session of the running thread.
      * 
-     * ```
+     * ```javascript
      * console.log(directory.currentSession.ID);
      * // 2EA82764A075497181278B2F05DA2EDA
      * setCurrentSession('E8CBA745124D4BE4BF7D5A224183EC8E', true);
@@ -1866,7 +1894,7 @@ interface WAKDirectory {
     /**
      * Handles and manages sessions through a SSJS module.
      * 
-     * ```
+     * ```javascript
      * // Usually defined in a boostrap file
      * directory.setSessionManager( 'session' );
      * // Refers to PROJECT/backend/modules/session/index.js module
@@ -1874,7 +1902,7 @@ interface WAKDirectory {
      * 
      * The module must export the following methods to handle all session operations:
      * 
-     * ```
+     * ```javascript
      * // PROJECT/backend/modules/session/index.js
      * // This session manager saves all session in the storage (could be a Redis instead)
      * 
@@ -1927,7 +1955,7 @@ interface WAKDirectory {
     /**
      * Defines a module to manage all login requests to Wakanda Server.
      * 
-     * ```
+     * ```javascript
      * directory.setLoginManager('my-login-module');
      * directory.setLoginManager('my-login-module', 'myDirectoryGroup');
      * ```
@@ -1936,7 +1964,7 @@ interface WAKDirectory {
      * If the module is not found in the project, it is then check inside the solution.
      * It must export a `login()` method and return the `user` object.
      * 
-     * ```
+     * ```javascript
      * // my-login-module/index.js
      * // Export a login() function
      * exports.login = function(username, password){
@@ -1984,7 +2012,7 @@ interface WAKDirectory {
     /**
      * Gets a user from its name or ID.
      * 
-     * ```
+     * ```javascript
      * var myUser = directory.user( 'Thomas Pesquet' );
      * ```
      * 
@@ -2002,14 +2030,14 @@ interface File {
      * The file does not have to exist.
      * 
      * #### Example 1: Get a reference to an existing file
-     * ```
+     * ```javascript
      * var myFile = new File( 'PROJECT/backend/bootstrap.js' );
      * console.log( myFile.exists );
      * // true
      * ```
      * 
      * #### Example 2: Get a reference to a missing file
-     * ```
+     * ```javascript
      * var myFile = new File( 'PROJECT/backend/file-to-create.js' );
      * console.log( myFile.exists );
      * // false
@@ -2023,7 +2051,7 @@ interface File {
      * The file does not have to exist.
      * 
      * #### Example 1: Get a reference to an existing file
-     * ```
+     * ```javascript
      * var myFolder = new Folder( 'PROJECT/backend/' );
      * var myFile = new File( myFolder, 'bootstrap.js' );
      * console.log( myFile.exists );
@@ -2031,7 +2059,7 @@ interface File {
      * ```
      * 
      * #### Example 2: Get a reference to a missing file
-     * ```
+     * ```javascript
      * var myFolder = new Folder( 'PROJECT/backend/' );
      * var myFile = new File( myFolder, 'file-to-create.js' );
      * console.log( myFile.exists );
@@ -2045,7 +2073,7 @@ interface File {
     /**
      * Check if the path references a file.
      * 
-     * ```
+     * ```javascript
      * var myIsFile = File.isFile( 'PROJECT/backend/bootstrap.js' );
      * console.log( myIsFile );
      * // true
@@ -2105,7 +2133,7 @@ interface WAKFileInstance extends WAKBlobInstance {
     /**
      * Creates a new file on disk.
      * 
-     * ```
+     * ```javascript
      * var myFile = new File( 'PROJECT/backend/my-created-file.js' );
      * var myResult = myFile.create();
      * console.log( myResult );
@@ -2133,7 +2161,7 @@ interface WAKFileInstance extends WAKBlobInstance {
     /**
      * Moves the file to the specified destination.
      * 
-     * ```
+     * ```javascript
      * var myFile = new File( 'PROJECT/backend/my-file.js' );
      * myFile.create();
      * myFile.moveTo( 'PROJECT/my-moved-file.js', yes );
@@ -2150,7 +2178,7 @@ interface WAKFileInstance extends WAKBlobInstance {
     /**
      * Moves the file to the specified destination.
      * 
-     * ```
+     * ```javascript
      * var mySourceFile = new File( 'PROJECT/backend/my-file.js' );
      * var myDestinationFile = new File( 'PROJECT/my-moved-file.js' );
      * // The file must exists to be renamed
@@ -2175,7 +2203,7 @@ interface WAKFileInstance extends WAKBlobInstance {
     /**
      * Rename the file on disk.
      * 
-     * ````
+     * ```javascript
      * var myFile = new File( 'PROJECT/backend/my-file.js' );
      * // The file must exists to be renamed
      * myFile.create();
@@ -2214,14 +2242,14 @@ interface Folder {
      * The folder does not have to exist.
      * 
      * #### Example 1: Get a reference to an existing folder
-     * ```
+     * ```javascript
      * var myFolder = new Folder( 'PROJECT/backend' );
      * console.log( myFolder.exists );
      * // true
      * ```
      * 
      * #### Example 2: Get a reference to a missing folder
-     * ```
+     * ```javascript
      * var myFolder = new Folder( 'PROJECT/missing-folder' );
      * console.log( myFolder.exists );
      * // false
@@ -2233,7 +2261,7 @@ interface Folder {
     /**
      * Check if the path references a folder.
      * 
-     * ```
+     * ```javascript
      * var myIsFolder = Folder.isFolder( 'PROJECT/backend' );
      * console.log( myIsFolder );
      * // true
@@ -2305,7 +2333,7 @@ interface WAKFolderInstance {
     /**
      * Creates a new folder on disk.
      * 
-     * ```
+     * ```javascript
      * var myFolder = new Folder( 'PROJECT/backend/my-created-folder' );
      * var myResult = myFolder.create();
      * console.log( myResult );
@@ -2320,7 +2348,7 @@ interface WAKFolderInstance {
      * Calls `callback` function for each file at the first level of the folder.
      * 
      * #### Example 1: Basic usage
-     * ```
+     * ```javascript
      * var folder = new Folder( 'PROJECT/backend/' );
      * folder.forEachFile( function( file )
      * {
@@ -2329,7 +2357,7 @@ interface WAKFolderInstance {
      * ```
      * 
      * #### Example 2: Override `this`
-     * ```
+     * ```javascript
      * var folder = new Folder( 'PROJECT/backend/' );
      * folder.forEachFile( function( file )
      * {
@@ -2348,7 +2376,7 @@ interface WAKFolderInstance {
      * Calls `callback` function for each folder at the first level of the folder.
      * 
      * #### Example 1: Basic usage
-     * ```
+     * ```javascript
      * var folder = new Folder( 'PROJECT/backend/' );
      * folder.forEachFolder( function( folder )
      * {
@@ -2357,7 +2385,7 @@ interface WAKFolderInstance {
      * ```
      * 
      * #### Example 2: Override `this`
-     * ```
+     * ```javascript
      * var folder = new Folder( 'PROJECT/backend/' );
      * folder.forEachFolder( function( folder )
      * {
@@ -2394,7 +2422,7 @@ interface WAKFolderInstance {
      * Calls `callback` function for each file in the folder tree (first-level and sub-level folder).
      * 
      * #### Example 1: Basic usage
-     * ```
+     * ```javascript
      * var folder = new Folder( 'PROJECT/backend/' );
      * folder.parse( function( file, position, folder )
      * {
@@ -2406,7 +2434,7 @@ interface WAKFolderInstance {
      * ```
      * 
      * #### Example 2: Override `this`
-     * ```
+     * ```javascript
      * var folder = new Folder( 'PROJECT/backend/' );
      * folder.parse( function( file, position, folder )
      * {
@@ -2435,7 +2463,7 @@ interface WAKFolderInstance {
     /**
      * Rename the folder on disk.
      * 
-     * ````
+     * ```javascript
      * var myFolder = new Folder( 'PROJECT/backend/my-folder' );
      * // The folder must exists to be renamed
      * myFolder.create();
@@ -2472,7 +2500,7 @@ interface Group {
     /**
      * Returns all children directory groups starting with `filterString`.
      * 
-     * ```
+     * ```javascript
      * var myABCDEFG;
      * var myGroups = directory.filterChildren("*cien");
      * ```
@@ -2485,7 +2513,7 @@ interface Group {
     /**
      * Returns all children directory groups starting with `filterString`.
      * 
-     * ```
+     * ```javascript
      * var myGroups = directory.filterParents("*cien");
      * ```
      * 
@@ -2512,7 +2540,7 @@ interface Group {
     /**
      * Assignes a group to one or more groups.
      * 
-     * ```
+     * ```javascript
      * myGroup.putInto( 'sales' );
      * ```
      * 
@@ -2523,7 +2551,7 @@ interface Group {
     /**
      * Assignes a group to one or more groups.
      * 
-     * ```
+     * ```javascript
      * var SalesGroup = directory.group( 'sales' ); 
      * myGroup.putInto( SalesGroup );
      * ```
@@ -2540,7 +2568,7 @@ interface Group {
     /**
      * Removes the group from group list.
      * 
-     * ```
+     * ```javascript
      * myGroup.removeFrom( 'sales', 'finance' );
      * ```
      * 
@@ -2551,7 +2579,7 @@ interface Group {
     /**
      * Removes the group from group list.
      * 
-     * ```
+     * ```javascript
      * var group1 = directory.group( 'finance' ); 
      * var group2 = directory.addGroup( 'account' );
       * myGroup.removeFrom( group1 , group2 )
@@ -2611,7 +2639,7 @@ interface HttpServer {
      * It is recommended to write all request handler in the `bootstrap.js` file in order to be available at server start up.
      * 
      * #### Example 1: Add a request handler
-     * ```
+     * ```javascript
      * // It is recommended to write these lines in bootstrap.js
      * // On every "/ping" requests, call "hello()" function in "request-greetings.js"
      * httpServer.addRequestHandler('^/ping$', 'request-greetings.js', 'pong');
@@ -2622,7 +2650,7 @@ interface HttpServer {
      * @param functionName Function name which handles the request and returns the request response
      * 
      * #### Example 2: Handle the request
-     * ```
+     * ```javascript
      * // request-greetings.js
      * function pong( request, response ){
      *     return 'pong';
@@ -2635,7 +2663,7 @@ interface HttpServer {
      * It is recommended to write all websocket handler in the `bootstrap.js` file in order to be available at server start up.
      * 
      * #### Example 1: Add a websocket handler
-     * ```
+     * ```javascript
      * // It is recommended to write these lines in bootstrap.js
      * httpServer.addWebSocketHandler('^/ping$', './backend/websocket-greetings.js', 'websocket-id', true);
      * ```
@@ -2644,7 +2672,7 @@ interface HttpServer {
      * @param filePath Absolute or relative path from the project to the file that defines the websocket handler. Filesystem are not working in filePath parameter (`PROJECT`, `SOLUTION`, ...).
      * 
      * #### Example 2: Handle the websocket
-     * ```
+     * ```javascript
      * // ./backend/websocket-greetings.js
      * // Same as for ShareWorker
      * // Called every time a new websocket is connected
@@ -2685,7 +2713,7 @@ interface HttpServer {
     /**
      * Removes an existing request handler function on the server.
      * 
-     * ```
+     * ```javascript
      * // Must match parameters of "addRequestHandler()"
      * // httpServer.addRequestHandler('^/ping$', 'request-greetings.js', 'pong');
      * httpServer.removeRequestHandler('^/ping$', 'request-greetings.js', 'pong');
@@ -2699,7 +2727,7 @@ interface HttpServer {
     /**
      * Removes an existing websocket handler on the server.
      * 
-     * ```
+     * ```javascript
      * // Must match socketID parameter of "addWebSocketHandler()"
      * // httpServer.addWebSocketHandler('^/ping$', 'backend/websocket-greetings.js', 'websocket-id', true);
      * httpServer.httpServer.removeWebSocketHandler( 'websocket-id' );
@@ -2894,12 +2922,12 @@ interface Image {
      * Stores the image object in a file.
      * 
      * #### Example 1: Basic usage
-     * ```
+     * ```javascript
      * var myImage = loadImage( 'PROJECT/backend/my-image.jpg' );
      * myImage.save( 'PROJECT/backend/my-saved-image.jpg' );
      * ```
      * #### Example 2: Save image in another format
-     * ```
+     * ```javascript
      * var myImage = loadImage( 'PROJECT/backend/my-image.jpg' );
      * myImage.save( 'PROJECT/backend/my-png-image.png', 'image/png' );
      * ```
@@ -2913,13 +2941,13 @@ interface Image {
      * Stores the image object in a file.
      * 
      * #### Example 1: Basic usage
-     * ```
+     * ```javascript
      * var myFile = new File( 'PROJECT/backend/my-saved-image.jpg' );
      * var myImage = loadImage( 'PROJECT/backend/my-image.jpg' );
      * myImage.save( myFile );
      * ```
      * #### Example 2: Save image in another format
-     * ```
+     * ```javascript
      * var myFile = new File( 'PROJECT/backend/my-png-image.png' );
      * var myImage = loadImage( 'PROJECT/backend/my-image.jpg' );
      * myImage.save( myFile, 'image/png' );
@@ -2933,7 +2961,7 @@ interface Image {
     /**
      * Updates the image metadata.
      * 
-     * ```
+     * ```javascript
      * var myImage = loadImage( 'PROJECT/backend/my-image.jpg' );
      * var newMeta = { IPTC: { Keywords: ['vacation', 'snow']}};
      * myImage.saveMeta( newMeta );
@@ -2956,14 +2984,14 @@ interface Image {
      * Returns a thumbnail of the source image.
      * 
      * #### Example 1: Basic usage
-     * ```
+     * ```javascript
      * var myImage = loadImage( 'PROJECT/backend/my-image.jpg' );
      * var myThumbnail = myImage.thumbnail( 50, 50 );
      * myThumbnail.save( 'PROJECT/backend/my-thumbnail.jpg' );
      * ```
      * 
      * #### Example 2: Change thumbnail mode
-     * ```
+     * ```javascript
      * var myImage = loadImage( 'PROJECT/backend/my-image.jpg' );
      * var myThumbnail = myImage.thumbnail( 50, 50, 2 );
      * myThumbnail.save( 'PROJECT/backend/my-thumbnail.jpg' );
@@ -3086,7 +3114,7 @@ interface Mutex {
      * Mutex allows to control code execution order and to prevent conflicts in a multi-thread application.
      * It provides a way to pause execution in one thread until a condition is met in another.
      * 
-     * ```
+     * ```javascript
      * // Creates/gets the "writeMutex" mutex available in all threads
      * var writeMutex = Mutex('writeMutex');
      * ```
@@ -3100,7 +3128,7 @@ interface WAKMutexProxy {
     /**
      * Locks the mutex or wait until it has been released to lock it; the thread execution is paused until then.
      * 
-     * ```
+     * ```javascript
      * var writeMutex = Mutex('writeMutex');
      * writeMutex.lock();
      * ```
@@ -3111,7 +3139,7 @@ interface WAKMutexProxy {
     /**
      * Tries to lock the mutex or returns false if it is already locked. The thread execution is not paused.
      * 
-     * ```
+     * ```javascript
      * var writeMutex = Mutex('writeMutex');
      * writeMutex.tryLock();
      * ```
@@ -3122,7 +3150,7 @@ interface WAKMutexProxy {
     /**
      * Unlock the mutex. The mutex must be lock in the same thread to be unlock.
      * 
-     * ```
+     * ```javascript
      * var writeMutex = Mutex('writeMutex');
      * writeMutex.lock();
      * writeMutex.unlock();
@@ -3138,39 +3166,39 @@ interface WAKMutexProxy {
  * 
  * Callback to trigger when a new caller creates a NodeWorker proxy object.
  * 
- * ```
+ * ```javascript
  * onconnect: Function;
  * ```
  * 
  * Get port to communicate with the worker proxy.
  * Always use `ports[0]`.
  * 
- * ```
+ * ```javascript
  * ports: Array<Port>;
  * ```
  * 
  * Close the worker.
  * 
- * ```
+ * ```javascript
  * close() : void;
  * ```
  * 
  * Allows a thread to handle events and to continue to exist after the complete code executes.
  * @warning There is an implicit `wait()` in worker. No need to add another.
  * 
- * ```
+ * ```javascript
  * wait(timeout?: Number) : Boolean;
  * ```
  * 
  * Requires a node module. This module should be defined in `PROJECT/node_modules`
  * 
- * ```
+ * ```javascript
  * var myModule = requireNode('module');
  * ```
  * 
  * Worker example
  * 
- * ```
+ * ```javascript
  * // Describes the content of the worker.js file
  * // Called when a new worker is created
  * onconnect = function( msg )
@@ -3215,7 +3243,7 @@ interface NodeWorker {
      * Creates a new node worker in its own thread if it does not exist yet. Then it returns a proxy object to communicate with the node worker thread.
      * Node workers can be addressed from any thread, they are uniquely identified by their path and name.
      * 
-     * ```
+     * ```javascript
      * // "worker.js" is defined in PROJECT/backend/worker.js
      * var myWorkerProxy = new NodeWorker( 'backend/worker.js', 'my-worker-name' );
      * ```
@@ -3231,7 +3259,7 @@ interface WAKNodeWorkerProxy {
     /**
      * Use the proxy port to communicate with the node worker thread.
      * 
-     * ```
+     * ```javascript
      * // Create a new NodeWorker and get the proxy worker
      * var myWorkerProxy = new NodeWorker( 'backend/worker.js', 'my-worker-name' );
      * // Get the proxy worker port for communication
@@ -3246,7 +3274,7 @@ interface WAKNodeWorkerProxy {
     /**
      * Listen for worker or proxy worker errors.
      * 
-     * ```
+     * ```javascript
      * workerPort.onerror = function( error )
      * {
      *    // We've got an error !
@@ -3263,7 +3291,7 @@ interface WAKNodeWorkerProxy {
     /**
      * Listen for worker or proxy worker messages.
      * 
-     * ```
+     * ```javascript
      * workerPort.onmessage = function( message )
      * {
      *     // We've got a message !
@@ -3296,8 +3324,8 @@ interface WAKNodeWorkerProxy {
     /**
      * Send a message to the worker or proxy worker.
      * 
-     * Use case 1: From a worker proxy
-     * ```
+     * #### Example 1: From a worker proxy
+     * ```javascript
      * // Create a new SharedWorker and get the proxy worker
      * var myProxyWorker = new SharedWorker("backend/worker.js", "my-worker-name");
      * // Get the proxy worker port for communication
@@ -3306,8 +3334,8 @@ interface WAKNodeWorkerProxy {
      * proxyWorkerPort.postMessage('wake-up');
      * ```
      * 
-     * Use case 2: From a worker
-     * ```
+     * #### Example 2: From a worker
+     * ```javascript
      * // worker.js
      * onconnect = function( msg )
      * {
@@ -3363,39 +3391,39 @@ interface WAKNodeWorkerProxy {
  * 
  * Callback to trigger when a new caller creates a SharedWorker proxy object.
  * 
- * ```
+ * ```javascript
  * onconnect: Function;
  * ```
  * 
  * Get port to communicate with the worker proxy.
  * Always use `ports[0]`.
  * 
- * ```
+ * ```javascript
  * ports: Array<Port>;
  * ```
  * 
  * Close the worker.
  * 
- * ```
+ * ```javascript
  * close() : void;
  * ```
  * 
  * Allows a thread to handle events and to continue to exist after the complete code executes.
  * @warning There is an implicit `wait()` in worker. No need to add another.
  * 
- * ```
+ * ```javascript
  * wait(timeout?: Number) : Boolean;
  * ```
  * 
  * Requires a SSJS module. This module should be defined in `PROJECT/backend/modules`
  * 
- * ```
+ * ```javascript
  * var myModule = require('module');
  * ```
  *
  * Worker example
  * 
- * ```
+ * ```javascript
  * // Describes the content of the worker.js file
  * // Called when a new worker is created
  * onconnect = function( msg )
@@ -3440,7 +3468,7 @@ interface SharedWorker {
      * Creates a new shared worker in its own thread if it does not exist yet. Then it returns a proxy object to communicate with the shared worker thread.
      * Shared workers can be addressed from any thread, they are uniquely identified by their path and name.
      * 
-     * ```
+     * ```javascript
      * // "worker.js" is defined in PROJECT/backend/worker.js
      * var myWorkerProxy = new SharedWorker( 'backend/worker.js', 'my-worker-name' );
      * ```
@@ -3456,7 +3484,7 @@ interface WAKSharedWorkerProxy {
     /**
      * Use the proxy port to communicate with the share worker thread.
      * 
-     * ```
+     * ```javascript
      * // Create a new SharedWorker and get the proxy worker
      * var myWorkerProxy = new SharedWorker( 'backend/worker.js', 'my-worker-name' );
      * // Get the proxy worker port for communication
@@ -3590,7 +3618,7 @@ interface SystemWorker {
      * Use the system worker proxy to get the result.
      * 
      * #### Example 1: Do a simple CLI command
-     * ```
+     * ```javascript
      * var workerProxy = new SystemWorker( 'sh -c ls -la /Users/<user>/Desktop' );
      * workerProxy.onerror = function ( event ) {      
      *     console.log( event.type +': '+ event.data );
@@ -3607,7 +3635,7 @@ interface SystemWorker {
      * ```
      * 
      * #### Example 2: Pass parameters, quotes and env variables options to the system worker
-     * ```
+     * ```javascript
      * var myFolder = new Folder( 'PROJECT/backend' );
      * var options = {
      *     parameters : { folder_ref : myFolder },
@@ -3628,7 +3656,7 @@ interface SystemWorker {
      * Use the system worker proxy to get the result.
      * 
      * #### Example 1: Do a simple CLI command
-     * ```
+     * ```javascript
      * var workerProxy = new SystemWorker( ['sh', '-c', 'ls -la /Users/<user>/Desktop'] );
      * workerProxy.onerror = function ( event ) {      
      *     console.log( event.type +': '+ event.data );
@@ -3645,7 +3673,7 @@ interface SystemWorker {
      * ```
      * 
      * #### Example 2: Pass parameters, quotes and env variables options to the system worker
-     * ```
+     * ```javascript
      * var myFolder = new Folder( 'PROJECT/backend' );
      * var options = {
      *     parameters : { folder_ref : myFolder },
@@ -3666,14 +3694,14 @@ interface SystemWorker {
      * Use the system worker proxy to get the result.
      * 
      * #### Example 1: Do a simple CLI command
-     * ```
+     * ```javascript
      * // Launch "sh" executable with "-c" parameter and "ls -la /Users/<user>/Desktop" as the action to do
      * var workerResult = SystemWorker.exec( 'sh -c ls -la /Users/<user>/Desktop' );
      * console.log(workerResult.output.toString());
      * ```
      * 
      * #### Example 2: Get the result and display the ouput
-     * ```
+     * ```javascript
      * // Launch "git" executable with "--version" parameter
      * // Store the result (Buffer) in a variable
      * var workerResult = SystemWorker.exec( 'git --version' );
@@ -3681,14 +3709,14 @@ interface SystemWorker {
      * ```
      * 
      * #### Example 3: Pass root folder options to the system worker
-     * ```
+     * ```javascript
      * var options = { folder: '/Users/yann/Desktop' };
      * var workerResult = SystemWorker.exec( 'sh -c ls -la', options);
      * console.log(workerResult.output.toString());
      * ```
      * 
      * #### Example 4: Pass parameters, quotes and env variables options to the system worker
-     * ```
+     * ```javascript
      * var myFolder = new Folder( 'PROJECT/backend' );
      * var options = {
      *     parameters : { folder_ref : myFolder },
@@ -3709,14 +3737,14 @@ interface SystemWorker {
      * Calls to system worker and waits for its response (synchronous mode).
      * 
      * #### Example 1: Do a simple CLI command
-     * ```
+     * ```javascript
      * // Launch "sh" executable with "-c" parameter and "ls -la /Users/<user>/Desktop" as the action to do
      * var workerResult = SystemWorker.exec( ['sh', '-c', 'ls -la /Users/<user>/Desktop'] );
      * console.log(workerResult.output.toString());
      * ```
      * 
      * #### Example 2: Get the result and display the ouput
-     * ```
+     * ```javascript
      * // Launch "git" executable with "--version" parameter
      * // Store the result (Buffer) in a variable
      * var workerResult = SystemWorker.exec( ['git', '--version'] );
@@ -3724,14 +3752,14 @@ interface SystemWorker {
      * ```
      * 
      * #### Example 3: Pass root folder options to the system worker
-     * ```
+     * ```javascript
      * var options = { folder: '/Users/yann/Desktop' };
      * var workerResult = SystemWorker.exec( ['sh', '-c', 'ls -la'], options);
      * console.log(workerResult.output.toString());
      * ```
      * 
      * #### Example 4: Pass parameters, quotes and env variables options to the system worker
-     * ```
+     * ```javascript
      * var myFolder = new Folder( 'PROJECT/backend' );
      * var options = {
      *     parameters : { folder_ref : myFolder },
@@ -3823,7 +3851,7 @@ interface WAKSystemWorkerProxy {
     /**
      * Callback for system worker errors.
      * 
-     *```
+     *```javascript
      * // Receives an error
      * workerProxy.onerror = function ( event ) {      
      *     console.log( event.type +': '+ event.data );
@@ -3835,7 +3863,7 @@ interface WAKSystemWorkerProxy {
      * Callback for system worker messages.
      * The message can be sent into multiple chunks.
      *
-     *```
+     *```javascript
      * // Receives a message chunck
      * workerProxy.onmessage = function ( event ) {      
      *     console.log( event.type +': '+ event.data );
@@ -3846,7 +3874,7 @@ interface WAKSystemWorkerProxy {
     /**
      * Callback when the external process is terminating.
      * 
-     * ```
+     * ```javascript
      * // Receives an "end" event from system worker
      * workerProxy.onterminated = function ( event ) {
      *     console.log( event.type +': with exitStatus:'+ event.exitStatus );
@@ -3858,7 +3886,7 @@ interface WAKSystemWorkerProxy {
      * Closes the input stream (stdin) of the external process. 
      * Useful when an attempt to write in the stdin of the external process with `postMessage()` is stuck. `endOfInput()` will release the execution.
      * 
-     * ```
+     * ```javascript
      * // Create some data to gzip
      * var input = new Buffer( 'abcde', 'ascii' );
      * // Create an asynchronous system worker
@@ -3877,7 +3905,7 @@ interface WAKSystemWorkerProxy {
     /**
      * Write on the input stream (stdin) of the external process.
      * 
-     * ```
+     * ```javascript
      * // Create an asynchronous system worker
      * var worker = new SystemWorker( 'gzip' );
      * // Send the compressed file on stdin.
@@ -3889,7 +3917,7 @@ interface WAKSystemWorkerProxy {
     /**
      * Write on the input stream (stdin) of the external process.
      * 
-     * ```
+     * ```javascript
      * // Create some data to gzip
      * var input = new Buffer( 'abcde', 'ascii' );
      * // Create an asynchronous system worker
@@ -3903,7 +3931,7 @@ interface WAKSystemWorkerProxy {
     /**
      * Set the type of data exchanged in the SystemWorker through the onmessage and onerror properties.
      * 
-     * ```
+     * ```javascript
      * workerProxy.setBinary(true);
      * ```
      * 
@@ -3913,7 +3941,7 @@ interface WAKSystemWorkerProxy {
     /**
      * Forces the system worker to terminate its execution.
      * 
-     * ```
+     * ```javascript
      * workerProxy.terminate();
      * workerProxy.terminate(true, true);
      * ```
@@ -3925,7 +3953,7 @@ interface WAKSystemWorkerProxy {
     /**
      * Wait for the end of the system worker execution.
      * 
-     * ```
+     * ```javascript
      * workerProxy.wait(1000);
      * workerProxy.wait();
      * ```
@@ -3941,7 +3969,7 @@ interface TextStream {
     /**
      * Creates a textStream.
      * 
-     * ```
+     * ```javascript
      * // The file does not have to exist
      * var myStream = new TextStream( 'PROJECT/backend/my-streamed-file.js', 'write' );
      * // Creates the file if it does not exist
@@ -3958,7 +3986,7 @@ interface TextStream {
     /**
      * Creates a textStream.
      * 
-     * ```
+     * ```javascript
      * // The file does not have to exist
      * var myFile = new File( 'PROJECT/backend/my-streamed-file.js' );
      * var myStream = new TextStream( file, 'write' );
@@ -3979,7 +4007,7 @@ interface WAKTextStreamInstance {
     /**
      * Closes the file referenced in the TextStream object.
      * 
-     * ```
+     * ```javascript
      * var myFile = new File( 'PROJECT/backend/my-streamed-file.js' );
      * var myStream = new TextStream( file, 'write' );
      * myStream.write( 'Hello '+ Date.now() +' !\n' );
@@ -3991,7 +4019,7 @@ interface WAKTextStreamInstance {
     /**
      * Checks if the the cursor position is after the last character of the file referenced in the TextStream object.
      * 
-     * ```
+     * ```javascript
      * var myStream = new TextStream( 'PROJECT/backend/bootstrap.js', 'Read' );
      * // Is end of file reached ?
      * while( !myStream.end() ){
@@ -4011,7 +4039,7 @@ interface WAKTextStreamInstance {
     /**
      * Get the current cursor position in the text stream.
      * 
-     * ```
+     * ```javascript
      * var myStream = new TextStream( 'PROJECT/backend/bootstrap.js', 'Read' );
      * while( !myStream.end() ){
      *     myStream.read( 10 );
@@ -4026,7 +4054,7 @@ interface WAKTextStreamInstance {
     /**
      * Get the current text stream size.
      * 
-     * ```
+     * ```javascript
      * var myStream = new TextStream( 'PROJECT/backend/bootstrap.js', 'Read' );
      * console.log( myStream.getSize() );
      * // 183
@@ -4038,7 +4066,7 @@ interface WAKTextStreamInstance {
     /**
      * Reads bytes from the text stream.
      * 
-     * ```
+     * ```javascript
      * var myStream = new TextStream( 'PROJECT/backend/bootstrap.js', 'Read' );
      * while( !myStream.end() ){
      *     // Read the next 10 bytes and moves the cursor position accordingly
@@ -4054,7 +4082,7 @@ interface WAKTextStreamInstance {
     /**
      * Set the cursor position to the beginning of the TextStream.
      * 
-     * ```
+     * ```javascript
      * var myStream = new TextStream( 'PROJECT/backend/bootstrap.js', 'Read' );
      * console.log( 'Start: '+ myStream.getPos() );
      * myStream.read(20);
@@ -4069,7 +4097,7 @@ interface WAKTextStreamInstance {
     /**
      * Writes the text in the TextStream.
      * 
-     * ```
+     * ```javascript
      * var myFile = new File( 'PROJECT/backend/my-streamed-file.js' );
      * var myStream = new TextStream( file, 'write' );
      * myStream.write( 'Hello '+ Date.now() +' !\n' );
@@ -4100,7 +4128,7 @@ interface User {
      * Defines the user storage object.
      * This object is maintained as long as the server is alive. It is not stored after the server shuts down. This property is user-related and not session-related.
      * 
-     * ```
+     * ```javascript
      * directory.currentUser.storage.setItem( 'itemInBox', 19 );
      * var result = directory.currentUser.storage.getItem( 'itemInBox' );
      * console.log(result);
@@ -4117,7 +4145,7 @@ interface User {
     /**
      * Assignes a user to one or more groups.
      * 
-     * ```
+     * ```javascript
      * myUser.putInto( 'sales', 'finance' );
      * ```
      * 
@@ -4128,7 +4156,7 @@ interface User {
     /**
      * Assignes a user to one or more groups.
      * 
-     * ```
+     * ```javascript
      * var group1 = directory.group( 'finance' ); 
      * var group2 = directory.addGroup( 'account' );
       * myUser.putInto( group1 , group2 )
@@ -4146,7 +4174,7 @@ interface User {
     /**
      * Removes the user from group list.
      * 
-     * ```
+     * ```javascript
      * myUser.removeFrom( 'sales', 'finance' );
      * ```
      * 
@@ -4157,7 +4185,7 @@ interface User {
     /**
      * Removes the user from group list.
      * 
-     * ```
+     * ```javascript
      * var group1 = directory.group( 'finance' ); 
      * var group2 = directory.addGroup( 'account' );
      * myUser.removeFrom( group1 , group2 )
@@ -4179,7 +4207,7 @@ interface XMLHttpRequest {
     /**
      * Creates a XMLHttpRequest (XHR).
      * 
-     * ```
+     * ```javascript
      * var xhr = new XMLHttpRequest();
      * 
      * // XHR event handler. 
@@ -4263,7 +4291,7 @@ interface XMLHttpRequest {
      * Sends the XHR opened request.
      * 
      * #### Example 1: Basic usage
-     * ```
+     * ```javascript
      * var xhr = new XMLHttpRequest();
      * xhr.open( 'GET', 'http://127.0.0.1:8081/rest/$info' );
      * xhr.send();
@@ -4271,7 +4299,7 @@ interface XMLHttpRequest {
      * 
      * #### Example 2: Upload file
      * See [doc center](http://doc.wakanda.org/home2.en.html#/HTTP-REST/Interacting-with-the-Server/upload.303-1158401.en.html) for more details about upload
-     * ```
+     * ```javascript
      * var xhr = new XMLHttpRequest();
      * xhr.open('PUT', 'http://127.0.0.1:8081/rest/$upload?$rawPict=true');
      * xhr.setRequestHeader( 'Content-Type', 'image/jpeg' );
@@ -4293,7 +4321,7 @@ interface XMLHttpRequest {
      * Sends the XHR opened request.
      * 
      * #### Example 1: Basic usage
-     * ```
+     * ```javascript
      * var xhr = new XMLHttpRequest();
      * xhr.open( 'GET', 'http://127.0.0.1:8081/rest/$info' );
      * xhr.send();
@@ -4301,7 +4329,7 @@ interface XMLHttpRequest {
      * 
      * #### Example 2: Upload file
      * See [doc center](http://doc.wakanda.org/home2.en.html#/HTTP-REST/Interacting-with-the-Server/upload.303-1158401.en.html) for more details about upload
-     * ```
+     * ```javascript
      * var myFile = new File( 'PROJECT/backend/my-image.jpg' );
      * var xhr = new XMLHttpRequest();
      * xhr.open('PUT', 'http://127.0.0.1:8081/rest/$upload?$rawPict=true');
@@ -4329,7 +4357,7 @@ interface XMLHttpRequest {
     /**
      * Set the value of a specific header field of the XMLHttpRequest.
      * 
-     * ```
+     * ```javascript
      * var xhr = new XMLHttpRequest();
      * xhr.open('GET', 'http://127.0.0.1:8081/rest/$info');
      * xhr.setRequestHeader('X-Test', 'one');

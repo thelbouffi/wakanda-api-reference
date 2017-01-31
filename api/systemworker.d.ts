@@ -7,7 +7,7 @@ interface SystemWorker {
      * Use the system worker proxy to get the result.
      * 
      * #### Example 1: Do a simple CLI command
-     * ```
+     * ```javascript
      * var workerProxy = new SystemWorker( 'sh -c ls -la /Users/<user>/Desktop' );
      * workerProxy.onerror = function ( event ) {      
      *     console.log( event.type +': '+ event.data );
@@ -24,7 +24,7 @@ interface SystemWorker {
      * ```
      * 
      * #### Example 2: Pass parameters, quotes and env variables options to the system worker
-     * ```
+     * ```javascript
      * var myFolder = new Folder( 'PROJECT/backend' );
      * var options = {
      *     parameters : { folder_ref : myFolder },
@@ -45,7 +45,7 @@ interface SystemWorker {
      * Use the system worker proxy to get the result.
      * 
      * #### Example 1: Do a simple CLI command
-     * ```
+     * ```javascript
      * var workerProxy = new SystemWorker( ['sh', '-c', 'ls -la /Users/<user>/Desktop'] );
      * workerProxy.onerror = function ( event ) {      
      *     console.log( event.type +': '+ event.data );
@@ -62,7 +62,7 @@ interface SystemWorker {
      * ```
      * 
      * #### Example 2: Pass parameters, quotes and env variables options to the system worker
-     * ```
+     * ```javascript
      * var myFolder = new Folder( 'PROJECT/backend' );
      * var options = {
      *     parameters : { folder_ref : myFolder },
@@ -83,14 +83,14 @@ interface SystemWorker {
      * Use the system worker proxy to get the result.
      * 
      * #### Example 1: Do a simple CLI command
-     * ```
+     * ```javascript
      * // Launch "sh" executable with "-c" parameter and "ls -la /Users/<user>/Desktop" as the action to do
      * var workerResult = SystemWorker.exec( 'sh -c ls -la /Users/<user>/Desktop' );
      * console.log(workerResult.output.toString());
      * ```
      * 
      * #### Example 2: Get the result and display the ouput
-     * ```
+     * ```javascript
      * // Launch "git" executable with "--version" parameter
      * // Store the result (Buffer) in a variable
      * var workerResult = SystemWorker.exec( 'git --version' );
@@ -98,14 +98,14 @@ interface SystemWorker {
      * ```
      * 
      * #### Example 3: Pass root folder options to the system worker
-     * ```
+     * ```javascript
      * var options = { folder: '/Users/yann/Desktop' };
      * var workerResult = SystemWorker.exec( 'sh -c ls -la', options);
      * console.log(workerResult.output.toString());
      * ```
      * 
      * #### Example 4: Pass parameters, quotes and env variables options to the system worker
-     * ```
+     * ```javascript
      * var myFolder = new Folder( 'PROJECT/backend' );
      * var options = {
      *     parameters : { folder_ref : myFolder },
@@ -126,14 +126,14 @@ interface SystemWorker {
      * Calls to system worker and waits for its response (synchronous mode).
      * 
      * #### Example 1: Do a simple CLI command
-     * ```
+     * ```javascript
      * // Launch "sh" executable with "-c" parameter and "ls -la /Users/<user>/Desktop" as the action to do
      * var workerResult = SystemWorker.exec( ['sh', '-c', 'ls -la /Users/<user>/Desktop'] );
      * console.log(workerResult.output.toString());
      * ```
      * 
      * #### Example 2: Get the result and display the ouput
-     * ```
+     * ```javascript
      * // Launch "git" executable with "--version" parameter
      * // Store the result (Buffer) in a variable
      * var workerResult = SystemWorker.exec( ['git', '--version'] );
@@ -141,14 +141,14 @@ interface SystemWorker {
      * ```
      * 
      * #### Example 3: Pass root folder options to the system worker
-     * ```
+     * ```javascript
      * var options = { folder: '/Users/yann/Desktop' };
      * var workerResult = SystemWorker.exec( ['sh', '-c', 'ls -la'], options);
      * console.log(workerResult.output.toString());
      * ```
      * 
      * #### Example 4: Pass parameters, quotes and env variables options to the system worker
-     * ```
+     * ```javascript
      * var myFolder = new Folder( 'PROJECT/backend' );
      * var options = {
      *     parameters : { folder_ref : myFolder },
@@ -240,7 +240,7 @@ interface WAKSystemWorkerProxy {
     /**
      * Callback for system worker errors.
      * 
-     *```
+     *```javascript
      * // Receives an error
      * workerProxy.onerror = function ( event ) {      
      *     console.log( event.type +': '+ event.data );
@@ -252,7 +252,7 @@ interface WAKSystemWorkerProxy {
      * Callback for system worker messages.
      * The message can be sent into multiple chunks.
      *
-     *```
+     *```javascript
      * // Receives a message chunck
      * workerProxy.onmessage = function ( event ) {      
      *     console.log( event.type +': '+ event.data );
@@ -263,7 +263,7 @@ interface WAKSystemWorkerProxy {
     /**
      * Callback when the external process is terminating.
      * 
-     * ```
+     * ```javascript
      * // Receives an "end" event from system worker
      * workerProxy.onterminated = function ( event ) {
      *     console.log( event.type +': with exitStatus:'+ event.exitStatus );
@@ -275,7 +275,7 @@ interface WAKSystemWorkerProxy {
      * Closes the input stream (stdin) of the external process. 
      * Useful when an attempt to write in the stdin of the external process with `postMessage()` is stuck. `endOfInput()` will release the execution.
      * 
-     * ```
+     * ```javascript
      * // Create some data to gzip
      * var input = new Buffer( 'abcde', 'ascii' );
      * // Create an asynchronous system worker
@@ -294,7 +294,7 @@ interface WAKSystemWorkerProxy {
     /**
      * Write on the input stream (stdin) of the external process.
      * 
-     * ```
+     * ```javascript
      * // Create an asynchronous system worker
      * var worker = new SystemWorker( 'gzip' );
      * // Send the compressed file on stdin.
@@ -306,7 +306,7 @@ interface WAKSystemWorkerProxy {
     /**
      * Write on the input stream (stdin) of the external process.
      * 
-     * ```
+     * ```javascript
      * // Create some data to gzip
      * var input = new Buffer( 'abcde', 'ascii' );
      * // Create an asynchronous system worker
@@ -320,7 +320,7 @@ interface WAKSystemWorkerProxy {
     /**
      * Set the type of data exchanged in the SystemWorker through the onmessage and onerror properties.
      * 
-     * ```
+     * ```javascript
      * workerProxy.setBinary(true);
      * ```
      * 
@@ -330,7 +330,7 @@ interface WAKSystemWorkerProxy {
     /**
      * Forces the system worker to terminate its execution.
      * 
-     * ```
+     * ```javascript
      * workerProxy.terminate();
      * workerProxy.terminate(true, true);
      * ```
@@ -342,7 +342,7 @@ interface WAKSystemWorkerProxy {
     /**
      * Wait for the end of the system worker execution.
      * 
-     * ```
+     * ```javascript
      * workerProxy.wait(1000);
      * workerProxy.wait();
      * ```

@@ -102,46 +102,17 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/7356c46/api/binarystream.d.ts#L6">binarystream.d.ts:6</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/1baef3c/api/binarystream.d.ts#L6">binarystream.d.ts:6</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Creates a new BinaryStream object.</p>
 								</div>
-								<h4 id="example-1-use-binarysteam-with-file">Example 1: Use BinarySteam with File</h4>
-								<pre><code><span class="hljs-keyword">var</span> myFile = <span class="hljs-keyword">new</span> <span class="hljs-type">File</span>( <span class="hljs-string">'PROJECT/backend/logs/HTTPServer.waLog'</span> );
-<span class="hljs-keyword">var</span> readstream = <span class="hljs-keyword">new</span> <span class="hljs-type">BinaryStream</span>( myFile );
-console.log( <span class="hljs-string">'[chunck] '</span>+ readstream.getBuffer(<span class="hljs-number">1000</span>).toString() );
+								<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> readstream = <span class="hljs-keyword">new</span> BinaryStream( <span class="hljs-string">'PROJECT/backend/logs/HTTPServer.waLog'</span> );
+<span class="hljs-built_in">console</span>.log( <span class="hljs-string">'[chunck] '</span>+ readstream.getBuffer(<span class="hljs-number">1000</span>).toString() );
 <span class="hljs-comment">// Important to close the stream after every use to release the referenced file</span>
 readstream.close();
-</code></pre><h4 id="example-2-use-binarysteam-with-socket">Example 2: Use BinarySteam with Socket</h4>
-								<pre><code><span class="hljs-keyword">var</span> net = require( <span class="hljs-string">'net'</span> );
-<span class="hljs-comment">// Use a synchronous socket for demo</span>
-<span class="hljs-keyword">var</span> socket = net.connectSync( <span class="hljs-number">25</span>, <span class="hljs-string">'smtp.gmail.com'</span>);
-<span class="hljs-comment">// Create a read BinaryStrean</span>
-<span class="hljs-keyword">var</span> readstream = <span class="hljs-keyword">new</span> <span class="hljs-type">BinaryStream</span>( socket, <span class="hljs-string">'Read'</span>, <span class="hljs-number">300</span> );
-<span class="hljs-comment">// Create a read BinaryStrean</span>
-<span class="hljs-keyword">var</span> writestream = <span class="hljs-keyword">new</span> <span class="hljs-type">BinaryStream</span>( socket, <span class="hljs-string">'Write'</span>, <span class="hljs-number">500</span> );
-<span class="hljs-comment">// Get first statement from Gmail</span>
-console.log( <span class="hljs-string">'[CONNECTED] '</span>+ readstream.getBuffer(<span class="hljs-number">1000</span>).toString() );
-<span class="hljs-comment">// 220 smtp.gmail.com ESMTP y80sm15252285wrb.12 - gsmtp</span>
-
-<span class="hljs-comment">// Send greetings to Gmail</span>
-writestream.putBuffer( <span class="hljs-keyword">new</span> <span class="hljs-type">Buffer</span>(<span class="hljs-string">'EHLO smtp.gmail.com\r\n'</span>) );
-<span class="hljs-comment">// Get greetings from Gmail + service details</span>
-console.log( <span class="hljs-string">'[EHLO] '</span>+ readstream.getBuffer(<span class="hljs-number">1000</span>).toString() );
-<span class="hljs-comment">// 250-smtp.gmail.com at your service, [195.68.52.79]</span>
-<span class="hljs-comment">// 250-SIZE 35882577</span>
-<span class="hljs-comment">// 250-8BITMIME</span>
-<span class="hljs-comment">// 250-STARTTLS</span>
-<span class="hljs-comment">// 250-ENHANCEDSTATUSCODES</span>
-<span class="hljs-comment">// 250-PIPELINING</span>
-<span class="hljs-comment">// 250-CHUNKING</span>
-<span class="hljs-comment">// 250 SMTPUTF8</span>
-<span class="hljs-comment">// Important to close the stream after every use to release the referenced socket</span>
-readstream.close();
-writestream.close();
 </code></pre>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -168,46 +139,18 @@ writestream.close();
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/7356c46/api/binarystream.d.ts#L53">binarystream.d.ts:53</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/1baef3c/api/binarystream.d.ts#L20">binarystream.d.ts:20</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Creates a new BinaryStream object.</p>
 								</div>
-								<h4 id="example-1-use-binarysteam-with-file">Example 1: Use BinarySteam with File</h4>
-								<pre><code><span class="hljs-keyword">var</span> myFile = <span class="hljs-keyword">new</span> <span class="hljs-type">File</span>( <span class="hljs-string">'PROJECT/backend/logs/HTTPServer.waLog'</span> );
-<span class="hljs-keyword">var</span> readstream = <span class="hljs-keyword">new</span> <span class="hljs-type">BinaryStream</span>( myFile );
-console.log( <span class="hljs-string">'[chunck] '</span>+ readstream.getBuffer(<span class="hljs-number">1000</span>).toString() );
+								<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> myFile = <span class="hljs-keyword">new</span> File( <span class="hljs-string">'PROJECT/backend/logs/HTTPServer.waLog'</span> );
+<span class="hljs-keyword">var</span> readstream = <span class="hljs-keyword">new</span> BinaryStream( myFile );
+<span class="hljs-built_in">console</span>.log( <span class="hljs-string">'[chunck] '</span>+ readstream.getBuffer(<span class="hljs-number">1000</span>).toString() );
 <span class="hljs-comment">// Important to close the stream after every use to release the referenced file</span>
 readstream.close();
-</code></pre><h4 id="example-2-use-binarysteam-with-socket">Example 2: Use BinarySteam with Socket</h4>
-								<pre><code><span class="hljs-keyword">var</span> net = require( <span class="hljs-string">'net'</span> );
-<span class="hljs-comment">// Use a synchronous socket for demo</span>
-<span class="hljs-keyword">var</span> socket = net.connectSync( <span class="hljs-number">25</span>, <span class="hljs-string">'smtp.gmail.com'</span>);
-<span class="hljs-comment">// Create a read BinaryStrean</span>
-<span class="hljs-keyword">var</span> readstream = <span class="hljs-keyword">new</span> <span class="hljs-type">BinaryStream</span>( socket, <span class="hljs-string">'Read'</span>, <span class="hljs-number">300</span> );
-<span class="hljs-comment">// Create a read BinaryStrean</span>
-<span class="hljs-keyword">var</span> writestream = <span class="hljs-keyword">new</span> <span class="hljs-type">BinaryStream</span>( socket, <span class="hljs-string">'Write'</span>, <span class="hljs-number">500</span> );
-<span class="hljs-comment">// Get first statement from Gmail</span>
-console.log( <span class="hljs-string">'[CONNECTED] '</span>+ readstream.getBuffer(<span class="hljs-number">1000</span>).toString() );
-<span class="hljs-comment">// 220 smtp.gmail.com ESMTP y80sm15252285wrb.12 - gsmtp</span>
-
-<span class="hljs-comment">// Send greetings to Gmail</span>
-writestream.putBuffer( <span class="hljs-keyword">new</span> <span class="hljs-type">Buffer</span>(<span class="hljs-string">'EHLO smtp.gmail.com\r\n'</span>) );
-<span class="hljs-comment">// Get greetings from Gmail + service details</span>
-console.log( <span class="hljs-string">'[EHLO] '</span>+ readstream.getBuffer(<span class="hljs-number">1000</span>).toString() );
-<span class="hljs-comment">// 250-smtp.gmail.com at your service, [195.68.52.79]</span>
-<span class="hljs-comment">// 250-SIZE 35882577</span>
-<span class="hljs-comment">// 250-8BITMIME</span>
-<span class="hljs-comment">// 250-STARTTLS</span>
-<span class="hljs-comment">// 250-ENHANCEDSTATUSCODES</span>
-<span class="hljs-comment">// 250-PIPELINING</span>
-<span class="hljs-comment">// 250-CHUNKING</span>
-<span class="hljs-comment">// 250 SMTPUTF8</span>
-<span class="hljs-comment">// Important to close the stream after every use to release the referenced socket</span>
-readstream.close();
-writestream.close();
 </code></pre>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -234,35 +177,28 @@ writestream.close();
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/7356c46/api/binarystream.d.ts#L54">binarystream.d.ts:54</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/1baef3c/api/binarystream.d.ts#L35">binarystream.d.ts:35</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Creates a new BinaryStream object.</p>
 								</div>
-								<h4 id="example-1-use-binarysteam-with-file">Example 1: Use BinarySteam with File</h4>
-								<pre><code><span class="hljs-keyword">var</span> myFile = <span class="hljs-keyword">new</span> <span class="hljs-type">File</span>( <span class="hljs-string">'PROJECT/backend/logs/HTTPServer.waLog'</span> );
-<span class="hljs-keyword">var</span> readstream = <span class="hljs-keyword">new</span> <span class="hljs-type">BinaryStream</span>( myFile );
-console.log( <span class="hljs-string">'[chunck] '</span>+ readstream.getBuffer(<span class="hljs-number">1000</span>).toString() );
-<span class="hljs-comment">// Important to close the stream after every use to release the referenced file</span>
-readstream.close();
-</code></pre><h4 id="example-2-use-binarysteam-with-socket">Example 2: Use BinarySteam with Socket</h4>
-								<pre><code><span class="hljs-keyword">var</span> net = require( <span class="hljs-string">'net'</span> );
+								<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> net = <span class="hljs-built_in">require</span>( <span class="hljs-string">'net'</span> );
 <span class="hljs-comment">// Use a synchronous socket for demo</span>
 <span class="hljs-keyword">var</span> socket = net.connectSync( <span class="hljs-number">25</span>, <span class="hljs-string">'smtp.gmail.com'</span>);
 <span class="hljs-comment">// Create a read BinaryStrean</span>
-<span class="hljs-keyword">var</span> readstream = <span class="hljs-keyword">new</span> <span class="hljs-type">BinaryStream</span>( socket, <span class="hljs-string">'Read'</span>, <span class="hljs-number">300</span> );
+<span class="hljs-keyword">var</span> readstream = <span class="hljs-keyword">new</span> BinaryStream( socket, <span class="hljs-string">'Read'</span>, <span class="hljs-number">300</span> );
 <span class="hljs-comment">// Create a read BinaryStrean</span>
-<span class="hljs-keyword">var</span> writestream = <span class="hljs-keyword">new</span> <span class="hljs-type">BinaryStream</span>( socket, <span class="hljs-string">'Write'</span>, <span class="hljs-number">500</span> );
+<span class="hljs-keyword">var</span> writestream = <span class="hljs-keyword">new</span> BinaryStream( socket, <span class="hljs-string">'Write'</span>, <span class="hljs-number">500</span> );
 <span class="hljs-comment">// Get first statement from Gmail</span>
-console.log( <span class="hljs-string">'[CONNECTED] '</span>+ readstream.getBuffer(<span class="hljs-number">1000</span>).toString() );
+<span class="hljs-built_in">console</span>.log( <span class="hljs-string">'[CONNECTED] '</span>+ readstream.getBuffer(<span class="hljs-number">1000</span>).toString() );
 <span class="hljs-comment">// 220 smtp.gmail.com ESMTP y80sm15252285wrb.12 - gsmtp</span>
 
 <span class="hljs-comment">// Send greetings to Gmail</span>
-writestream.putBuffer( <span class="hljs-keyword">new</span> <span class="hljs-type">Buffer</span>(<span class="hljs-string">'EHLO smtp.gmail.com\r\n'</span>) );
+writestream.putBuffer( <span class="hljs-keyword">new</span> Buffer(<span class="hljs-string">'EHLO smtp.gmail.com\r\n'</span>) );
 <span class="hljs-comment">// Get greetings from Gmail + service details</span>
-console.log( <span class="hljs-string">'[EHLO] '</span>+ readstream.getBuffer(<span class="hljs-number">1000</span>).toString() );
+<span class="hljs-built_in">console</span>.log( <span class="hljs-string">'[EHLO] '</span>+ readstream.getBuffer(<span class="hljs-number">1000</span>).toString() );
 <span class="hljs-comment">// 250-smtp.gmail.com at your service, [195.68.52.79]</span>
 <span class="hljs-comment">// 250-SIZE 35882577</span>
 <span class="hljs-comment">// 250-8BITMIME</span>
@@ -308,46 +244,14 @@ writestream.close();
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/7356c46/api/binarystream.d.ts#L55">binarystream.d.ts:55</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/1baef3c/api/binarystream.d.ts#L72">binarystream.d.ts:72</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Creates a new BinaryStream object.</p>
+									<p>Creates a new BinaryStream object</p>
 								</div>
-								<h4 id="example-1-use-binarysteam-with-file">Example 1: Use BinarySteam with File</h4>
-								<pre><code><span class="hljs-keyword">var</span> myFile = <span class="hljs-keyword">new</span> <span class="hljs-type">File</span>( <span class="hljs-string">'PROJECT/backend/logs/HTTPServer.waLog'</span> );
-<span class="hljs-keyword">var</span> readstream = <span class="hljs-keyword">new</span> <span class="hljs-type">BinaryStream</span>( myFile );
-console.log( <span class="hljs-string">'[chunck] '</span>+ readstream.getBuffer(<span class="hljs-number">1000</span>).toString() );
-<span class="hljs-comment">// Important to close the stream after every use to release the referenced file</span>
-readstream.close();
-</code></pre><h4 id="example-2-use-binarysteam-with-socket">Example 2: Use BinarySteam with Socket</h4>
-								<pre><code><span class="hljs-keyword">var</span> net = require( <span class="hljs-string">'net'</span> );
-<span class="hljs-comment">// Use a synchronous socket for demo</span>
-<span class="hljs-keyword">var</span> socket = net.connectSync( <span class="hljs-number">25</span>, <span class="hljs-string">'smtp.gmail.com'</span>);
-<span class="hljs-comment">// Create a read BinaryStrean</span>
-<span class="hljs-keyword">var</span> readstream = <span class="hljs-keyword">new</span> <span class="hljs-type">BinaryStream</span>( socket, <span class="hljs-string">'Read'</span>, <span class="hljs-number">300</span> );
-<span class="hljs-comment">// Create a read BinaryStrean</span>
-<span class="hljs-keyword">var</span> writestream = <span class="hljs-keyword">new</span> <span class="hljs-type">BinaryStream</span>( socket, <span class="hljs-string">'Write'</span>, <span class="hljs-number">500</span> );
-<span class="hljs-comment">// Get first statement from Gmail</span>
-console.log( <span class="hljs-string">'[CONNECTED] '</span>+ readstream.getBuffer(<span class="hljs-number">1000</span>).toString() );
-<span class="hljs-comment">// 220 smtp.gmail.com ESMTP y80sm15252285wrb.12 - gsmtp</span>
-
-<span class="hljs-comment">// Send greetings to Gmail</span>
-writestream.putBuffer( <span class="hljs-keyword">new</span> <span class="hljs-type">Buffer</span>(<span class="hljs-string">'EHLO smtp.gmail.com\r\n'</span>) );
-<span class="hljs-comment">// Get greetings from Gmail + service details</span>
-console.log( <span class="hljs-string">'[EHLO] '</span>+ readstream.getBuffer(<span class="hljs-number">1000</span>).toString() );
-<span class="hljs-comment">// 250-smtp.gmail.com at your service, [195.68.52.79]</span>
-<span class="hljs-comment">// 250-SIZE 35882577</span>
-<span class="hljs-comment">// 250-8BITMIME</span>
-<span class="hljs-comment">// 250-STARTTLS</span>
-<span class="hljs-comment">// 250-ENHANCEDSTATUSCODES</span>
-<span class="hljs-comment">// 250-PIPELINING</span>
-<span class="hljs-comment">// 250-CHUNKING</span>
-<span class="hljs-comment">// 250 SMTPUTF8</span>
-<span class="hljs-comment">// Important to close the stream after every use to release the referenced socket</span>
-readstream.close();
-writestream.close();
+								<pre><code class="lang-javascript">
 </code></pre>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>

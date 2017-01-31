@@ -7,8 +7,21 @@ interface BinaryStream {
     /**
      * Creates a new BinaryStream object.
      * 
-     * #### Example 1: Use BinarySteam with File
+     * ```javascript
+     * var readstream = new BinaryStream( 'PROJECT/backend/logs/HTTPServer.waLog' );
+     * console.log( '[chunck] '+ readstream.getBuffer(1000).toString() );
+     * // Important to close the stream after every use to release the referenced file
+     * readstream.close();
      * ```
+     * 
+     * @param binary Describes the binary to read/write.
+     * @param readMode (default: `read`) `Write` if in write mode, `Read` otherwise.
+     */
+    new (binary: String, readMode?: String): WAKBinaryStreamInstance;
+    /**
+     * Creates a new BinaryStream object.
+     * 
+     * ```javascript
      * var myFile = new File( 'PROJECT/backend/logs/HTTPServer.waLog' );
      * var readstream = new BinaryStream( myFile );
      * console.log( '[chunck] '+ readstream.getBuffer(1000).toString() );
@@ -16,8 +29,14 @@ interface BinaryStream {
      * readstream.close();
      * ```
      * 
-     * #### Example 2: Use BinarySteam with Socket
-     * ```
+     * @param binary Describes the binary to read/write.
+     * @param readMode (default: `read`) `Write` if in write mode, `Read` otherwise.
+     */
+    new (binary: WAKFileInstance, readMode?: String): WAKBinaryStreamInstance;
+    /**
+     * Creates a new BinaryStream object.
+     * 
+     * ```javascript
      * var net = require( 'net' );
      * // Use a synchronous socket for demo
      * var socket = net.connectSync( 25, 'smtp.gmail.com');
@@ -50,9 +69,18 @@ interface BinaryStream {
      * @param readMode (default: `read`) `Write` if in write mode, `Read` otherwise.
      * @param timeOut Defines the socket millisecond timeout
      */
-    new (binary: String, readMode?: String): WAKBinaryStreamInstance;
-    new (binary: WAKFileInstance, readMode?: String): WAKBinaryStreamInstance;
     new (binary: Socket, readMode?: String, timeOut?: Number): WAKBinaryStreamInstance;
+    /**
+     * Creates a new BinaryStream object
+     * 
+     * ```javascript
+     * 
+     * ```
+     * 
+     * @param binary Describes the binary to read/write.
+     * @param readMode (default: `read`) `Write` if in write mode, `Read` otherwise.
+     * @param timeOut Defines the socket millisecond timeout
+     */
     new (binary: SocketSync, readMode?: String, timeOut?: Number): WAKBinaryStreamInstance;
 }
 
@@ -64,7 +92,7 @@ interface WAKBinaryStreamInstance {
     /**
      * Closes the file referenced in the BinaryStream object.
      * 
-     * ```
+     * ```javascript
      * var myFile = new File( 'PROJECT/backend/logs/HTTPServer.waLog' );
      * var readstream = new BinaryStream( myFile );
      * // Important to close the stream after every use to release the referenced file
