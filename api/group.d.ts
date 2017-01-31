@@ -13,6 +13,7 @@ interface Group {
      * Returns all children directory groups starting with `filterString`.
      * 
      * ```
+     * var myABCDEFG;
      * var myGroups = directory.filterChildren("*cien");
      * ```
      * 

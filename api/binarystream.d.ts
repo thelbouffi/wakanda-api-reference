@@ -7,30 +7,24 @@ interface BinaryStream {
     /**
      * Creates a new BinaryStream object.
      * 
+     * #### Example 1: Use BinarySteam with File
      * ```
-     * var myFile = File( 'PROJECT/backend/logs/HTTPServer.waLog' );
-     * var readstream = BinaryStream( myFile );
+     * var myFile = new File( 'PROJECT/backend/logs/HTTPServer.waLog' );
+     * var readstream = new BinaryStream( myFile );
      * console.log( '[chunck] '+ readstream.getBuffer(1000).toString() );
      * // Important to close the stream after every use to release the referenced file
      * readstream.close();
      * ```
      * 
-     * @param binary Describes the binary to read/write.
-     * @param readMode (default: `read`) `Write` if in write mode, `Read` otherwise.
-     */
-    new (binary: String, readMode?: String): BinaryStream;
-    new (binary: File, readMode?: String): BinaryStream;
-    /**
-     * Creates a new BinaryStream object.
-     * 
+     * #### Example 2: Use BinarySteam with Socket
      * ```
      * var net = require( 'net' );
      * // Use a synchronous socket for demo
      * var socket = net.connectSync( 25, 'smtp.gmail.com');
      * // Create a read BinaryStrean
-     * var readstream = BinaryStream( socket, 'Read', 300 );
+     * var readstream = new BinaryStream( socket, 'Read', 300 );
      * // Create a read BinaryStrean
-     * var writestream = BinaryStream( socket, 'Write', 500 );
+     * var writestream = new BinaryStream( socket, 'Write', 500 );
      * // Get first statement from Gmail
      * console.log( '[CONNECTED] '+ readstream.getBuffer(1000).toString() );
      * // 220 smtp.gmail.com ESMTP y80sm15252285wrb.12 - gsmtp
@@ -52,13 +46,17 @@ interface BinaryStream {
      * writestream.close();
      * ```
      * 
-     * @warning BinaryStreams on sockets use buffer only data.
      * @param binary Describes the binary to read/write.
      * @param readMode (default: `read`) `Write` if in write mode, `Read` otherwise.
      * @param timeOut Defines the socket millisecond timeout
      */
-    new (binary: Socket, readMode?: String, timeOut?: Number): BinaryStream;
-    new (binary: SocketSync, readMode?: String, timeOut?: Number): BinaryStream;
+    new (binary: String, readMode?: String): WAKBinaryStreamInstance;
+    new (binary: WAKFileInstance, readMode?: String): WAKBinaryStreamInstance;
+    new (binary: Socket, readMode?: String, timeOut?: Number): WAKBinaryStreamInstance;
+    new (binary: SocketSync, readMode?: String, timeOut?: Number): WAKBinaryStreamInstance;
+}
+
+interface WAKBinaryStreamInstance {
     /**
      * Indicates that the next reading of structured values in the BinaryStream object requires a byte swap
      */
@@ -67,8 +65,8 @@ interface BinaryStream {
      * Closes the file referenced in the BinaryStream object.
      * 
      * ```
-     * var myFile = File( 'PROJECT/backend/logs/HTTPServer.waLog' );
-     * var readstream = BinaryStream( myFile );
+     * var myFile = new File( 'PROJECT/backend/logs/HTTPServer.waLog' );
+     * var readstream = new BinaryStream( myFile );
      * // Important to close the stream after every use to release the referenced file
      * readstream.close();
      * ```
@@ -81,11 +79,11 @@ interface BinaryStream {
     /**
      * Creates a new BLOB object containing the next sizeToRead data in the BinaryStream object.
      */
-    getBlob(sizeToRead: Number): Blob;
+    getBlob(sizeToRead: Number): WAKBlobInstance;
     /**
      * Returns a new Buffer object containing the next sizeToRead data in the BinaryStream object.
      */
-    getBuffer(sizeToRead: Number): Buffer;
+    getBuffer(sizeToRead: Number): WAKBufferInstance;
     /**
      * Returns a number representing the next byte from the BinaryStream object.
      */
@@ -125,11 +123,11 @@ interface BinaryStream {
     /**
      * Writes the BLOB you passed as the blob parameter in the BinaryStream object at the current cursor location.
      */
-    putBlob(blob: Blob, offset: Number, size?: Number): void;
+    putBlob(blob: WAKBlobInstance, offset: Number, size?: Number): void;
     /**
      * Writes the Buffer you passed as the buffer parameter in the BinaryStream object at the current cursor location.
      */
-    putBuffer(buffer: Buffer, offset: Number, size?: Number): void;
+    putBuffer(buffer: WAKBufferInstance, offset: Number, size?: Number): void;
     /**
      * Writes the byte value you passed as the parameter in the BinaryStream object at the current cursor location.
      */

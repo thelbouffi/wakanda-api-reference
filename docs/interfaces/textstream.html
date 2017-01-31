@@ -84,19 +84,6 @@
 								<li class="tsd-kind-constructor tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="textstream.html#constructor" class="tsd-kind-icon">constructor</a></li>
 							</ul>
 						</section>
-						<section class="tsd-index-section tsd-is-external tsd-is-not-exported">
-							<h3>Methods</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="textstream.html#close" class="tsd-kind-icon">close</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="textstream.html#end" class="tsd-kind-icon">end</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="textstream.html#flush" class="tsd-kind-icon">flush</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="textstream.html#getpos" class="tsd-kind-icon">get<wbr>Pos</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="textstream.html#getsize" class="tsd-kind-icon">get<wbr>Size</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="textstream.html#read" class="tsd-kind-icon">read</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="textstream.html#rewind" class="tsd-kind-icon">rewind</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="textstream.html#write" class="tsd-kind-icon">write</a></li>
-							</ul>
-						</section>
 					</div>
 				</section>
 			</section>
@@ -106,14 +93,14 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Text<wbr>Stream<span class="tsd-signature-symbol">(</span>file<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">String</span>, mode<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">String</span>, charset<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="textstream.html" class="tsd-signature-type">TextStream</a></li>
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Text<wbr>Stream<span class="tsd-signature-symbol">(</span>file<span class="tsd-signature-symbol">: </span><a href="file.html" class="tsd-signature-type">File</a>, mode<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">String</span>, charset<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="textstream.html" class="tsd-signature-type">TextStream</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Text<wbr>Stream<span class="tsd-signature-symbol">(</span>file<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">String</span>, mode<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">String</span>, charset<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="waktextstreaminstance.html" class="tsd-signature-type">WAKTextStreamInstance</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Text<wbr>Stream<span class="tsd-signature-symbol">(</span>file<span class="tsd-signature-symbol">: </span><a href="wakfileinstance.html" class="tsd-signature-type">WAKFileInstance</a>, mode<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">String</span>, charset<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="waktextstreaminstance.html" class="tsd-signature-type">WAKTextStreamInstance</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/c41574b/api/textstream.d.ts#L3">textstream.d.ts:3</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/22ab982/api/textstream.d.ts#L3">textstream.d.ts:3</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -121,7 +108,7 @@
 									<p>Creates a textStream.</p>
 								</div>
 								<pre><code><span class="hljs-comment">// The file does not have to exist</span>
-var myStream = TextStream( <span class="hljs-string">'PROJECT/backend/my-streamed-file.js'</span>, <span class="hljs-string">'write'</span> );
+var myStream = <span class="hljs-keyword">new</span> TextStream( <span class="hljs-string">'PROJECT/backend/my-streamed-file.js'</span>, <span class="hljs-string">'write'</span> );
 <span class="hljs-comment">// Creates the file if it does not exist</span>
 myStream.<span class="hljs-built_in">write</span>( <span class="hljs-string">'Hello '</span>+ Date.now() +<span class="hljs-string">' !\n'</span> );
 <span class="hljs-comment">// Important to close the stream every time.</span>
@@ -155,12 +142,12 @@ myStream.<span class="hljs-built_in">close</span>();
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="textstream.html" class="tsd-signature-type">TextStream</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="waktextstreaminstance.html" class="tsd-signature-type">WAKTextStreamInstance</a></h4>
 						</li>
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/c41574b/api/textstream.d.ts#L20">textstream.d.ts:20</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/22ab982/api/textstream.d.ts#L20">textstream.d.ts:20</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -168,10 +155,10 @@ myStream.<span class="hljs-built_in">close</span>();
 									<p>Creates a textStream.</p>
 								</div>
 								<pre><code><span class="hljs-comment">// The file does not have to exist</span>
-<span class="hljs-keyword">var</span> myFile = <span class="hljs-keyword">File</span>( <span class="hljs-string">'PROJECT/backend/my-streamed-file.js'</span> );
-<span class="hljs-keyword">var</span> myStream = TextStream( <span class="hljs-keyword">file</span>, <span class="hljs-string">'write'</span> );
+<span class="hljs-keyword">var</span> myFile = <span class="hljs-keyword">new</span> <span class="hljs-type">File</span>( <span class="hljs-string">'PROJECT/backend/my-streamed-file.js'</span> );
+<span class="hljs-keyword">var</span> myStream = <span class="hljs-keyword">new</span> <span class="hljs-type">TextStream</span>( file, <span class="hljs-string">'write'</span> );
 <span class="hljs-comment">// Creates the file if it does not exist</span>
-myStream.<span class="hljs-keyword">write</span>( <span class="hljs-string">'Hello '</span>+ Date.now() +<span class="hljs-string">' !\n'</span> );
+myStream.write( <span class="hljs-string">'Hello '</span>+ Date.now() +<span class="hljs-string">' !\n'</span> );
 <span class="hljs-comment">// Important to close the stream every time.</span>
 myStream.close();
 </code></pre>
@@ -179,7 +166,7 @@ myStream.close();
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>file: <a href="file.html" class="tsd-signature-type">File</a></h5>
+									<h5>file: <a href="wakfileinstance.html" class="tsd-signature-type">WAKFileInstance</a></h5>
 									<div class="tsd-comment tsd-typography">
 										<div class="lead">
 											<p>Binary text file to reference. The file does not to exist</p>
@@ -203,257 +190,7 @@ myStream.close();
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="textstream.html" class="tsd-signature-type">TextStream</a></h4>
-						</li>
-					</ul>
-				</section>
-			</section>
-			<section class="tsd-panel-group tsd-member-group tsd-is-external tsd-is-not-exported">
-				<h2>Methods</h2>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-					<a name="close" class="tsd-anchor"></a>
-					<h3>close</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-						<li class="tsd-signature tsd-kind-icon">close<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/c41574b/api/textstream.d.ts#L50">textstream.d.ts:50</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Closes the file referenced in the TextStream object.</p>
-								</div>
-								<pre><code><span class="hljs-keyword">var</span> myFile = <span class="hljs-keyword">File</span>( <span class="hljs-string">'PROJECT/backend/my-streamed-file.js'</span> );
-<span class="hljs-keyword">var</span> myStream = TextStream( <span class="hljs-keyword">file</span>, <span class="hljs-string">'write'</span> );
-myStream.<span class="hljs-keyword">write</span>( <span class="hljs-string">'Hello '</span>+ Date.now() +<span class="hljs-string">' !\n'</span> );
-<span class="hljs-comment">// Important to close the stream every time.</span>
-myStream.close();
-</code></pre>
-							</div>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-					<a name="end" class="tsd-anchor"></a>
-					<h3>end</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-						<li class="tsd-signature tsd-kind-icon">end<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Boolean</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/c41574b/api/textstream.d.ts#L66">textstream.d.ts:66</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Checks if the the cursor position is after the last character of the file referenced in the TextStream object.</p>
-								</div>
-								<pre><code><span class="hljs-keyword">var</span> myStream = TextStream( 'PROJECT/backend/<span class="hljs-keyword">bootstrap</span>.js', '<span class="hljs-keyword">Read</span>' );
-<span class="hljs-comment">// Is end of file reached ?</span>
-<span class="hljs-keyword">while</span>( !myStream.end() ){
-    console.<span class="hljs-built_in">log</span>( myStream.<span class="hljs-keyword">read</span>( 10 ) );
-}
-<span class="hljs-comment">// Important to close the stream every time.</span>
-myStream.<span class="hljs-keyword">close</span>();
-</code></pre>
-							</div>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Boolean</span></h4>
-							<p><code>true</code> if the cursor position is at the end of file, <code>false</code> otherwise.</p>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-					<a name="flush" class="tsd-anchor"></a>
-					<h3>flush</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-						<li class="tsd-signature tsd-kind-icon">flush<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/c41574b/api/textstream.d.ts#L70">textstream.d.ts:70</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Saves the contents of the TextStream buffer to the disk file.</p>
-								</div>
-							</div>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-					<a name="getpos" class="tsd-anchor"></a>
-					<h3>get<wbr>Pos</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>Pos<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Number</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/c41574b/api/textstream.d.ts#L85">textstream.d.ts:85</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Get the current cursor position in the text stream.</p>
-								</div>
-								<pre><code><span class="hljs-keyword">var</span> myStream = TextStream( 'PROJECT/backend/<span class="hljs-keyword">bootstrap</span>.js', '<span class="hljs-keyword">Read</span>' );
-<span class="hljs-keyword">while</span>( !myStream.end() ){
-    myStream.<span class="hljs-keyword">read</span>( 10 );
-    console.<span class="hljs-built_in">log</span>( myStream.getPos() );
-    <span class="hljs-comment">// 10, 20, 30, ...</span>
-}
-<span class="hljs-comment">// Important to close the stream every time.</span>
-myStream.<span class="hljs-keyword">close</span>();
-</code></pre>
-							</div>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Number</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-					<a name="getsize" class="tsd-anchor"></a>
-					<h3>get<wbr>Size</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>Size<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Number</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/c41574b/api/textstream.d.ts#L97">textstream.d.ts:97</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Get the current text stream size.</p>
-								</div>
-								<pre><code><span class="hljs-keyword">var</span> myStream = TextStream( 'PROJECT/backend/<span class="hljs-keyword">bootstrap</span>.js', '<span class="hljs-keyword">Read</span>' );
-console.<span class="hljs-built_in">log</span>( myStream.getSize() );
-<span class="hljs-comment">// 183</span>
-<span class="hljs-comment">// Important to close the stream every time.</span>
-myStream.<span class="hljs-keyword">close</span>();
-</code></pre>
-							</div>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Number</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-					<a name="read" class="tsd-anchor"></a>
-					<h3>read</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-						<li class="tsd-signature tsd-kind-icon">read<span class="tsd-signature-symbol">(</span>nbBytes<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">String</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/c41574b/api/textstream.d.ts#L113">textstream.d.ts:113</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Reads bytes from the text stream.</p>
-								</div>
-								<pre><code><span class="hljs-keyword">var</span> myStream = TextStream( 'PROJECT/backend/<span class="hljs-keyword">bootstrap</span>.js', '<span class="hljs-keyword">Read</span>' );
-<span class="hljs-keyword">while</span>( !myStream.end() ){
-    <span class="hljs-comment">// Read the next 10 bytes and moves the cursor position accordingly</span>
-    console.<span class="hljs-built_in">log</span>( myStream.<span class="hljs-keyword">read</span>( 10 ) );
-}
-<span class="hljs-comment">// Important to close the stream every time.</span>
-myStream.<span class="hljs-keyword">close</span>();
-</code></pre>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> nbBytes: <span class="tsd-signature-type">Number</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>(default: <code>TextStream.getSize()</code>) Number of bytes to read</p>
-									</div>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">String</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-					<a name="rewind" class="tsd-anchor"></a>
-					<h3>rewind</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-						<li class="tsd-signature tsd-kind-icon">rewind<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/c41574b/api/textstream.d.ts#L128">textstream.d.ts:128</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Set the cursor position to the beginning of the TextStream.</p>
-								</div>
-								<pre><code>var myStream = TextStream( <span class="hljs-string">'PROJECT/backend/bootstrap.js'</span>, <span class="hljs-string">'Read'</span> );
-console.<span class="hljs-built_in">log</span>( <span class="hljs-string">'Start: '</span>+ myStream.<span class="hljs-built_in">getPos</span>() );
-myStream.read(<span class="hljs-number">20</span>);
-console.<span class="hljs-built_in">log</span>( <span class="hljs-string">'After read: '</span>+ myStream.<span class="hljs-built_in">getPos</span>() );
-myStream.rewind();
-console.<span class="hljs-built_in">log</span>( <span class="hljs-string">'After rewind: '</span>+ myStream.<span class="hljs-built_in">getPos</span>() );
-<span class="hljs-comment">// Important to close the stream every time.</span>
-myStream.close();
-</code></pre>
-							</div>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-					<a name="write" class="tsd-anchor"></a>
-					<h3>write</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-						<li class="tsd-signature tsd-kind-icon">write<span class="tsd-signature-symbol">(</span>text<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">String</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/c41574b/api/textstream.d.ts#L142">textstream.d.ts:142</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Writes the text in the TextStream.</p>
-								</div>
-								<pre><code><span class="hljs-keyword">var</span> myFile = <span class="hljs-keyword">File</span>( <span class="hljs-string">'PROJECT/backend/my-streamed-file.js'</span> );
-<span class="hljs-keyword">var</span> myStream = TextStream( <span class="hljs-keyword">file</span>, <span class="hljs-string">'write'</span> );
-myStream.<span class="hljs-keyword">write</span>( <span class="hljs-string">'Hello '</span>+ Date.now() +<span class="hljs-string">' !\n'</span> );
-<span class="hljs-comment">// Important to close the stream every time.</span>
-myStream.close();
-</code></pre>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>text: <span class="tsd-signature-type">String</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>String to write in the TextStream</p>
-									</div>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+							<h4 class="tsd-returns-title">Returns <a href="waktextstreaminstance.html" class="tsd-signature-type">WAKTextStreamInstance</a></h4>
 						</li>
 					</ul>
 				</section>
@@ -476,30 +213,6 @@ myStream.close();
 						<ul>
 							<li class=" tsd-kind-constructor tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
 								<a href="textstream.html#constructor" class="tsd-kind-icon">constructor</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="textstream.html#close" class="tsd-kind-icon">close</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="textstream.html#end" class="tsd-kind-icon">end</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="textstream.html#flush" class="tsd-kind-icon">flush</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="textstream.html#getpos" class="tsd-kind-icon">get<wbr>Pos</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="textstream.html#getsize" class="tsd-kind-icon">get<wbr>Size</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="textstream.html#read" class="tsd-kind-icon">read</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="textstream.html#rewind" class="tsd-kind-icon">rewind</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="textstream.html#write" class="tsd-kind-icon">write</a>
 							</li>
 						</ul>
 					</li>

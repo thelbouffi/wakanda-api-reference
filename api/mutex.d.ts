@@ -1,7 +1,6 @@
-interface Mutex {
 
+interface Mutex {
     /**
-     * Mutex constructor.
      * Mutex allows to control code execution order and to prevent conflicts in a multi-thread application.
      * It provides a way to pause execution in one thread until a condition is met in another.
      * 
@@ -12,7 +11,10 @@ interface Mutex {
      * 
      * @param key Describes the global mutex key
      */
-    new (key: String): Mutex;
+    new(key: String): WAKMutexProxy;
+}
+
+interface WAKMutexProxy {
     /**
      * Locks the mutex or wait until it has been released to lock it; the thread execution is paused until then.
      * 

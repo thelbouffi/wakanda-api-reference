@@ -6,31 +6,23 @@
 /// <reference path="./console.d.ts" />
 /// <reference path="./datastore.d.ts" />
 /// <reference path="./directory.d.ts" />
-//// <reference path="./directoryentrysync.d.ts" />
-//// <reference path="./entrysync.d.ts" />
 /// <reference path="./file.d.ts" />
-//// <reference path="./filesystemsync.d.ts" />
 /// <reference path="./folder.d.ts" />
+/// <reference path="./group.d.ts" />
 /// <reference path="./httpServer.d.ts" />
 /// <reference path="./image.d.ts" />
-//// <reference path="./jobmanager.d.ts" />
 /// <reference path="./keyvaluestorage.d.ts" />
 /// <reference path="./module.d.ts" />
 /// <reference path="./mutex.d.ts" />
 /// <reference path="./nodeworker.d.ts" />
-//// <reference path="./os.d.ts" />
-//// <reference path="./permissions.d.ts" />
 /// <reference path="./port.d.ts" />
-//// <reference path="./process.d.ts" />
 /// <reference path="./progressindicator.d.ts" />
 /// <reference path="./sharedworker.d.ts" />
-//// <reference path="./solution.d.ts" />
-//// <reference path="./socket.d.ts" />
-//// <reference path="./socketsync.d.ts" />
+/// <reference path="./socket.d.ts" />
+/// <reference path="./socketsync.d.ts" />
 /// <reference path="./systemworker.d.ts" />
 /// <reference path="./textstream.d.ts" />
 /// <reference path="./user.d.ts" />
-//// <reference path="./worker.d.ts" />
 /// <reference path="./xmlhttprequest.d.ts" />
 
 interface Application extends Authentication, Data, Core, Threads, FileSystem, HTTP, Storage { }
@@ -43,15 +35,15 @@ interface Data {
     /**
     *starts the backup of the closed datastore defined by model and data.
     */
-    backupDataStore(model: File, data: File, settings: Object, options?: Object): File;
+    backupDataStore(model: WAKFileInstance, data: WAKFileInstance, settings: Object, options?: Object): WAKFileInstance;
     /**
     *compacts the datastore's data file designated by model and data, and generates the compactedData data file.
     */
-    compactDataStore(model: File, data: File, options?: Object, compactedData?: File): void;
+    compactDataStore(model: WAKFileInstance, data: WAKFileInstance, options?: Object, compactedData?: WAKFileInstance): void;
     /**
     *returns an Array that lists the 20 most recent backup manifests recorded in the specified backup registry.
     */
-    getBackupRegistry(registryFolder: Folder): Array<Object>;
+    getBackupRegistry(registryFolder: WAKFolderInstance): Array<Object>;
     /**
     *returns an Object containing the default backup settings for the solution.
     */
@@ -59,7 +51,7 @@ interface Data {
     /**
     *returns information about the journal of the datastore whose data file you passed in dataFile.
     */
-    getJournalInfo(dataFile: File, options?: Object): Object;
+    getJournalInfo(dataFile: WAKFileInstance, options?: Object): Object;
     /**
     *returns information about the journal of the datastore whose data file you passed in dataFile.
     */
@@ -71,15 +63,15 @@ interface Data {
     /**
     *allows you to partially or fully integrate a journal file into a datastore.
     */
-    integrateDataStoreJournal(model: File, data: File, journal: File, options?: Object): Object;
+    integrateDataStoreJournal(model: WAKFileInstance, data: WAKFileInstance, journal: WAKFileInstance, options?: Object): Object;
     /**
     *repairs the datastore's data file defined by model and data, and generates the repairedData data file.
     */
-    repairDataStore(model: File, data: File, options?: Object, repairedData?: File): void;
+    repairDataStore(model: WAKFileInstance, data: WAKFileInstance, options?: Object, repairedData?: WAKFileInstance): void;
     /**
     *resets the current journal of the datastore whose data file you passed in dataFile.
     */
-    resetDataStoreJournal(dataFile: File): Object;
+    resetDataStoreJournal(dataFile: WAKFileInstance): Object;
     /**
     *resets the current journal of the datastore whose data file you passed in dataFile.
     */
@@ -87,7 +79,7 @@ interface Data {
     /**
     *allows you to restore a data folder previously archived.
     */
-    restoreDataStore(manifest: File, restoreFolder: Folder, options?: Object): Object;
+    restoreDataStore(manifest: WAKFileInstance, restoreFolder: WAKFolderInstance, options?: Object): Object;
     /**
     *allows you to restore a data folder previously archived.
     */
@@ -95,14 +87,14 @@ interface Data {
     /**
     *verifies the internal structure of the objects contained in the datastore designated by model and data.
     */
-    verifyDataStore(model: File, data: File, options: Object): void;
+    verifyDataStore(model: WAKFileInstance, data: WAKFileInstance, options: Object): void;
 }
 
 interface Authentication {
     /**
      * References the directory of the application.
      */
-    directory : Directory;
+    directory : WAKDirectory;
 }
 
 interface Core {
@@ -113,7 +105,7 @@ interface Core {
     /**
      * References the buffer constructor.
      */
-    Buffer: Buffer;
+    Buffer: WAKBufferInstance;
     /**
      * Create a valid UUID string.
      * 
@@ -172,7 +164,7 @@ interface Threads {
     /**
      * References the mutex constructor.
      */
-    Mutex(key: String): Mutex;
+    Mutex: Mutex;
     /**
      * Require a SSJS module (CommonJS compliant).
      * This module must be defined in `PROJECT/backend/modules/`.
@@ -245,7 +237,7 @@ interface FileSystem {
      * Loads an image from a File object.
      * 
      * ```
-     * var myFile = File( 'C:/images/tulips.jpg' );
+     * var myFile = new File( 'C:/images/tulips.jpg' );
      * var myPict = loadImage(myFile);
      * var newPict = new ds.Pict();
      * newPict.name = 'Flower';
@@ -259,7 +251,7 @@ interface FileSystem {
      * @param file File object that reference an image. Supports PNG and JPG files.
      * @returns Returns the image through Image object.
      */
-    loadImage(file: File): Image;
+    loadImage(file: WAKFileInstance): Image;
     /**
      * Loads the content of a text file from its path.
      * 
@@ -280,7 +272,7 @@ interface FileSystem {
      * Loads the content of a text file from a File object.
      * 
      * ```
-     * var myFile = File( 'c:/texts/under-the-red-sky.txt' );
+     * var myFile = new File( 'c:/texts/under-the-red-sky.txt' );
      * var myQuote = loadText( myFile );
      * var newSong = new ds.Quotes();
      * newSong.author = 'Bob Dylan';
@@ -292,7 +284,7 @@ interface FileSystem {
      * @param charset (default: 7) Defines the charset to use to read the file. See [charset values](http://doc.wakanda.org/home2.en.html#/Wakanda/0.Beta/TextStream.301-684310.en.html) for more details.
      * @returns Returns a string with the full text file content.
      */
-    loadText(file: File, charset?: Number): String;
+    loadText(file: WAKFileInstance, charset?: Number): String;
     /**
      * Saves the text into a file.
      * 
@@ -309,7 +301,7 @@ interface FileSystem {
      * Saves the text into a file.
      * 
      * ```
-     * var myFile = File( 'C:/texts/chapter-1.txt' );
+     * var myFile = new File( 'C:/texts/chapter-1.txt' );
      * saveText( 'Hello World ! Here is my text saved.', myFile );
      * ```
      * 
@@ -317,7 +309,7 @@ interface FileSystem {
      * @param file File path where to update (POSIX path).
      * @param charset (default: 7) Defines the charset of the text string. See [charset values](http://doc.wakanda.org/home2.en.html#/Wakanda/0.Beta/TextStream.301-684310.en.html) for more details.
      */
-    saveText(textToSave: String, file: File, charset?: Number): void;
+    saveText(textToSave: String, file: WAKFileInstance, charset?: Number): void;
 }
 
 interface HTTP {

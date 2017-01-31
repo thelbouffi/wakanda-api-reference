@@ -91,10 +91,10 @@ interface SharedWorker {
      * @param workerName Describes the worker name
      * @returns Returns a shared worker proxy
      */
-    new (scriptPath: String, workerName?: String): SharedWorkerProxy;
+    new (scriptPath: String, workerName?: String): WAKSharedWorkerProxy;
 }
 
-interface SharedWorkerProxy {
+interface WAKSharedWorkerProxy {
     /**
      * Use the proxy port to communicate with the share worker thread.
      * 

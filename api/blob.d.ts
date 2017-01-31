@@ -15,7 +15,10 @@ interface Blob {
      * @param defaultByteValue (default: `0`) Defines the character code set as the default value to each blob byte
      * @param mimeType Defines the media type of the Blob
      */
-    new (size?: Number, defaultByteValue?: Number, mimeType?: String): Blob;
+    new (size?: Number, defaultByteValue?: Number, mimeType?: String): WAKBlobInstance;
+}
+
+interface WAKBlobInstance {
     /**
      * Size of the Blob in bytes.
      */
@@ -32,42 +35,30 @@ interface Blob {
      * var myBlob = new Blob( 20 ); 
      * myBlob.copyTo( 'PROJECT/backend/blob_copy.js' );
      * ```
-     * 
-     * #### Example 2: Copy a file object
+     * or
      * ```
-     * // Get a file. File object can be manipulate as a Blob
-     * var myFile = new File( 'PROJECT/backend/bootstrap.js' );
-     * // Copy the file using the Blob api
-     * myFile.copyTo( 'PROJECT/backend/bootstrap_copy.js' );
-     * ```
-     * 
-     * @param destination Destination file
-     * @param overwrite `true` to override existing file if any, `false` otherwise
-     */
-    copyTo(destination: String, overwrite?: Boolean): void;
-    /**
-     * Copies the blob into a file.
-     *  
-     * #### Example 1: Copy a blob
-     * ```
-     * var myFile = new File( 'PROJECT/backend/blob_copy.js' )
+     * var myFile = new File( 'PROJECT/backend/blob_copy.js' );
      * var myBlob = new Blob( 20 ); 
      * myBlob.copyTo( myFile );
      * ```
      * 
-     * #### Example 2: Copy a file object
+     * #### Example 2: Copy a file
      * ```
-     * // Get a file. File object can be manipulate as a Blob
+     * var myFile = new File( 'PROJECT/backend/bootstrap.js' );
+     * myFile.copyTo( 'PROJECT/backend/bootstrap_copy.js' );
+     * ```
+     * or
+     * ```
      * var myFile = new File( 'PROJECT/backend/bootstrap.js' );
      * var myFileCopy = new File( 'PROJECT/backend/bootstrap_copy.js' );
-     * // Copy the file using the Blob api
      * myFile.copyTo( myFileCopy );
      * ```
      * 
      * @param destination Destination file
      * @param overwrite `true` to override existing file if any, `false` otherwise
      */
-    copyTo(destination: File, overwrite?: Boolean): void;
+    copyTo(destination: String, overwrite?: Boolean): void;
+    copyTo(destination: WAKFileInstance, overwrite?: Boolean): void;
     /**
      * Creates a new blob by referencing the contents of the bytes of the Blob to which it is applied, from start to end.
      * 
@@ -93,7 +84,7 @@ interface Blob {
      * 
      * #### Example 3: Slice a file
      * ```
-     * var myFile = File( 'PROJECT/backend/bootstrap.js' );
+     * var myFile = new File( 'PROJECT/backend/bootstrap.js' );
      * var myBlobSlice = myFile.slice( 0, 100 );
      * console.log( myBlobSlice.toString() );
      * ```
@@ -102,11 +93,11 @@ interface Blob {
      * @param end (default: blob.size)
      * @param mimeType
      */
-    slice(start?: Number, end?: Number, mimeType?: String): Blob;
+    slice(start?: Number, end?: Number, mimeType?: String): WAKBlobInstance;
     /**
      * Returns a buffer object containing a copy of the blob bytes.
      */
-    toBuffer(): Buffer;
+    toBuffer(): WAKBufferInstance;
     /**
      * Get a string representation of the blob contents.
      */

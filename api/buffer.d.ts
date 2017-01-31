@@ -12,7 +12,7 @@ interface Buffer {
      * @param size The number of bytes to allocate for the buffer
      * @param encoding (default: `utf8`) Encoding available: `ascii`, `utf8`, `ucs2`, `hex`, `base64`
      */
-    new (size: Number, encoding?: String): BufferInstance;
+    new (size: Number, encoding?: String): WAKBufferInstance;
     /**
      * Returns the string byte length.
      * Byte length may change depending of the encoding type.
@@ -59,7 +59,7 @@ interface Buffer {
     isBuffer(obj: any): Boolean;
 }
 
-interface BufferInstance {
+interface WAKBufferInstance {
     /**
      * Number of bytes of the buffer.
      */
@@ -83,7 +83,7 @@ interface BufferInstance {
      * @param sourceOffset (default: 0) Byte offset where to start reading the data
      * @param sourceEnd (default: buffer.length) Byte offset where to end reading the data
      */
-    copy(targetBuffer: Buffer, targetOffset?: Number, sourceOffset?: Number, sourceEnd?: Number): void;
+    copy(targetBuffer: WAKBufferInstance, targetOffset?: Number, sourceOffset?: Number, sourceEnd?: Number): void;
     /**
      * Fills the Buffer to which it is applied with the character you passed in value.
      */
@@ -91,11 +91,11 @@ interface BufferInstance {
     /**
      * Creates a new Buffer object by referencing the contents of the bytes array of the Buffer to which it is applied, from start to end.
      */
-    slice(start: Number, end?: Number): Buffer;
+    slice(start: Number, end?: Number): WAKBufferInstance;
     /**
      * Returns a Blob object containing a copy of the Buffer bytes.
      */
-    toBlob(mimeType?: String): Blob;
+    toBlob(mimeType?: String): WAKBlobInstance;
     /**
      * Converts the buffer contents into a string.
      */

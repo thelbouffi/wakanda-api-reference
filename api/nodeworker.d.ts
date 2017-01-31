@@ -91,10 +91,10 @@ interface NodeWorker {
      * @param workerName Describes the worker name
      * @returns Returns a node worker proxy
      */
-    new (scriptPath: String, workerName?: String): NodeWorkerProxy;
+    new (scriptPath: String, workerName?: String): WAKNodeWorkerProxy;
 }
 
-interface NodeWorkerProxy {
+interface WAKNodeWorkerProxy {
     /**
      * Use the proxy port to communicate with the node worker thread.
      * 

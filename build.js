@@ -3,7 +3,6 @@ var fs		= require('fs');
 function getGlobalDeclaration(){
 
 	var content = fs.readFileSync('global.ts', 'utf8');
-	
 	return content;
 }
 
@@ -12,6 +11,11 @@ function concatenateFiles(folderPath, outputFile, initialContent){
 	var output = initialContent || "";
 	
 	files.forEach(function(file){
+		// Concat only .d.ts files
+		if (! file.match(/.*\.d\.ts$/gi) ){
+ 			return;
+		}
+
 		output += fs.readFileSync(folderPath + "/" + file, 'utf8');		
 	});
 	output = cleanOutput(output);

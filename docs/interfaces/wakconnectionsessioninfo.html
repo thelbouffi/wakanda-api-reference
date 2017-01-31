@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>SharedWorker | </title>
+	<title>WAKConnectionSessionInfo | </title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,80 +56,21 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="sharedworker.html">SharedWorker</a>
+					<a href="wakconnectionsessioninfo.html">WAKConnectionSessionInfo</a>
 				</li>
 			</ul>
-			<h1>Interface SharedWorker</h1>
+			<h1>Interface WAKConnectionSessionInfo</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
-			<section class="tsd-panel tsd-comment">
-				<div class="tsd-comment tsd-typography">
-					<div class="lead">
-						<p>Here is an example of a worker file.</p>
-					</div>
-					<p>Callback to trigger when a new caller creates a SharedWorker proxy object.</p>
-					<pre><code>onconnect: <span class="hljs-function"><span class="hljs-keyword">Function</span>;</span>
-</code></pre><p>Get port to communicate with the worker proxy.
-					Always use <code>ports[0]</code>.</p>
-					<pre><code><span class="hljs-symbol">ports:</span> Array<span class="hljs-params">&lt;Port&gt;</span>;
-</code></pre><p>Close the worker.</p>
-					<pre><code><span class="hljs-built_in">close</span>() : <span class="hljs-keyword">void</span>;
-</code></pre><p>Allows a thread to handle events and to continue to exist after the complete code executes.</p>
-					<dl class="tsd-comment-tags">
-						<dt>warning</dt>
-						<dd><p>There is an implicit <code>wait()</code> in worker. No need to add another.</p>
-							<pre><code><span class="hljs-keyword">wait</span>(timeout?: <span class="hljs-keyword">Number</span>) : Boolean;
-</code></pre><p>Requires a SSJS module. This module should be defined in <code>PROJECT/backend/modules</code></p>
-							<pre><code><span class="hljs-attribute">var myModule</span> = require(<span class="hljs-string">'module'</span>);
-</code></pre><p>Worker example</p>
-							<pre><code><span class="hljs-comment">// Describes the content of the worker.js file</span>
-<span class="hljs-comment">// Called when a new worker is created</span>
-onconnect = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"> msg </span>)
-</span>{
-    <span class="hljs-comment">// Get the worker port for communication with the worker proxy</span>
-    <span class="hljs-keyword">var</span> workerPort = msg.ports[<span class="hljs-number">0</span>];
-
-    <span class="hljs-comment">// Send a message to the worker proxy. The worker is up and running.</span>
-    workerPort.postMessage({<span class="hljs-keyword">type</span>: <span class="hljs-string">'connected'</span>, says: <span class="hljs-string">"I'm alive!"</span>});
-
-    <span class="hljs-comment">// Listen for worker proxy messages</span>
-    workerPort.onmessage = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"> event </span>)
-    </span>{
-        <span class="hljs-comment">// We've got a message !</span>
-        <span class="hljs-comment">// The `event.data` is what the worker proxy sends using `postMessage()`. Could be a String, Number or an Object type.</span>
-        <span class="hljs-comment">// Here, `event.data` contains an object: `{type: String, says: String}`</span>
-        <span class="hljs-keyword">var</span> message = event.data;
-        <span class="hljs-keyword">switch</span>( message.type )
-        {
-           <span class="hljs-comment">// It's a hello world message</span>
-           <span class="hljs-keyword">case</span> <span class="hljs-string">'hello'</span>:
-                <span class="hljs-comment">// Reply to the worker proxy</span>
-                workerPort.postMessage( {<span class="hljs-keyword">type</span>: <span class="hljs-string">'hello'</span>, says: <span class="hljs-string">'Hello to you too!'</span>} );
-                <span class="hljs-keyword">break</span>;
-
-            <span class="hljs-comment">// It's a terminate message</span>
-            <span class="hljs-keyword">case</span> <span class="hljs-string">'close'</span>:
-                <span class="hljs-comment">// Reply to the worker proxy</span>
-                workerPort.postMessage( {<span class="hljs-keyword">type</span>: <span class="hljs-string">'close'</span>, says: <span class="hljs-string">'I will be back!'</span>} );
-                <span class="hljs-comment">// Close the worker</span>
-                close();
-                <span class="hljs-keyword">break</span>;
-        }
-    }
-}
-</code></pre></dd>
-					</dl>
-				</div>
-			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">SharedWorker</span>
+						<span class="target">WAKConnectionSessionInfo</span>
 					</li>
 				</ul>
 			</section>
@@ -138,62 +79,110 @@ onconnect = <span class="hljs-function"><span class="hljs-keyword">function</spa
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section tsd-is-external tsd-is-not-exported">
-							<h3>Constructors</h3>
+							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-constructor tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="sharedworker.html#constructor" class="tsd-kind-icon">constructor</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="wakconnectionsessioninfo.html#id" class="tsd-kind-icon">ID</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="wakconnectionsessioninfo.html#belongsto" class="tsd-kind-icon">belongs<wbr>To</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="wakconnectionsessioninfo.html#fullname" class="tsd-kind-icon">full<wbr>Name</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="wakconnectionsessioninfo.html#lifetime" class="tsd-kind-icon">life<wbr>Time</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="wakconnectionsessioninfo.html#name" class="tsd-kind-icon">name</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="wakconnectionsessioninfo.html#storage" class="tsd-kind-icon">storage</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group tsd-is-external tsd-is-not-exported">
-				<h2>Constructors</h2>
-				<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-					<a name="constructor" class="tsd-anchor"></a>
-					<h3>constructor</h3>
-					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Shared<wbr>Worker<span class="tsd-signature-symbol">(</span>scriptPath<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">String</span>, workerName<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">String</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="waksharedworkerproxy.html" class="tsd-signature-type">WAKSharedWorkerProxy</a></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/22ab982/api/sharedworker.d.ts#L79">sharedworker.d.ts:79</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Shared worker constructor.
-										Creates a new shared worker in its own thread if it does not exist yet. Then it returns a proxy object to communicate with the shared worker thread.
-									Shared workers can be addressed from any thread, they are uniquely identified by their path and name.</p>
-								</div>
-								<pre><code>// <span class="hljs-string">"worker.js"</span> <span class="hljs-keyword">is</span> defined <span class="hljs-keyword">in</span> PROJECT/backend/worker.js
-var myWorkerProxy = <span class="hljs-keyword">new</span> SharedWorker( <span class="hljs-symbol">'backend</span>/worker.js', <span class="hljs-symbol">'my</span>-worker-name' );
-</code></pre>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>scriptPath: <span class="tsd-signature-type">String</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<div class="lead">
-											<p>Describes the path to worker javaScript file</p>
-										</div>
-									</div>
-								</li>
-								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> workerName: <span class="tsd-signature-type">String</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<div class="lead">
-											<p>Describes the worker name</p>
-										</div>
-									</div>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="waksharedworkerproxy.html" class="tsd-signature-type">WAKSharedWorkerProxy</a></h4>
-							<p>Returns a shared worker proxy</p>
-						</li>
-					</ul>
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
+					<a name="id" class="tsd-anchor"></a>
+					<h3>ID</h3>
+					<div class="tsd-signature tsd-kind-icon">ID<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">String</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/22ab982/api/connectionsessioninfo.d.ts#L7">connectionsessioninfo.d.ts:7</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>UUID String referencing the user. It can be any ID but must not be an existing user ID.</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
+					<a name="belongsto" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> belongs<wbr>To</h3>
+					<div class="tsd-signature tsd-kind-icon">belongs<wbr>To<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">String</span><span class="tsd-signature-symbol">[]</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/22ab982/api/connectionsessioninfo.d.ts#L19">connectionsessioninfo.d.ts:19</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Array of UUID strings or Array of group names referencing the groups the user must belong to.</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
+					<a name="fullname" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> full<wbr>Name</h3>
+					<div class="tsd-signature tsd-kind-icon">full<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">String</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/22ab982/api/connectionsessioninfo.d.ts#L15">connectionsessioninfo.d.ts:15</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Full Name of the User.</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
+					<a name="lifetime" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> life<wbr>Time</h3>
+					<div class="tsd-signature tsd-kind-icon">life<wbr>Time<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Number</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/22ab982/api/connectionsessioninfo.d.ts#L27">connectionsessioninfo.d.ts:27</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Defines the session time to live for the user session.</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
+					<a name="name" class="tsd-anchor"></a>
+					<h3>name</h3>
+					<div class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">String</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/22ab982/api/connectionsessioninfo.d.ts#L11">connectionsessioninfo.d.ts:11</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Username of the User.</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
+					<a name="storage" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> storage</h3>
+					<div class="tsd-signature tsd-kind-icon">storage<span class="tsd-signature-symbol">:</span> <a href="keyvaluestorage.html" class="tsd-signature-type">KeyValueStorage</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/22ab982/api/connectionsessioninfo.d.ts#L23">connectionsessioninfo.d.ts:23</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Defines the session storage property of the user session.</p>
+						</div>
+					</div>
 				</section>
 			</section>
 		</div>
@@ -210,10 +199,25 @@ var myWorkerProxy = <span class="hljs-keyword">new</span> SharedWorker( <span cl
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface tsd-is-external tsd-is-not-exported">
-						<a href="sharedworker.html" class="tsd-kind-icon">Shared<wbr>Worker</a>
+						<a href="wakconnectionsessioninfo.html" class="tsd-kind-icon">WAKConnection<wbr>Session<wbr>Info</a>
 						<ul>
-							<li class=" tsd-kind-constructor tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="sharedworker.html#constructor" class="tsd-kind-icon">constructor</a>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
+								<a href="wakconnectionsessioninfo.html#id" class="tsd-kind-icon">ID</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
+								<a href="wakconnectionsessioninfo.html#belongsto" class="tsd-kind-icon">belongs<wbr>To</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
+								<a href="wakconnectionsessioninfo.html#fullname" class="tsd-kind-icon">full<wbr>Name</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
+								<a href="wakconnectionsessioninfo.html#lifetime" class="tsd-kind-icon">life<wbr>Time</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
+								<a href="wakconnectionsessioninfo.html#name" class="tsd-kind-icon">name</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
+								<a href="wakconnectionsessioninfo.html#storage" class="tsd-kind-icon">storage</a>
 							</li>
 						</ul>
 					</li>

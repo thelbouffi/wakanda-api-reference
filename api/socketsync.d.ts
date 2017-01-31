@@ -18,7 +18,7 @@ interface SocketSync {
 		/**
 		*returns in a Buffer object the data read from the SocketSync instance to which it is applied
 		*/
-		read(timeOut?: Number) : Buffer;
+		read(timeOut?: Number) : WAKBufferInstance;
 		/**
 		*sets the encoding for data received from the SocketSync to which it is applied
 		*/
@@ -34,5 +34,5 @@ interface SocketSync {
 		/**
 		*writes data to the SocketSync to which it is applied
 		*/
-		write(data: Buffer, encoding: String) : Boolean;
+		write(data: WAKBufferInstance, encoding: String) : Boolean;
 	}

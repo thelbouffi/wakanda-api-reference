@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>SystemWorkerResult | </title>
+	<title>WAKNodeWorkerProxy | </title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,10 +56,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="systemworkerresult.html">SystemWorkerResult</a>
+					<a href="waknodeworkerproxy.html">WAKNodeWorkerProxy</a>
 				</li>
 			</ul>
-			<h1>Interface SystemWorkerResult</h1>
+			<h1>Interface WAKNodeWorkerProxy</h1>
 		</div>
 	</div>
 </header>
@@ -70,7 +70,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">SystemWorkerResult</span>
+						<span class="target">WAKNodeWorkerProxy</span>
 					</li>
 				</ul>
 			</section>
@@ -81,9 +81,7 @@
 						<section class="tsd-index-section tsd-is-external tsd-is-not-exported">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="systemworkerresult.html#error" class="tsd-kind-icon">error</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="systemworkerresult.html#exitstatus" class="tsd-kind-icon">exit<wbr>Status</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="systemworkerresult.html#ouput" class="tsd-kind-icon">ouput</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="waknodeworkerproxy.html#port" class="tsd-kind-icon">port</a></li>
 							</ul>
 						</section>
 					</div>
@@ -92,48 +90,25 @@
 			<section class="tsd-panel-group tsd-member-group tsd-is-external tsd-is-not-exported">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-					<a name="error" class="tsd-anchor"></a>
-					<h3>error</h3>
-					<div class="tsd-signature tsd-kind-icon">error<span class="tsd-signature-symbol">:</span> <a href="buffer.html" class="tsd-signature-type">Buffer</a></div>
+					<a name="port" class="tsd-anchor"></a>
+					<h3>port</h3>
+					<div class="tsd-signature tsd-kind-icon">port<span class="tsd-signature-symbol">:</span> <a href="port.html" class="tsd-signature-type">Port</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/c41574b/api/systemworker.d.ts#L209">systemworker.d.ts:209</a></li>
+							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/22ab982/api/nodeworker.d.ts#L110">nodeworker.d.ts:110</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>stderr result of the command.</p>
+							<p>Use the proxy port to communicate with the node worker thread.</p>
 						</div>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-					<a name="exitstatus" class="tsd-anchor"></a>
-					<h3>exit<wbr>Status</h3>
-					<div class="tsd-signature tsd-kind-icon">exit<wbr>Status<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Number</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/c41574b/api/systemworker.d.ts#L201">systemworker.d.ts:201</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Integer value depending on the executable. If the executable considers the operation has been executed successfully, exitStatus value is <code>0</code>.</p>
-						</div>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-					<a name="ouput" class="tsd-anchor"></a>
-					<h3>ouput</h3>
-					<div class="tsd-signature tsd-kind-icon">ouput<span class="tsd-signature-symbol">:</span> <a href="buffer.html" class="tsd-signature-type">Buffer</a></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/c41574b/api/systemworker.d.ts#L205">systemworker.d.ts:205</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>stdout result of the command.</p>
-						</div>
+						<pre><code><span class="hljs-comment">// Create a new NodeWorker and get the proxy worker</span>
+<span class="hljs-keyword">var</span> myWorkerProxy = <span class="hljs-keyword">new</span> <span class="hljs-type">NodeWorker</span>( <span class="hljs-string">'backend/worker.js'</span>, <span class="hljs-string">'my-worker-name'</span> );
+<span class="hljs-comment">// Get the proxy worker port for communication</span>
+<span class="hljs-keyword">var</span> workerProxyPort = myWorkerProxy.port;
+<span class="hljs-comment">// Send a "wake up" message to the worker</span>
+workerProxyPort.postMessage( <span class="hljs-string">'wake-up'</span> );
+</code></pre>
 					</div>
 				</section>
 			</section>
@@ -151,16 +126,10 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface tsd-is-external tsd-is-not-exported">
-						<a href="systemworkerresult.html" class="tsd-kind-icon">System<wbr>Worker<wbr>Result</a>
+						<a href="waknodeworkerproxy.html" class="tsd-kind-icon">WAKNode<wbr>Worker<wbr>Proxy</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="systemworkerresult.html#error" class="tsd-kind-icon">error</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="systemworkerresult.html#exitstatus" class="tsd-kind-icon">exit<wbr>Status</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="systemworkerresult.html#ouput" class="tsd-kind-icon">ouput</a>
+								<a href="waknodeworkerproxy.html#port" class="tsd-kind-icon">port</a>
 							</li>
 						</ul>
 					</li>

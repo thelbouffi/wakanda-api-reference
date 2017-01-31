@@ -51,13 +51,13 @@ interface Image {
      * 
      * #### Example 1: Basic usage
      * ```
-     * var myFile = File( 'PROJECT/backend/my-saved-image.jpg' );
+     * var myFile = new File( 'PROJECT/backend/my-saved-image.jpg' );
      * var myImage = loadImage( 'PROJECT/backend/my-image.jpg' );
      * myImage.save( myFile );
      * ```
      * #### Example 2: Save image in another format
      * ```
-     * var myFile = File( 'PROJECT/backend/my-png-image.png' );
+     * var myFile = new File( 'PROJECT/backend/my-png-image.png' );
      * var myImage = loadImage( 'PROJECT/backend/my-image.jpg' );
      * myImage.save( myFile, 'image/png' );
      * ```
@@ -66,7 +66,7 @@ interface Image {
      * @param file File object where to save the image
      * @param type New mime type to apply
      */
-    save(file: File, type?: String): void;
+    save(file: WAKFileInstance, type?: String): void;
     /**
      * Updates the image metadata.
      * 

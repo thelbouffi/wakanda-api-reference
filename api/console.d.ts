@@ -1,4 +1,4 @@
-interface Console {
+interface WAKConsole {
     /**
      * Get logged messages.
      * 

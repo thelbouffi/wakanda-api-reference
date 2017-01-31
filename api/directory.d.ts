@@ -3,7 +3,7 @@
 ///<reference path="./user.d.ts" />
 ///<reference path="./group.d.ts" />
 
-interface Directory {
+interface WAKDirectory {
     /**
      * Create a new user session and sets it as the current session.
      * 
@@ -37,7 +37,7 @@ interface Directory {
      * @param keepPreviousSession (default `false`) Set to `true` if you want to keep the previous user session, `false` if you want to expire the previous user session.
      * 
      */
-    createUserSession(sessionObj: ConnectionSessionInfo, keepPreviousSession?: Boolean): void;
+    createUserSession(sessionObj: WAKConnectionSessionInfo, keepPreviousSession?: Boolean): void;
     /**
      * The current user who opened the user session.
      */
@@ -45,7 +45,7 @@ interface Directory {
     /**
      * The current user session.
      */
-    currentSession: ConnectionSession;
+    currentSession: WAKConnectionSession;
     /**
      * Add a new group to the directory and returns it.
      * 
@@ -108,7 +108,7 @@ interface Directory {
      * @param sessionID Describes the string session id
      * @returns Returns the session object if any
      */
-    getSession(sessionID: String): ConnectionSession;
+    getSession(sessionID: String): WAKConnectionSession;
     // /**
     //  * Get all active user sessions.
     //  * 
@@ -220,7 +220,7 @@ interface Directory {
      * Saves all changes made in the directory.
      * 
      * ```
-     * var myFile = File( 'PROJECT/backups/2016-01-01.waDirectory' );
+     * var myFile = new File( 'PROJECT/backups/2016-01-01.waDirectory' );
      * directory.save( myFile );
      * ```
      * 
@@ -228,7 +228,7 @@ interface Directory {
      * @param backup Describes a file for the directory backup.
      * @returns Returns `true` if successfully saved, `false` otherwise.
      */
-    save(backup?: File): Boolean;
+    save(backup?: WAKFileInstance): Boolean;
     /**
      * Sets the session whose UUID is passed in sessionID as the new current session of the running thread.
      * 

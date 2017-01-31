@@ -127,7 +127,7 @@ interface XMLHttpRequest {
      * #### Example 2: Upload file
      * See [doc center](http://doc.wakanda.org/home2.en.html#/HTTP-REST/Interacting-with-the-Server/upload.303-1158401.en.html) for more details about upload
      * ```
-     * var myFile = File( 'PROJECT/backend/my-image.jpg' );
+     * var myFile = new File( 'PROJECT/backend/my-image.jpg' );
      * var xhr = new XMLHttpRequest();
      * xhr.open('PUT', 'http://127.0.0.1:8081/rest/$upload?$rawPict=true');
      * xhr.setRequestHeader( 'Content-Type', 'image/jpeg' );
@@ -144,7 +144,7 @@ interface XMLHttpRequest {
      * @warning Sends synchronous XHR request.
      * @param data Data to send in the request `body`
      */
-    send(data?: File): void;
+    send(data?: WAKFileInstance): void;
     /**
      * Allows the request to be authenticated on the remote server with a client certificate, when necessary.
      * @param keyPath Path to the PEM format private key

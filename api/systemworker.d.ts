@@ -39,7 +39,7 @@ interface SystemWorker {
      * @param options Describes command line options
      * @returns Returns a system worker proxy
      */
-    new (cli: String, options?: SystemWorkerOptions): SystemWorkerProxy;
+    new (cli: String, options?: WAKSystemWorkerOptions): WAKSystemWorkerProxy;
     /**
      * Calls a system worker (asynchronous mode).
      * Use the system worker proxy to get the result.
@@ -77,7 +77,7 @@ interface SystemWorker {
      * @param options Describes command line options
      * @returns Returns a system worker proxy
      */
-    new (cli: String[], options?: SystemWorkerOptions): SystemWorkerProxy;
+    new (cli: String[], options?: WAKSystemWorkerOptions): WAKSystemWorkerProxy;
     /**
      * Calls a system worker (asynchronous mode).
      * Use the system worker proxy to get the result.
@@ -121,7 +121,7 @@ interface SystemWorker {
      * @param options Describes command line options
      * @returns Returns the exit status, stdout and sterr
      */
-    exec(cli: String, options?: SystemWorkerOptions): SystemWorkerResult;
+    exec(cli: String, options?: WAKSystemWorkerOptions): WAKSystemWorkerResult;
     /**
      * Calls to system worker and waits for its response (synchronous mode).
      * 
@@ -164,14 +164,14 @@ interface SystemWorker {
      * @param options Describes command line options
      * @returns Returns the exit status, stdout and sterr
      */
-    exec(cli: String[], options?: SystemWorkerOptions): SystemWorkerResult;
+    exec(cli: String[], options?: WAKSystemWorkerOptions): WAKSystemWorkerResult;
 }
 
-interface SystemWorkerOptions {
+interface WAKSystemWorkerOptions {
     /**
      * Root folder for the worker executable. Native relative file paths will be resolved with this folder as parent.
      */
-    folder?: String | Folder;
+    folder?: String | WAKFolderInstance;
     /**
      * Passes named parameters to command line. `{name}` is replaced with the value of the `options.parameters.name` attribute. Parameters can be of type String, Number, File or Folder.
      */
@@ -194,7 +194,7 @@ interface SystemWorkerOptions {
     kill_process_tree?: Boolean;
 }
 
-interface SystemWorkerResult {
+interface WAKSystemWorkerResult {
     /**
      * Integer value depending on the executable. If the executable considers the operation has been executed successfully, exitStatus value is `0`.
      */
@@ -202,14 +202,14 @@ interface SystemWorkerResult {
     /**
      * stdout result of the command.
      */
-    ouput: Buffer;
+    ouput: WAKBufferInstance;
     /**
      * stderr result of the command.
      */
-    error: Buffer;
+    error: WAKBufferInstance;
 }
 
-interface SystemWorkerEvent {
+interface WAKSystemWorkerEvent {
     /**
      * Either `message`, `error` or `terminate`.
      */
@@ -217,11 +217,11 @@ interface SystemWorkerEvent {
     /**
      * SystemWorker proxy which triggered the callback.
      */
-    target: SystemWorkerProxy;
+    target: WAKSystemWorkerProxy;
     /**
      * Content of stdout.
      */
-    data?: String | Buffer;
+    data?: String | WAKBufferInstance;
     /**
      * `true` if the command line has been correctly executed.
      */
@@ -236,7 +236,7 @@ interface SystemWorkerEvent {
     forced?: Boolean;
 }
 
-interface SystemWorkerProxy {
+interface WAKSystemWorkerProxy {
     /**
      * Callback for system worker errors.
      * 
@@ -247,7 +247,7 @@ interface SystemWorkerProxy {
      * }
      *```
      */
-    onerror: (event: SystemWorkerEvent) => void;
+    onerror: (event: WAKSystemWorkerEvent) => void;
     /**
      * Callback for system worker messages.
      * The message can be sent into multiple chunks.
@@ -259,7 +259,7 @@ interface SystemWorkerProxy {
      * }
      *```
      */
-    onmessage: (event: SystemWorkerEvent) => void;
+    onmessage: (event: WAKSystemWorkerEvent) => void;
     /**
      * Callback when the external process is terminating.
      * 
@@ -270,7 +270,7 @@ interface SystemWorkerProxy {
      * }
      * ```
      */
-    onterminated: (event: SystemWorkerEvent) => void;
+    onterminated: (event: WAKSystemWorkerEvent) => void;
     /**
      * Closes the input stream (stdin) of the external process. 
      * Useful when an attempt to write in the stdin of the external process with `postMessage()` is stuck. `endOfInput()` will release the execution.
@@ -316,7 +316,7 @@ interface SystemWorkerProxy {
      * // Note that we call endOfInput() to indicate we're done. gzip (and most program waiting data from stdin) will wait for more data until the input is explicitely closed.
      * worker.endOfInput();
      */
-    postMessage(stdin: Buffer): void;
+    postMessage(stdin: WAKBufferInstance): void;
     /**
      * Set the type of data exchanged in the SystemWorker through the onmessage and onerror properties.
      * 

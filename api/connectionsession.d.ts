@@ -1,7 +1,7 @@
 ///<reference path="./group.d.ts" />
 ///<reference path="./keyvaluestorage.d.ts" />
 
-interface ConnectionSession {
+interface WAKConnectionSession {
     /**
      * Describes the session expiration date.
      */

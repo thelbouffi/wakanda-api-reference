@@ -25,18 +25,18 @@ interface MIMEMessage {
     /**
      * Returns the MIME message as a Blob object.
      */
-    toBlob(mimeType?: String): Blob;
+    toBlob(mimeType?: String): WAKBlobInstance;
     /**
      * Returns the MIME message as a Buffer object.
      */
-    toBuffer(): void;
+    toBuffer(): WAKBufferInstance;
 }
 
 interface MIMEMessagePart {
     /**
      * Body as a BLOB.
      */
-    asBlob: Blob;
+    asBlob: WAKBlobInstance;
     /**
      * Body as an image.
      */
