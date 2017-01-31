@@ -3912,6 +3912,7 @@ interface WAKSystemWorkerProxy {
      * worker.postMessage( 'abcde' );
      * // Note that we call endOfInput() to indicate we're done. gzip (and most program waiting data from stdin) will wait for more data until the input is explicitely closed.
      * worker.endOfInput();
+     * ```
      */
     postMessage(stdin: String): void;
     /**
@@ -3926,6 +3927,7 @@ interface WAKSystemWorkerProxy {
      * worker.postMessage( input );
      * // Note that we call endOfInput() to indicate we're done. gzip (and most program waiting data from stdin) will wait for more data until the input is explicitely closed.
      * worker.endOfInput();
+     * ```
      */
     postMessage(stdin: WAKBufferInstance): void;
     /**

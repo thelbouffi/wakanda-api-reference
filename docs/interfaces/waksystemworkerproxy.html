@@ -7,6 +7,7 @@
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
+	<script src="../assets/js/modernizr.js"></script>
 </head>
 <body>
 <header>
@@ -108,7 +109,7 @@
 					<div class="tsd-signature tsd-kind-icon">onerror<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/1baef3c/api/systemworker.d.ts#L250">systemworker.d.ts:250</a></li>
+							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/68743e6/api/systemworker.d.ts#L250">systemworker.d.ts:250</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -149,7 +150,7 @@ workerProxy.onerror = <span class="hljs-function"><span class="hljs-keyword">fun
 					<div class="tsd-signature tsd-kind-icon">onmessage<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/1baef3c/api/systemworker.d.ts#L262">systemworker.d.ts:262</a></li>
+							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/68743e6/api/systemworker.d.ts#L262">systemworker.d.ts:262</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -191,7 +192,7 @@ workerProxy.onmessage = <span class="hljs-function"><span class="hljs-keyword">f
 					<div class="tsd-signature tsd-kind-icon">onterminated<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/1baef3c/api/systemworker.d.ts#L273">systemworker.d.ts:273</a></li>
+							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/68743e6/api/systemworker.d.ts#L273">systemworker.d.ts:273</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -239,7 +240,7 @@ workerProxy.onterminated = <span class="hljs-function"><span class="hljs-keyword
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/1baef3c/api/systemworker.d.ts#L289">systemworker.d.ts:289</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/68743e6/api/systemworker.d.ts#L289">systemworker.d.ts:289</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -271,7 +272,7 @@ worker.endOfInput();
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/1baef3c/api/systemworker.d.ts#L293">systemworker.d.ts:293</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/68743e6/api/systemworker.d.ts#L293">systemworker.d.ts:293</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -294,20 +295,20 @@ worker.endOfInput();
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/1baef3c/api/systemworker.d.ts#L305">systemworker.d.ts:305</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/68743e6/api/systemworker.d.ts#L306">systemworker.d.ts:306</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Write on the input stream (stdin) of the external process.</p>
 								</div>
-								<p>```javascript
-									// Create an asynchronous system worker
-									var worker = new SystemWorker( &#39;gzip&#39; );
-									// Send the compressed file on stdin.
-									worker.postMessage( &#39;abcde&#39; );
-									// Note that we call endOfInput() to indicate we&#39;re done. gzip (and most program waiting data from stdin) will wait for more data until the input is explicitely closed.
-								worker.endOfInput();</p>
+								<pre><code class="lang-javascript"><span class="hljs-comment">// Create an asynchronous system worker</span>
+<span class="hljs-keyword">var</span> worker = <span class="hljs-keyword">new</span> SystemWorker( <span class="hljs-string">'gzip'</span> );
+<span class="hljs-comment">// Send the compressed file on stdin.</span>
+worker.postMessage( <span class="hljs-string">'abcde'</span> );
+<span class="hljs-comment">// Note that we call endOfInput() to indicate we're done. gzip (and most program waiting data from stdin) will wait for more data until the input is explicitely closed.</span>
+worker.endOfInput();
+</code></pre>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -320,22 +321,22 @@ worker.endOfInput();
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/1baef3c/api/systemworker.d.ts#L319">systemworker.d.ts:319</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/68743e6/api/systemworker.d.ts#L321">systemworker.d.ts:321</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Write on the input stream (stdin) of the external process.</p>
 								</div>
-								<p>```javascript
-									// Create some data to gzip
-									var input = new Buffer( &#39;abcde&#39;, &#39;ascii&#39; );
-									// Create an asynchronous system worker
-									var worker = new SystemWorker( &#39;gzip&#39; );
-									// Send the compressed file on stdin.
-									worker.postMessage( input );
-									// Note that we call endOfInput() to indicate we&#39;re done. gzip (and most program waiting data from stdin) will wait for more data until the input is explicitely closed.
-								worker.endOfInput();</p>
+								<pre><code class="lang-javascript"><span class="hljs-comment">// Create some data to gzip</span>
+<span class="hljs-keyword">var</span> input = <span class="hljs-keyword">new</span> Buffer( <span class="hljs-string">'abcde'</span>, <span class="hljs-string">'ascii'</span> );
+<span class="hljs-comment">// Create an asynchronous system worker</span>
+<span class="hljs-keyword">var</span> worker = <span class="hljs-keyword">new</span> SystemWorker( <span class="hljs-string">'gzip'</span> );
+<span class="hljs-comment">// Send the compressed file on stdin.</span>
+worker.postMessage( input );
+<span class="hljs-comment">// Note that we call endOfInput() to indicate we're done. gzip (and most program waiting data from stdin) will wait for more data until the input is explicitely closed.</span>
+worker.endOfInput();
+</code></pre>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -357,7 +358,7 @@ worker.endOfInput();
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/1baef3c/api/systemworker.d.ts#L329">systemworker.d.ts:329</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/68743e6/api/systemworker.d.ts#L331">systemworker.d.ts:331</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -390,7 +391,7 @@ worker.endOfInput();
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/1baef3c/api/systemworker.d.ts#L341">systemworker.d.ts:341</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/68743e6/api/systemworker.d.ts#L343">systemworker.d.ts:343</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -430,7 +431,7 @@ workerProxy.terminate(<span class="hljs-literal">true</span>, <span class="hljs-
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/1baef3c/api/systemworker.d.ts#L352">systemworker.d.ts:352</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/68743e6/api/systemworker.d.ts#L354">systemworker.d.ts:354</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">

@@ -41,7 +41,7 @@ concatenateFiles("api", "build/wakanda.ts", globalDeclarations);
 console.log("Concatenating Wakanda Model API files..");
 concatenateFiles("model", "build/model.ts");
 console.log("Generating documentation..");
-runCommand("typedoc --hideGenerator --noLib --ignoreCompilerErrors --includeDeclarations --mode file --readme ./index.md --out ./docs ./api/application.d.ts");
+runCommand("typedoc --theme ./themes/default --hideGenerator --noLib --ignoreCompilerErrors --includeDeclarations --mode file --readme ./index.md --out ./docs ./api/application.d.ts");
 var outputFile = "./build/wakanda.ts";
 var output = cleanOutput(fs.readFileSync(outputFile, 'utf8'));
 fs.writeFileSync(outputFile, output, 'utf8');
