@@ -101,7 +101,7 @@ interface Core {
     /**
      * References the console of the application.
      */
-    console: Console;
+    console: WAKConsole;
     /**
      * References the buffer constructor.
      */
@@ -256,11 +256,8 @@ interface FileSystem {
      * Loads the content of a text file from its path.
      * 
      * ```javascript
-     * var myQuote = loadText( 'c:/texts/under-the-red-sky.txt' );
-     * var newSong = new ds.Quotes();
-     * newSong.author = 'Bob Dylan';
-     * newSong.quote = myQuote;
-     * newSong.save();
+     * var myText = loadText( 'PROJECT/backend/bootstrap.js' );
+     * console.log(myText);
      * ```
      * 
      * @param file File path to load (POSIX path).
@@ -272,12 +269,9 @@ interface FileSystem {
      * Loads the content of a text file from a File object.
      * 
      * ```javascript
-     * var myFile = new File( 'c:/texts/under-the-red-sky.txt' );
-     * var myQuote = loadText( myFile );
-     * var newSong = new ds.Quotes();
-     * newSong.author = 'Bob Dylan';
-     * newSong.quote = myQuote;
-     * newSong.save();
+     * var myFile = new File( 'PROJECT/backend/bootstrap.js' );
+     * var myText = loadText( myFile );
+     * console.log( myText );
      * ```
      * 
      * @param file File object that reference a text file.

@@ -208,6 +208,15 @@ interface WAKDirectory {
      * 
      * ```javascript
      * directory.save();
+     * ```
+     * 
+     * @returns Returns `true` if successfully saved, `false` otherwise.
+     */
+    save(): Boolean;
+    /**
+     * Saves all changes made in the directory.
+     * 
+     * ```javascript
      * directory.save( 'PROJECT/backups/2016-01-01.waDirectory' );
      * ```
      * 
@@ -215,7 +224,7 @@ interface WAKDirectory {
      * @param backup Describes a file path for the directory backup.
      * @returns Returns `true` if successfully saved, `false` otherwise.
      */
-    save(backup?: String): Boolean;
+    save(backup: String): Boolean;
     /**
      * Saves all changes made in the directory.
      * 
@@ -228,7 +237,7 @@ interface WAKDirectory {
      * @param backup Describes a file for the directory backup.
      * @returns Returns `true` if successfully saved, `false` otherwise.
      */
-    save(backup?: WAKFileInstance): Boolean;
+    save(backup: WAKFileInstance): Boolean;
     /**
      * Sets the session whose UUID is passed in sessionID as the new current session of the running thread.
      * 

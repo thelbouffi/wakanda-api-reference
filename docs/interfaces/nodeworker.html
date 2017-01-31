@@ -91,7 +91,10 @@
 							<p>Requires a node module. This module should be defined in <code>PROJECT/node_modules</code></p>
 							<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> myModule = requireNode(<span class="hljs-string">'module'</span>);
 </code></pre>
-							<p>Worker example</p>
+							<p>Requires a wakanda module. This module should be defined in <code>PROJECT/backend/modules</code></p>
+							<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> myModule = <span class="hljs-built_in">require</span>(<span class="hljs-string">'module'</span>);
+</code></pre>
+							<h3 id="nodeworker-js-example">nodeWorker.js example</h3>
 							<pre><code class="lang-javascript"><span class="hljs-comment">// Describes the content of the worker.js file</span>
 <span class="hljs-comment">// Called when a new worker is created</span>
 onconnect = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"> msg </span>)
@@ -165,7 +168,7 @@ onconnect = <span class="hljs-function"><span class="hljs-keyword">function</spa
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/68743e6/api/nodeworker.d.ts#L79">nodeworker.d.ts:79</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2eaaa8/api/nodeworker.d.ts#L85">nodeworker.d.ts:85</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">

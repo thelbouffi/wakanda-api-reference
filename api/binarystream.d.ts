@@ -33,55 +33,6 @@ interface BinaryStream {
      * @param readMode (default: `read`) `Write` if in write mode, `Read` otherwise.
      */
     new (binary: WAKFileInstance, readMode?: String): WAKBinaryStreamInstance;
-    /**
-     * Creates a new BinaryStream object.
-     * 
-     * ```javascript
-     * var net = require( 'net' );
-     * // Use a synchronous socket for demo
-     * var socket = net.connectSync( 25, 'smtp.gmail.com');
-     * // Create a read BinaryStrean
-     * var readstream = new BinaryStream( socket, 'Read', 300 );
-     * // Create a read BinaryStrean
-     * var writestream = new BinaryStream( socket, 'Write', 500 );
-     * // Get first statement from Gmail
-     * console.log( '[CONNECTED] '+ readstream.getBuffer(1000).toString() );
-     * // 220 smtp.gmail.com ESMTP y80sm15252285wrb.12 - gsmtp
-     * 
-     * // Send greetings to Gmail
-     * writestream.putBuffer( new Buffer('EHLO smtp.gmail.com\r\n') );
-     * // Get greetings from Gmail + service details
-     * console.log( '[EHLO] '+ readstream.getBuffer(1000).toString() );
-     * // 250-smtp.gmail.com at your service, [195.68.52.79]
-     * // 250-SIZE 35882577
-     * // 250-8BITMIME
-     * // 250-STARTTLS
-     * // 250-ENHANCEDSTATUSCODES
-     * // 250-PIPELINING
-     * // 250-CHUNKING
-     * // 250 SMTPUTF8
-     * // Important to close the stream after every use to release the referenced socket
-     * readstream.close();
-     * writestream.close();
-     * ```
-     * 
-     * @param binary Describes the binary to read/write.
-     * @param readMode (default: `read`) `Write` if in write mode, `Read` otherwise.
-     * @param timeOut Defines the socket millisecond timeout
-     */
-    new (binary: Socket, readMode?: String, timeOut?: Number): WAKBinaryStreamInstance;
-    /**
-     * Creates a new BinaryStream object
-     * 
-     * ```javascript
-     * 
-     * ```
-     * 
-     * @param binary Describes the binary to read/write.
-     * @param readMode (default: `read`) `Write` if in write mode, `Read` otherwise.
-     * @param timeOut Defines the socket millisecond timeout
-     */
-    new (binary: SocketSync, readMode?: String, timeOut?: Number): WAKBinaryStreamInstance;
 }
 
 interface WAKBinaryStreamInstance {

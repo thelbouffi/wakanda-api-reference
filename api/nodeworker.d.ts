@@ -35,7 +35,13 @@
  * var myModule = requireNode('module');
  * ```
  * 
- * Worker example
+ * Requires a wakanda module. This module should be defined in `PROJECT/backend/modules`
+ * 
+ * ```javascript
+ * var myModule = require('module');
+ * ```
+ *  
+ * ### nodeWorker.js example
  * 
  * ```javascript
  * // Describes the content of the worker.js file

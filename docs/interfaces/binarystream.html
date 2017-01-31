@@ -96,14 +96,12 @@
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
 						<li class="tsd-signature tsd-kind-icon">new <wbr>Binary<wbr>Stream<span class="tsd-signature-symbol">(</span>binary<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">String</span>, readMode<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">String</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="wakbinarystreaminstance.html" class="tsd-signature-type">WAKBinaryStreamInstance</a></li>
 						<li class="tsd-signature tsd-kind-icon">new <wbr>Binary<wbr>Stream<span class="tsd-signature-symbol">(</span>binary<span class="tsd-signature-symbol">: </span><a href="wakfileinstance.html" class="tsd-signature-type">WAKFileInstance</a>, readMode<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">String</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="wakbinarystreaminstance.html" class="tsd-signature-type">WAKBinaryStreamInstance</a></li>
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Binary<wbr>Stream<span class="tsd-signature-symbol">(</span>binary<span class="tsd-signature-symbol">: </span><a href="socket.html" class="tsd-signature-type">Socket</a>, readMode<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">String</span>, timeOut<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="wakbinarystreaminstance.html" class="tsd-signature-type">WAKBinaryStreamInstance</a></li>
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Binary<wbr>Stream<span class="tsd-signature-symbol">(</span>binary<span class="tsd-signature-symbol">: </span><a href="socketsync.html" class="tsd-signature-type">SocketSync</a>, readMode<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">String</span>, timeOut<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="wakbinarystreaminstance.html" class="tsd-signature-type">WAKBinaryStreamInstance</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/68743e6/api/binarystream.d.ts#L6">binarystream.d.ts:6</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2eaaa8/api/binarystream.d.ts#L6">binarystream.d.ts:6</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -140,7 +138,7 @@ readstream.close();
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/68743e6/api/binarystream.d.ts#L20">binarystream.d.ts:20</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2eaaa8/api/binarystream.d.ts#L20">binarystream.d.ts:20</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -169,115 +167,6 @@ readstream.close();
 									<div class="tsd-comment tsd-typography">
 										<div class="lead">
 											<p>(default: <code>read</code>) <code>Write</code> if in write mode, <code>Read</code> otherwise.</p>
-										</div>
-									</div>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="wakbinarystreaminstance.html" class="tsd-signature-type">WAKBinaryStreamInstance</a></h4>
-						</li>
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/68743e6/api/binarystream.d.ts#L35">binarystream.d.ts:35</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Creates a new BinaryStream object.</p>
-								</div>
-								<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> net = <span class="hljs-built_in">require</span>( <span class="hljs-string">'net'</span> );
-<span class="hljs-comment">// Use a synchronous socket for demo</span>
-<span class="hljs-keyword">var</span> socket = net.connectSync( <span class="hljs-number">25</span>, <span class="hljs-string">'smtp.gmail.com'</span>);
-<span class="hljs-comment">// Create a read BinaryStrean</span>
-<span class="hljs-keyword">var</span> readstream = <span class="hljs-keyword">new</span> BinaryStream( socket, <span class="hljs-string">'Read'</span>, <span class="hljs-number">300</span> );
-<span class="hljs-comment">// Create a read BinaryStrean</span>
-<span class="hljs-keyword">var</span> writestream = <span class="hljs-keyword">new</span> BinaryStream( socket, <span class="hljs-string">'Write'</span>, <span class="hljs-number">500</span> );
-<span class="hljs-comment">// Get first statement from Gmail</span>
-<span class="hljs-built_in">console</span>.log( <span class="hljs-string">'[CONNECTED] '</span>+ readstream.getBuffer(<span class="hljs-number">1000</span>).toString() );
-<span class="hljs-comment">// 220 smtp.gmail.com ESMTP y80sm15252285wrb.12 - gsmtp</span>
-
-<span class="hljs-comment">// Send greetings to Gmail</span>
-writestream.putBuffer( <span class="hljs-keyword">new</span> Buffer(<span class="hljs-string">'EHLO smtp.gmail.com\r\n'</span>) );
-<span class="hljs-comment">// Get greetings from Gmail + service details</span>
-<span class="hljs-built_in">console</span>.log( <span class="hljs-string">'[EHLO] '</span>+ readstream.getBuffer(<span class="hljs-number">1000</span>).toString() );
-<span class="hljs-comment">// 250-smtp.gmail.com at your service, [195.68.52.79]</span>
-<span class="hljs-comment">// 250-SIZE 35882577</span>
-<span class="hljs-comment">// 250-8BITMIME</span>
-<span class="hljs-comment">// 250-STARTTLS</span>
-<span class="hljs-comment">// 250-ENHANCEDSTATUSCODES</span>
-<span class="hljs-comment">// 250-PIPELINING</span>
-<span class="hljs-comment">// 250-CHUNKING</span>
-<span class="hljs-comment">// 250 SMTPUTF8</span>
-<span class="hljs-comment">// Important to close the stream after every use to release the referenced socket</span>
-readstream.close();
-writestream.close();
-</code></pre>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>binary: <a href="socket.html" class="tsd-signature-type">Socket</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<div class="lead">
-											<p>Describes the binary to read/write.</p>
-										</div>
-									</div>
-								</li>
-								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> readMode: <span class="tsd-signature-type">String</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<div class="lead">
-											<p>(default: <code>read</code>) <code>Write</code> if in write mode, <code>Read</code> otherwise.</p>
-										</div>
-									</div>
-								</li>
-								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> timeOut: <span class="tsd-signature-type">Number</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<div class="lead">
-											<p>Defines the socket millisecond timeout</p>
-										</div>
-									</div>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="wakbinarystreaminstance.html" class="tsd-signature-type">WAKBinaryStreamInstance</a></h4>
-						</li>
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/68743e6/api/binarystream.d.ts#L72">binarystream.d.ts:72</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Creates a new BinaryStream object</p>
-								</div>
-								<pre><code class="lang-javascript">
-</code></pre>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>binary: <a href="socketsync.html" class="tsd-signature-type">SocketSync</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<div class="lead">
-											<p>Describes the binary to read/write.</p>
-										</div>
-									</div>
-								</li>
-								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> readMode: <span class="tsd-signature-type">String</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<div class="lead">
-											<p>(default: <code>read</code>) <code>Write</code> if in write mode, <code>Read</code> otherwise.</p>
-										</div>
-									</div>
-								</li>
-								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> timeOut: <span class="tsd-signature-type">Number</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<div class="lead">
-											<p>Defines the socket millisecond timeout</p>
 										</div>
 									</div>
 								</li>

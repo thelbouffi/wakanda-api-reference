@@ -35,7 +35,7 @@
  * var myModule = require('module');
  * ```
  *
- * Worker example
+ * ### sharedWorker.js example
  * 
  * ```javascript
  * // Describes the content of the worker.js file

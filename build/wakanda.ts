@@ -198,7 +198,7 @@ interface Core {
     /**
      * References the console of the application.
      */
-    console: Console;
+    console: WAKConsole;
     /**
      * References the buffer constructor.
      */
@@ -353,11 +353,8 @@ interface FileSystem {
      * Loads the content of a text file from its path.
      * 
      * ```javascript
-     * var myQuote = loadText( 'c:/texts/under-the-red-sky.txt' );
-     * var newSong = new ds.Quotes();
-     * newSong.author = 'Bob Dylan';
-     * newSong.quote = myQuote;
-     * newSong.save();
+     * var myText = loadText( 'PROJECT/backend/bootstrap.js' );
+     * console.log(myText);
      * ```
      * 
      * @param file File path to load (POSIX path).
@@ -369,12 +366,9 @@ interface FileSystem {
      * Loads the content of a text file from a File object.
      * 
      * ```javascript
-     * var myFile = new File( 'c:/texts/under-the-red-sky.txt' );
-     * var myQuote = loadText( myFile );
-     * var newSong = new ds.Quotes();
-     * newSong.author = 'Bob Dylan';
-     * newSong.quote = myQuote;
-     * newSong.save();
+     * var myFile = new File( 'PROJECT/backend/bootstrap.js' );
+     * var myText = loadText( myFile );
+     * console.log( myText );
      * ```
      * 
      * @param file File object that reference a text file.
@@ -463,55 +457,6 @@ interface BinaryStream {
      * @param readMode (default: `read`) `Write` if in write mode, `Read` otherwise.
      */
     new (binary: WAKFileInstance, readMode?: String): WAKBinaryStreamInstance;
-    /**
-     * Creates a new BinaryStream object.
-     * 
-     * ```javascript
-     * var net = require( 'net' );
-     * // Use a synchronous socket for demo
-     * var socket = net.connectSync( 25, 'smtp.gmail.com');
-     * // Create a read BinaryStrean
-     * var readstream = new BinaryStream( socket, 'Read', 300 );
-     * // Create a read BinaryStrean
-     * var writestream = new BinaryStream( socket, 'Write', 500 );
-     * // Get first statement from Gmail
-     * console.log( '[CONNECTED] '+ readstream.getBuffer(1000).toString() );
-     * // 220 smtp.gmail.com ESMTP y80sm15252285wrb.12 - gsmtp
-     * 
-     * // Send greetings to Gmail
-     * writestream.putBuffer( new Buffer('EHLO smtp.gmail.com\r\n') );
-     * // Get greetings from Gmail + service details
-     * console.log( '[EHLO] '+ readstream.getBuffer(1000).toString() );
-     * // 250-smtp.gmail.com at your service, [195.68.52.79]
-     * // 250-SIZE 35882577
-     * // 250-8BITMIME
-     * // 250-STARTTLS
-     * // 250-ENHANCEDSTATUSCODES
-     * // 250-PIPELINING
-     * // 250-CHUNKING
-     * // 250 SMTPUTF8
-     * // Important to close the stream after every use to release the referenced socket
-     * readstream.close();
-     * writestream.close();
-     * ```
-     * 
-     * @param binary Describes the binary to read/write.
-     * @param readMode (default: `read`) `Write` if in write mode, `Read` otherwise.
-     * @param timeOut Defines the socket millisecond timeout
-     */
-    new (binary: Socket, readMode?: String, timeOut?: Number): WAKBinaryStreamInstance;
-    /**
-     * Creates a new BinaryStream object
-     * 
-     * ```javascript
-     * 
-     * ```
-     * 
-     * @param binary Describes the binary to read/write.
-     * @param readMode (default: `read`) `Write` if in write mode, `Read` otherwise.
-     * @param timeOut Defines the socket millisecond timeout
-     */
-    new (binary: SocketSync, readMode?: String, timeOut?: Number): WAKBinaryStreamInstance;
 }
 
 interface WAKBinaryStreamInstance {
@@ -1059,7 +1004,21 @@ interface WAKConnectionSessionInfo {
      * Defines the session time to live for the user session.
      */
     lifeTime?: Number;
-}interface WAKConsole {
+}/**
+ * Writes message to the log file and the debugger's console.
+ * 
+ * ```javascript
+ * console.log('Hello World!');
+ * // Hello World!
+ * console.log("I'm %d years old.", userAge);
+ * // I'm 20 years old.
+ * console.log('My first car was a', car, '. The object is: ', someObject);
+ * // My first car was a Toyota. The object is: { name: 'Toyota' }
+ * console.log({ str: 'Some text', id: 5 });
+ * // { str: 'Some text', id: 5 }
+ * ```
+ */
+interface WAKConsole {
     /**
      * Get logged messages.
      * 
@@ -1069,33 +1028,20 @@ interface WAKConnectionSessionInfo {
      */
     content: Array<String>;
     /**
-     * Writes message to the log file and the debugger's console with a visual "ERROR" label.
-     * @see console.log() for more details
+     * @param message Message to log. Can use the following substitution strings: %o, %s, %d, %i, %f.
+     * @param subst Substitution value
      */
     error(message: String, ...subst: any[]): void;
     error(message: Object): void;
     /**
-     * Writes message to the log file and the debugger's console.
-     * 
-     * ```javascript
-     * console.log('Hello World!');
-     * // Hello World!
-     * console.log("I'm %d years old.", userAge);
-     * // I'm 20 years old.
-     * console.log('My first car was a', car, '. The object is: ', someObject);
-     * // My first car was a Toyota. The object is: { name: 'Toyota' }
-     * console.log({ str: 'Some text', id: 5 });
-     * // { str: 'Some text', id: 5 }
-     * ```
-     * 
      * @param message Message to log. Can use the following substitution strings: %o, %s, %d, %i, %f.
      * @param subst Substitution value
      */
     log(message: String, ...subst: any[]): void;
     log(message: Object): void;
     /**
-     * Writes message to the log file and the debugger's console with a visual "WARNING" label.
-     * @see console.log() for more details
+     * @param message Message to log. Can use the following substitution strings: %o, %s, %d, %i, %f.
+     * @param subst Substitution value
      */
     warn(message: String, ...subst: any[]): void;
     warn(message: Object): void;
@@ -1852,6 +1798,15 @@ interface WAKDirectory {
      * 
      * ```javascript
      * directory.save();
+     * ```
+     * 
+     * @returns Returns `true` if successfully saved, `false` otherwise.
+     */
+    save(): Boolean;
+    /**
+     * Saves all changes made in the directory.
+     * 
+     * ```javascript
      * directory.save( 'PROJECT/backups/2016-01-01.waDirectory' );
      * ```
      * 
@@ -1859,7 +1814,7 @@ interface WAKDirectory {
      * @param backup Describes a file path for the directory backup.
      * @returns Returns `true` if successfully saved, `false` otherwise.
      */
-    save(backup?: String): Boolean;
+    save(backup: String): Boolean;
     /**
      * Saves all changes made in the directory.
      * 
@@ -1872,7 +1827,7 @@ interface WAKDirectory {
      * @param backup Describes a file for the directory backup.
      * @returns Returns `true` if successfully saved, `false` otherwise.
      */
-    save(backup?: WAKFileInstance): Boolean;
+    save(backup: WAKFileInstance): Boolean;
     /**
      * Sets the session whose UUID is passed in sessionID as the new current session of the running thread.
      * 
@@ -2645,10 +2600,6 @@ interface HttpServer {
      * httpServer.addRequestHandler('^/ping$', 'request-greetings.js', 'pong');
      * ```
      * 
-     * @param pattern Regexp pattern to intercept a HTTP request
-     * @param filePath Path to the file that defines the functionName
-     * @param functionName Function name which handles the request and returns the request response
-     * 
      * #### Example 2: Handle the request
      * ```javascript
      * // request-greetings.js
@@ -2656,6 +2607,10 @@ interface HttpServer {
      *     return 'pong';
      * }
      * ```
+     * 
+     * @param pattern Regexp pattern to intercept a HTTP request
+     * @param filePath Path to the file that defines the functionName
+     * @param functionName Function name which handles the request and returns the request response
      */
     addRequestHandler(pattern: String, filePath: String, functionName: String): void;
     /**
@@ -2667,9 +2622,6 @@ interface HttpServer {
      * // It is recommended to write these lines in bootstrap.js
      * httpServer.addWebSocketHandler('^/ping$', './backend/websocket-greetings.js', 'websocket-id', true);
      * ```
-     * 
-     * @param pattern Regexp pattern to intercept a HTTP request
-     * @param filePath Absolute or relative path from the project to the file that defines the websocket handler. Filesystem are not working in filePath parameter (`PROJECT`, `SOLUTION`, ...).
      * 
      * #### Example 2: Handle the websocket
      * ```javascript
@@ -2706,6 +2658,8 @@ interface HttpServer {
      * };
      * ```
      * 
+     * @param pattern Regexp pattern to intercept a HTTP request
+     * @param filePath Absolute or relative path from the project to the file that defines the websocket handler. Filesystem are not working in filePath parameter (`PROJECT`, `SOLUTION`, ...).
      * @param socketID Socket ID usefull for `removeWebSocketHandler()`
      * @param sharedWorker `true` if uses shared worker (recommended). `false` if uses dedicated worker.
      */
@@ -3196,7 +3150,13 @@ interface WAKMutexProxy {
  * var myModule = requireNode('module');
  * ```
  * 
- * Worker example
+ * Requires a wakanda module. This module should be defined in `PROJECT/backend/modules`
+ * 
+ * ```javascript
+ * var myModule = require('module');
+ * ```
+ *  
+ * ### nodeWorker.js example
  * 
  * ```javascript
  * // Describes the content of the worker.js file
@@ -3421,7 +3381,7 @@ interface WAKNodeWorkerProxy {
  * var myModule = require('module');
  * ```
  *
- * Worker example
+ * ### sharedWorker.js example
  * 
  * ```javascript
  * // Describes the content of the worker.js file
