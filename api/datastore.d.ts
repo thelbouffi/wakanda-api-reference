@@ -1,7 +1,8 @@
 ///<reference path="./datastoreclassenumerator.d.ts" />
 
+/** FRED TEST */
 interface Datastore {
-
+    
 	/**
 	*Collection of available datastore classes
 	*/
