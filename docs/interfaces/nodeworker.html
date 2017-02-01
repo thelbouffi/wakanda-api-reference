@@ -70,36 +70,20 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Here is an example of a worker file.</p>
+						<h3 id="node-worker">Node worker</h3>
 					</div>
-					<p>Callback to trigger when a new caller creates a NodeWorker proxy object.</p>
-					<pre><code class="lang-javascript">onconnect: <span class="hljs-built_in">Function</span>;
-</code></pre>
-					<p>Get port to communicate with the worker proxy.
-					Always use <code>ports[0]</code>.</p>
-					<pre><code class="lang-javascript">ports: <span class="hljs-built_in">Array</span>&lt;Port&gt;;
-</code></pre>
-					<p>Close the worker.</p>
-					<pre><code class="lang-javascript">close() : <span class="hljs-keyword">void</span>;
-</code></pre>
-					<p>Allows a thread to handle events and to continue to exist after the complete code executes.</p>
-					<dl class="tsd-comment-tags">
-						<dt>warning</dt>
-						<dd><p>There is an implicit <code>wait()</code> in worker. No need to add another.</p>
-							<pre><code class="lang-javascript">wait(timeout?: <span class="hljs-built_in">Number</span>) : <span class="hljs-built_in">Boolean</span>;
-</code></pre>
-							<p>Requires a node module. This module should be defined in <code>PROJECT/node_modules</code></p>
-							<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> myModule = requireNode(<span class="hljs-string">'module'</span>);
-</code></pre>
-							<p>Requires a wakanda module. This module should be defined in <code>PROJECT/backend/modules</code></p>
-							<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> myModule = <span class="hljs-built_in">require</span>(<span class="hljs-string">'module'</span>);
-</code></pre>
-							<h3 id="nodeworker-js-example">nodeWorker.js example</h3>
-							<pre><code class="lang-javascript"><span class="hljs-comment">// Describes the content of the worker.js file</span>
-<span class="hljs-comment">// Called when a new worker is created</span>
+					<p>A node worker is composed of 2 elements:</p>
+					<ul>
+						<li>A thread running the node worker</li>
+						<li>One or more proxies communicating with the worker thread</li>
+					</ul>
+					<h3 id="step-1-define-the-node-worker">Step 1: Define the node worker</h3>
+					<pre><code class="lang-javascript"><span class="hljs-comment">// PROJECT/backend/worker.js</span>
+<span class="hljs-comment">// onconnect is called everytime a new worker proxy is created</span>
 onconnect = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"> msg </span>)
 </span>{
     <span class="hljs-comment">// Get the worker port for communication with the worker proxy</span>
+    <span class="hljs-comment">// Always use `ports[0]`</span>
     <span class="hljs-keyword">var</span> workerPort = msg.ports[<span class="hljs-number">0</span>];
 
     <span class="hljs-comment">// Send a message to the worker proxy. The worker is up and running.</span>
@@ -108,7 +92,7 @@ onconnect = <span class="hljs-function"><span class="hljs-keyword">function</spa
     <span class="hljs-comment">// Listen for worker proxy messages</span>
     workerPort.onmessage = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"> event </span>)
     </span>{
-        <span class="hljs-comment">// We've got a message !</span>
+        <span class="hljs-comment">// Worker receives a message !</span>
         <span class="hljs-comment">// The `event.data` is what the worker proxy sends using `postMessage()`. Could be a String, Number or an Object type.</span>
         <span class="hljs-comment">// Here, `event.data` contains an object: `{type: String, says: String}`</span>
         <span class="hljs-keyword">var</span> message = event.data;
@@ -116,23 +100,73 @@ onconnect = <span class="hljs-function"><span class="hljs-keyword">function</spa
         {
             <span class="hljs-comment">// It's a hello world message</span>
             <span class="hljs-keyword">case</span> <span class="hljs-string">'hello'</span>:
+                <span class="hljs-built_in">console</span>.log( <span class="hljs-string">'[RECEIVED BY WORKER] '</span>+ event.says );
                 <span class="hljs-comment">// Reply to the worker proxy</span>
-                workerPort.postMessage( {<span class="hljs-attr">type</span>: <span class="hljs-string">'hello'</span>, <span class="hljs-attr">says</span>: <span class="hljs-string">'Hello to you too!'</span>} );
+                workerPort.postMessage( {<span class="hljs-attr">type</span>: <span class="hljs-string">'hello'</span>, <span class="hljs-attr">says</span>: <span class="hljs-string">'Hello proxy!'</span>} );
                 <span class="hljs-keyword">break</span>;
 
             <span class="hljs-comment">// It's a terminate message</span>
             <span class="hljs-keyword">case</span> <span class="hljs-string">'close'</span>:
+                <span class="hljs-built_in">console</span>.log( <span class="hljs-string">'[RECEIVED BY WORKER] '</span>+ event.says );
                 <span class="hljs-comment">// Reply to the worker proxy</span>
                 workerPort.postMessage( {<span class="hljs-attr">type</span>: <span class="hljs-string">'close'</span>, <span class="hljs-attr">says</span>: <span class="hljs-string">'I will be back!'</span>} );
                 <span class="hljs-comment">// Close the worker</span>
+                <span class="hljs-built_in">console</span>.log( <span class="hljs-string">'[WORKER] Worker stops'</span> );
                 close();
+                <span class="hljs-keyword">break</span>;
+
+            <span class="hljs-comment">// It's something else. Skip it.</span>
+            <span class="hljs-keyword">default</span>:
                 <span class="hljs-keyword">break</span>;
         }
     }
 }
 </code></pre>
-						</dd>
-					</dl>
+					<h4 id="how-to-require-a-node-module-">How to require a node module ?</h4>
+					<p>The module should be defined in <code>PROJECT/node_modules</code></p>
+					<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> myModule = requireNode( <span class="hljs-string">'myModule'</span> );
+</code></pre>
+					<h4 id="how-to-require-a-wakanda-module-">How to require a wakanda module ?</h4>
+					<p>The module should be defined in <code>PROJECT/backend/modules</code></p>
+					<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> myModule = <span class="hljs-built_in">require</span>( <span class="hljs-string">'myModule'</span> );
+</code></pre>
+					<h3 id="step-2-create-the-node-worker-thread-and-get-the-worker-proxy">Step 2: Create the node worker thread and get the worker proxy</h3>
+					<pre><code class="lang-javascript"><span class="hljs-comment">// PROJECT/backend/proxy.js</span>
+<span class="hljs-comment">// Create a new NodeWorker and get the proxy worker</span>
+<span class="hljs-keyword">var</span> myWorkerProxy = <span class="hljs-keyword">new</span> NodeWorker( <span class="hljs-string">'backend/worker.js'</span>, <span class="hljs-string">'my-worker-name'</span> );
+<span class="hljs-comment">// Get the proxy worker port for communication</span>
+<span class="hljs-keyword">var</span> workerProxyPort = myWorkerProxy.port;
+<span class="hljs-comment">// Send a "hello" message to the worker</span>
+workerProxyPort.postMessage( {<span class="hljs-attr">type</span>: <span class="hljs-string">'hello'</span>, <span class="hljs-attr">says</span>: <span class="hljs-string">'Hello worker !'</span>} );
+</code></pre>
+					<h3 id="step-3-listen-for-node-worker-messages">Step 3: Listen for node worker messages</h3>
+					<pre><code class="lang-javascript"><span class="hljs-comment">// PROJECT/backend/proxy.js</span>
+<span class="hljs-comment">// Listen for worker thread messages</span>
+workerProxyPort.onmessage = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"> event </span>)
+</span>{
+    <span class="hljs-comment">// Proxy receives a message !</span>
+    <span class="hljs-comment">// Same as before, the `event.data` is what the worker proxy sends using `postMessage()`. Could be a String, Number or an Object type.</span>
+    <span class="hljs-comment">// Here, `event.data` contains an object: `{type: String, says: String}`</span>
+    <span class="hljs-keyword">var</span> message = event.data;
+    <span class="hljs-keyword">switch</span>( message.type )
+    {
+        <span class="hljs-comment">// It's a hello world message</span>
+        <span class="hljs-keyword">case</span> <span class="hljs-string">'hello'</span>:
+            <span class="hljs-built_in">console</span>.log( <span class="hljs-string">'[RECEIVED BY PROXY] '</span>+ event.says );
+            <span class="hljs-comment">// Say by to the worker</span>
+            workerProxyPort.postMessage( {<span class="hljs-attr">type</span>: <span class="hljs-string">'close'</span>, <span class="hljs-attr">says</span>: <span class="hljs-string">'Bye bye worker!'</span>} );
+            <span class="hljs-keyword">break</span>;
+
+        <span class="hljs-comment">// It's a terminate message</span>
+        <span class="hljs-keyword">case</span> <span class="hljs-string">'close'</span>:
+            <span class="hljs-built_in">console</span>.log( <span class="hljs-string">'[RECEIVED BY PROXY] '</span>+ event.says );
+
+        <span class="hljs-comment">// It's something else. Skip it.</span>
+        <span class="hljs-keyword">default</span>:
+            <span class="hljs-keyword">break</span>;
+    }
+}
+</code></pre>
 				</div>
 			</section>
 			<section class="tsd-panel tsd-hierarchy">
@@ -168,7 +202,7 @@ onconnect = <span class="hljs-function"><span class="hljs-keyword">function</spa
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/f2eaaa8/api/nodeworker.d.ts#L85">nodeworker.d.ts:85</a></li>
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fbc2890/api/nodeworker.d.ts#L116">nodeworker.d.ts:116</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">

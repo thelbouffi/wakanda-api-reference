@@ -2593,14 +2593,14 @@ interface HttpServer {
      * Adds a request handler function on the server.
      * It is recommended to write all request handler in the `bootstrap.js` file in order to be available at server start up.
      * 
-     * #### Example 1: Add a request handler
+     * #### Step 1: Add a request handler
      * ```javascript
      * // It is recommended to write these lines in bootstrap.js
      * // On every "/ping" requests, call "hello()" function in "request-greetings.js"
      * httpServer.addRequestHandler('^/ping$', 'request-greetings.js', 'pong');
      * ```
      * 
-     * #### Example 2: Handle the request
+     * #### Step 2: Handle the request
      * ```javascript
      * // request-greetings.js
      * function pong( request, response ){
@@ -2617,13 +2617,13 @@ interface HttpServer {
      * Adds a WebSocket handler script on the server.
      * It is recommended to write all websocket handler in the `bootstrap.js` file in order to be available at server start up.
      * 
-     * #### Example 1: Add a websocket handler
+     * #### Step 1: Add a websocket handler
      * ```javascript
      * // It is recommended to write these lines in bootstrap.js
      * httpServer.addWebSocketHandler('^/ping$', './backend/websocket-greetings.js', 'websocket-id', true);
      * ```
      * 
-     * #### Example 2: Handle the websocket
+     * #### Step 2: Handle the websocket
      * ```javascript
      * // ./backend/websocket-greetings.js
      * // Same as for ShareWorker
@@ -3116,54 +3116,21 @@ interface WAKMutexProxy {
 }
 
 /**
- * Here is an example of a worker file.
+ * ### Node worker
  * 
- * Callback to trigger when a new caller creates a NodeWorker proxy object.
+ * A node worker is composed of 2 elements:
+ * - A thread running the node worker
+ * - One or more proxies communicating with the worker thread
  * 
- * ```javascript
- * onconnect: Function;
- * ```
- * 
- * Get port to communicate with the worker proxy.
- * Always use `ports[0]`.
+ * ### Step 1: Define the node worker
  * 
  * ```javascript
- * ports: Array<Port>;
- * ```
- * 
- * Close the worker.
- * 
- * ```javascript
- * close() : void;
- * ```
- * 
- * Allows a thread to handle events and to continue to exist after the complete code executes.
- * @warning There is an implicit `wait()` in worker. No need to add another.
- * 
- * ```javascript
- * wait(timeout?: Number) : Boolean;
- * ```
- * 
- * Requires a node module. This module should be defined in `PROJECT/node_modules`
- * 
- * ```javascript
- * var myModule = requireNode('module');
- * ```
- * 
- * Requires a wakanda module. This module should be defined in `PROJECT/backend/modules`
- * 
- * ```javascript
- * var myModule = require('module');
- * ```
- *  
- * ### nodeWorker.js example
- * 
- * ```javascript
- * // Describes the content of the worker.js file
- * // Called when a new worker is created
+ * // PROJECT/backend/worker.js
+ * // onconnect is called everytime a new worker proxy is created
  * onconnect = function( msg )
  * {
  *     // Get the worker port for communication with the worker proxy
+ *     // Always use `ports[0]`
  *     var workerPort = msg.ports[0];
  * 
  *     // Send a message to the worker proxy. The worker is up and running.
@@ -3172,7 +3139,7 @@ interface WAKMutexProxy {
  *     // Listen for worker proxy messages
  *     workerPort.onmessage = function( event )
  *     {
- *         // We've got a message !
+ *         // Worker receives a message !
  *         // The `event.data` is what the worker proxy sends using `postMessage()`. Could be a String, Number or an Object type.
  *         // Here, `event.data` contains an object: `{type: String, says: String}`
  *         var message = event.data;
@@ -3180,18 +3147,82 @@ interface WAKMutexProxy {
  *         {
  *             // It's a hello world message
  *             case 'hello':
+ *                 console.log( '[RECEIVED BY WORKER] '+ event.says );
  *                 // Reply to the worker proxy
- *                 workerPort.postMessage( {type: 'hello', says: 'Hello to you too!'} );
+ *                 workerPort.postMessage( {type: 'hello', says: 'Hello proxy!'} );
  *                 break;
  * 
  *             // It's a terminate message
  *             case 'close':
+ *                 console.log( '[RECEIVED BY WORKER] '+ event.says );
  *                 // Reply to the worker proxy
  *                 workerPort.postMessage( {type: 'close', says: 'I will be back!'} );
  *                 // Close the worker
+ *                 console.log( '[WORKER] Worker stops' );
  *                 close();
  *                 break;
+ * 
+ *             // It's something else. Skip it.
+ *             default:
+ *                 break;
  *         }
+ *     }
+ * }
+ * ```
+ * 
+ * #### How to require a node module ?
+ * The module should be defined in `PROJECT/node_modules`
+ * 
+ * ```javascript
+ * var myModule = requireNode( 'myModule' );
+ * ```
+ * 
+ * #### How to require a wakanda module ?
+ * The module should be defined in `PROJECT/backend/modules`
+ * 
+ * ```javascript
+ * var myModule = require( 'myModule' );
+ * ```
+ *  
+ * ### Step 2: Create the node worker thread and get the worker proxy
+ * 
+ * ```javascript
+ * // PROJECT/backend/proxy.js
+ * // Create a new NodeWorker and get the proxy worker
+ * var myWorkerProxy = new NodeWorker( 'backend/worker.js', 'my-worker-name' );
+ * // Get the proxy worker port for communication
+ * var workerProxyPort = myWorkerProxy.port;
+ * // Send a "hello" message to the worker
+ * workerProxyPort.postMessage( {type: 'hello', says: 'Hello worker !'} );
+ * ```
+ * 
+ * ### Step 3: Listen for node worker messages
+ * 
+ * ```javascript
+ * // PROJECT/backend/proxy.js
+ * // Listen for worker thread messages
+ * workerProxyPort.onmessage = function( event )
+ * {
+ *     // Proxy receives a message !
+ *     // Same as before, the `event.data` is what the worker proxy sends using `postMessage()`. Could be a String, Number or an Object type.
+ *     // Here, `event.data` contains an object: `{type: String, says: String}`
+ *     var message = event.data;
+ *     switch( message.type )
+ *     {
+ *         // It's a hello world message
+ *         case 'hello':
+ *             console.log( '[RECEIVED BY PROXY] '+ event.says );
+ *             // Say by to the worker
+ *             workerProxyPort.postMessage( {type: 'close', says: 'Bye bye worker!'} );
+ *             break;
+ * 
+ *         // It's a terminate message
+ *         case 'close':
+ *             console.log( '[RECEIVED BY PROXY] '+ event.says );
+ * 
+ *         // It's something else. Skip it.
+ *         default:
+ *             break;
  *     }
  * }
  * ```
@@ -3347,48 +3378,21 @@ interface WAKNodeWorkerProxy {
 	}
 
 /**
- * Here is an example of a worker file.
+ * ### Shared worker
  * 
- * Callback to trigger when a new caller creates a SharedWorker proxy object.
+ * A shared worker is composed of 2 elements:
+ * - A thread running the shared worker
+ * - One or more proxies communicating with the worker thread
  * 
- * ```javascript
- * onconnect: Function;
- * ```
- * 
- * Get port to communicate with the worker proxy.
- * Always use `ports[0]`.
+ * ### Step 1: Define the shared worker
  * 
  * ```javascript
- * ports: Array<Port>;
- * ```
- * 
- * Close the worker.
- * 
- * ```javascript
- * close() : void;
- * ```
- * 
- * Allows a thread to handle events and to continue to exist after the complete code executes.
- * @warning There is an implicit `wait()` in worker. No need to add another.
- * 
- * ```javascript
- * wait(timeout?: Number) : Boolean;
- * ```
- * 
- * Requires a SSJS module. This module should be defined in `PROJECT/backend/modules`
- * 
- * ```javascript
- * var myModule = require('module');
- * ```
- *
- * ### sharedWorker.js example
- * 
- * ```javascript
- * // Describes the content of the worker.js file
- * // Called when a new worker is created
+ * // PROJECT/backend/worker.js
+ * // onconnect is called everytime a new worker proxy is created
  * onconnect = function( msg )
  * {
  *     // Get the worker port for communication with the worker proxy
+ *     // Always use `ports[0]`
  *     var workerPort = msg.ports[0];
  * 
  *     // Send a message to the worker proxy. The worker is up and running.
@@ -3397,29 +3401,86 @@ interface WAKNodeWorkerProxy {
  *     // Listen for worker proxy messages
  *     workerPort.onmessage = function( event )
  *     {
- *         // We've got a message !
+ *         // Worker receives a message !
  *         // The `event.data` is what the worker proxy sends using `postMessage()`. Could be a String, Number or an Object type.
  *         // Here, `event.data` contains an object: `{type: String, says: String}`
  *         var message = event.data;
  *         switch( message.type )
  *         {
- *            // It's a hello world message
- *            case 'hello':
+ *             // It's a hello world message
+ *             case 'hello':
+ *                 console.log( '[RECEIVED BY WORKER] '+ event.says );
  *                 // Reply to the worker proxy
- *                 workerPort.postMessage( {type: 'hello', says: 'Hello to you too!'} );
+ *                 workerPort.postMessage( {type: 'hello', says: 'Hello proxy!'} );
  *                 break;
  * 
  *             // It's a terminate message
  *             case 'close':
+ *                 console.log( '[RECEIVED BY WORKER] '+ event.says );
  *                 // Reply to the worker proxy
  *                 workerPort.postMessage( {type: 'close', says: 'I will be back!'} );
  *                 // Close the worker
+ *                 console.log( '[WORKER] Worker stops' );
  *                 close();
  *                 break;
- *         }
+ * 
+ *             // It's something else. Skip it.
+ *             default:
+ *                 break;
  *     }
  * }
  * ```
+ * 
+ * #### How to require a wakanda module ?
+ * The module should be defined in `PROJECT/backend/modules`
+ * 
+ * ```javascript
+ * var myModule = require( 'myModule' );
+ * ```
+ * 
+ * ### Step 2: Create the shared worker thread and get the worker proxy
+ * 
+ * ```javascript
+ * // PROJECT/backend/proxy.js
+ * // Create a new SharedWorker and get the proxy worker
+ * var myWorkerProxy = new SharedWorker( 'backend/worker.js', 'my-worker-name' );
+ * // Get the proxy worker port for communication
+ * var workerProxyPort = myWorkerProxy.port;
+ * // Send a "hello" message to the worker
+ * workerProxyPort.postMessage( {type: 'hello', says: 'Hello worker !'} );
+ * ```
+ * 
+ * ### Step 3: Listen for shared worker messages
+ * 
+ * ```javascript
+ * // PROJECT/backend/proxy.js
+ * // Listen for worker thread messages
+ * workerProxyPort.onmessage = function( event )
+ * {
+ *     // Proxy receives a message !
+ *     // Same as before, the `event.data` is what the worker proxy sends using `postMessage()`. Could be a String, Number or an Object type.
+ *     // Here, `event.data` contains an object: `{type: String, says: String}`
+ *     var message = event.data;
+ *     switch( message.type )
+ *     {
+ *         // It's a hello world message
+ *         case 'hello':
+ *             console.log( '[RECEIVED BY PROXY] '+ event.says );
+ *             // Say by to the worker
+ *             workerProxyPort.postMessage( {type: 'close', says: 'Bye bye worker!'} );
+ *             break;
+ * 
+ *         // It's a terminate message
+ *         case 'close':
+ *             console.log( '[RECEIVED BY PROXY] '+ event.says );
+ * 
+ *         // It's something else. Skip it.
+ *         default:
+ *             break;
+ *     }
+ * }
+ * ```
+
  */
 
 interface SharedWorker {

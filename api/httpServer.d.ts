@@ -42,14 +42,14 @@ interface HttpServer {
      * Adds a request handler function on the server.
      * It is recommended to write all request handler in the `bootstrap.js` file in order to be available at server start up.
      * 
-     * #### Example 1: Add a request handler
+     * #### Step 1: Add a request handler
      * ```javascript
      * // It is recommended to write these lines in bootstrap.js
      * // On every "/ping" requests, call "hello()" function in "request-greetings.js"
      * httpServer.addRequestHandler('^/ping$', 'request-greetings.js', 'pong');
      * ```
      * 
-     * #### Example 2: Handle the request
+     * #### Step 2: Handle the request
      * ```javascript
      * // request-greetings.js
      * function pong( request, response ){
@@ -66,13 +66,13 @@ interface HttpServer {
      * Adds a WebSocket handler script on the server.
      * It is recommended to write all websocket handler in the `bootstrap.js` file in order to be available at server start up.
      * 
-     * #### Example 1: Add a websocket handler
+     * #### Step 1: Add a websocket handler
      * ```javascript
      * // It is recommended to write these lines in bootstrap.js
      * httpServer.addWebSocketHandler('^/ping$', './backend/websocket-greetings.js', 'websocket-id', true);
      * ```
      * 
-     * #### Example 2: Handle the websocket
+     * #### Step 2: Handle the websocket
      * ```javascript
      * // ./backend/websocket-greetings.js
      * // Same as for ShareWorker
