@@ -1424,7 +1424,8 @@ interface Entity {
 
 interface EntityCollection {
 	/**
-	*Number of entities in the entity collection
+	*Number of entities in the entity collection.
+	* `var myCount = ds.Dataclass.lenght ;`
 	*/
 	length: Number;
 	/**

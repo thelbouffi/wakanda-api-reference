@@ -3,15 +3,30 @@
 interface EntityCollection {
 	/**
 	*Number of entities in the entity collection.
-	* `var myCount = ds.Dataclass.lenght ;`
+	*
+	* `
+	*var myCount = ds.Dataclass.length ;
+	*`
 	*/
 	length: Number;
 	/**
 	*Description of the query as it was actually performed
+	*```
+	*var mySet = ds.Employee.query("salary > :1  and employer.name = :2", 2000, "ACME", {queryPath: true})
+	*var thePath = mySet.queryPath 
+	*```
+	* @param true 
+	* @returns An object describing how the query is performed
 	*/
 	queryPath: String;
 	/**
 	*Description of the query just before it is executed
+	*```
+	*var mySet = ds.Employee.query("salary > :1  and employer.name = :2", 2000, "ACME", {queryPlan: true})
+	*var thePath = mySet.queryPlan 
+	*```
+	* @param true 
+	* @returns object containing the detailed description of the query just before it was executed (i.e., the planned query).
 	*/
 	queryPlan: String;
 	/**
