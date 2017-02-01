@@ -125,18 +125,14 @@
 					<div class="tsd-signature tsd-kind-icon">length<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-<<<<<<< HEAD
-							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fb7f058/api/datastoreentitycollection.d.ts#L8">datastoreentitycollection.d.ts:8</a></li>
-=======
-							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fbc2890/api/datastoreentitycollection.d.ts#L7">datastoreentitycollection.d.ts:7</a></li>
->>>>>>> 4f6328e3b48eedaf90a457bee0d08e328efeff0b
+							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/684942e/api/datastoreentitycollection.d.ts#L11">datastoreentitycollection.d.ts:11</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Number of entities in the entity collection.
-							<code>var myCount = ds.Dataclass.lenght ;</code></p>
+							<p>Number of entities in the entity collection.</p>
 						</div>
+						<p><code>var myCount = ds.Dataclass.length ;</code></p>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
@@ -145,17 +141,23 @@
 					<div class="tsd-signature tsd-kind-icon">query<wbr>Path<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">String</span></div>
 					<aside class="tsd-sources">
 						<ul>
-<<<<<<< HEAD
-							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fb7f058/api/datastoreentitycollection.d.ts#L12">datastoreentitycollection.d.ts:12</a></li>
-=======
-							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fbc2890/api/datastoreentitycollection.d.ts#L11">datastoreentitycollection.d.ts:11</a></li>
->>>>>>> 4f6328e3b48eedaf90a457bee0d08e328efeff0b
+							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/684942e/api/datastoreentitycollection.d.ts#L21">datastoreentitycollection.d.ts:21</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
 							<p>Description of the query as it was actually performed</p>
+							<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> mySet = ds.Employee.query(<span class="hljs-string">"salary &gt; :1  and employer.name = :2"</span>, <span class="hljs-number">2000</span>, <span class="hljs-string">"ACME"</span>, {<span class="hljs-attr">queryPath</span>: <span class="hljs-literal">true</span>})
+<span class="hljs-keyword">var</span> thePath = mySet.queryPath
+</code></pre>
 						</div>
+						<dl class="tsd-comment-tags">
+							<dt>param</dt>
+							<dd></dd>
+							<dt>returns</dt>
+							<dd><p>An object describing how the query is performed</p>
+							</dd>
+						</dl>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
@@ -164,17 +166,23 @@
 					<div class="tsd-signature tsd-kind-icon">query<wbr>Plan<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">String</span></div>
 					<aside class="tsd-sources">
 						<ul>
-<<<<<<< HEAD
-							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fb7f058/api/datastoreentitycollection.d.ts#L16">datastoreentitycollection.d.ts:16</a></li>
-=======
-							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fbc2890/api/datastoreentitycollection.d.ts#L15">datastoreentitycollection.d.ts:15</a></li>
->>>>>>> 4f6328e3b48eedaf90a457bee0d08e328efeff0b
+							<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/684942e/api/datastoreentitycollection.d.ts#L33">datastoreentitycollection.d.ts:33</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
 							<p>Description of the query just before it is executed</p>
 						</div>
+						<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> mySet = ds.Employee.query(<span class="hljs-string">"salary &gt; :1  and employer.name = :2"</span>, <span class="hljs-number">2000</span>, <span class="hljs-string">"ACME"</span>, {<span class="hljs-attr">queryPlan</span>: <span class="hljs-literal">true</span>})
+<span class="hljs-keyword">var</span> thePath = mySet.queryPlan
+</code></pre>
+						<dl class="tsd-comment-tags">
+							<dt>param</dt>
+							<dd></dd>
+							<dt>returns</dt>
+							<dd><p>object containing the detailed description of the query just before it was executed (i.e., the planned query).</p>
+							</dd>
+						</dl>
 					</div>
 				</section>
 			</section>
@@ -184,52 +192,31 @@
 					<a name="add" class="tsd-anchor"></a>
 					<h3>add</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-						<li class="tsd-signature tsd-kind-icon">add<span class="tsd-signature-symbol">(</span>toAdd<span class="tsd-signature-symbol">: </span><a href="entitycollection.html" class="tsd-signature-type">EntityCollection</a>, atTheEnd<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">String</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 						<li class="tsd-signature tsd-kind-icon">add<span class="tsd-signature-symbol">(</span>toAdd<span class="tsd-signature-symbol">: </span><a href="entitycollection.html" class="tsd-signature-type">EntityCollection</a>, atTheEnd<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-						<li class="tsd-signature tsd-kind-icon">add<span class="tsd-signature-symbol">(</span>toAdd<span class="tsd-signature-symbol">: </span><a href="entity.html" class="tsd-signature-type">Entity</a>, atTheEnd<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">String</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 						<li class="tsd-signature tsd-kind-icon">add<span class="tsd-signature-symbol">(</span>toAdd<span class="tsd-signature-symbol">: </span><a href="entity.html" class="tsd-signature-type">Entity</a>, atTheEnd<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-<<<<<<< HEAD
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fb7f058/api/datastoreentitycollection.d.ts#L20">datastoreentitycollection.d.ts:20</a></li>
-=======
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fbc2890/api/datastoreentitycollection.d.ts#L19">datastoreentitycollection.d.ts:19</a></li>
->>>>>>> 4f6328e3b48eedaf90a457bee0d08e328efeff0b
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/684942e/api/datastoreentitycollection.d.ts#L46">datastoreentitycollection.d.ts:46</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>adds the entity or entity collection passed in the toAdd parameter to the entity collection</p>
+									<p>Adds entity collection passed in the toAdd parameter to the entity collection</p>
+									<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> myColl = ds.Employee.createEntityCollection(); <span class="hljs-comment">//Create an empty collection</span>
+myColl.add(ds.Employee.first()); <span class="hljs-comment">//Add the first datastore class entity</span>
+<span class="hljs-keyword">var</span> myQuery = ds.Employee.query(<span class="hljs-string">"lastName == :1"</span>,<span class="hljs-string">"H*"</span>); <span class="hljs-comment">//Find some employees</span>
+<span class="hljs-keyword">if</span>(myQuery != <span class="hljs-literal">null</span>) <span class="hljs-comment">//some entities were found</span>
+myColl.add(myQuery); <span class="hljs-comment">//Add the collection itself</span>
+</code></pre>
 								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>toAdd: <a href="entitycollection.html" class="tsd-signature-type">EntityCollection</a></h5>
-								</li>
-								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> atTheEnd: <span class="tsd-signature-type">String</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-						</li>
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-<<<<<<< HEAD
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fb7f058/api/datastoreentitycollection.d.ts#L24">datastoreentitycollection.d.ts:24</a></li>
-=======
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fbc2890/api/datastoreentitycollection.d.ts#L23">datastoreentitycollection.d.ts:23</a></li>
->>>>>>> 4f6328e3b48eedaf90a457bee0d08e328efeff0b
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>adds the entity or entity collection passed in the toAdd parameter to the entity collection</p>
-								</div>
+								<dl class="tsd-comment-tags">
+									<dt>warning</dt>
+									<dd><p>By default, if the atTheEnd parameter is omitted or False, the original type of the entity collection is left unchanged.</p>
+									</dd>
+								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -238,6 +225,9 @@
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> atTheEnd: <span class="tsd-signature-type">Boolean</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p><code>true</code> to add the collection at the end of the current collection, <code>false</code> for AnyWhere</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -245,43 +235,24 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-<<<<<<< HEAD
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fb7f058/api/datastoreentitycollection.d.ts#L28">datastoreentitycollection.d.ts:28</a></li>
-=======
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fbc2890/api/datastoreentitycollection.d.ts#L27">datastoreentitycollection.d.ts:27</a></li>
->>>>>>> 4f6328e3b48eedaf90a457bee0d08e328efeff0b
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/684942e/api/datastoreentitycollection.d.ts#L59">datastoreentitycollection.d.ts:59</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>adds the entity or entity collection passed in the toAdd parameter to the entity collection</p>
+									<p>Adds the entity passed in the toAdd parameter to the entity collection</p>
+									<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> myColl = ds.Employee.createEntityCollection(); <span class="hljs-comment">//Create an empty collection</span>
+myColl.add(ds.Employee.first()); <span class="hljs-comment">//Add the first datastore class entity</span>
+<span class="hljs-keyword">var</span> entity = ds.Employee.find(<span class="hljs-string">"lastName == :1"</span>,<span class="hljs-string">"H*"</span>); <span class="hljs-comment">//Find an employee</span>
+<span class="hljs-keyword">if</span>(entity != <span class="hljs-literal">null</span>) <span class="hljs-comment">//An entity was found</span>
+myColl.add(entity); <span class="hljs-comment">//Add the entity</span>
+</code></pre>
 								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>toAdd: <a href="entity.html" class="tsd-signature-type">Entity</a></h5>
-								</li>
-								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> atTheEnd: <span class="tsd-signature-type">String</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-						</li>
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-<<<<<<< HEAD
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fb7f058/api/datastoreentitycollection.d.ts#L32">datastoreentitycollection.d.ts:32</a></li>
-=======
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fbc2890/api/datastoreentitycollection.d.ts#L31">datastoreentitycollection.d.ts:31</a></li>
->>>>>>> 4f6328e3b48eedaf90a457bee0d08e328efeff0b
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>adds the entity or entity collection passed in the toAdd parameter to the entity collection</p>
-								</div>
+								<dl class="tsd-comment-tags">
+									<dt>warning</dt>
+									<dd><p>By default, if the atTheEnd parameter is omitted or False, the original type of the entity collection is left unchanged.</p>
+									</dd>
+								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -290,6 +261,9 @@
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> atTheEnd: <span class="tsd-signature-type">Boolean</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p><code>true</code> to add the collection at the end of the current collection, <code>false</code> for AnyWhere</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -306,25 +280,31 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-<<<<<<< HEAD
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fb7f058/api/datastoreentitycollection.d.ts#L36">datastoreentitycollection.d.ts:36</a></li>
-=======
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fbc2890/api/datastoreentitycollection.d.ts#L35">datastoreentitycollection.d.ts:35</a></li>
->>>>>>> 4f6328e3b48eedaf90a457bee0d08e328efeff0b
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/684942e/api/datastoreentitycollection.d.ts#L74">datastoreentitycollection.d.ts:74</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>compares the entity collection to which it is applied and the collection2 and returns a new entity collection that contains only the entities that are referenced in both collections</p>
+									<p>The and( ) method compares the entity collection to which it is applied and the collection2 and returns a new entity collection that contains only the entities that are referenced in both collections.
+										You can compare sorted and/or unsorted entity collections.
+									The resulting collection is always unsorted.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>collection2: <a href="entitycollection.html" class="tsd-signature-type">EntityCollection</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Collection to compare with</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="entitycollection.html" class="tsd-signature-type">EntityCollection</a></h4>
+							<p>Resulting (unsorted) entity collection</p>
+							<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> coll1 = ds.Employee.query(<span class="hljs-string">"name =:1"</span>, <span class="hljs-string">"Jones"</span>) ;
+<span class="hljs-keyword">var</span> coll2 = ds.Employee.query(<span class="hljs-string">"city=:1"</span>, <span class="hljs-string">"New York"</span>) ;
+<span class="hljs-keyword">var</span> coll3 = coll1.and(coll2);
+</code></pre>
 						</li>
 					</ul>
 				</section>
@@ -333,114 +313,49 @@
 					<h3>average</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
 						<li class="tsd-signature tsd-kind-icon">average<span class="tsd-signature-symbol">(</span>attribute<span class="tsd-signature-symbol">: </span><a href="datastoreclassattribute.html" class="tsd-signature-type">DatastoreClassAttribute</a>, distinct<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Number</span></li>
-						<li class="tsd-signature tsd-kind-icon">average<span class="tsd-signature-symbol">(</span>attribute<span class="tsd-signature-symbol">: </span><a href="datastoreclassattribute.html" class="tsd-signature-type">DatastoreClassAttribute</a>, distinct<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">String</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Number</span></li>
-						<li class="tsd-signature tsd-kind-icon">average<span class="tsd-signature-symbol">(</span>attribute<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">String</span>, distinct<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Number</span></li>
-						<li class="tsd-signature tsd-kind-icon">average<span class="tsd-signature-symbol">(</span>attribute<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">String</span>, distinct<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">String</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Number</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-<<<<<<< HEAD
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fb7f058/api/datastoreentitycollection.d.ts#L40">datastoreentitycollection.d.ts:40</a></li>
-=======
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fbc2890/api/datastoreentitycollection.d.ts#L39">datastoreentitycollection.d.ts:39</a></li>
->>>>>>> 4f6328e3b48eedaf90a457bee0d08e328efeff0b
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/684942e/api/datastoreentitycollection.d.ts#L92">datastoreentitycollection.d.ts:92</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>returns the arithmetic average of all the non-null values of attribute for the datastore class or entity collection</p>
+									<p>The average method returns the arithmetic average of all the non-null values of attribute for the datastore class or entity collection</p>
 								</div>
+								<dl class="tsd-comment-tags">
+									<dt>warning</dt>
+									<dd><p>By default <code>distinct</code> : false</p>
+										<h4 id="example-1">Example 1</h4>
+										<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> averageSalary = ds.Employee.average(<span class="hljs-string">"salary"</span>, <span class="hljs-literal">true</span>);
+<span class="hljs-keyword">var</span> mySet = ds.Employee.query( <span class="hljs-string">"salary &gt; :1"</span>, averageSalary);
+</code></pre>
+										<h4 id="example-2-with-object-attribute-dimensions-">Example 2 - With Object Attribute <code>dimensions</code></h4>
+										<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> coll = ds.Box.query(<span class="hljs-string">"dimensions.bLength &gt; :1"</span>, <span class="hljs-number">200</span>);
+<span class="hljs-keyword">var</span> vAvg = coll.average(<span class="hljs-string">"dimensions.bWidth"</span>);
+</code></pre>
+									</dd>
+								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>attribute: <a href="datastoreclassattribute.html" class="tsd-signature-type">DatastoreClassAttribute</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p><code>string</code> Attribute whose average you want to calculate</p>
+									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> distinct: <span class="tsd-signature-type">Boolean</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p><code>boolean</code> Use only entities that have different values</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Number</span></h4>
-						</li>
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-<<<<<<< HEAD
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fb7f058/api/datastoreentitycollection.d.ts#L44">datastoreentitycollection.d.ts:44</a></li>
-=======
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fbc2890/api/datastoreentitycollection.d.ts#L43">datastoreentitycollection.d.ts:43</a></li>
->>>>>>> 4f6328e3b48eedaf90a457bee0d08e328efeff0b
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>returns the arithmetic average of all the non-null values of attribute for the datastore class or entity collection</p>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>attribute: <a href="datastoreclassattribute.html" class="tsd-signature-type">DatastoreClassAttribute</a></h5>
-								</li>
-								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> distinct: <span class="tsd-signature-type">String</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Number</span></h4>
-						</li>
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-<<<<<<< HEAD
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fb7f058/api/datastoreentitycollection.d.ts#L48">datastoreentitycollection.d.ts:48</a></li>
-=======
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fbc2890/api/datastoreentitycollection.d.ts#L47">datastoreentitycollection.d.ts:47</a></li>
->>>>>>> 4f6328e3b48eedaf90a457bee0d08e328efeff0b
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>returns the arithmetic average of all the non-null values of attribute for the datastore class or entity collection</p>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>attribute: <span class="tsd-signature-type">String</span></h5>
-								</li>
-								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> distinct: <span class="tsd-signature-type">Boolean</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Number</span></h4>
-						</li>
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-<<<<<<< HEAD
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fb7f058/api/datastoreentitycollection.d.ts#L52">datastoreentitycollection.d.ts:52</a></li>
-=======
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fbc2890/api/datastoreentitycollection.d.ts#L51">datastoreentitycollection.d.ts:51</a></li>
->>>>>>> 4f6328e3b48eedaf90a457bee0d08e328efeff0b
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>returns the arithmetic average of all the non-null values of attribute for the datastore class or entity collection</p>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>attribute: <span class="tsd-signature-type">String</span></h5>
-								</li>
-								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> distinct: <span class="tsd-signature-type">String</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Number</span></h4>
+							<p>Number Arithmetic average of attribute values</p>
 						</li>
 					</ul>
 				</section>
@@ -449,222 +364,90 @@
 					<h3>compute</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
 						<li class="tsd-signature tsd-kind-icon">compute<span class="tsd-signature-symbol">(</span>attribute<span class="tsd-signature-symbol">: </span><a href="datastoreclassattribute.html" class="tsd-signature-type">DatastoreClassAttribute</a>, distinct<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Object</span></li>
-						<li class="tsd-signature tsd-kind-icon">compute<span class="tsd-signature-symbol">(</span>attribute<span class="tsd-signature-symbol">: </span><a href="datastoreclassattribute.html" class="tsd-signature-type">DatastoreClassAttribute</a>, distinct<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">String</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Object</span></li>
-						<li class="tsd-signature tsd-kind-icon">compute<span class="tsd-signature-symbol">(</span>attribute<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">String</span>, distinct<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Object</span></li>
-						<li class="tsd-signature tsd-kind-icon">compute<span class="tsd-signature-symbol">(</span>attribute<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">String</span>, distinct<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">String</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Object</span></li>
 						<li class="tsd-signature tsd-kind-icon">compute<span class="tsd-signature-symbol">(</span>attribute<span class="tsd-signature-symbol">: </span><a href="datastoreclassattribute.html" class="tsd-signature-type">DatastoreClassAttribute</a>, groupBy<span class="tsd-signature-symbol">?: </span><a href="datastoreclassattribute.html" class="tsd-signature-type">DatastoreClassAttribute</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Object</span></li>
-						<li class="tsd-signature tsd-kind-icon">compute<span class="tsd-signature-symbol">(</span>attribute<span class="tsd-signature-symbol">: </span><a href="datastoreclassattribute.html" class="tsd-signature-type">DatastoreClassAttribute</a>, groupBy<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">String</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Object</span></li>
-						<li class="tsd-signature tsd-kind-icon">compute<span class="tsd-signature-symbol">(</span>attribute<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">String</span>, groupBy<span class="tsd-signature-symbol">?: </span><a href="datastoreclassattribute.html" class="tsd-signature-type">DatastoreClassAttribute</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Object</span></li>
-						<li class="tsd-signature tsd-kind-icon">compute<span class="tsd-signature-symbol">(</span>attribute<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">String</span>, groupBy<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">String</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Object</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-<<<<<<< HEAD
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fb7f058/api/datastoreentitycollection.d.ts#L56">datastoreentitycollection.d.ts:56</a></li>
-=======
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fbc2890/api/datastoreentitycollection.d.ts#L55">datastoreentitycollection.d.ts:55</a></li>
->>>>>>> 4f6328e3b48eedaf90a457bee0d08e328efeff0b
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/684942e/api/datastoreentitycollection.d.ts#L116">datastoreentitycollection.d.ts:116</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>performs, in a single call, all the statistical calculations on the attribute or list of attributes passed as the parameter for the datastore class or entity collection</p>
+									<p>Compute performs, in a single call, all the statistical calculations on the attribute or list of attributes passed as the parameter for the datastore class or entity collection</p>
 								</div>
+								<dl class="tsd-comment-tags">
+									<dt>warning</dt>
+									<dd><p>If you pass more than one attribute and enable the Distinct calculations, they will be valid only for the first attribute.</p>
+										<h4 id="example-1-compute-multi-attributes-with-distinct">Example 1 - Compute Multi Attributes with Distinct</h4>
+										<pre><code class="lang-javascript"> <span class="hljs-keyword">var</span> calculations = ds.Employee.compute(<span class="hljs-string">"age, salary"</span>, <span class="hljs-literal">true</span>); <span class="hljs-comment">//the Distinct operations will be performed only on the `age` attribute</span>
+ <span class="hljs-keyword">var</span> stats = <span class="hljs-string">"Average age ="</span>+ calculations.age.averageDistinct+<span class="hljs-string">" Total salary ="</span>+calculations.salary.sum);
+</code></pre>
+									</dd>
+								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>attribute: <a href="datastoreclassattribute.html" class="tsd-signature-type">DatastoreClassAttribute</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>DatastoreClassAttribute,String Attribute(s) for which you want to perform statistical calculations</p>
+									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> distinct: <span class="tsd-signature-type">Boolean</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Boolean Compute distinct calculations - <code>false</code> by default</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Object</span></h4>
+							<p>Object containing the following calculations :</p>
+							<pre><code>-<span class="ruby"> average    Arithmetic average
+</span>-<span class="ruby"> averageDistinct    Average taking only distinct values into account
+</span>-<span class="ruby"> count    Number of values
+</span>-<span class="ruby"> countDistinct    Number of distinct values
+</span>-<span class="ruby"> max    Maximum value
+</span>-<span class="ruby"> min    Minimum value
+</span>-<span class="ruby"> sum    Sum
+</span>-<span class="ruby"> sumDistinct    Sum taking only distinct values into account</span>
+</code></pre>
 						</li>
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-<<<<<<< HEAD
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fb7f058/api/datastoreentitycollection.d.ts#L60">datastoreentitycollection.d.ts:60</a></li>
-=======
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fbc2890/api/datastoreentitycollection.d.ts#L59">datastoreentitycollection.d.ts:59</a></li>
->>>>>>> 4f6328e3b48eedaf90a457bee0d08e328efeff0b
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/684942e/api/datastoreentitycollection.d.ts#L131">datastoreentitycollection.d.ts:131</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>performs, in a single call, all the statistical calculations on the attribute or list of attributes passed as the parameter for the datastore class or entity collection</p>
+									<p>Compute performs, in a single call, all the statistical calculations on the attribute or list of attributes passed as the parameter for the datastore class or entity collection</p>
+									<pre><code> #### Example <span class="hljs-number">1</span> - Compute <span class="hljs-keyword">with</span> groupBy
+</code></pre><pre><code class="lang-javascript"> <span class="hljs-keyword">var</span> stats = ds.Sales.all().compute(<span class="hljs-string">"benefit, revenues"</span>, <span class="hljs-string">"country, month"</span>);
+<span class="hljs-comment">// compute `benefit`and `revenues` values of a Sales class grouped by country and month</span>
+<span class="hljs-comment">// for more convenience the returned object can be converted into an array</span>
+stats.toArray();
+</code></pre>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>attribute: <a href="datastoreclassattribute.html" class="tsd-signature-type">DatastoreClassAttribute</a></h5>
-								</li>
-								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> distinct: <span class="tsd-signature-type">String</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Object</span></h4>
-						</li>
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-<<<<<<< HEAD
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fb7f058/api/datastoreentitycollection.d.ts#L64">datastoreentitycollection.d.ts:64</a></li>
-=======
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fbc2890/api/datastoreentitycollection.d.ts#L63">datastoreentitycollection.d.ts:63</a></li>
->>>>>>> 4f6328e3b48eedaf90a457bee0d08e328efeff0b
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>performs, in a single call, all the statistical calculations on the attribute or list of attributes passed as the parameter for the datastore class or entity collection</p>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>attribute: <span class="tsd-signature-type">String</span></h5>
-								</li>
-								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> distinct: <span class="tsd-signature-type">Boolean</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Object</span></h4>
-						</li>
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-<<<<<<< HEAD
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fb7f058/api/datastoreentitycollection.d.ts#L68">datastoreentitycollection.d.ts:68</a></li>
-=======
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fbc2890/api/datastoreentitycollection.d.ts#L67">datastoreentitycollection.d.ts:67</a></li>
->>>>>>> 4f6328e3b48eedaf90a457bee0d08e328efeff0b
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>performs, in a single call, all the statistical calculations on the attribute or list of attributes passed as the parameter for the datastore class or entity collection</p>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>attribute: <span class="tsd-signature-type">String</span></h5>
-								</li>
-								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> distinct: <span class="tsd-signature-type">String</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Object</span></h4>
-						</li>
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-<<<<<<< HEAD
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fb7f058/api/datastoreentitycollection.d.ts#L72">datastoreentitycollection.d.ts:72</a></li>
-=======
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fbc2890/api/datastoreentitycollection.d.ts#L71">datastoreentitycollection.d.ts:71</a></li>
->>>>>>> 4f6328e3b48eedaf90a457bee0d08e328efeff0b
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>performs, in a single call, all the statistical calculations on the attribute or list of attributes passed as the parameter for the datastore class or entity collection</p>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>attribute: <a href="datastoreclassattribute.html" class="tsd-signature-type">DatastoreClassAttribute</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>DatastoreClassAttribute,String Attribute(s) for which you want to perform statistical calculations</p>
+									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> groupBy: <a href="datastoreclassattribute.html" class="tsd-signature-type">DatastoreClassAttribute</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>DatastoreClassAttribute,String Attribute(s) on which you want to have subtotal breaks</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Object</span></h4>
-						</li>
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-<<<<<<< HEAD
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fb7f058/api/datastoreentitycollection.d.ts#L76">datastoreentitycollection.d.ts:76</a></li>
-=======
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fbc2890/api/datastoreentitycollection.d.ts#L75">datastoreentitycollection.d.ts:75</a></li>
->>>>>>> 4f6328e3b48eedaf90a457bee0d08e328efeff0b
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>performs, in a single call, all the statistical calculations on the attribute or list of attributes passed as the parameter for the datastore class or entity collection</p>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>attribute: <a href="datastoreclassattribute.html" class="tsd-signature-type">DatastoreClassAttribute</a></h5>
-								</li>
-								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> groupBy: <span class="tsd-signature-type">String</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Object</span></h4>
-						</li>
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-<<<<<<< HEAD
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fb7f058/api/datastoreentitycollection.d.ts#L80">datastoreentitycollection.d.ts:80</a></li>
-=======
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fbc2890/api/datastoreentitycollection.d.ts#L79">datastoreentitycollection.d.ts:79</a></li>
->>>>>>> 4f6328e3b48eedaf90a457bee0d08e328efeff0b
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>performs, in a single call, all the statistical calculations on the attribute or list of attributes passed as the parameter for the datastore class or entity collection</p>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>attribute: <span class="tsd-signature-type">String</span></h5>
-								</li>
-								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> groupBy: <a href="datastoreclassattribute.html" class="tsd-signature-type">DatastoreClassAttribute</a></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Object</span></h4>
-						</li>
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-<<<<<<< HEAD
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fb7f058/api/datastoreentitycollection.d.ts#L84">datastoreentitycollection.d.ts:84</a></li>
-=======
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fbc2890/api/datastoreentitycollection.d.ts#L83">datastoreentitycollection.d.ts:83</a></li>
->>>>>>> 4f6328e3b48eedaf90a457bee0d08e328efeff0b
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>performs, in a single call, all the statistical calculations on the attribute or list of attributes passed as the parameter for the datastore class or entity collection</p>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>attribute: <span class="tsd-signature-type">String</span></h5>
-								</li>
-								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> groupBy: <span class="tsd-signature-type">String</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Object</span></h4>
+							<p>Object containing all the calculations performed and subtotals</p>
 						</li>
 					</ul>
 				</section>
@@ -681,11 +464,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-<<<<<<< HEAD
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fb7f058/api/datastoreentitycollection.d.ts#L88">datastoreentitycollection.d.ts:88</a></li>
-=======
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fbc2890/api/datastoreentitycollection.d.ts#L87">datastoreentitycollection.d.ts:87</a></li>
->>>>>>> 4f6328e3b48eedaf90a457bee0d08e328efeff0b
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/684942e/api/datastoreentitycollection.d.ts#L137">datastoreentitycollection.d.ts:137</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -707,11 +486,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-<<<<<<< HEAD
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fb7f058/api/datastoreentitycollection.d.ts#L92">datastoreentitycollection.d.ts:92</a></li>
-=======
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fbc2890/api/datastoreentitycollection.d.ts#L91">datastoreentitycollection.d.ts:91</a></li>
->>>>>>> 4f6328e3b48eedaf90a457bee0d08e328efeff0b
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/684942e/api/datastoreentitycollection.d.ts#L141">datastoreentitycollection.d.ts:141</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -733,11 +508,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-<<<<<<< HEAD
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fb7f058/api/datastoreentitycollection.d.ts#L96">datastoreentitycollection.d.ts:96</a></li>
-=======
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fbc2890/api/datastoreentitycollection.d.ts#L95">datastoreentitycollection.d.ts:95</a></li>
->>>>>>> 4f6328e3b48eedaf90a457bee0d08e328efeff0b
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/684942e/api/datastoreentitycollection.d.ts#L145">datastoreentitycollection.d.ts:145</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -759,11 +530,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-<<<<<<< HEAD
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fb7f058/api/datastoreentitycollection.d.ts#L100">datastoreentitycollection.d.ts:100</a></li>
-=======
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fbc2890/api/datastoreentitycollection.d.ts#L99">datastoreentitycollection.d.ts:99</a></li>
->>>>>>> 4f6328e3b48eedaf90a457bee0d08e328efeff0b
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/684942e/api/datastoreentitycollection.d.ts#L149">datastoreentitycollection.d.ts:149</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -795,11 +562,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-<<<<<<< HEAD
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fb7f058/api/datastoreentitycollection.d.ts#L104">datastoreentitycollection.d.ts:104</a></li>
-=======
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fbc2890/api/datastoreentitycollection.d.ts#L103">datastoreentitycollection.d.ts:103</a></li>
->>>>>>> 4f6328e3b48eedaf90a457bee0d08e328efeff0b
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/684942e/api/datastoreentitycollection.d.ts#L153">datastoreentitycollection.d.ts:153</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -818,11 +581,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-<<<<<<< HEAD
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fb7f058/api/datastoreentitycollection.d.ts#L108">datastoreentitycollection.d.ts:108</a></li>
-=======
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fbc2890/api/datastoreentitycollection.d.ts#L107">datastoreentitycollection.d.ts:107</a></li>
->>>>>>> 4f6328e3b48eedaf90a457bee0d08e328efeff0b
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/684942e/api/datastoreentitycollection.d.ts#L157">datastoreentitycollection.d.ts:157</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -850,11 +609,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-<<<<<<< HEAD
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fb7f058/api/datastoreentitycollection.d.ts#L112">datastoreentitycollection.d.ts:112</a></li>
-=======
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fbc2890/api/datastoreentitycollection.d.ts#L111">datastoreentitycollection.d.ts:111</a></li>
->>>>>>> 4f6328e3b48eedaf90a457bee0d08e328efeff0b
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/684942e/api/datastoreentitycollection.d.ts#L161">datastoreentitycollection.d.ts:161</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -891,11 +646,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-<<<<<<< HEAD
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fb7f058/api/datastoreentitycollection.d.ts#L116">datastoreentitycollection.d.ts:116</a></li>
-=======
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fbc2890/api/datastoreentitycollection.d.ts#L115">datastoreentitycollection.d.ts:115</a></li>
->>>>>>> 4f6328e3b48eedaf90a457bee0d08e328efeff0b
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/684942e/api/datastoreentitycollection.d.ts#L165">datastoreentitycollection.d.ts:165</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -932,11 +683,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-<<<<<<< HEAD
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fb7f058/api/datastoreentitycollection.d.ts#L120">datastoreentitycollection.d.ts:120</a></li>
-=======
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fbc2890/api/datastoreentitycollection.d.ts#L119">datastoreentitycollection.d.ts:119</a></li>
->>>>>>> 4f6328e3b48eedaf90a457bee0d08e328efeff0b
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/684942e/api/datastoreentitycollection.d.ts#L169">datastoreentitycollection.d.ts:169</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -967,11 +714,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-<<<<<<< HEAD
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fb7f058/api/datastoreentitycollection.d.ts#L124">datastoreentitycollection.d.ts:124</a></li>
-=======
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fbc2890/api/datastoreentitycollection.d.ts#L123">datastoreentitycollection.d.ts:123</a></li>
->>>>>>> 4f6328e3b48eedaf90a457bee0d08e328efeff0b
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/684942e/api/datastoreentitycollection.d.ts#L173">datastoreentitycollection.d.ts:173</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -993,11 +736,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-<<<<<<< HEAD
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fb7f058/api/datastoreentitycollection.d.ts#L128">datastoreentitycollection.d.ts:128</a></li>
-=======
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fbc2890/api/datastoreentitycollection.d.ts#L127">datastoreentitycollection.d.ts:127</a></li>
->>>>>>> 4f6328e3b48eedaf90a457bee0d08e328efeff0b
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/684942e/api/datastoreentitycollection.d.ts#L177">datastoreentitycollection.d.ts:177</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1025,11 +764,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-<<<<<<< HEAD
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fb7f058/api/datastoreentitycollection.d.ts#L132">datastoreentitycollection.d.ts:132</a></li>
-=======
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fbc2890/api/datastoreentitycollection.d.ts#L131">datastoreentitycollection.d.ts:131</a></li>
->>>>>>> 4f6328e3b48eedaf90a457bee0d08e328efeff0b
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/684942e/api/datastoreentitycollection.d.ts#L181">datastoreentitycollection.d.ts:181</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1052,11 +787,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-<<<<<<< HEAD
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fb7f058/api/datastoreentitycollection.d.ts#L136">datastoreentitycollection.d.ts:136</a></li>
-=======
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fbc2890/api/datastoreentitycollection.d.ts#L135">datastoreentitycollection.d.ts:135</a></li>
->>>>>>> 4f6328e3b48eedaf90a457bee0d08e328efeff0b
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/684942e/api/datastoreentitycollection.d.ts#L185">datastoreentitycollection.d.ts:185</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1075,11 +806,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-<<<<<<< HEAD
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fb7f058/api/datastoreentitycollection.d.ts#L140">datastoreentitycollection.d.ts:140</a></li>
-=======
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fbc2890/api/datastoreentitycollection.d.ts#L139">datastoreentitycollection.d.ts:139</a></li>
->>>>>>> 4f6328e3b48eedaf90a457bee0d08e328efeff0b
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/684942e/api/datastoreentitycollection.d.ts#L189">datastoreentitycollection.d.ts:189</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1108,11 +835,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-<<<<<<< HEAD
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fb7f058/api/datastoreentitycollection.d.ts#L144">datastoreentitycollection.d.ts:144</a></li>
-=======
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fbc2890/api/datastoreentitycollection.d.ts#L143">datastoreentitycollection.d.ts:143</a></li>
->>>>>>> 4f6328e3b48eedaf90a457bee0d08e328efeff0b
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/684942e/api/datastoreentitycollection.d.ts#L193">datastoreentitycollection.d.ts:193</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1131,11 +854,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-<<<<<<< HEAD
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fb7f058/api/datastoreentitycollection.d.ts#L148">datastoreentitycollection.d.ts:148</a></li>
-=======
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fbc2890/api/datastoreentitycollection.d.ts#L147">datastoreentitycollection.d.ts:147</a></li>
->>>>>>> 4f6328e3b48eedaf90a457bee0d08e328efeff0b
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/684942e/api/datastoreentitycollection.d.ts#L197">datastoreentitycollection.d.ts:197</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1163,11 +882,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-<<<<<<< HEAD
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fb7f058/api/datastoreentitycollection.d.ts#L152">datastoreentitycollection.d.ts:152</a></li>
-=======
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fbc2890/api/datastoreentitycollection.d.ts#L151">datastoreentitycollection.d.ts:151</a></li>
->>>>>>> 4f6328e3b48eedaf90a457bee0d08e328efeff0b
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/684942e/api/datastoreentitycollection.d.ts#L201">datastoreentitycollection.d.ts:201</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1195,11 +910,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-<<<<<<< HEAD
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fb7f058/api/datastoreentitycollection.d.ts#L156">datastoreentitycollection.d.ts:156</a></li>
-=======
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fbc2890/api/datastoreentitycollection.d.ts#L155">datastoreentitycollection.d.ts:155</a></li>
->>>>>>> 4f6328e3b48eedaf90a457bee0d08e328efeff0b
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/684942e/api/datastoreentitycollection.d.ts#L205">datastoreentitycollection.d.ts:205</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1228,11 +939,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-<<<<<<< HEAD
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fb7f058/api/datastoreentitycollection.d.ts#L160">datastoreentitycollection.d.ts:160</a></li>
-=======
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fbc2890/api/datastoreentitycollection.d.ts#L159">datastoreentitycollection.d.ts:159</a></li>
->>>>>>> 4f6328e3b48eedaf90a457bee0d08e328efeff0b
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/684942e/api/datastoreentitycollection.d.ts#L209">datastoreentitycollection.d.ts:209</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1254,11 +961,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-<<<<<<< HEAD
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fb7f058/api/datastoreentitycollection.d.ts#L164">datastoreentitycollection.d.ts:164</a></li>
-=======
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fbc2890/api/datastoreentitycollection.d.ts#L163">datastoreentitycollection.d.ts:163</a></li>
->>>>>>> 4f6328e3b48eedaf90a457bee0d08e328efeff0b
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/684942e/api/datastoreentitycollection.d.ts#L213">datastoreentitycollection.d.ts:213</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1289,11 +992,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-<<<<<<< HEAD
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fb7f058/api/datastoreentitycollection.d.ts#L168">datastoreentitycollection.d.ts:168</a></li>
-=======
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fbc2890/api/datastoreentitycollection.d.ts#L167">datastoreentitycollection.d.ts:167</a></li>
->>>>>>> 4f6328e3b48eedaf90a457bee0d08e328efeff0b
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/684942e/api/datastoreentitycollection.d.ts#L217">datastoreentitycollection.d.ts:217</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1324,11 +1023,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-<<<<<<< HEAD
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fb7f058/api/datastoreentitycollection.d.ts#L172">datastoreentitycollection.d.ts:172</a></li>
-=======
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fbc2890/api/datastoreentitycollection.d.ts#L171">datastoreentitycollection.d.ts:171</a></li>
->>>>>>> 4f6328e3b48eedaf90a457bee0d08e328efeff0b
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/684942e/api/datastoreentitycollection.d.ts#L221">datastoreentitycollection.d.ts:221</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1353,11 +1048,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-<<<<<<< HEAD
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fb7f058/api/datastoreentitycollection.d.ts#L176">datastoreentitycollection.d.ts:176</a></li>
-=======
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fbc2890/api/datastoreentitycollection.d.ts#L175">datastoreentitycollection.d.ts:175</a></li>
->>>>>>> 4f6328e3b48eedaf90a457bee0d08e328efeff0b
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/684942e/api/datastoreentitycollection.d.ts#L225">datastoreentitycollection.d.ts:225</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1379,11 +1070,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-<<<<<<< HEAD
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fb7f058/api/datastoreentitycollection.d.ts#L180">datastoreentitycollection.d.ts:180</a></li>
-=======
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fbc2890/api/datastoreentitycollection.d.ts#L179">datastoreentitycollection.d.ts:179</a></li>
->>>>>>> 4f6328e3b48eedaf90a457bee0d08e328efeff0b
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/684942e/api/datastoreentitycollection.d.ts#L229">datastoreentitycollection.d.ts:229</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1405,11 +1092,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-<<<<<<< HEAD
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fb7f058/api/datastoreentitycollection.d.ts#L184">datastoreentitycollection.d.ts:184</a></li>
-=======
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fbc2890/api/datastoreentitycollection.d.ts#L183">datastoreentitycollection.d.ts:183</a></li>
->>>>>>> 4f6328e3b48eedaf90a457bee0d08e328efeff0b
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/684942e/api/datastoreentitycollection.d.ts#L233">datastoreentitycollection.d.ts:233</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1431,11 +1114,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-<<<<<<< HEAD
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fb7f058/api/datastoreentitycollection.d.ts#L188">datastoreentitycollection.d.ts:188</a></li>
-=======
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fbc2890/api/datastoreentitycollection.d.ts#L187">datastoreentitycollection.d.ts:187</a></li>
->>>>>>> 4f6328e3b48eedaf90a457bee0d08e328efeff0b
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/684942e/api/datastoreentitycollection.d.ts#L237">datastoreentitycollection.d.ts:237</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1469,11 +1148,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-<<<<<<< HEAD
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fb7f058/api/datastoreentitycollection.d.ts#L192">datastoreentitycollection.d.ts:192</a></li>
-=======
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fbc2890/api/datastoreentitycollection.d.ts#L191">datastoreentitycollection.d.ts:191</a></li>
->>>>>>> 4f6328e3b48eedaf90a457bee0d08e328efeff0b
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/684942e/api/datastoreentitycollection.d.ts#L241">datastoreentitycollection.d.ts:241</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1504,11 +1179,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-<<<<<<< HEAD
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fb7f058/api/datastoreentitycollection.d.ts#L196">datastoreentitycollection.d.ts:196</a></li>
-=======
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fbc2890/api/datastoreentitycollection.d.ts#L195">datastoreentitycollection.d.ts:195</a></li>
->>>>>>> 4f6328e3b48eedaf90a457bee0d08e328efeff0b
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/684942e/api/datastoreentitycollection.d.ts#L245">datastoreentitycollection.d.ts:245</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1539,11 +1210,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-<<<<<<< HEAD
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fb7f058/api/datastoreentitycollection.d.ts#L200">datastoreentitycollection.d.ts:200</a></li>
-=======
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fbc2890/api/datastoreentitycollection.d.ts#L199">datastoreentitycollection.d.ts:199</a></li>
->>>>>>> 4f6328e3b48eedaf90a457bee0d08e328efeff0b
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/684942e/api/datastoreentitycollection.d.ts#L249">datastoreentitycollection.d.ts:249</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1574,11 +1241,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-<<<<<<< HEAD
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fb7f058/api/datastoreentitycollection.d.ts#L204">datastoreentitycollection.d.ts:204</a></li>
-=======
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fbc2890/api/datastoreentitycollection.d.ts#L203">datastoreentitycollection.d.ts:203</a></li>
->>>>>>> 4f6328e3b48eedaf90a457bee0d08e328efeff0b
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/684942e/api/datastoreentitycollection.d.ts#L253">datastoreentitycollection.d.ts:253</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1618,11 +1281,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-<<<<<<< HEAD
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fb7f058/api/datastoreentitycollection.d.ts#L208">datastoreentitycollection.d.ts:208</a></li>
-=======
-									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fbc2890/api/datastoreentitycollection.d.ts#L207">datastoreentitycollection.d.ts:207</a></li>
->>>>>>> 4f6328e3b48eedaf90a457bee0d08e328efeff0b
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/684942e/api/datastoreentitycollection.d.ts#L257">datastoreentitycollection.d.ts:257</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">

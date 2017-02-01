@@ -11,92 +11,125 @@ interface EntityCollection {
 	length: Number;
 	/**
 	*Description of the query as it was actually performed
-	*```
+	* ```javascript
 	*var mySet = ds.Employee.query("salary > :1  and employer.name = :2", 2000, "ACME", {queryPath: true})
 	*var thePath = mySet.queryPath 
-	*```
-	* @param true 
+	* ```
+	* @param `true`
 	* @returns An object describing how the query is performed
 	*/
 	queryPath: String;
-	/**
+   /**
 	*Description of the query just before it is executed
-	*```
+	*
+	*```javascript
 	*var mySet = ds.Employee.query("salary > :1  and employer.name = :2", 2000, "ACME", {queryPlan: true})
 	*var thePath = mySet.queryPlan 
-	*```
-	* @param true 
+	* ```
+	*
+	* @param `true` 
 	* @returns object containing the detailed description of the query just before it was executed (i.e., the planned query).
 	*/
 	queryPlan: String;
-	/**
-	*adds the entity or entity collection passed in the toAdd parameter to the entity collection
-	*/
-	add(toAdd: EntityCollection, atTheEnd?: String) : void;
-	/**
-	*adds the entity or entity collection passed in the toAdd parameter to the entity collection
+   /**
+	* Adds entity collection passed in the toAdd parameter to the entity collection
+	* ```javascript 
+	* var myColl = ds.Employee.createEntityCollection(); //Create an empty collection
+    * myColl.add(ds.Employee.first()); //Add the first datastore class entity
+	* var myQuery = ds.Employee.query("lastName == :1","H*"); //Find some employees
+ 	* if(myQuery != null) //some entities were found
+    * myColl.add(myQuery); //Add the collection itself
+	* ```
+	* @warning By default, if the atTheEnd parameter is omitted or False, the original type of the entity collection is left unchanged. 
+	* @param atTheEnd `true` to add the collection at the end of the current collection, `false` for AnyWhere
 	*/
 	add(toAdd: EntityCollection, atTheEnd?: Boolean) : void;
-	/**
-	*adds the entity or entity collection passed in the toAdd parameter to the entity collection
-	*/
-	add(toAdd: Entity, atTheEnd?: String) : void;
-	/**
-	*adds the entity or entity collection passed in the toAdd parameter to the entity collection
+   /**
+	* Adds the entity passed in the toAdd parameter to the entity collection
+	* ```javascript 
+	* var myColl = ds.Employee.createEntityCollection(); //Create an empty collection
+    * myColl.add(ds.Employee.first()); //Add the first datastore class entity
+	* var entity = ds.Employee.find("lastName == :1","H*"); //Find an employee
+ 	* if(entity != null) //An entity was found
+    * myColl.add(entity); //Add the entity 
+	* ```
+	* @warning By default, if the atTheEnd parameter is omitted or False, the original type of the entity collection is left unchanged. 
+	* @param atTheEnd `true` to add the collection at the end of the current collection, `false` for AnyWhere
 	*/
 	add(toAdd: Entity, atTheEnd?: Boolean) : void;
+
+
 	/**
-	*compares the entity collection to which it is applied and the collection2 and returns a new entity collection that contains only the entities that are referenced in both collections
+	* The and( ) method compares the entity collection to which it is applied and the collection2 and returns a new entity collection that contains only the entities that are referenced in both collections.
+    * You can compare sorted and/or unsorted entity collections. 
+	* The resulting collection is always unsorted.
+	* @param collection2 Collection to compare with
+	* @returns Resulting (unsorted) entity collection
+	* ```javascript
+	* var coll1 = ds.Employee.query("name =:1", "Jones") ;
+	* var coll2 = ds.Employee.query("city=:1", "New York") ;
+	* var coll3 = coll1.and(coll2);
+	* ```
 	*/
 	and(collection2: EntityCollection) : EntityCollection;
 	/**
-	*returns the arithmetic average of all the non-null values of attribute for the datastore class or entity collection
+	* The average method returns the arithmetic average of all the non-null values of attribute for the datastore class or entity collection
+	* @param attribute `string` Attribute whose average you want to calculate
+	* @param distinct `boolean` Use only entities that have different values
+	* @returns Number Arithmetic average of attribute values
+	* @warning By default `distinct` : false
+	* #### Example 1
+	* ``` javascript
+	* var averageSalary = ds.Employee.average("salary", true);
+	* var mySet = ds.Employee.query( "salary > :1", averageSalary);
+	* ```
+	* #### Example 2 - With Object Attribute `dimensions`
+	* ```javascript
+	* var coll = ds.Box.query("dimensions.bLength > :1", 200);
+	* var vAvg = coll.average("dimensions.bWidth");
+	* ```
 	*/
 	average(attribute: DatastoreClassAttribute, distinct?: Boolean) : Number;
+	
+	
 	/**
-	*returns the arithmetic average of all the non-null values of attribute for the datastore class or entity collection
-	*/
-	average(attribute: DatastoreClassAttribute, distinct?: String) : Number;
-	/**
-	*returns the arithmetic average of all the non-null values of attribute for the datastore class or entity collection
-	*/
-	average(attribute: String, distinct?: Boolean) : Number;
-	/**
-	*returns the arithmetic average of all the non-null values of attribute for the datastore class or entity collection
-	*/
-	average(attribute: String, distinct?: String) : Number;
-	/**
-	*performs, in a single call, all the statistical calculations on the attribute or list of attributes passed as the parameter for the datastore class or entity collection
+	* Compute performs, in a single call, all the statistical calculations on the attribute or list of attributes passed as the parameter for the datastore class or entity collection
+	* @param attribute DatastoreClassAttribute,String Attribute(s) for which you want to perform statistical calculations
+	* @param distinct Boolean Compute distinct calculations - `false` by default
+	* @returns Object containing the following calculations :
+	* 	- average	Arithmetic average
+	*	- averageDistinct	Average taking only distinct values into account
+	*	- count	Number of values
+	*	- countDistinct	Number of distinct values
+	*	- max	Maximum value
+	*	- min	Minimum value
+	*	- sum	Sum
+	*	- sumDistinct	Sum taking only distinct values into account
+	*
+	* @warning If you pass more than one attribute and enable the Distinct calculations, they will be valid only for the first attribute.
+	* #### Example 1 - Compute Multi Attributes with Distinct
+	*  ```javascript
+	*  var calculations = ds.Employee.compute("age, salary", true); //the Distinct operations will be performed only on the `age` attribute
+	*  var stats = "Average age ="+ calculations.age.averageDistinct+" Total salary ="+calculations.salary.sum);
+	* ```
 	*/
 	compute(attribute: DatastoreClassAttribute, distinct?: Boolean) : Object;
-	/**
-	*performs, in a single call, all the statistical calculations on the attribute or list of attributes passed as the parameter for the datastore class or entity collection
-	*/
-	compute(attribute: DatastoreClassAttribute, distinct?: String) : Object;
-	/**
-	*performs, in a single call, all the statistical calculations on the attribute or list of attributes passed as the parameter for the datastore class or entity collection
-	*/
-	compute(attribute: String, distinct?: Boolean) : Object;
-	/**
-	*performs, in a single call, all the statistical calculations on the attribute or list of attributes passed as the parameter for the datastore class or entity collection
-	*/
-	compute(attribute: String, distinct?: String) : Object;
-	/**
-	*performs, in a single call, all the statistical calculations on the attribute or list of attributes passed as the parameter for the datastore class or entity collection
+	/** 
+	* Compute performs, in a single call, all the statistical calculations on the attribute or list of attributes passed as the parameter for the datastore class or entity collection
+	* @param attribute DatastoreClassAttribute,String Attribute(s) for which you want to perform statistical calculations
+	* @param groupBy DatastoreClassAttribute,String Attribute(s) on which you want to have subtotal breaks	
+	* @returns Object containing all the calculations performed and subtotals
+	* #### Example 1 - Compute with groupBy 
+	* ```javascript
+	*  var stats = ds.Sales.all().compute("benefit, revenues", "country, month");
+    * // compute `benefit`and `revenues` values of a Sales class grouped by country and month
+	* // for more convenience the returned object can be converted into an array 
+	* stats.toArray();
+	* ```
 	*/
 	compute(attribute: DatastoreClassAttribute, groupBy?: DatastoreClassAttribute) : Object;
-	/**
-	*performs, in a single call, all the statistical calculations on the attribute or list of attributes passed as the parameter for the datastore class or entity collection
-	*/
-	compute(attribute: DatastoreClassAttribute, groupBy?: String) : Object;
-	/**
-	*performs, in a single call, all the statistical calculations on the attribute or list of attributes passed as the parameter for the datastore class or entity collection
-	*/
-	compute(attribute: String, groupBy?: DatastoreClassAttribute) : Object;
-	/**
-	*performs, in a single call, all the statistical calculations on the attribute or list of attributes passed as the parameter for the datastore class or entity collection
-	*/
-	compute(attribute: String, groupBy?: String) : Object;
+     
+
 	/**
 	*returns the number of entities contained in the entity collection or datastore class
 	*/
