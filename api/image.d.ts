@@ -31,12 +31,12 @@ interface Image {
      * Stores the image object in a file.
      * 
      * #### Example 1: Basic usage
-     * ```
+     * ```javascript
      * var myImage = loadImage( 'PROJECT/backend/my-image.jpg' );
      * myImage.save( 'PROJECT/backend/my-saved-image.jpg' );
      * ```
      * #### Example 2: Save image in another format
-     * ```
+     * ```javascript
      * var myImage = loadImage( 'PROJECT/backend/my-image.jpg' );
      * myImage.save( 'PROJECT/backend/my-png-image.png', 'image/png' );
      * ```
@@ -50,14 +50,14 @@ interface Image {
      * Stores the image object in a file.
      * 
      * #### Example 1: Basic usage
-     * ```
-     * var myFile = File( 'PROJECT/backend/my-saved-image.jpg' );
+     * ```javascript
+     * var myFile = new File( 'PROJECT/backend/my-saved-image.jpg' );
      * var myImage = loadImage( 'PROJECT/backend/my-image.jpg' );
      * myImage.save( myFile );
      * ```
      * #### Example 2: Save image in another format
-     * ```
-     * var myFile = File( 'PROJECT/backend/my-png-image.png' );
+     * ```javascript
+     * var myFile = new File( 'PROJECT/backend/my-png-image.png' );
      * var myImage = loadImage( 'PROJECT/backend/my-image.jpg' );
      * myImage.save( myFile, 'image/png' );
      * ```
@@ -66,11 +66,11 @@ interface Image {
      * @param file File object where to save the image
      * @param type New mime type to apply
      */
-    save(file: File, type?: String): void;
+    save(file: WAKFileInstance, type?: String): void;
     /**
      * Updates the image metadata.
      * 
-     * ```
+     * ```javascript
      * var myImage = loadImage( 'PROJECT/backend/my-image.jpg' );
      * var newMeta = { IPTC: { Keywords: ['vacation', 'snow']}};
      * myImage.saveMeta( newMeta );
@@ -93,14 +93,14 @@ interface Image {
      * Returns a thumbnail of the source image.
      * 
      * #### Example 1: Basic usage
-     * ```
+     * ```javascript
      * var myImage = loadImage( 'PROJECT/backend/my-image.jpg' );
      * var myThumbnail = myImage.thumbnail( 50, 50 );
      * myThumbnail.save( 'PROJECT/backend/my-thumbnail.jpg' );
      * ```
      * 
      * #### Example 2: Change thumbnail mode
-     * ```
+     * ```javascript
      * var myImage = loadImage( 'PROJECT/backend/my-image.jpg' );
      * var myThumbnail = myImage.thumbnail( 50, 50, 2 );
      * myThumbnail.save( 'PROJECT/backend/my-thumbnail.jpg' );

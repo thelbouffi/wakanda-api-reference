@@ -1,21 +1,20 @@
-////<reference path="./filesystemsync.d.ts" />
 ///<reference path="./folder.d.ts" />
 ///<reference path="./blob.d.ts" />
 
-interface File extends Blob {
+interface File {
     /**
      * References a file.
      * The file does not have to exist.
      * 
      * #### Example 1: Get a reference to an existing file
-     * ```
+     * ```javascript
      * var myFile = new File( 'PROJECT/backend/bootstrap.js' );
      * console.log( myFile.exists );
      * // true
      * ```
      * 
      * #### Example 2: Get a reference to a missing file
-     * ```
+     * ```javascript
      * var myFile = new File( 'PROJECT/backend/file-to-create.js' );
      * console.log( myFile.exists );
      * // false
@@ -23,13 +22,13 @@ interface File extends Blob {
      * 
      * @param path Absolute path of the file to reference.
      */
-    new (path: String): File;
+    new (path: String): WAKFileInstance;
     /**
      * References a file.
      * The file does not have to exist.
      * 
      * #### Example 1: Get a reference to an existing file
-     * ```
+     * ```javascript
      * var myFolder = new Folder( 'PROJECT/backend/' );
      * var myFile = new File( myFolder, 'bootstrap.js' );
      * console.log( myFile.exists );
@@ -37,7 +36,7 @@ interface File extends Blob {
      * ```
      * 
      * #### Example 2: Get a reference to a missing file
-     * ```
+     * ```javascript
      * var myFolder = new Folder( 'PROJECT/backend/' );
      * var myFile = new File( myFolder, 'file-to-create.js' );
      * console.log( myFile.exists );
@@ -47,7 +46,23 @@ interface File extends Blob {
      * @param folder Folder containing the file
      * @param fileName Name of the file to reference in the folder path
      */
-    new (folder: Folder, fileName: String): File;
+    new (folder: WAKFolderInstance, fileName: String): WAKFileInstance;
+    /**
+     * Check if the path references a file.
+     * 
+     * ```javascript
+     * var myIsFile = File.isFile( 'PROJECT/backend/bootstrap.js' );
+     * console.log( myIsFile );
+     * // true
+     * ```
+     * 
+     * @param path Absolute path to a file
+     * @returns `true` is the path references a file, `false` otherwise.
+     */
+    isFile(path: String): Boolean;
+}
+
+interface WAKFileInstance extends WAKBlobInstance {
     /**
      * Creation date for the file.
      */
@@ -79,7 +94,7 @@ interface File extends Blob {
     /**
      * Parent folder of the file.
      */
-    readonly parent: Folder;
+    readonly parent: WAKFolderInstance;
     /**
      * Full path of the file.
      */
@@ -95,7 +110,7 @@ interface File extends Blob {
     /**
      * Creates a new file on disk.
      * 
-     * ```
+     * ```javascript
      * var myFile = new File( 'PROJECT/backend/my-created-file.js' );
      * var myResult = myFile.create();
      * console.log( myResult );
@@ -121,22 +136,9 @@ interface File extends Blob {
      */
     getVolumeSize(): Number;
     /**
-     * Check if the path references a file.
-     * 
-     * ```
-     * var myIsFile = File.isFile( 'PROJECT/backend/bootstrap.js' );
-     * console.log( myIsFile );
-     * // true
-     * ```
-     * 
-     * @param path Absolute path to a file
-     * @returns `true` is the path references a file, `false` otherwise.
-     */
-    isFile(path: String): Boolean;
-    /**
      * Moves the file to the specified destination.
      * 
-     * ```
+     * ```javascript
      * var myFile = new File( 'PROJECT/backend/my-file.js' );
      * myFile.create();
      * myFile.moveTo( 'PROJECT/my-moved-file.js', yes );
@@ -149,11 +151,11 @@ interface File extends Blob {
      * @param file Destination file path
      * @param overwrite `true` if the file can be overwritten, `false` otherwise
      */
-    moveTo(file: File, overwrite?: Boolean): void;
+    moveTo(file: WAKFileInstance, overwrite?: Boolean): void;
     /**
      * Moves the file to the specified destination.
      * 
-     * ```
+     * ```javascript
      * var mySourceFile = new File( 'PROJECT/backend/my-file.js' );
      * var myDestinationFile = new File( 'PROJECT/my-moved-file.js' );
      * // The file must exists to be renamed
@@ -178,7 +180,7 @@ interface File extends Blob {
     /**
      * Rename the file on disk.
      * 
-     * ````
+     * ```javascript
      * var myFile = new File( 'PROJECT/backend/my-file.js' );
      * // The file must exists to be renamed
      * myFile.create();

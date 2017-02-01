@@ -3,7 +3,7 @@ interface Port {
     /**
      * Listen for worker or proxy worker errors.
      * 
-     * ```
+     * ```javascript
      * workerPort.onerror = function( error )
      * {
      *    // We've got an error !
@@ -20,7 +20,7 @@ interface Port {
     /**
      * Listen for worker or proxy worker messages.
      * 
-     * ```
+     * ```javascript
      * workerPort.onmessage = function( message )
      * {
      *     // We've got a message !
@@ -53,8 +53,8 @@ interface Port {
     /**
      * Send a message to the worker or proxy worker.
      * 
-     * Use case 1: From a worker proxy
-     * ```
+     * #### Example 1: From a worker proxy
+     * ```javascript
      * // Create a new SharedWorker and get the proxy worker
      * var myProxyWorker = new SharedWorker("backend/worker.js", "my-worker-name");
      * // Get the proxy worker port for communication
@@ -63,8 +63,8 @@ interface Port {
      * proxyWorkerPort.postMessage('wake-up');
      * ```
      * 
-     * Use case 2: From a worker
-     * ```
+     * #### Example 2: From a worker
+     * ```javascript
      * // worker.js
      * onconnect = function( msg )
      * {

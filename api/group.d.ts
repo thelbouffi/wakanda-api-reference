@@ -12,7 +12,8 @@ interface Group {
     /**
      * Returns all children directory groups starting with `filterString`.
      * 
-     * ```
+     * ```javascript
+     * var myABCDEFG;
      * var myGroups = directory.filterChildren("*cien");
      * ```
      * 
@@ -24,7 +25,7 @@ interface Group {
     /**
      * Returns all children directory groups starting with `filterString`.
      * 
-     * ```
+     * ```javascript
      * var myGroups = directory.filterParents("*cien");
      * ```
      * 
@@ -51,7 +52,7 @@ interface Group {
     /**
      * Assignes a group to one or more groups.
      * 
-     * ```
+     * ```javascript
      * myGroup.putInto( 'sales' );
      * ```
      * 
@@ -62,7 +63,7 @@ interface Group {
     /**
      * Assignes a group to one or more groups.
      * 
-     * ```
+     * ```javascript
      * var SalesGroup = directory.group( 'sales' ); 
      * myGroup.putInto( SalesGroup );
      * ```
@@ -79,7 +80,7 @@ interface Group {
     /**
      * Removes the group from group list.
      * 
-     * ```
+     * ```javascript
      * myGroup.removeFrom( 'sales', 'finance' );
      * ```
      * 
@@ -90,7 +91,7 @@ interface Group {
     /**
      * Removes the group from group list.
      * 
-     * ```
+     * ```javascript
      * var group1 = directory.group( 'finance' ); 
      * var group2 = directory.addGroup( 'account' );
       * myGroup.removeFrom( group1 , group2 )

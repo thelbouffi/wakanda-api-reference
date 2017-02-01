@@ -7,6 +7,7 @@
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
+	<script src="../assets/js/modernizr.js"></script>
 </head>
 <body>
 <header>
@@ -85,37 +86,9 @@
 							</ul>
 						</section>
 						<section class="tsd-index-section tsd-is-external tsd-is-not-exported">
-							<h3>Properties</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="folder.html#creationdate" class="tsd-kind-icon">creation<wbr>Date</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="folder.html#exists" class="tsd-kind-icon">exists</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="folder.html#extension" class="tsd-kind-icon">extension</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="folder.html#files" class="tsd-kind-icon">files</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="folder.html#firstfile" class="tsd-kind-icon">first<wbr>File</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="folder.html#firstfolder" class="tsd-kind-icon">first<wbr>Folder</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="folder.html#folders" class="tsd-kind-icon">folders</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="folder.html#modificationdate" class="tsd-kind-icon">modification<wbr>Date</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="folder.html#name" class="tsd-kind-icon">name</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="folder.html#namenoext" class="tsd-kind-icon">name<wbr>NoExt</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="folder.html#parent" class="tsd-kind-icon">parent</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="folder.html#path" class="tsd-kind-icon">path</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="folder.html#visible" class="tsd-kind-icon">visible</a></li>
-							</ul>
-						</section>
-						<section class="tsd-index-section tsd-is-external tsd-is-not-exported">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="folder.html#create" class="tsd-kind-icon">create</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="folder.html#foreachfile" class="tsd-kind-icon">for<wbr>Each<wbr>File</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="folder.html#foreachfolder" class="tsd-kind-icon">for<wbr>Each<wbr>Folder</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="folder.html#getfreespace" class="tsd-kind-icon">get<wbr>Free<wbr>Space</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="folder.html#geturl" class="tsd-kind-icon">getURL</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="folder.html#getvolumesize" class="tsd-kind-icon">get<wbr>Volume<wbr>Size</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="folder.html#isfolder" class="tsd-kind-icon">is<wbr>Folder</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="folder.html#parse" class="tsd-kind-icon">parse</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="folder.html#remove" class="tsd-kind-icon">remove</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="folder.html#removecontent" class="tsd-kind-icon">remove<wbr>Content</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="folder.html#setname" class="tsd-kind-icon">set<wbr>Name</a></li>
 							</ul>
 						</section>
 					</div>
@@ -127,13 +100,17 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Folder<span class="tsd-signature-symbol">(</span>path<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">String</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="folder.html" class="tsd-signature-type">Folder</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Folder<span class="tsd-signature-symbol">(</span>path<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">String</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="wakfolderinstance.html" class="tsd-signature-type">WAKFolderInstance</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
+<<<<<<< HEAD
 									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fb7f058/api/folder.d.ts#L4">folder.d.ts:4</a></li>
+=======
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fbc2890/api/folder.d.ts#L3">folder.d.ts:3</a></li>
+>>>>>>> 4f6328e3b48eedaf90a457bee0d08e328efeff0b
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -142,12 +119,13 @@
 									The folder does not have to exist.</p>
 								</div>
 								<h4 id="example-1-get-a-reference-to-an-existing-folder">Example 1: Get a reference to an existing folder</h4>
-								<pre><code><span class="hljs-keyword">var</span> myFolder = <span class="hljs-keyword">new</span> <span class="hljs-type">Folder</span>( <span class="hljs-string">'PROJECT/backend'</span> );
-console.log( myFolder.exists );
+								<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> myFolder = <span class="hljs-keyword">new</span> Folder( <span class="hljs-string">'PROJECT/backend'</span> );
+<span class="hljs-built_in">console</span>.log( myFolder.exists );
 <span class="hljs-comment">// true</span>
-</code></pre><h4 id="example-2-get-a-reference-to-a-missing-folder">Example 2: Get a reference to a missing folder</h4>
-								<pre><code><span class="hljs-keyword">var</span> myFolder = <span class="hljs-keyword">new</span> <span class="hljs-type">Folder</span>( <span class="hljs-string">'PROJECT/missing-folder'</span> );
-console.log( myFolder.exists );
+</code></pre>
+								<h4 id="example-2-get-a-reference-to-a-missing-folder">Example 2: Get a reference to a missing folder</h4>
+								<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> myFolder = <span class="hljs-keyword">new</span> Folder( <span class="hljs-string">'PROJECT/missing-folder'</span> );
+<span class="hljs-built_in">console</span>.log( myFolder.exists );
 <span class="hljs-comment">// false</span>
 </code></pre>
 							</div>
@@ -162,12 +140,13 @@ console.log( myFolder.exists );
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="folder.html" class="tsd-signature-type">Folder</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="wakfolderinstance.html" class="tsd-signature-type">WAKFolderInstance</a></h4>
 						</li>
 					</ul>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group tsd-is-external tsd-is-not-exported">
+<<<<<<< HEAD
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
 					<a name="creationdate" class="tsd-anchor"></a>
@@ -639,6 +618,10 @@ folder.forEachFolder( <span class="hljs-function"><span class="hljs-keyword">fun
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
+=======
+				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
+>>>>>>> 4f6328e3b48eedaf90a457bee0d08e328efeff0b
 					<a name="isfolder" class="tsd-anchor"></a>
 					<h3>is<wbr>Folder</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
@@ -648,14 +631,18 @@ folder.forEachFolder( <span class="hljs-function"><span class="hljs-keyword">fun
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
+<<<<<<< HEAD
 									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fb7f058/api/folder.d.ts#L178">folder.d.ts:178</a></li>
+=======
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fbc2890/api/folder.d.ts#L37">folder.d.ts:37</a></li>
+>>>>>>> 4f6328e3b48eedaf90a457bee0d08e328efeff0b
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Check if the path references a folder.</p>
 								</div>
-								<pre><code><span class="hljs-keyword">var</span> myIsFolder = Folder.isFolder( <span class="hljs-string">'PROJECT/backend'</span> );
+								<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> myIsFolder = Folder.isFolder( <span class="hljs-string">'PROJECT/backend'</span> );
 <span class="hljs-built_in">console</span>.log( myIsFolder );
 <span class="hljs-comment">// true</span>
 </code></pre>
@@ -674,6 +661,7 @@ folder.forEachFolder( <span class="hljs-function"><span class="hljs-keyword">fun
 						</li>
 					</ul>
 				</section>
+<<<<<<< HEAD
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
 					<a name="parse" class="tsd-anchor"></a>
 					<h3>parse</h3>
@@ -861,6 +849,8 @@ console.log( myFolder.path );
 						</li>
 					</ul>
 				</section>
+=======
+>>>>>>> 4f6328e3b48eedaf90a457bee0d08e328efeff0b
 			</section>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
@@ -881,77 +871,8 @@ console.log( myFolder.path );
 							<li class=" tsd-kind-constructor tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
 								<a href="folder.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="folder.html#creationdate" class="tsd-kind-icon">creation<wbr>Date</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="folder.html#exists" class="tsd-kind-icon">exists</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="folder.html#extension" class="tsd-kind-icon">extension</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="folder.html#files" class="tsd-kind-icon">files</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="folder.html#firstfile" class="tsd-kind-icon">first<wbr>File</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="folder.html#firstfolder" class="tsd-kind-icon">first<wbr>Folder</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="folder.html#folders" class="tsd-kind-icon">folders</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="folder.html#modificationdate" class="tsd-kind-icon">modification<wbr>Date</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="folder.html#name" class="tsd-kind-icon">name</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="folder.html#namenoext" class="tsd-kind-icon">name<wbr>NoExt</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="folder.html#parent" class="tsd-kind-icon">parent</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="folder.html#path" class="tsd-kind-icon">path</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="folder.html#visible" class="tsd-kind-icon">visible</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="folder.html#create" class="tsd-kind-icon">create</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="folder.html#foreachfile" class="tsd-kind-icon">for<wbr>Each<wbr>File</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="folder.html#foreachfolder" class="tsd-kind-icon">for<wbr>Each<wbr>Folder</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="folder.html#getfreespace" class="tsd-kind-icon">get<wbr>Free<wbr>Space</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="folder.html#geturl" class="tsd-kind-icon">getURL</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="folder.html#getvolumesize" class="tsd-kind-icon">get<wbr>Volume<wbr>Size</a>
-							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
 								<a href="folder.html#isfolder" class="tsd-kind-icon">is<wbr>Folder</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="folder.html#parse" class="tsd-kind-icon">parse</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="folder.html#remove" class="tsd-kind-icon">remove</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="folder.html#removecontent" class="tsd-kind-icon">remove<wbr>Content</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="folder.html#setname" class="tsd-kind-icon">set<wbr>Name</a>
 							</li>
 						</ul>
 					</li>

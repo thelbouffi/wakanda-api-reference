@@ -1,6 +1,6 @@
 ///<reference path="./keyvaluestorage.d.ts" />
 
-interface ConnectionSessionInfo {
+interface WAKConnectionSessionInfo {
     /**
      * UUID String referencing the user. It can be any ID but must not be an existing user ID.
      */

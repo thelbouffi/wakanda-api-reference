@@ -7,6 +7,7 @@
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
+	<script src="../assets/js/modernizr.js"></script>
 </head>
 <body>
 <header>
@@ -100,21 +101,25 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Buffer<span class="tsd-signature-symbol">(</span>size<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Number</span>, encoding<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">String</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="buffer.html" class="tsd-signature-type">Buffer</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Buffer<span class="tsd-signature-symbol">(</span>size<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Number</span>, encoding<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">String</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="wakbufferinstance.html" class="tsd-signature-type">WAKBufferInstance</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
+<<<<<<< HEAD
 									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fb7f058/api/buffer.d.ts#L3">buffer.d.ts:3</a></li>
+=======
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fbc2890/api/buffer.d.ts#L3">buffer.d.ts:3</a></li>
+>>>>>>> 4f6328e3b48eedaf90a457bee0d08e328efeff0b
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Creates a new buffer.</p>
 								</div>
-								<pre><code><span class="hljs-keyword">var</span> myBufferInstance = <span class="hljs-keyword">new</span> <span class="hljs-type">Buffer</span>( <span class="hljs-number">16</span>*<span class="hljs-number">1024</span> );
-<span class="hljs-keyword">var</span> myBufferInstance = <span class="hljs-keyword">new</span> <span class="hljs-type">Buffer</span>( <span class="hljs-number">16</span>*<span class="hljs-number">1024</span>, <span class="hljs-string">'utf8'</span> );
+								<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> myBufferInstance = <span class="hljs-keyword">new</span> Buffer( <span class="hljs-number">16</span>*<span class="hljs-number">1024</span> );
+<span class="hljs-keyword">var</span> myBufferInstance = <span class="hljs-keyword">new</span> Buffer( <span class="hljs-number">16</span>*<span class="hljs-number">1024</span>, <span class="hljs-string">'utf8'</span> );
 </code></pre>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -136,7 +141,7 @@
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="buffer.html" class="tsd-signature-type">Buffer</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="wakbufferinstance.html" class="tsd-signature-type">WAKBufferInstance</a></h4>
 						</li>
 					</ul>
 				</section>
@@ -153,7 +158,11 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
+<<<<<<< HEAD
 									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fb7f058/api/buffer.d.ts#L29">buffer.d.ts:29</a></li>
+=======
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fbc2890/api/buffer.d.ts#L29">buffer.d.ts:29</a></li>
+>>>>>>> 4f6328e3b48eedaf90a457bee0d08e328efeff0b
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -161,7 +170,7 @@
 									<p>Returns the string byte length.
 									Byte length may change depending of the encoding type.</p>
 								</div>
-								<pre><code><span class="hljs-keyword">var</span> myByteLength = Buffer.byteLength( <span class="hljs-string">'Hello Buffer World !'</span> );
+								<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> myByteLength = Buffer.byteLength( <span class="hljs-string">'Hello Buffer World !'</span> );
 <span class="hljs-built_in">console</span>.log(myByteLength);
 <span class="hljs-comment">// 20</span>
 </code></pre>
@@ -195,7 +204,11 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
+<<<<<<< HEAD
 									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fb7f058/api/buffer.d.ts#L59">buffer.d.ts:59</a></li>
+=======
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fbc2890/api/buffer.d.ts#L59">buffer.d.ts:59</a></li>
+>>>>>>> 4f6328e3b48eedaf90a457bee0d08e328efeff0b
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -203,18 +216,20 @@
 									<p>Checks if the object is a buffer.</p>
 								</div>
 								<h4 id="example-1-is-my-string-a-buffer-">Example 1: Is my string a buffer ?</h4>
-								<pre><code><span class="hljs-keyword">var</span> isBuffer = Buffer.isBuffer( <span class="hljs-string">'Hello Buffer World !'</span> );
+								<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> isBuffer = Buffer.isBuffer( <span class="hljs-string">'Hello Buffer World !'</span> );
 <span class="hljs-built_in">console</span>.log( isBuffer );
 <span class="hljs-comment">// false</span>
-</code></pre><h4 id="example-2-is-my-blob-a-buffer-">Example 2: Is my blob a buffer ?</h4>
-								<pre><code><span class="hljs-keyword">var</span> myBlob = <span class="hljs-function"><span class="hljs-keyword">new</span> <span class="hljs-title">Blob</span>();
-<span class="hljs-title">var</span> <span class="hljs-title">isBuffer</span> = <span class="hljs-title">Buffer</span>.<span class="hljs-title">isBuffer</span>( myBlob );
-<span class="hljs-title">console</span>.<span class="hljs-title">log</span>( isBuffer );
-<span class="hljs-comment">// false</span></span>
-</code></pre><h4 id="example-3-is-my-buffer-a-buffer-">Example 3: Is my buffer a buffer ?</h4>
-								<pre><code><span class="hljs-keyword">var</span> myBuffer = <span class="hljs-keyword">new</span> <span class="hljs-type">Buffer</span>( <span class="hljs-string">'20'</span> );
+</code></pre>
+								<h4 id="example-2-is-my-blob-a-buffer-">Example 2: Is my blob a buffer ?</h4>
+								<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> myBlob = <span class="hljs-keyword">new</span> Blob();
+<span class="hljs-keyword">var</span> isBuffer = Buffer.isBuffer( myBlob );
+<span class="hljs-built_in">console</span>.log( isBuffer );
+<span class="hljs-comment">// false</span>
+</code></pre>
+								<h4 id="example-3-is-my-buffer-a-buffer-">Example 3: Is my buffer a buffer ?</h4>
+								<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> myBuffer = <span class="hljs-keyword">new</span> Buffer( <span class="hljs-string">'20'</span> );
 <span class="hljs-keyword">var</span> isBuffer = Buffer.isBuffer( myBuffer );
-console.log( isBuffer );
+<span class="hljs-built_in">console</span>.log( isBuffer );
 <span class="hljs-comment">// true</span>
 </code></pre>
 							</div>

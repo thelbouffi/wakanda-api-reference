@@ -42,41 +42,38 @@ interface HttpServer {
      * Adds a request handler function on the server.
      * It is recommended to write all request handler in the `bootstrap.js` file in order to be available at server start up.
      * 
-     * #### Example 1: Add a request handler
-     * ```
+     * #### Step 1: Add a request handler
+     * ```javascript
      * // It is recommended to write these lines in bootstrap.js
      * // On every "/ping" requests, call "hello()" function in "request-greetings.js"
      * httpServer.addRequestHandler('^/ping$', 'request-greetings.js', 'pong');
      * ```
      * 
-     * @param pattern Regexp pattern to intercept a HTTP request
-     * @param filePath Path to the file that defines the functionName
-     * @param functionName Function name which handles the request and returns the request response
-     * 
-     * #### Example 2: Handle the request
-     * ```
+     * #### Step 2: Handle the request
+     * ```javascript
      * // request-greetings.js
      * function pong( request, response ){
      *     return 'pong';
      * }
      * ```
+     * 
+     * @param pattern Regexp pattern to intercept a HTTP request
+     * @param filePath Path to the file that defines the functionName
+     * @param functionName Function name which handles the request and returns the request response
      */
     addRequestHandler(pattern: String, filePath: String, functionName: String): void;
     /**
      * Adds a WebSocket handler script on the server.
      * It is recommended to write all websocket handler in the `bootstrap.js` file in order to be available at server start up.
      * 
-     * #### Example 1: Add a websocket handler
-     * ```
+     * #### Step 1: Add a websocket handler
+     * ```javascript
      * // It is recommended to write these lines in bootstrap.js
      * httpServer.addWebSocketHandler('^/ping$', './backend/websocket-greetings.js', 'websocket-id', true);
      * ```
      * 
-     * @param pattern Regexp pattern to intercept a HTTP request
-     * @param filePath Absolute or relative path from the project to the file that defines the websocket handler. Filesystem are not working in filePath parameter (`PROJECT`, `SOLUTION`, ...).
-     * 
-     * #### Example 2: Handle the websocket
-     * ```
+     * #### Step 2: Handle the websocket
+     * ```javascript
      * // ./backend/websocket-greetings.js
      * // Same as for ShareWorker
      * // Called every time a new websocket is connected
@@ -110,6 +107,8 @@ interface HttpServer {
      * };
      * ```
      * 
+     * @param pattern Regexp pattern to intercept a HTTP request
+     * @param filePath Absolute or relative path from the project to the file that defines the websocket handler. Filesystem are not working in filePath parameter (`PROJECT`, `SOLUTION`, ...).
      * @param socketID Socket ID usefull for `removeWebSocketHandler()`
      * @param sharedWorker `true` if uses shared worker (recommended). `false` if uses dedicated worker.
      */
@@ -117,7 +116,7 @@ interface HttpServer {
     /**
      * Removes an existing request handler function on the server.
      * 
-     * ```
+     * ```javascript
      * // Must match parameters of "addRequestHandler()"
      * // httpServer.addRequestHandler('^/ping$', 'request-greetings.js', 'pong');
      * httpServer.removeRequestHandler('^/ping$', 'request-greetings.js', 'pong');
@@ -131,7 +130,7 @@ interface HttpServer {
     /**
      * Removes an existing websocket handler on the server.
      * 
-     * ```
+     * ```javascript
      * // Must match socketID parameter of "addWebSocketHandler()"
      * // httpServer.addWebSocketHandler('^/ping$', 'backend/websocket-greetings.js', 'websocket-id', true);
      * httpServer.httpServer.removeWebSocketHandler( 'websocket-id' );

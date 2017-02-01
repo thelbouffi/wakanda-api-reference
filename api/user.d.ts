@@ -18,7 +18,7 @@ interface User {
      * Defines the user storage object.
      * This object is maintained as long as the server is alive. It is not stored after the server shuts down. This property is user-related and not session-related.
      * 
-     * ```
+     * ```javascript
      * directory.currentUser.storage.setItem( 'itemInBox', 19 );
      * var result = directory.currentUser.storage.getItem( 'itemInBox' );
      * console.log(result);
@@ -35,7 +35,7 @@ interface User {
     /**
      * Assignes a user to one or more groups.
      * 
-     * ```
+     * ```javascript
      * myUser.putInto( 'sales', 'finance' );
      * ```
      * 
@@ -46,7 +46,7 @@ interface User {
     /**
      * Assignes a user to one or more groups.
      * 
-     * ```
+     * ```javascript
      * var group1 = directory.group( 'finance' ); 
      * var group2 = directory.addGroup( 'account' );
       * myUser.putInto( group1 , group2 )
@@ -64,7 +64,7 @@ interface User {
     /**
      * Removes the user from group list.
      * 
-     * ```
+     * ```javascript
      * myUser.removeFrom( 'sales', 'finance' );
      * ```
      * 
@@ -75,7 +75,7 @@ interface User {
     /**
      * Removes the user from group list.
      * 
-     * ```
+     * ```javascript
      * var group1 = directory.group( 'finance' ); 
      * var group2 = directory.addGroup( 'account' );
      * myUser.removeFrom( group1 , group2 )

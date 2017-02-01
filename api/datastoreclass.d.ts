@@ -102,11 +102,11 @@ interface DatastoreClass {
 	/**
 	*exports all the entities stored in the object for which it is called in JSON format
 	*/
-	exportAsJSON(exportFolder: Folder, numFiles: Number, fileLimitSize: Number, attLimitSize?: Number) : void;
+	exportAsJSON(exportFolder: WAKFolderInstance, numFiles: Number, fileLimitSize: Number, attLimitSize?: Number) : void;
 	/**
 	*exports all the entities stored the object for which it is called in SQL format
 	*/
-	exportAsSQL(exportFolder: Folder, numFiles: Number, fileLimitSize: Number, attLimitSize?: Number) : void;
+	exportAsSQL(exportFolder: WAKFolderInstance, numFiles: Number, fileLimitSize: Number, attLimitSize?: Number) : void;
 	/**
 	*applies the search criteria specified in queryString and (optionally) value to all the entities of the DatastoreClass or EntityCollection and returns the first entity found in an object of type Entity
 	*/
@@ -138,7 +138,7 @@ interface DatastoreClass {
 	/**
 	*imports all the entities stored in JSON format from the file(s) located in the importFolder folder
 	*/
-	importFromJSON(importFolder: Folder) : void;
+	importFromJSON(importFolder: WAKFolderInstance) : void;
 	/**
 	*returns the maximum value among all the values of attribute in the entity collection or datastore class
 	*/

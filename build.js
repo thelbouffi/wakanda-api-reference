@@ -3,7 +3,6 @@ var fs		= require('fs');
 function getGlobalDeclaration(){
 
 	var content = fs.readFileSync('global.ts', 'utf8');
-	
 	return content;
 }
 
@@ -12,6 +11,11 @@ function concatenateFiles(folderPath, outputFile, initialContent){
 	var output = initialContent || "";
 	
 	files.forEach(function(file){
+		// Concat only .d.ts files
+		if (! file.match(/.*\.d\.ts$/gi) ){
+ 			return;
+		}
+
 		output += fs.readFileSync(folderPath + "/" + file, 'utf8');		
 	});
 	output = cleanOutput(output);
@@ -37,7 +41,7 @@ concatenateFiles("api", "build/wakanda.ts", globalDeclarations);
 console.log("Concatenating Wakanda Model API files..");
 concatenateFiles("model", "build/model.ts");
 console.log("Generating documentation..");
-runCommand("typedoc --hideGenerator --noLib --ignoreCompilerErrors --includeDeclarations --mode file --readme ./index.md --out ./docs ./api/application.d.ts");
+runCommand("typedoc --theme ./themes/default --hideGenerator --noLib --ignoreCompilerErrors --includeDeclarations --mode file --readme ./index.md --out ./docs ./api/application.d.ts");
 var outputFile = "./build/wakanda.ts";
 var output = cleanOutput(fs.readFileSync(outputFile, 'utf8'));
 fs.writeFileSync(outputFile, output, 'utf8');

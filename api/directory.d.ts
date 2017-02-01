@@ -3,11 +3,11 @@
 ///<reference path="./user.d.ts" />
 ///<reference path="./group.d.ts" />
 
-interface Directory {
+interface WAKDirectory {
     /**
      * Create a new user session and sets it as the current session.
      * 
-     * ```
+     * ```javascript
      * var cur = currentSession();
      * console.log( cur.ID );
      * // BF44D6E51B8FAKE485D8966ED3EDF6DD
@@ -37,7 +37,7 @@ interface Directory {
      * @param keepPreviousSession (default `false`) Set to `true` if you want to keep the previous user session, `false` if you want to expire the previous user session.
      * 
      */
-    createUserSession(sessionObj: ConnectionSessionInfo, keepPreviousSession?: Boolean): void;
+    createUserSession(sessionObj: WAKConnectionSessionInfo, keepPreviousSession?: Boolean): void;
     /**
      * The current user who opened the user session.
      */
@@ -45,11 +45,11 @@ interface Directory {
     /**
      * The current user session.
      */
-    currentSession: ConnectionSession;
+    currentSession: WAKConnectionSession;
     /**
      * Add a new group to the directory and returns it.
      * 
-     * ```
+     * ```javascript
      * var myNewGroup = directory.addGroup( 'astronauts' );
      * ```
      * 
@@ -61,7 +61,7 @@ interface Directory {
     /**
      * Add a new user to the directory and returns it.
      * 
-     * ```
+     * ```javascript
      * var myNewUser = directory.addUser( 'Thomas Pesquet' );
      * ```
      * 
@@ -79,7 +79,7 @@ interface Directory {
     /**
      * Returns all directory groups starting with `filterString`.
      * 
-     * ```
+     * ```javascript
      * var myGroups = directory.filterGroups( '*pers' );
      * ```
      * 
@@ -90,7 +90,7 @@ interface Directory {
     /**
      * Returns all directory users starting with `filterString`.
      * 
-     * ```
+     * ```javascript
      * var myUsers = directory.filterUsers("Jo*");
      * ```
      * 
@@ -101,18 +101,18 @@ interface Directory {
     /**
      * Get an active session object from a session id.
      * 
-     * ```
+     * ```javascript
      * var previousSession = getSession( 'BF44D6E51B8FAKE485D8966ED3EDF6DD' );
      * ```
      * 
      * @param sessionID Describes the string session id
      * @returns Returns the session object if any
      */
-    getSession(sessionID: String): ConnectionSession;
+    getSession(sessionID: String): WAKConnectionSession;
     // /**
     //  * Get all active user sessions.
     //  * 
-    //  * ```
+    //  * ```javascript
     //  * // Get all active user session
     //  * var sessionArray = getUserSessions();
     //  * ```
@@ -123,7 +123,7 @@ interface Directory {
     // /**
     //  * Get all active user sessions for a user ID.
     //  * 
-    //  * ```
+    //  * ```javascript
     //  * // Get all active user session for the current user
     //  * var sessionArray = getUserSessions( currentSession().user.ID );
     //  * ```
@@ -135,7 +135,7 @@ interface Directory {
     // /**
     //  * Get all active user sessions for a user.
     //  * 
-    //  * ```
+    //  * ```javascript
     //  * // Get all active user session for the current user
     //  * var sessionArray = getUserSessions( currentSession().user );
     //  * ```
@@ -157,7 +157,7 @@ interface Directory {
     /**
      * Gets a group from its name or ID.
      * 
-     * ```
+     * ```javascript
      * var myGroup = directory.group( 'Spies' );
      * ```
      * 
@@ -168,7 +168,7 @@ interface Directory {
     /**
      * Authenticates a user by their name and key and, in case of success, opens a new user Session on the server.
      * 
-     * ```
+     * ```javascript
      * loginByKey('john', '6153A6FA0E4880D9B8D0BE4720F78E895265D0A9');
      * loginByKey('john', '6153A6FA0E4880D9B8D0BE4720F78E895265D0A9', 60*60);
      * ```
@@ -182,7 +182,7 @@ interface Directory {
     /**
      * Authenticates a user by their name and password and, in case of success, opens a new user Session on the server.
      * 
-     * ```
+     * ```javascript
      * loginByPassword('john', 'my-password');
      * loginByPassword('john', 'my-password', 60*60);
      * ```
@@ -196,7 +196,7 @@ interface Directory {
     /**
      * Logs out the user from its current session on the Wakanda server.
      * 
-     * ```
+     * ```javascript
      * logout();
      * ```
      * 
@@ -206,8 +206,17 @@ interface Directory {
     /**
      * Saves all changes made in the directory.
      * 
-     * ```
+     * ```javascript
      * directory.save();
+     * ```
+     * 
+     * @returns Returns `true` if successfully saved, `false` otherwise.
+     */
+    save(): Boolean;
+    /**
+     * Saves all changes made in the directory.
+     * 
+     * ```javascript
      * directory.save( 'PROJECT/backups/2016-01-01.waDirectory' );
      * ```
      * 
@@ -215,12 +224,12 @@ interface Directory {
      * @param backup Describes a file path for the directory backup.
      * @returns Returns `true` if successfully saved, `false` otherwise.
      */
-    save(backup?: String): Boolean;
+    save(backup: String): Boolean;
     /**
      * Saves all changes made in the directory.
      * 
-     * ```
-     * var myFile = File( 'PROJECT/backups/2016-01-01.waDirectory' );
+     * ```javascript
+     * var myFile = new File( 'PROJECT/backups/2016-01-01.waDirectory' );
      * directory.save( myFile );
      * ```
      * 
@@ -228,11 +237,11 @@ interface Directory {
      * @param backup Describes a file for the directory backup.
      * @returns Returns `true` if successfully saved, `false` otherwise.
      */
-    save(backup?: File): Boolean;
+    save(backup: WAKFileInstance): Boolean;
     /**
      * Sets the session whose UUID is passed in sessionID as the new current session of the running thread.
      * 
-     * ```
+     * ```javascript
      * console.log(directory.currentSession.ID);
      * // 2EA82764A075497181278B2F05DA2EDA
      * setCurrentSession('E8CBA745124D4BE4BF7D5A224183EC8E', true);
@@ -250,7 +259,7 @@ interface Directory {
     /**
      * Handles and manages sessions through a SSJS module.
      * 
-     * ```
+     * ```javascript
      * // Usually defined in a boostrap file
      * directory.setSessionManager( 'session' );
      * // Refers to PROJECT/backend/modules/session/index.js module
@@ -258,7 +267,7 @@ interface Directory {
      * 
      * The module must export the following methods to handle all session operations:
      * 
-     * ```
+     * ```javascript
      * // PROJECT/backend/modules/session/index.js
      * // This session manager saves all session in the storage (could be a Redis instead)
      * 
@@ -311,7 +320,7 @@ interface Directory {
     /**
      * Defines a module to manage all login requests to Wakanda Server.
      * 
-     * ```
+     * ```javascript
      * directory.setLoginManager('my-login-module');
      * directory.setLoginManager('my-login-module', 'myDirectoryGroup');
      * ```
@@ -320,7 +329,7 @@ interface Directory {
      * If the module is not found in the project, it is then check inside the solution.
      * It must export a `login()` method and return the `user` object.
      * 
-     * ```
+     * ```javascript
      * // my-login-module/index.js
      * // Export a login() function
      * exports.login = function(username, password){
@@ -368,7 +377,7 @@ interface Directory {
     /**
      * Gets a user from its name or ID.
      * 
-     * ```
+     * ```javascript
      * var myUser = directory.user( 'Thomas Pesquet' );
      * ```
      * 

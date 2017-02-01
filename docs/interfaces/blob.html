@@ -7,6 +7,7 @@
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
+	<script src="../assets/js/modernizr.js"></script>
 </head>
 <body>
 <header>
@@ -71,11 +72,6 @@
 				<ul class="tsd-hierarchy">
 					<li>
 						<span class="target">Blob</span>
-						<ul class="tsd-hierarchy">
-							<li>
-								<a href="file.html" class="tsd-signature-type">File</a>
-							</li>
-						</ul>
 					</li>
 				</ul>
 			</section>
@@ -89,22 +85,6 @@
 								<li class="tsd-kind-constructor tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="blob.html#constructor" class="tsd-kind-icon">constructor</a></li>
 							</ul>
 						</section>
-						<section class="tsd-index-section tsd-is-external tsd-is-not-exported">
-							<h3>Properties</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="blob.html#size" class="tsd-kind-icon">size</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="blob.html#type" class="tsd-kind-icon">type</a></li>
-							</ul>
-						</section>
-						<section class="tsd-index-section tsd-is-external tsd-is-not-exported">
-							<h3>Methods</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="blob.html#copyto" class="tsd-kind-icon">copy<wbr>To</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="blob.html#slice" class="tsd-kind-icon">slice</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="blob.html#tobuffer" class="tsd-kind-icon">to<wbr>Buffer</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="blob.html#tostring" class="tsd-kind-icon">to<wbr>String</a></li>
-							</ul>
-						</section>
 					</div>
 				</section>
 			</section>
@@ -114,20 +94,24 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Blob<span class="tsd-signature-symbol">(</span>size<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Number</span>, defaultByteValue<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Number</span>, mimeType<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">String</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="blob.html" class="tsd-signature-type">Blob</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Blob<span class="tsd-signature-symbol">(</span>size<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Number</span>, defaultByteValue<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Number</span>, mimeType<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">String</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="wakblobinstance.html" class="tsd-signature-type">WAKBlobInstance</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
+<<<<<<< HEAD
 									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fb7f058/api/blob.d.ts#L4">blob.d.ts:4</a></li>
+=======
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fbc2890/api/blob.d.ts#L4">blob.d.ts:4</a></li>
+>>>>>>> 4f6328e3b48eedaf90a457bee0d08e328efeff0b
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Creates a new blob.</p>
 								</div>
-								<pre><code><span class="hljs-keyword">var</span> myBlob = <span class="hljs-keyword">new</span> <span class="hljs-type">Blob</span>( <span class="hljs-number">20</span> , <span class="hljs-number">88</span>, <span class="hljs-string">'application/octet-stream'</span>);
+								<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> myBlob = <span class="hljs-keyword">new</span> Blob( <span class="hljs-number">20</span> , <span class="hljs-number">88</span>, <span class="hljs-string">'application/octet-stream'</span>);
 <span class="hljs-keyword">var</span> myString = myBlob.toString();
 <span class="hljs-comment">// XXXXXXXXXXXXXXXXXXXX</span>
 </code></pre>
@@ -159,6 +143,7 @@
 									</div>
 								</li>
 							</ul>
+<<<<<<< HEAD
 							<h4 class="tsd-returns-title">Returns <a href="blob.html" class="tsd-signature-type">Blob</a></h4>
 						</li>
 					</ul>
@@ -393,6 +378,9 @@ console.<span class="hljs-built_in">log</span>( myBlobSlice.<span class="hljs-ke
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">String</span></h4>
+=======
+							<h4 class="tsd-returns-title">Returns <a href="wakblobinstance.html" class="tsd-signature-type">WAKBlobInstance</a></h4>
+>>>>>>> 4f6328e3b48eedaf90a457bee0d08e328efeff0b
 						</li>
 					</ul>
 				</section>
@@ -415,24 +403,6 @@ console.<span class="hljs-built_in">log</span>( myBlobSlice.<span class="hljs-ke
 						<ul>
 							<li class=" tsd-kind-constructor tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
 								<a href="blob.html#constructor" class="tsd-kind-icon">constructor</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="blob.html#size" class="tsd-kind-icon">size</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="blob.html#type" class="tsd-kind-icon">type</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="blob.html#copyto" class="tsd-kind-icon">copy<wbr>To</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="blob.html#slice" class="tsd-kind-icon">slice</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="blob.html#tobuffer" class="tsd-kind-icon">to<wbr>Buffer</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="blob.html#tostring" class="tsd-kind-icon">to<wbr>String</a>
 							</li>
 						</ul>
 					</li>

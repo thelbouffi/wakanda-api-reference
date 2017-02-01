@@ -4,7 +4,7 @@ interface Buffer {
     /**
      * Creates a new buffer.
      * 
-     * ```
+     * ```javascript
      * var myBufferInstance = new Buffer( 16*1024 );
      * var myBufferInstance = new Buffer( 16*1024, 'utf8' );
      * ```
@@ -12,12 +12,12 @@ interface Buffer {
      * @param size The number of bytes to allocate for the buffer
      * @param encoding (default: `utf8`) Encoding available: `ascii`, `utf8`, `ucs2`, `hex`, `base64`
      */
-    new (size: Number, encoding?: String): BufferInstance;
+    new (size: Number, encoding?: String): WAKBufferInstance;
     /**
      * Returns the string byte length.
      * Byte length may change depending of the encoding type.
      * 
-     * ```
+     * ```javascript
      * var myByteLength = Buffer.byteLength( 'Hello Buffer World !' );
      * console.log(myByteLength);
      * // 20
@@ -31,14 +31,14 @@ interface Buffer {
      * Checks if the object is a buffer.
      * 
      * #### Example 1: Is my string a buffer ?
-     * ```
+     * ```javascript
      * var isBuffer = Buffer.isBuffer( 'Hello Buffer World !' );
      * console.log( isBuffer );
      * // false
      * ```
      * 
      * #### Example 2: Is my blob a buffer ?
-     * ```
+     * ```javascript
      * var myBlob = new Blob();
      * var isBuffer = Buffer.isBuffer( myBlob );
      * console.log( isBuffer );
@@ -46,7 +46,7 @@ interface Buffer {
      * ```
      * 
      * #### Example 3: Is my buffer a buffer ?
-     * ```
+     * ```javascript
      * var myBuffer = new Buffer( '20' );
      * var isBuffer = Buffer.isBuffer( myBuffer );
      * console.log( isBuffer );
@@ -59,7 +59,7 @@ interface Buffer {
     isBuffer(obj: any): Boolean;
 }
 
-interface BufferInstance {
+interface WAKBufferInstance {
     /**
      * Number of bytes of the buffer.
      */
@@ -67,7 +67,7 @@ interface BufferInstance {
     /**
      * Copies the current buffer into the target buffer.
      * 
-     * ```
+     * ```javascript
      * b1 = new Buffer(26);
      * b2 = new Buffer(26);
      * for (var i = 0 ; i < 26 ; i++) {
@@ -83,7 +83,7 @@ interface BufferInstance {
      * @param sourceOffset (default: 0) Byte offset where to start reading the data
      * @param sourceEnd (default: buffer.length) Byte offset where to end reading the data
      */
-    copy(targetBuffer: Buffer, targetOffset?: Number, sourceOffset?: Number, sourceEnd?: Number): void;
+    copy(targetBuffer: WAKBufferInstance, targetOffset?: Number, sourceOffset?: Number, sourceEnd?: Number): void;
     /**
      * Fills the Buffer to which it is applied with the character you passed in value.
      */
@@ -91,11 +91,11 @@ interface BufferInstance {
     /**
      * Creates a new Buffer object by referencing the contents of the bytes array of the Buffer to which it is applied, from start to end.
      */
-    slice(start: Number, end?: Number): Buffer;
+    slice(start: Number, end?: Number): WAKBufferInstance;
     /**
      * Returns a Blob object containing a copy of the Buffer bytes.
      */
-    toBlob(mimeType?: String): Blob;
+    toBlob(mimeType?: String): WAKBlobInstance;
     /**
      * Converts the buffer contents into a string.
      */

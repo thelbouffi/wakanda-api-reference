@@ -7,6 +7,7 @@
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
+	<script src="../assets/js/modernizr.js"></script>
 </head>
 <body>
 <header>
@@ -84,34 +85,6 @@
 								<li class="tsd-kind-constructor tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="binarystream.html#constructor" class="tsd-kind-icon">constructor</a></li>
 							</ul>
 						</section>
-						<section class="tsd-index-section tsd-is-external tsd-is-not-exported">
-							<h3>Methods</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="binarystream.html#changebyteorder" class="tsd-kind-icon">change<wbr>Byte<wbr>Order</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="binarystream.html#close" class="tsd-kind-icon">close</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="binarystream.html#flush" class="tsd-kind-icon">flush</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="binarystream.html#getblob" class="tsd-kind-icon">get<wbr>Blob</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="binarystream.html#getbuffer" class="tsd-kind-icon">get<wbr>Buffer</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="binarystream.html#getbyte" class="tsd-kind-icon">get<wbr>Byte</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="binarystream.html#getlong" class="tsd-kind-icon">get<wbr>Long</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="binarystream.html#getlong64" class="tsd-kind-icon">get<wbr>Long64</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="binarystream.html#getpos" class="tsd-kind-icon">get<wbr>Pos</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="binarystream.html#getreal" class="tsd-kind-icon">get<wbr>Real</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="binarystream.html#getsize" class="tsd-kind-icon">get<wbr>Size</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="binarystream.html#getstring" class="tsd-kind-icon">get<wbr>String</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="binarystream.html#getword" class="tsd-kind-icon">get<wbr>Word</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="binarystream.html#isbyteswapping" class="tsd-kind-icon">is<wbr>Byte<wbr>Swapping</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="binarystream.html#putblob" class="tsd-kind-icon">put<wbr>Blob</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="binarystream.html#putbuffer" class="tsd-kind-icon">put<wbr>Buffer</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="binarystream.html#putbyte" class="tsd-kind-icon">put<wbr>Byte</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="binarystream.html#putlong" class="tsd-kind-icon">put<wbr>Long</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="binarystream.html#putlong64" class="tsd-kind-icon">put<wbr>Long64</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="binarystream.html#putreal" class="tsd-kind-icon">put<wbr>Real</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="binarystream.html#putstring" class="tsd-kind-icon">put<wbr>String</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="binarystream.html#putword" class="tsd-kind-icon">put<wbr>Word</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported"><a href="binarystream.html#setpos" class="tsd-kind-icon">set<wbr>Pos</a></li>
-							</ul>
-						</section>
 					</div>
 				</section>
 			</section>
@@ -121,22 +94,25 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Binary<wbr>Stream<span class="tsd-signature-symbol">(</span>binary<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">String</span>, readMode<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">String</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="binarystream.html" class="tsd-signature-type">BinaryStream</a></li>
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Binary<wbr>Stream<span class="tsd-signature-symbol">(</span>binary<span class="tsd-signature-symbol">: </span><a href="file.html" class="tsd-signature-type">File</a>, readMode<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">String</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="binarystream.html" class="tsd-signature-type">BinaryStream</a></li>
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Binary<wbr>Stream<span class="tsd-signature-symbol">(</span>binary<span class="tsd-signature-symbol">: </span><a href="socket.html" class="tsd-signature-type">Socket</a>, readMode<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">String</span>, timeOut<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="binarystream.html" class="tsd-signature-type">BinaryStream</a></li>
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Binary<wbr>Stream<span class="tsd-signature-symbol">(</span>binary<span class="tsd-signature-symbol">: </span><a href="socketsync.html" class="tsd-signature-type">SocketSync</a>, readMode<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">String</span>, timeOut<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="binarystream.html" class="tsd-signature-type">BinaryStream</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Binary<wbr>Stream<span class="tsd-signature-symbol">(</span>binary<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">String</span>, readMode<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">String</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="wakbinarystreaminstance.html" class="tsd-signature-type">WAKBinaryStreamInstance</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Binary<wbr>Stream<span class="tsd-signature-symbol">(</span>binary<span class="tsd-signature-symbol">: </span><a href="wakfileinstance.html" class="tsd-signature-type">WAKFileInstance</a>, readMode<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">String</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="wakbinarystreaminstance.html" class="tsd-signature-type">WAKBinaryStreamInstance</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
+<<<<<<< HEAD
 									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fb7f058/api/binarystream.d.ts#L6">binarystream.d.ts:6</a></li>
+=======
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fbc2890/api/binarystream.d.ts#L6">binarystream.d.ts:6</a></li>
+>>>>>>> 4f6328e3b48eedaf90a457bee0d08e328efeff0b
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Creates a new BinaryStream object.</p>
 								</div>
+<<<<<<< HEAD
 								<pre><code><span class="hljs-keyword">var</span> myFile = <span class="hljs-keyword">File</span>( 'PROJECT/backend/logs/HTTPServer.waLog' );
 <span class="hljs-keyword">var</span> readstream = BinaryStream( myFile );
 console.<span class="hljs-built_in">log</span>( '[chunck] '+ readstream.getBuffer(1000).<span class="hljs-keyword">toString</span>() );
@@ -179,40 +155,18 @@ readstream.<span class="hljs-keyword">close</span>();
 								<pre><code><span class="hljs-keyword">var</span> myFile = <span class="hljs-keyword">File</span>( 'PROJECT/backend/logs/HTTPServer.waLog' );
 <span class="hljs-keyword">var</span> readstream = BinaryStream( myFile );
 console.<span class="hljs-built_in">log</span>( '[chunck] '+ readstream.getBuffer(1000).<span class="hljs-keyword">toString</span>() );
+=======
+								<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> readstream = <span class="hljs-keyword">new</span> BinaryStream( <span class="hljs-string">'PROJECT/backend/logs/HTTPServer.waLog'</span> );
+<span class="hljs-built_in">console</span>.log( <span class="hljs-string">'[chunck] '</span>+ readstream.getBuffer(<span class="hljs-number">1000</span>).toString() );
+>>>>>>> 4f6328e3b48eedaf90a457bee0d08e328efeff0b
 <span class="hljs-comment">// Important to close the stream after every use to release the referenced file</span>
-readstream.<span class="hljs-keyword">close</span>();
-</code></pre><pre><code><span class="hljs-keyword">var</span> net = <span class="hljs-built_in">require</span>( <span class="hljs-string">'net'</span> );
-<span class="hljs-comment">// Use a synchronous socket for demo</span>
-<span class="hljs-keyword">var</span> socket = net.connectSync( <span class="hljs-number">25</span>, <span class="hljs-string">'smtp.gmail.com'</span>);
-<span class="hljs-comment">// Create a read BinaryStrean</span>
-<span class="hljs-keyword">var</span> readstream = BinaryStream( socket, <span class="hljs-string">'Read'</span>, <span class="hljs-number">300</span> );
-<span class="hljs-comment">// Create a read BinaryStrean</span>
-<span class="hljs-keyword">var</span> writestream = BinaryStream( socket, <span class="hljs-string">'Write'</span>, <span class="hljs-number">500</span> );
-<span class="hljs-comment">// Get first statement from Gmail</span>
-<span class="hljs-built_in">console</span>.log( <span class="hljs-string">'[CONNECTED] '</span>+ readstream.getBuffer(<span class="hljs-number">1000</span>).toString() );
-<span class="hljs-comment">// 220 smtp.gmail.com ESMTP y80sm15252285wrb.12 - gsmtp</span>
-
-<span class="hljs-comment">// Send greetings to Gmail</span>
-writestream.putBuffer( <span class="hljs-keyword">new</span> Buffer(<span class="hljs-string">'EHLO smtp.gmail.com\r\n'</span>) );
-<span class="hljs-comment">// Get greetings from Gmail + service details</span>
-<span class="hljs-built_in">console</span>.log( <span class="hljs-string">'[EHLO] '</span>+ readstream.getBuffer(<span class="hljs-number">1000</span>).toString() );
-<span class="hljs-comment">// 250-smtp.gmail.com at your service, [195.68.52.79]</span>
-<span class="hljs-comment">// 250-SIZE 35882577</span>
-<span class="hljs-comment">// 250-8BITMIME</span>
-<span class="hljs-comment">// 250-STARTTLS</span>
-<span class="hljs-comment">// 250-ENHANCEDSTATUSCODES</span>
-<span class="hljs-comment">// 250-PIPELINING</span>
-<span class="hljs-comment">// 250-CHUNKING</span>
-<span class="hljs-comment">// 250 SMTPUTF8</span>
-<span class="hljs-comment">// Important to close the stream after every use to release the referenced socket</span>
 readstream.close();
-writestream.close();
 </code></pre>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>binary: <a href="file.html" class="tsd-signature-type">File</a></h5>
+									<h5>binary: <span class="tsd-signature-type">String</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<div class="lead">
 											<p>Describes the binary to read/write.</p>
@@ -228,18 +182,23 @@ writestream.close();
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="binarystream.html" class="tsd-signature-type">BinaryStream</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="wakbinarystreaminstance.html" class="tsd-signature-type">WAKBinaryStreamInstance</a></h4>
 						</li>
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
+<<<<<<< HEAD
 									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fb7f058/api/binarystream.d.ts#L22">binarystream.d.ts:22</a></li>
+=======
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/fbc2890/api/binarystream.d.ts#L20">binarystream.d.ts:20</a></li>
+>>>>>>> 4f6328e3b48eedaf90a457bee0d08e328efeff0b
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Creates a new BinaryStream object.</p>
 								</div>
+<<<<<<< HEAD
 								<pre><code><span class="hljs-keyword">var</span> net = <span class="hljs-built_in">require</span>( <span class="hljs-string">'net'</span> );
 <span class="hljs-comment">// Use a synchronous socket for demo</span>
 <span class="hljs-keyword">var</span> socket = net.connectSync( <span class="hljs-number">25</span>, <span class="hljs-string">'smtp.gmail.com'</span>);
@@ -316,40 +275,19 @@ writestream.close();
 								<pre><code><span class="hljs-keyword">var</span> myFile = <span class="hljs-keyword">File</span>( 'PROJECT/backend/logs/HTTPServer.waLog' );
 <span class="hljs-keyword">var</span> readstream = BinaryStream( myFile );
 console.<span class="hljs-built_in">log</span>( '[chunck] '+ readstream.getBuffer(1000).<span class="hljs-keyword">toString</span>() );
+=======
+								<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> myFile = <span class="hljs-keyword">new</span> File( <span class="hljs-string">'PROJECT/backend/logs/HTTPServer.waLog'</span> );
+<span class="hljs-keyword">var</span> readstream = <span class="hljs-keyword">new</span> BinaryStream( myFile );
+<span class="hljs-built_in">console</span>.log( <span class="hljs-string">'[chunck] '</span>+ readstream.getBuffer(<span class="hljs-number">1000</span>).toString() );
+>>>>>>> 4f6328e3b48eedaf90a457bee0d08e328efeff0b
 <span class="hljs-comment">// Important to close the stream after every use to release the referenced file</span>
-readstream.<span class="hljs-keyword">close</span>();
-</code></pre><pre><code><span class="hljs-keyword">var</span> net = <span class="hljs-built_in">require</span>( <span class="hljs-string">'net'</span> );
-<span class="hljs-comment">// Use a synchronous socket for demo</span>
-<span class="hljs-keyword">var</span> socket = net.connectSync( <span class="hljs-number">25</span>, <span class="hljs-string">'smtp.gmail.com'</span>);
-<span class="hljs-comment">// Create a read BinaryStrean</span>
-<span class="hljs-keyword">var</span> readstream = BinaryStream( socket, <span class="hljs-string">'Read'</span>, <span class="hljs-number">300</span> );
-<span class="hljs-comment">// Create a read BinaryStrean</span>
-<span class="hljs-keyword">var</span> writestream = BinaryStream( socket, <span class="hljs-string">'Write'</span>, <span class="hljs-number">500</span> );
-<span class="hljs-comment">// Get first statement from Gmail</span>
-<span class="hljs-built_in">console</span>.log( <span class="hljs-string">'[CONNECTED] '</span>+ readstream.getBuffer(<span class="hljs-number">1000</span>).toString() );
-<span class="hljs-comment">// 220 smtp.gmail.com ESMTP y80sm15252285wrb.12 - gsmtp</span>
-
-<span class="hljs-comment">// Send greetings to Gmail</span>
-writestream.putBuffer( <span class="hljs-keyword">new</span> Buffer(<span class="hljs-string">'EHLO smtp.gmail.com\r\n'</span>) );
-<span class="hljs-comment">// Get greetings from Gmail + service details</span>
-<span class="hljs-built_in">console</span>.log( <span class="hljs-string">'[EHLO] '</span>+ readstream.getBuffer(<span class="hljs-number">1000</span>).toString() );
-<span class="hljs-comment">// 250-smtp.gmail.com at your service, [195.68.52.79]</span>
-<span class="hljs-comment">// 250-SIZE 35882577</span>
-<span class="hljs-comment">// 250-8BITMIME</span>
-<span class="hljs-comment">// 250-STARTTLS</span>
-<span class="hljs-comment">// 250-ENHANCEDSTATUSCODES</span>
-<span class="hljs-comment">// 250-PIPELINING</span>
-<span class="hljs-comment">// 250-CHUNKING</span>
-<span class="hljs-comment">// 250 SMTPUTF8</span>
-<span class="hljs-comment">// Important to close the stream after every use to release the referenced socket</span>
 readstream.close();
-writestream.close();
 </code></pre>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>binary: <a href="socketsync.html" class="tsd-signature-type">SocketSync</a></h5>
+									<h5>binary: <a href="wakfileinstance.html" class="tsd-signature-type">WAKFileInstance</a></h5>
 									<div class="tsd-comment tsd-typography">
 										<div class="lead">
 											<p>Describes the binary to read/write.</p>
@@ -364,6 +302,7 @@ writestream.close();
 										</div>
 									</div>
 								</li>
+<<<<<<< HEAD
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> timeOut: <span class="tsd-signature-type">Number</span></h5>
 									<div class="tsd-comment tsd-typography">
@@ -966,6 +905,10 @@ readstream.close();
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+=======
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="wakbinarystreaminstance.html" class="tsd-signature-type">WAKBinaryStreamInstance</a></h4>
+>>>>>>> 4f6328e3b48eedaf90a457bee0d08e328efeff0b
 						</li>
 					</ul>
 				</section>
@@ -988,75 +931,6 @@ readstream.close();
 						<ul>
 							<li class=" tsd-kind-constructor tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
 								<a href="binarystream.html#constructor" class="tsd-kind-icon">constructor</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="binarystream.html#changebyteorder" class="tsd-kind-icon">change<wbr>Byte<wbr>Order</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="binarystream.html#close" class="tsd-kind-icon">close</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="binarystream.html#flush" class="tsd-kind-icon">flush</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="binarystream.html#getblob" class="tsd-kind-icon">get<wbr>Blob</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="binarystream.html#getbuffer" class="tsd-kind-icon">get<wbr>Buffer</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="binarystream.html#getbyte" class="tsd-kind-icon">get<wbr>Byte</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="binarystream.html#getlong" class="tsd-kind-icon">get<wbr>Long</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="binarystream.html#getlong64" class="tsd-kind-icon">get<wbr>Long64</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="binarystream.html#getpos" class="tsd-kind-icon">get<wbr>Pos</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="binarystream.html#getreal" class="tsd-kind-icon">get<wbr>Real</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="binarystream.html#getsize" class="tsd-kind-icon">get<wbr>Size</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="binarystream.html#getstring" class="tsd-kind-icon">get<wbr>String</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="binarystream.html#getword" class="tsd-kind-icon">get<wbr>Word</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="binarystream.html#isbyteswapping" class="tsd-kind-icon">is<wbr>Byte<wbr>Swapping</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="binarystream.html#putblob" class="tsd-kind-icon">put<wbr>Blob</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="binarystream.html#putbuffer" class="tsd-kind-icon">put<wbr>Buffer</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="binarystream.html#putbyte" class="tsd-kind-icon">put<wbr>Byte</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="binarystream.html#putlong" class="tsd-kind-icon">put<wbr>Long</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="binarystream.html#putlong64" class="tsd-kind-icon">put<wbr>Long64</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="binarystream.html#putreal" class="tsd-kind-icon">put<wbr>Real</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="binarystream.html#putstring" class="tsd-kind-icon">put<wbr>String</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="binarystream.html#putword" class="tsd-kind-icon">put<wbr>Word</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-								<a href="binarystream.html#setpos" class="tsd-kind-icon">set<wbr>Pos</a>
 							</li>
 						</ul>
 					</li>

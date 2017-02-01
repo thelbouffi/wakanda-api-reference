@@ -1,4 +1,3 @@
-////<reference path="./filesystemsync.d.ts" />
 ///<reference path="./file.d.ts" />
 
 interface Folder {
@@ -7,14 +6,14 @@ interface Folder {
      * The folder does not have to exist.
      * 
      * #### Example 1: Get a reference to an existing folder
-     * ```
+     * ```javascript
      * var myFolder = new Folder( 'PROJECT/backend' );
      * console.log( myFolder.exists );
      * // true
      * ```
      * 
      * #### Example 2: Get a reference to a missing folder
-     * ```
+     * ```javascript
      * var myFolder = new Folder( 'PROJECT/missing-folder' );
      * console.log( myFolder.exists );
      * // false
@@ -22,7 +21,23 @@ interface Folder {
      * 
      * @param path Absolute path of the folder to reference.
      */
-    new (path: String): Folder;
+    new (path: String): WAKFolderInstance;
+    /**
+     * Check if the path references a folder.
+     * 
+     * ```javascript
+     * var myIsFolder = Folder.isFolder( 'PROJECT/backend' );
+     * console.log( myIsFolder );
+     * // true
+     * ```
+     * 
+     * @param path Absolute path to a folder
+     * @returns `true` is the path references a folder, `false` otherwise.
+     */
+    isFolder(path: String): Boolean;
+}
+
+interface WAKFolderInstance {
     /**
      * Creation date for the folder.
      */
@@ -38,7 +53,7 @@ interface Folder {
     /**
      * Array of Files.
      */
-    readonly files: Array<File>;
+    readonly files: Array<WAKFileInstance>;
     // /**
     // *FileSystem of the object.
     // */
@@ -46,15 +61,15 @@ interface Folder {
     /**
      * First file found in the folder.
      */
-    readonly firstFile: File;
+    readonly firstFile: WAKFileInstance;
     /**
      * First folder (i.e., subfolder) in the folder.
      */
-    readonly firstFolder: Folder;
+    readonly firstFolder: WAKFolderInstance;
     /**
      * Array of Folder objects.
      */
-    folders: Array<Folder>;
+    folders: Array<WAKFolderInstance>;
     /**
      * Last modification date for the folder.
      */
@@ -70,7 +85,7 @@ interface Folder {
     /**
      * Parent folder of the folder.
      */
-    readonly parent: Folder;
+    readonly parent: WAKFolderInstance;
     /**
      * Full path of the folder.
      */
@@ -82,7 +97,7 @@ interface Folder {
     /**
      * Creates a new folder on disk.
      * 
-     * ```
+     * ```javascript
      * var myFolder = new Folder( 'PROJECT/backend/my-created-folder' );
      * var myResult = myFolder.create();
      * console.log( myResult );
@@ -97,8 +112,8 @@ interface Folder {
      * Calls `callback` function for each file at the first level of the folder.
      * 
      * #### Example 1: Basic usage
-     * ```
-     * var folder = Folder( 'PROJECT/backend/' );
+     * ```javascript
+     * var folder = new Folder( 'PROJECT/backend/' );
      * folder.forEachFile( function( file )
      * {
      *     console.log( file.path );
@@ -106,8 +121,8 @@ interface Folder {
      * ```
      * 
      * #### Example 2: Override `this`
-     * ```
-     * var folder = Folder( 'PROJECT/backend/' );
+     * ```javascript
+     * var folder = new Folder( 'PROJECT/backend/' );
      * folder.forEachFile( function( file )
      * {
      *     console.log( this );
@@ -120,13 +135,13 @@ interface Folder {
      * @param callback.file Current file being processed
      * @param thisArg Defines `this` value of the callback
      */
-    forEachFile(callback: (file: File) => void, thisArg?: Object): void;
+    forEachFile(callback: (file: WAKFileInstance) => void, thisArg?: Object): void;
     /**
      * Calls `callback` function for each folder at the first level of the folder.
      * 
      * #### Example 1: Basic usage
-     * ```
-     * var folder = Folder( 'PROJECT/backend/' );
+     * ```javascript
+     * var folder = new Folder( 'PROJECT/backend/' );
      * folder.forEachFolder( function( folder )
      * {
      *     console.log( folder.path );
@@ -134,8 +149,8 @@ interface Folder {
      * ```
      * 
      * #### Example 2: Override `this`
-     * ```
-     * var folder = Folder( 'PROJECT/backend/' );
+     * ```javascript
+     * var folder = new Folder( 'PROJECT/backend/' );
      * folder.forEachFolder( function( folder )
      * {
      *     console.log( this );
@@ -148,7 +163,7 @@ interface Folder {
      * @param callback.folder Current folder being processed
      * @param thisArg Defines `this` value of the callback
      */
-    forEachFolder(callback: (folder: Folder) => void, thisArg?: Object): void;
+    forEachFolder(callback: (folder: WAKFolderInstance) => void, thisArg?: Object): void;
     /**
      * Returns the size of the free space (expressed in bytes) available on the volume where the Folder object is stored.
      * @param quotas (default: `true`) `true` if consider the whole volume, `false` if consider only the allowed size for the quota
@@ -163,19 +178,6 @@ interface Folder {
      * Returns the total size (expressed in bytes) of the volume where the Folder object is stored.
      */
     getVolumeSize(): Number;
-    /**
-     * Check if the path references a folder.
-     * 
-     * ```
-     * var myIsFolder = Folder.isFolder( 'PROJECT/backend' );
-     * console.log( myIsFolder );
-     * // true
-     * ```
-     * 
-     * @param path Absolute path to a folder
-     * @returns `true` is the path references a folder, `false` otherwise.
-     */
-    isFolder(path: String): Boolean;
     // /**
     // *puts the folder pointer on the next subfolder in an iteration of subfolders.
     // */
@@ -184,8 +186,8 @@ interface Folder {
      * Calls `callback` function for each file in the folder tree (first-level and sub-level folder).
      * 
      * #### Example 1: Basic usage
-     * ```
-     * var folder = Folder( 'PROJECT/backend/' );
+     * ```javascript
+     * var folder = new Folder( 'PROJECT/backend/' );
      * folder.parse( function( file, position, folder )
      * {
      *     console.log( '-----------------------------' );
@@ -196,8 +198,8 @@ interface Folder {
      * ```
      * 
      * #### Example 2: Override `this`
-     * ```
-     * var folder = Folder( 'PROJECT/backend/' );
+     * ```javascript
+     * var folder = new Folder( 'PROJECT/backend/' );
      * folder.parse( function( file, position, folder )
      * {
      *     console.log( this );
@@ -212,7 +214,7 @@ interface Folder {
      * @param callback.position Position of the file currently being processed
      * @param callback.folder Folder of the processed file
      */
-    parse(callback: (file: File, position: Number, folder: Folder) => void, thisArg?: Object): void;
+    parse(callback: (file: WAKFileInstance, position: Number, folder: WAKFolderInstance) => void, thisArg?: Object): void;
     /**
      * Removes the folder and its content from the disk.
      * @returns `true` if the folder is not here, `false` otherwise.
@@ -225,7 +227,7 @@ interface Folder {
     /**
      * Rename the folder on disk.
      * 
-     * ````
+     * ```javascript
      * var myFolder = new Folder( 'PROJECT/backend/my-folder' );
      * // The folder must exists to be renamed
      * myFolder.create();

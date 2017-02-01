@@ -7,7 +7,7 @@ interface SystemWorker {
      * Use the system worker proxy to get the result.
      * 
      * #### Example 1: Do a simple CLI command
-     * ```
+     * ```javascript
      * var workerProxy = new SystemWorker( 'sh -c ls -la /Users/<user>/Desktop' );
      * workerProxy.onerror = function ( event ) {      
      *     console.log( event.type +': '+ event.data );
@@ -24,7 +24,7 @@ interface SystemWorker {
      * ```
      * 
      * #### Example 2: Pass parameters, quotes and env variables options to the system worker
-     * ```
+     * ```javascript
      * var myFolder = new Folder( 'PROJECT/backend' );
      * var options = {
      *     parameters : { folder_ref : myFolder },
@@ -39,13 +39,13 @@ interface SystemWorker {
      * @param options Describes command line options
      * @returns Returns a system worker proxy
      */
-    new (cli: String, options?: SystemWorkerOptions): SystemWorkerProxy;
+    new (cli: String, options?: WAKSystemWorkerOptions): WAKSystemWorkerProxy;
     /**
      * Calls a system worker (asynchronous mode).
      * Use the system worker proxy to get the result.
      * 
      * #### Example 1: Do a simple CLI command
-     * ```
+     * ```javascript
      * var workerProxy = new SystemWorker( ['sh', '-c', 'ls -la /Users/<user>/Desktop'] );
      * workerProxy.onerror = function ( event ) {      
      *     console.log( event.type +': '+ event.data );
@@ -62,7 +62,7 @@ interface SystemWorker {
      * ```
      * 
      * #### Example 2: Pass parameters, quotes and env variables options to the system worker
-     * ```
+     * ```javascript
      * var myFolder = new Folder( 'PROJECT/backend' );
      * var options = {
      *     parameters : { folder_ref : myFolder },
@@ -77,20 +77,20 @@ interface SystemWorker {
      * @param options Describes command line options
      * @returns Returns a system worker proxy
      */
-    new (cli: String[], options?: SystemWorkerOptions): SystemWorkerProxy;
+    new (cli: String[], options?: WAKSystemWorkerOptions): WAKSystemWorkerProxy;
     /**
      * Calls a system worker (asynchronous mode).
      * Use the system worker proxy to get the result.
      * 
      * #### Example 1: Do a simple CLI command
-     * ```
+     * ```javascript
      * // Launch "sh" executable with "-c" parameter and "ls -la /Users/<user>/Desktop" as the action to do
      * var workerResult = SystemWorker.exec( 'sh -c ls -la /Users/<user>/Desktop' );
      * console.log(workerResult.output.toString());
      * ```
      * 
      * #### Example 2: Get the result and display the ouput
-     * ```
+     * ```javascript
      * // Launch "git" executable with "--version" parameter
      * // Store the result (Buffer) in a variable
      * var workerResult = SystemWorker.exec( 'git --version' );
@@ -98,14 +98,14 @@ interface SystemWorker {
      * ```
      * 
      * #### Example 3: Pass root folder options to the system worker
-     * ```
+     * ```javascript
      * var options = { folder: '/Users/yann/Desktop' };
      * var workerResult = SystemWorker.exec( 'sh -c ls -la', options);
      * console.log(workerResult.output.toString());
      * ```
      * 
      * #### Example 4: Pass parameters, quotes and env variables options to the system worker
-     * ```
+     * ```javascript
      * var myFolder = new Folder( 'PROJECT/backend' );
      * var options = {
      *     parameters : { folder_ref : myFolder },
@@ -121,19 +121,19 @@ interface SystemWorker {
      * @param options Describes command line options
      * @returns Returns the exit status, stdout and sterr
      */
-    exec(cli: String, options?: SystemWorkerOptions): SystemWorkerResult;
+    exec(cli: String, options?: WAKSystemWorkerOptions): WAKSystemWorkerResult;
     /**
      * Calls to system worker and waits for its response (synchronous mode).
      * 
      * #### Example 1: Do a simple CLI command
-     * ```
+     * ```javascript
      * // Launch "sh" executable with "-c" parameter and "ls -la /Users/<user>/Desktop" as the action to do
      * var workerResult = SystemWorker.exec( ['sh', '-c', 'ls -la /Users/<user>/Desktop'] );
      * console.log(workerResult.output.toString());
      * ```
      * 
      * #### Example 2: Get the result and display the ouput
-     * ```
+     * ```javascript
      * // Launch "git" executable with "--version" parameter
      * // Store the result (Buffer) in a variable
      * var workerResult = SystemWorker.exec( ['git', '--version'] );
@@ -141,14 +141,14 @@ interface SystemWorker {
      * ```
      * 
      * #### Example 3: Pass root folder options to the system worker
-     * ```
+     * ```javascript
      * var options = { folder: '/Users/yann/Desktop' };
      * var workerResult = SystemWorker.exec( ['sh', '-c', 'ls -la'], options);
      * console.log(workerResult.output.toString());
      * ```
      * 
      * #### Example 4: Pass parameters, quotes and env variables options to the system worker
-     * ```
+     * ```javascript
      * var myFolder = new Folder( 'PROJECT/backend' );
      * var options = {
      *     parameters : { folder_ref : myFolder },
@@ -164,14 +164,14 @@ interface SystemWorker {
      * @param options Describes command line options
      * @returns Returns the exit status, stdout and sterr
      */
-    exec(cli: String[], options?: SystemWorkerOptions): SystemWorkerResult;
+    exec(cli: String[], options?: WAKSystemWorkerOptions): WAKSystemWorkerResult;
 }
 
-interface SystemWorkerOptions {
+interface WAKSystemWorkerOptions {
     /**
      * Root folder for the worker executable. Native relative file paths will be resolved with this folder as parent.
      */
-    folder?: String | Folder;
+    folder?: String | WAKFolderInstance;
     /**
      * Passes named parameters to command line. `{name}` is replaced with the value of the `options.parameters.name` attribute. Parameters can be of type String, Number, File or Folder.
      */
@@ -194,7 +194,7 @@ interface SystemWorkerOptions {
     kill_process_tree?: Boolean;
 }
 
-interface SystemWorkerResult {
+interface WAKSystemWorkerResult {
     /**
      * Integer value depending on the executable. If the executable considers the operation has been executed successfully, exitStatus value is `0`.
      */
@@ -202,14 +202,14 @@ interface SystemWorkerResult {
     /**
      * stdout result of the command.
      */
-    ouput: Buffer;
+    ouput: WAKBufferInstance;
     /**
      * stderr result of the command.
      */
-    error: Buffer;
+    error: WAKBufferInstance;
 }
 
-interface SystemWorkerEvent {
+interface WAKSystemWorkerEvent {
     /**
      * Either `message`, `error` or `terminate`.
      */
@@ -217,11 +217,11 @@ interface SystemWorkerEvent {
     /**
      * SystemWorker proxy which triggered the callback.
      */
-    target: SystemWorkerProxy;
+    target: WAKSystemWorkerProxy;
     /**
      * Content of stdout.
      */
-    data?: String | Buffer;
+    data?: String | WAKBufferInstance;
     /**
      * `true` if the command line has been correctly executed.
      */
@@ -236,46 +236,46 @@ interface SystemWorkerEvent {
     forced?: Boolean;
 }
 
-interface SystemWorkerProxy {
+interface WAKSystemWorkerProxy {
     /**
      * Callback for system worker errors.
      * 
-     *```
+     *```javascript
      * // Receives an error
      * workerProxy.onerror = function ( event ) {      
      *     console.log( event.type +': '+ event.data );
      * }
      *```
      */
-    onerror: (event: SystemWorkerEvent) => void;
+    onerror: (event: WAKSystemWorkerEvent) => void;
     /**
      * Callback for system worker messages.
      * The message can be sent into multiple chunks.
      *
-     *```
+     *```javascript
      * // Receives a message chunck
      * workerProxy.onmessage = function ( event ) {      
      *     console.log( event.type +': '+ event.data );
      * }
      *```
      */
-    onmessage: (event: SystemWorkerEvent) => void;
+    onmessage: (event: WAKSystemWorkerEvent) => void;
     /**
      * Callback when the external process is terminating.
      * 
-     * ```
+     * ```javascript
      * // Receives an "end" event from system worker
      * workerProxy.onterminated = function ( event ) {
      *     console.log( event.type +': with exitStatus:'+ event.exitStatus );
      * }
      * ```
      */
-    onterminated: (event: SystemWorkerEvent) => void;
+    onterminated: (event: WAKSystemWorkerEvent) => void;
     /**
      * Closes the input stream (stdin) of the external process. 
      * Useful when an attempt to write in the stdin of the external process with `postMessage()` is stuck. `endOfInput()` will release the execution.
      * 
-     * ```
+     * ```javascript
      * // Create some data to gzip
      * var input = new Buffer( 'abcde', 'ascii' );
      * // Create an asynchronous system worker
@@ -294,19 +294,20 @@ interface SystemWorkerProxy {
     /**
      * Write on the input stream (stdin) of the external process.
      * 
-     * ```
+     * ```javascript
      * // Create an asynchronous system worker
      * var worker = new SystemWorker( 'gzip' );
      * // Send the compressed file on stdin.
      * worker.postMessage( 'abcde' );
      * // Note that we call endOfInput() to indicate we're done. gzip (and most program waiting data from stdin) will wait for more data until the input is explicitely closed.
      * worker.endOfInput();
+     * ```
      */
     postMessage(stdin: String): void;
     /**
      * Write on the input stream (stdin) of the external process.
      * 
-     * ```
+     * ```javascript
      * // Create some data to gzip
      * var input = new Buffer( 'abcde', 'ascii' );
      * // Create an asynchronous system worker
@@ -315,12 +316,13 @@ interface SystemWorkerProxy {
      * worker.postMessage( input );
      * // Note that we call endOfInput() to indicate we're done. gzip (and most program waiting data from stdin) will wait for more data until the input is explicitely closed.
      * worker.endOfInput();
+     * ```
      */
-    postMessage(stdin: Buffer): void;
+    postMessage(stdin: WAKBufferInstance): void;
     /**
      * Set the type of data exchanged in the SystemWorker through the onmessage and onerror properties.
      * 
-     * ```
+     * ```javascript
      * workerProxy.setBinary(true);
      * ```
      * 
@@ -330,7 +332,7 @@ interface SystemWorkerProxy {
     /**
      * Forces the system worker to terminate its execution.
      * 
-     * ```
+     * ```javascript
      * workerProxy.terminate();
      * workerProxy.terminate(true, true);
      * ```
@@ -342,7 +344,7 @@ interface SystemWorkerProxy {
     /**
      * Wait for the end of the system worker execution.
      * 
-     * ```
+     * ```javascript
      * workerProxy.wait(1000);
      * workerProxy.wait();
      * ```

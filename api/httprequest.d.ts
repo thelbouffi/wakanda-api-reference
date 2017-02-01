@@ -6,7 +6,7 @@ interface HTTPRequest {
     /**
      * Body of the received message.
      */
-    body: String | Image | Blob;
+    body: String | Image | WAKBlobInstance;
     /**
      * Content-type of the request as defined in the header.
      */

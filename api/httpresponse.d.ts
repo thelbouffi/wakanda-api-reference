@@ -5,7 +5,7 @@ interface HTTPResponse {
     /**
      * Body of the returned message to set.
      */
-    body: Blob | Image | String;
+    body: WAKBlobInstance | Image | String;
     /**
      * Content-type of the response to set.
      */
@@ -31,5 +31,5 @@ interface HTTPResponse {
     /**
      * Sends an HTTPResponse in chunks without knowing in advance the size of the data.
      */
-    sendChunkedData(data: String | Image | Blob): void;
+    sendChunkedData(data: String | Image | WAKBlobInstance): void;
 }

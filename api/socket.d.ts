@@ -71,7 +71,7 @@
 		/**
 		*writes data to the socket to which it is applied
 		*/
-		write(data: Buffer, encoding?: String) : Boolean;
+		write(data: WAKBufferInstance, encoding?: String) : Boolean;
 		/**
 		*writes data to the socket to which it is applied
 		*/
