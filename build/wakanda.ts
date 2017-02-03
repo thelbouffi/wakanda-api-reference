@@ -1825,8 +1825,9 @@ interface EntityCollection {
 	*
 	* #### EXAMPLE 
 	*
-	*
-	*  ````
+	* <details>
+	*  
+	* ```javascript
 	* //This example selects suppliers whose name contains "bob":
 	* var coll = ds.Supplier.query( "name == :1", "*bob*")
 	* // This example selects suppliers whose name does not begin with the letter T:
@@ -1835,8 +1836,12 @@ interface EntityCollection {
 	* var coll = ds.Supplier.query( "name == :1", "Sm*th")
 	* //This example selects employees hired before November 13, 2011:
 	* var emp = ds.Employee.query( "dateHired <= :1", 2011-11-12T23:00:00Z)
-	* ````
-	*
+	* ```
+	* 
+	* <details>
+	* ```javascript
+	* var coll = ds.Supplier.query( "name == :1", "*bob*")
+	* ```
 	*/
 	query(queryString: String, valueList: any[], options?: Object) : EntityCollection;
 	
