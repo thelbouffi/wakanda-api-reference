@@ -299,42 +299,180 @@ interface EntityCollection {
 	*returns the datastore class (object of the DatastoreClass type) of the entity collection
 	*/
 	getDataClass() : DatastoreClass;
+	
+	
+	
 	/**
-	*returns the maximum value among all the values of attribute in the entity collection or datastore class
+	* Returns the maximum value among all the values of attribute in the entity collection or datastore class
+	* @param attribute DatastoreClassAttribute Attribute for which you want to get the highest value.
+	* @returns Number Highest value of attribute
+	* #### Example 1  
+	* ```javascript
+	* //We want to find the highest salary among all the female employees:
+	* var fColl = ds.Employee.query("gender == :1","female");
+	* var maxFSalary = fColl.max("salary");
+	* ```
+	* #### Example 2 - Max with object attributes
+	* 
+	* ```javascript
+	* var value = ds.MyClass.all().max("objectAtt.prop") //Highest of all prop attribute values
+	* ```
 	*/
 	max(attribute: DatastoreClassAttribute) : Number;
-	/**
-	*returns the maximum value among all the values of attribute in the entity collection or datastore class
-	*/
-	max(attribute: String) : Number;
+
+
+
 	/**
 	*returns the lowest (or minimum) value among all the values of attribute in the entity collection or datastore class
+	* @param attribute DatastoreClassAttribute Attribute for which you want to get the lowest value.
+	* @returns Number Lowest value of attribute
+	* #### Example 1  
+	* ```javascript
+	* //We want to find the lowest salary among all the female employees:
+	* var fColl = ds.Employee.query("gender == :1","female");
+	* var maxFSalary = fColl.min("salary");
+	* ```
+	* #### Example 2 - Min with object attributes
+	* 
+	* ```javascript
+	* var value = ds.MyClass.all().min("objectAtt.prop") //Lowest of all prop attribute values
+	* ```
 	*/
 	min(attribute: DatastoreClassAttribute) : Number;
+	
+	
+	
+	
+	
 	/**
-	*returns the lowest (or minimum) value among all the values of attribute in the entity collection or datastore class
-	*/
-	min(attribute: String) : Number;
-	/**
-	*excludes from the entity collection to which it is applied the entities that are in the collection2 and returns the resulting entity collection
+	* Minus method excludes from the entity collection to which it is applied the entities that are in the collection2 and returns the resulting entity collection
+	* @param collection2  `The collection to substract`
+	* @returns Resulting EntityCollection (unsorted)
+	* @warning The resulting collection is always `unsorted`. For more details about sorted/unsorted collection : http://doc.wakanda.org/home2.en.html%23/Datastore/Entity-Collection/length.303-638616.en.html#/Wakanda/0.Beta/Unsorted-vs-Sorted-Entity-Collections.300-932765.en.html
+	* #### Example 1
+	* ```javascript
+	* // We want to have a collection of female employees named "Jones" who live in New York :
+	* var coll1 = ds.Employee.query("name =:1", "Jones") ;
+	* var coll2 = ds.Employee.query("city=:1", "New York") ;
+	* var coll3 = coll1.and(coll2).minus(ds.Employee.query("gender ='male'"));
+	* ```
 	*/
 	minus(collection2: EntityCollection) : EntityCollection;
+
+
+
+
 	/**
 	*creates a new entity collection that contains all the entities from the entity collection to which it is applied and all the entities from the collection2 entity collection
+	* @param collection2 
+	* @returns Merged resulting entity collection (unsorted)
+	* @warning The resulting collection is always `unsorted`. For more details about sorted/unsorted collection : http://doc.wakanda.org/home2.en.html%23/Datastore/Entity-Collection/length.303-638616.en.html#/Wakanda/0.Beta/Unsorted-vs-Sorted-Entity-Collections.300-932765.en.html
+	* #### Example 
+	* ```javascript
+	* var coll3 = coll1.or(coll2)
+	* ```
 	*/
 	or(collection2: EntityCollection) : EntityCollection;
+	
+	
+	
+	
 	/**
-	*sorts the entities in the entity collection or datastore class and returns a new sorted entity collection
-	*/
-	orderBy(attributeList: String, sortOrder?: String) : EntityCollection;
-	/**
-	*sorts the entities in the entity collection or datastore class and returns a new sorted entity collection
+	* The orderBy method sorts the entities in the entity collection or datastore class and returns a new sorted entity collection
+	* @param attributeList DatastoreClassAttribute Attribute(s) to be sorted and (if String) order by direction(s)
+	* @param sortOrder string `asc` (by `default`) for ascending sort / `desc` for descending.
+	* @info You can pass from 1 to x attributes separated by commas
+	* #### Example1 orderBy with Mutliple Attributes
+	* ```javascript
+	*  // This example performs a simple search and returns an entity collection that has been sorted on two attributes, the first in descending order
+	*  var mySet = ds.People.query("salary > 10000");
+    *  var mySet2 = mySet.orderBy("salary desc,city");
+	* ```
+	* #### Example2 orberBy with a relation attribute 
+	* ```javascript
+	* // This example sorts employees with a salary greater than 10,000 by the city where their company is located, using a relation attribute
+	* var mySet = ds.People.query("salary > 10000");
+	* mySet = mySet.orderBy(ds.People.employer.city); // `employer` is a relation attribute
+	* ```
+	* #### Example3 orberBy with object attributes
+	* ```javascript
+	* ds.MyClass.all().orderBy("objectAtt.prop desc")
+	* ```
 	*/
 	orderBy(attributeList: DatastoreClassAttribute, sortOrder?: String) : EntityCollection;
+	
+	
+	
+	
 	/**
 	*searches all the entities in the datastore class or entity collection using the search criteria specified in queryString and returns a new collection containing the entities found
+	* @param queryString  `search criteria`
+	* @param value  `Value(s) to compare using placeholders`
+	* @param options Object `query options` @
+	*queryPath : boolean; default `false`
+	*queryPlan : boolean; default `false`
+	*allowJavascript : boolean default `false`
+	*
+	*
+	* 
+	* #### Important Note
+	* Two different syntaxes are allowed.
+	* - **Option** 1 : Pass a valid queryString : 
+	* ```javascript
+	* ds.People.query("lastname == dubois and firstname == jules");
+	* ```
+	* - **Option 2** : Use placeholders (useful when using variables) : 
+	*```javascript
+	* ds.People.query("lastname== :1 AND firstname == :2" , "dubois" , "jules");
+	* ```
+	*
+	* #### Comparators
+	*
+	* | Symbol to use | Comparison               | Comment                                                         |
+	* |---------------|--------------------------|-----------------------------------------------------------------|
+	* | ==            | like                     | supports the wildcard (*), neither case-sensitive nor diacritic |
+	* | ===           | Equal to                 | supports the wildcard (*), neither case-sensitive nor diacritic |
+	* | in            | Is in Array              |                                                                 |
+	* | !=            | Not Like                 |                                                                 |
+	* | !==           | Not Equal to             |                                                                 |
+	* | >             | Greater than             |                                                                 |
+	* | >=            | Greater than or equal to |                                                                 |
+	* | <             | Less han                 |                                                                 |
+	* | <=            | Less than or equal to    |                                                                 |
+	* | begin         | Begins with              | "Begin t" is thus equivalent to "== t*"                         |
+	* | %%            | Contains keyword         | works with text or picture type                                 |
+	* | =%            | Matches                  | Use with JavaScript Regex                                       |
+	* | !=%           | Does not match           | Use with JavaScript Regex                                       |
+	*
+	* #### EXAMPLE 
+	*
+	*
+	*  ````
+	* //This example selects suppliers whose name contains "bob":
+	* var coll = ds.Supplier.query( "name == :1", "*bob*")
+	* // This example selects suppliers whose name does not begin with the letter T:
+	* var coll = ds.Supplier.query( "name not like :1", "T*")
+	* //This example selects suppliers whose name begins with "Sm" and ends with "th":
+	* var coll = ds.Supplier.query( "name == :1", "Sm*th")
+	* //This example selects employees hired before November 13, 2011:
+	* var emp = ds.Employee.query( "dateHired <= :1", 2011-11-12T23:00:00Z)
+	* ````
+	*
 	*/
-	query(queryString: String, ...valueList: any[]) : EntityCollection;
+	query(queryString: String, valueList: any[], options?: Object) : EntityCollection;
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	/**
 	*permanently removes entities from the datastore
 	*/
