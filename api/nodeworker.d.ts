@@ -12,11 +12,11 @@
  * ```javascript
  * // PROJECT/backend/worker.js
  * // onconnect is called everytime a new worker proxy is created
- * onconnect = function( msg )
+ * onconnect = function( event )
  * {
  *     // Get the worker port for communication with the worker proxy
  *     // Always use `ports[0]`
- *     var workerPort = msg.ports[0];
+ *     var workerPort = event.ports[0];
  * 
  *     // Send a message to the worker proxy. The worker is up and running.
  *     workerPort.postMessage({type: 'connected', says: "I'm alive!"});
@@ -32,14 +32,14 @@
  *         {
  *             // It's a hello world message
  *             case 'hello':
- *                 console.log( '[RECEIVED BY WORKER] '+ event.says );
+ *                 console.log( '[RECEIVED BY WORKER] '+ message.says );
  *                 // Reply to the worker proxy
  *                 workerPort.postMessage( {type: 'hello', says: 'Hello proxy!'} );
  *                 break;
  * 
  *             // It's a terminate message
  *             case 'close':
- *                 console.log( '[RECEIVED BY WORKER] '+ event.says );
+ *                 console.log( '[RECEIVED BY WORKER] '+ message.says );
  *                 // Reply to the worker proxy
  *                 workerPort.postMessage( {type: 'close', says: 'I will be back!'} );
  *                 // Close the worker
@@ -96,20 +96,22 @@
  *     {
  *         // It's a hello world message
  *         case 'hello':
- *             console.log( '[RECEIVED BY PROXY] '+ event.says );
+ *             console.log( '[RECEIVED BY PROXY] '+ message.says );
  *             // Say by to the worker
  *             workerProxyPort.postMessage( {type: 'close', says: 'Bye bye worker!'} );
  *             break;
  * 
  *         // It's a terminate message
  *         case 'close':
- *             console.log( '[RECEIVED BY PROXY] '+ event.says );
+ *             console.log( '[RECEIVED BY PROXY] '+ message.says );
+ *             exitWait();
  * 
  *         // It's something else. Skip it.
  *         default:
  *             break;
  *     }
  * }
+ * wait();
  * ```
  */
 
