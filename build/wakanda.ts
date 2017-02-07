@@ -1001,7 +1001,7 @@ interface WAKConnectionSessionInfo {
      */
     storage?: KeyValueStorage;
     /**
-     * Defines the session time to live for the user session.
+     * Defines the session time to live in seconds for the user session.
      */
     lifeTime?: Number;
 }/**
@@ -1916,7 +1916,8 @@ interface WAKDirectory {
      *         ID: '0001000100010001000100010001000100010001',
      *         name: 'jsmith',
      *         fullName: 'Jennifer Smith',
-     *         belongsTo: [ 'Manager' ]
+     *         belongsTo: [ 'Manager' ],
+     *         lifeTime: 60*60
      *     },
      *     true
      * );
@@ -3519,14 +3520,14 @@ interface WAKMutexProxy {
  *     {
  *         // It's a hello world message
  *         case 'hello':
- *             console.log( '[RECEIVED BY PROXY] '+ event.says );
+ *             console.log( '[RECEIVED BY PROXY] '+ message.says );
  *             // Say by to the worker
  *             workerProxyPort.postMessage( {type: 'close', says: 'Bye bye worker!'} );
  *             break;
  * 
  *         // It's a terminate message
  *         case 'close':
- *             console.log( '[RECEIVED BY PROXY] '+ event.says );
+ *             console.log( '[RECEIVED BY PROXY] '+ message.says );
  *             exitWait();
  * 
  *         // It's something else. Skip it.
@@ -3775,14 +3776,14 @@ interface WAKNodeWorkerProxy {
  *     {
  *         // It's a hello world message
  *         case 'hello':
- *             console.log( '[RECEIVED BY PROXY] '+ event.says );
+ *             console.log( '[RECEIVED BY PROXY] '+ message.says );
  *             // Say by to the worker
  *             workerProxyPort.postMessage( {type: 'close', says: 'Bye bye worker!'} );
  *             break;
  * 
  *         // It's a terminate message
  *         case 'close':
- *             console.log( '[RECEIVED BY PROXY] '+ event.says );
+ *             console.log( '[RECEIVED BY PROXY] '+ message.says );
  *             exitWait();
  * 
  *         // It's something else. Skip it.
