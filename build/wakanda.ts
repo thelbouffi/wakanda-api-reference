@@ -1787,12 +1787,8 @@ interface EntityCollection {
 	*searches all the entities in the datastore class or entity collection using the search criteria specified in queryString and returns a new collection containing the entities found
 	* @param queryString  `search criteria`
 	* @param value  `Value(s) to compare using placeholders`
-	* @param options Object `query options` @
-	*queryPath : boolean; default `false`
-	*queryPlan : boolean; default `false`
-	*allowJavascript : boolean default `false`
-	*
-	*
+	* @param options Object `query options` 
+	*       
 	* 
 	* #### Important Note
 	* Two different syntaxes are allowed.
@@ -1804,9 +1800,21 @@ interface EntityCollection {
 	*```javascript
 	* ds.People.query("lastname== :1 AND firstname == :2" , "dubois" , "jules");
 	* ```
-	*
-	* #### Comparators
-	*
+	*  <!-- -->
+
+
+	*  **Options object description**
+
+
+	* <!-- -->
+	* - __queryPath__ : boolean; default `false`  Returs the performed query
+	* - __queryPlan__ : boolean; default `false`  Returns the planned query
+	* - __allowJavascript__ : boolean default `false` Allow direct JavaScript execution in the query string. The queryString must be prefixed with the `$` symbol 
+	* ``
+
+
+	* #### Comparators  
+
 	* | Symbol to use | Comparison               | Comment                                                         |
 	* |---------------|--------------------------|-----------------------------------------------------------------|
 	* | ==            | like                     | supports the wildcard (*), neither case-sensitive nor diacritic |
@@ -1823,10 +1831,20 @@ interface EntityCollection {
 	* | =%            | Matches                  | Use with JavaScript Regex                                       |
 	* | !=%           | Does not match           | Use with JavaScript Regex                                       |
 	*
-	* #### EXAMPLE 
-	*
-	* <details>
-	*  
+	* 
+	* #### OPERATORS
+	````
+	 | Symbol to use | operation | 
+	 |---------------|-----------|
+	 | &             | AND       |
+	 | |             | OR        | 
+	 | !             | NOT       |
+	 | ^             | EXCEPT    |
+	````
+	* #### EXAMPLES
+	*  <details> <summary>Click __Here__ to Expand </summary>
+	* <!-- -->
+	*  <summary> Simple placeholders </summary>
 	* ```javascript
 	* //This example selects suppliers whose name contains "bob":
 	* var coll = ds.Supplier.query( "name == :1", "*bob*")
@@ -1836,63 +1854,129 @@ interface EntityCollection {
 	* var coll = ds.Supplier.query( "name == :1", "Sm*th")
 	* //This example selects employees hired before November 13, 2011:
 	* var emp = ds.Employee.query( "dateHired <= :1", 2011-11-12T23:00:00Z)
+	* //The following example finds the entities of American, Spanish and German customers:
+	* var coll = ds.Customer.query( "country in :1", ['US','SP','GM']);
 	* ```
 	* 
-	* <details>
+	* <!-- -->
+	*  <summary> Multi placeholders and variables</summary>
 	* ```javascript
-	* var coll = ds.Supplier.query( "name == :1", "*bob*")
+	*  // The following example finds all articles containing at least one keyword from a list and then gets all the articles written by the same authors:
+	* var arrKey= ["finance", "money" , "financial" , "economic"];
+	* var coll1 = ds.Article.query("keywords in :1" , arrKey); // finds all articles containing one or several keywords
+	* var coll2 = ds.Article.query( "author in :1" , coll1.author) ; // and finds all articles written by the authors
+    * // found in the first query results
 	* ```
+	* 
+	* <!-- -->
+	*  <summary> With Options parameters </summary>
+	* **queryPath & queryPlan options**
+	* ```javascript
+	* var mySet = ds.Employee.query("age < :1  or worksFor.name = :2 and ID < :3", 40, "Apple", 8, {queryPath:true, queryPlan:true});
+	* var arrComp = [mySet.queryPlan,mySet.queryPath];
+	* arrComp;
+	* ```
+	* <!-- -->
+	* **allowJavascript options**
+	* ```javascript
+	* 
+	* ds.Employee.query("$(this.name.length == this.firstname.length)", { allowJavascript: true })  
+	* ```
+	* ```javascript
+	* // exemple2
+	* ds.Company.query("name = :1 and city= :2 and $(myString.indexOf(activity) != -1)",  "Acme", "London", { allowJavascript: true }) 
+	* ```
+	*  
 	*/
 	query(queryString: String, valueList: any[], options?: Object) : EntityCollection;
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+		
 	/**
-	*permanently removes entities from the datastore
+	* Permanently removes entities from the datastore
+	* - When you apply it to an entity collection, it removes the entities belonging to that entity collection,
+    * - When you apply it to a datastore class, it removes all the entities in the datastore class.
+	*
+	* #### Example
+	* ```javascript
+	* // Applied to a Dataclass 
+	* ds.Dataclass1.remove();
+	* ```
+	* ```javascript
+	* // Applied to a collection
+	*  ds.Dataclass1.query('ID > 3 & ID < 5').remove();
+	* ```
 	*/
 	remove() : void;
+	
+	
+	
+	
+	
 	/**
 	*returns the sum (i.e., total of all the values) of attribute for the datastore class or entity collection
+	* @param DatastoreClassAttribute Attr
+	ibute whose sum you want to calculate
+	* @param distinct  `false` by Default Use only entities that have different values
+	* #### Example 1
+	* ```javascript
+	*  var highSalaries = ds.Employees.query("salary > 30000").sum("salary" , true);
+	* ```
+	* #### Example2 With Object attributes
+	* ```javascript
+	* var propSum = ds.MyClass.all().sum("objectAtt.prop") //sum of all prop attribute values
+	* ```
 	*/
 	sum(attribute: DatastoreClassAttribute, distinct?: Boolean) : Number;
+
+
+
+
+
 	/**
-	*returns the sum (i.e., total of all the values) of attribute for the datastore class or entity collection
+	* The toArray() method creates and returns a JavaScript array where each element is an object containing a set of properties and values corresponding to the attribute names and values for a datastore class or an entity collection
+	* @param attributeList DatastoreClassAttribute List of attributes to return as array or "" to return all attributes
+	* @param sortList string list of attributes used for the sort
+	* @param key boolean Include the entity key and stamp `false` by default
+	* @param skip number Position of starting entity to return
+	* @param top number Number of entities to return
+	* @returns Array containing attributes and values of datastore class or entity collection
+	* 
+	* #### Note
+	* You can of course navigate through dataclasses via relation attributes.
+	* In this scenario you can even limit the number of related entities fetched by passing `RelatedAttribure: N` (where N represents the number of sub elements)
+	* #### EXAMPLES 
+	*  <details> <summary> Click to Expand </summary>
+	*  ### Simple case
+	* ```javascript
+	* var myArray = ds.Employee.toArray("firstName,lastName,salary");
+	* // myArray[0] contains {firstName: 'John', lastName: 'Smith', salary: 5000} 
+	* ```
+	*  ### To get all the attributes from a collection
+	* ```javascript
+	*  var myColl = ds.Employee.query("salary >= 6000 order by salary asc");
+	*  var myArray = myColl.toArray("");     // return all attributes
+	* ```
+	* ### Example with relations and options (key, skip , top)
+	* ```javascript
+	*  var myArray = ds.Employee.toArray("name, employer.name, employer.location", true, 0 , 1)  // employer is a relation attribute related to another dataclass
+	* // myArray[0] contains { __KEY: '0', __STAMP: 2,name: 'Smith', employer: {name: 'ACME', location: 'Memphis'}}
+	*  ```
+	* ### Example with Sort, and Sub filtered Relations (three levels)
+	* ```javascript
+	* 
+	* // - Retrieve the first five students.
+	* // - Limit the number of courses per student to five.
+	* // - Sort arrays by the student's first name and sort course sub-arrays by subject name. Both in ascending order.
+	* // - skip the 1st result 
+	*  var sel = ds.Student.all();
+	*  var myArray = sel.toArray("fullName, Course:5, Course.matter, Course.teacher.fullName", "firstName, Course.matter", 1, 5);
+	* ```
+	* 
 	*/
-	sum(attribute: DatastoreClassAttribute, distinct?: String) : Number;
-	/**
-	*returns the sum (i.e., total of all the values) of attribute for the datastore class or entity collection
-	*/
-	sum(attribute: String, distinct?: Boolean) : Number;
-	/**
-	*returns the sum (i.e., total of all the values) of attribute for the datastore class or entity collection
-	*/
-	sum(attribute: String, distinct?: String) : Number;
-	/**
-	*creates and returns a JavaScript array where each element is an object containing a set of properties and values corresponding to the attribute names and values for a datastore class or an entity collection
-	*/
-	toArray(attributeList: String, sortList: String, key: String, skip: Number, top?: Number): any[];
-	/**
-	*creates and returns a JavaScript array where each element is an object containing a set of properties and values corresponding to the attribute names and values for a datastore class or an entity collection
-	*/
-	toArray(attributeList: String, sortList: String, key: Boolean, skip: Number, top?: Number): any[];
-	/**
-	*creates and returns a JavaScript array where each element is an object containing a set of properties and values corresponding to the attribute names and values for a datastore class or an entity collection
-	*/
-	toArray(attributeList: DatastoreClassAttribute, sortList: String, key: String, skip: Number, top?: Number): any[];
-	/**
-	*creates and returns a JavaScript array where each element is an object containing a set of properties and values corresponding to the attribute names and values for a datastore class or an entity collection
-	*/
-	toArray(attributeList: DatastoreClassAttribute, sortList: String, key: Boolean, skip: Number, top?: Number): any[];
+	toArray(attributeList: DatastoreClassAttribute, sortList?: String, key?: Boolean, skip?: Number, top?: Number): any[];
+	
+	
+	
 	/**
 	*returns a string representation of the entity or entity collection
 	*/
