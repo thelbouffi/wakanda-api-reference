@@ -18,7 +18,8 @@ interface WAKDirectory {
      *         ID: '0001000100010001000100010001000100010001',
      *         name: 'jsmith',
      *         fullName: 'Jennifer Smith',
-     *         belongsTo: [ 'Manager' ]
+     *         belongsTo: [ 'Manager' ],
+     *         lifeTime: 60*60
      *     },
      *     true
      * );

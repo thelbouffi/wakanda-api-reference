@@ -22,7 +22,7 @@ interface WAKConnectionSessionInfo {
      */
     storage?: KeyValueStorage;
     /**
-     * Defines the session time to live for the user session.
+     * Defines the session time to live in seconds for the user session.
      */
     lifeTime?: Number;
 }

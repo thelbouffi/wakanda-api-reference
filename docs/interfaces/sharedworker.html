@@ -80,11 +80,11 @@
 					<h3 id="step-1-define-the-shared-worker">Step 1: Define the shared worker</h3>
 					<pre><code class="lang-javascript"><span class="hljs-comment">// PROJECT/backend/worker.js</span>
 <span class="hljs-comment">// onconnect is called everytime a new worker proxy is created</span>
-onconnect = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"> msg </span>)
+onconnect = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"> event </span>)
 </span>{
     <span class="hljs-comment">// Get the worker port for communication with the worker proxy</span>
     <span class="hljs-comment">// Always use `ports[0]`</span>
-    <span class="hljs-keyword">var</span> workerPort = msg.ports[<span class="hljs-number">0</span>];
+    <span class="hljs-keyword">var</span> workerPort = event.ports[<span class="hljs-number">0</span>];
 
     <span class="hljs-comment">// Send a message to the worker proxy. The worker is up and running.</span>
     workerPort.postMessage({<span class="hljs-attr">type</span>: <span class="hljs-string">'connected'</span>, <span class="hljs-attr">says</span>: <span class="hljs-string">"I'm alive!"</span>});
@@ -100,14 +100,14 @@ onconnect = <span class="hljs-function"><span class="hljs-keyword">function</spa
         {
             <span class="hljs-comment">// It's a hello world message</span>
             <span class="hljs-keyword">case</span> <span class="hljs-string">'hello'</span>:
-                <span class="hljs-built_in">console</span>.log( <span class="hljs-string">'[RECEIVED BY WORKER] '</span>+ event.says );
+                <span class="hljs-built_in">console</span>.log( <span class="hljs-string">'[RECEIVED BY WORKER] '</span>+ message.says );
                 <span class="hljs-comment">// Reply to the worker proxy</span>
                 workerPort.postMessage( {<span class="hljs-attr">type</span>: <span class="hljs-string">'hello'</span>, <span class="hljs-attr">says</span>: <span class="hljs-string">'Hello proxy!'</span>} );
                 <span class="hljs-keyword">break</span>;
 
             <span class="hljs-comment">// It's a terminate message</span>
             <span class="hljs-keyword">case</span> <span class="hljs-string">'close'</span>:
-                <span class="hljs-built_in">console</span>.log( <span class="hljs-string">'[RECEIVED BY WORKER] '</span>+ event.says );
+                <span class="hljs-built_in">console</span>.log( <span class="hljs-string">'[RECEIVED BY WORKER] '</span>+ message.says );
                 <span class="hljs-comment">// Reply to the worker proxy</span>
                 workerPort.postMessage( {<span class="hljs-attr">type</span>: <span class="hljs-string">'close'</span>, <span class="hljs-attr">says</span>: <span class="hljs-string">'I will be back!'</span>} );
                 <span class="hljs-comment">// Close the worker</span>
@@ -147,20 +147,22 @@ workerProxyPort.onmessage = <span class="hljs-function"><span class="hljs-keywor
     {
         <span class="hljs-comment">// It's a hello world message</span>
         <span class="hljs-keyword">case</span> <span class="hljs-string">'hello'</span>:
-            <span class="hljs-built_in">console</span>.log( <span class="hljs-string">'[RECEIVED BY PROXY] '</span>+ event.says );
+            <span class="hljs-built_in">console</span>.log( <span class="hljs-string">'[RECEIVED BY PROXY] '</span>+ message.says );
             <span class="hljs-comment">// Say by to the worker</span>
             workerProxyPort.postMessage( {<span class="hljs-attr">type</span>: <span class="hljs-string">'close'</span>, <span class="hljs-attr">says</span>: <span class="hljs-string">'Bye bye worker!'</span>} );
             <span class="hljs-keyword">break</span>;
 
         <span class="hljs-comment">// It's a terminate message</span>
         <span class="hljs-keyword">case</span> <span class="hljs-string">'close'</span>:
-            <span class="hljs-built_in">console</span>.log( <span class="hljs-string">'[RECEIVED BY PROXY] '</span>+ event.says );
+            <span class="hljs-built_in">console</span>.log( <span class="hljs-string">'[RECEIVED BY PROXY] '</span>+ message.says );
+            exitWait();
 
         <span class="hljs-comment">// It's something else. Skip it.</span>
         <span class="hljs-keyword">default</span>:
             <span class="hljs-keyword">break</span>;
     }
 }
+wait();
 </code></pre>
 				</div>
 			</section>
@@ -191,13 +193,17 @@ workerProxyPort.onmessage = <span class="hljs-function"><span class="hljs-keywor
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-interface tsd-is-external tsd-is-not-exported">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Shared<wbr>Worker<span class="tsd-signature-symbol">(</span>scriptPath<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">String</span>, workerName<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">String</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="sharedworker.html" class="tsd-signature-type">SharedWorker</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Shared<wbr>Worker<span class="tsd-signature-symbol">(</span>scriptPath<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">String</span>, workerName<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">String</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="waksharedworkerproxy.html" class="tsd-signature-type">WAKSharedWorkerProxy</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
+<<<<<<< HEAD
 									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/67fbe0e/api/sharedworker.d.ts#L109">sharedworker.d.ts:109</a></li>
+=======
+									<li>Defined in <a href="https://github.com/JegoYann/wakanda-api-reference/blob/844e736/api/sharedworker.d.ts#L111">sharedworker.d.ts:111</a></li>
+>>>>>>> 5844f8ca9c9988f86544e76858bd9724bc68abcc
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -229,7 +235,7 @@ workerProxyPort.onmessage = <span class="hljs-function"><span class="hljs-keywor
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="sharedworker.html" class="tsd-signature-type">SharedWorker</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="waksharedworkerproxy.html" class="tsd-signature-type">WAKSharedWorkerProxy</a></h4>
 							<p>Returns a shared worker proxy</p>
 						</li>
 					</ul>
